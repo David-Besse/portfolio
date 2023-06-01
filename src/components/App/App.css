@@ -1,0 +1,9 @@
+section{
+  width: 100vw;
+  text-align: center;
+}
+
+.ma-scene{
+  height: 30vh;
+  width: calc(100vw / 3);
+}
