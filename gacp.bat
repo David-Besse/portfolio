@@ -14,5 +14,3 @@ git commit -m '%1'
 
 REM Pousser les modifications vers le dépôt distant
 git push
-
-echo Ok ! ;)
