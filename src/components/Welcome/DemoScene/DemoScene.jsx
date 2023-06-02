@@ -1,8 +1,8 @@
 import { Canvas } from "@react-three/fiber";
-import Cube from "../Cube/Cube";
+import Cube from "./Cube/Cube";
 import { OrbitControls } from "@react-three/drei";
 
-const Scene = () => {
+const DemoScene = () => {
   return (
     <Canvas>
       <Cube />
@@ -11,4 +11,4 @@ const Scene = () => {
   );
 };
 
-export default Scene;
+export default DemoScene;
