@@ -43,27 +43,29 @@ const App = () => {
     gsap.set(titleLetters, { opacity: 0, x: -100 });
 
     gsap
-      .timeline({ delay: 0.5 })
+      .timeline({ delay: 0.4 })
       .fromTo(
         titleLetters,
         { opacity: 0, x: -100 },
-        { opacity: 1, x: 0, stagger: 0.33, delay: 0.2, duration: 1.2, margin: "0 2vw", }
+        { opacity: 1,
+          x: 0,
+          stagger: 0.33,
+          delay: 0.2,
+          duration: 0.8,
+          margin: "0 3vw",
+        }
       )
       .to(".letter", {
-        delay: 0.2,
-        duration: 0.5,
-      })
-      .to(".letter", {
-        margin: "0",
+        margin: "0 1vw",
         delay: 0.5,
-        duration: 1,
+        duration: 0.5,
       })
       .to(titleLetters, {
         x: -100,
         opacity: 0,
         stagger: 0.33,
-        delay: 0.5,
-        duration: 0.5,
+        delay: 1.2,
+        duration: 0.4,
       })
       .to("#titleContainer", {
         display: "none",
@@ -76,15 +78,12 @@ const App = () => {
       .timeline({ delay: 0.5 })
       .fromTo(
         titleSpan,
-        { opacity: 0, x: -100 },
-        { opacity: 1, x: 0, stagger: 0.33, delay: 0.5, duration: 1.2 }
+        { opacity: 0 },
+        { opacity: 1,
+          stagger: 0.33,
+          delay: 2.4,
+          duration: 1.4 }
       )
-      .to(titleSpan, {
-        opacity: 1,
-        y: -100,
-        stagger: 0.33,
-        delay: 3,
-      })
       .to(titleSpan, {
         x: -100,
         opacity: 0,
@@ -102,10 +101,10 @@ const App = () => {
     <>
       <Section
         id="titleContainer"
-        className="titleContainer h-screen text-center flex flex-col items-center"
+        className="titleContainer h-screen text-center flex flex-col justify-center items-center"
       >
         <h1
-          className="title flex h-screen w-screen items-center justify-center font-normal"
+          className="title flex w-screen items-center justify-center font-normal"
           ref={titleRef}
         >
           <span className="letter inline-block">W</span>

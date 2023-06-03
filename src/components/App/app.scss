@@ -18,7 +18,7 @@
   }
 
   .spanUnderTitle {
-    font-size: 4vw;
+    font-size: 6vw;
     font-family: 'Baloo Thambi 2', display;
   }
 }
@@ -33,5 +33,13 @@
 
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #titleContainer {
+    .spanUnderTitle {
+      font-size: 4vw;
+    }
   }
 }
