@@ -2,6 +2,7 @@ import Contact from "../Contact/Contact";
 import MyProfile from "../MyProfile/MyProfile";
 import MyWorks from "../MyWorks/MyWorks";
 import Home from "../Home/Home";
+
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import styled from "styled-components";
@@ -21,7 +22,8 @@ const Section = styled.div`
 
 const Container = styled.div`
   height: 100vh;
-  background-color: #white;
+  background: no-repeat url("/fond.jpg");
+  background-size: cover;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   overflow-y: auto;
@@ -48,7 +50,8 @@ const App = () => {
       .fromTo(
         titleLetters,
         { opacity: 0, x: -100 },
-        { opacity: 1,
+        {
+          opacity: 1,
           x: 0,
           stagger: 0.33,
           delay: 0.2,
@@ -80,10 +83,7 @@ const App = () => {
       .fromTo(
         titleSpan,
         { opacity: 0 },
-        { opacity: 1,
-          stagger: 0.33,
-          delay: 2.4,
-          duration: 1.4 }
+        { opacity: 1, stagger: 0.33, delay: 2.4, duration: 1.4 }
       )
       .to(titleSpan, {
         x: -100,

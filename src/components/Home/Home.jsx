@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Navbar from "./Navbar/navbar";
+import Navbar from "../Navbar/Navbar";
 
 const Section = styled.div`
   height: 100vh;
@@ -8,7 +8,7 @@ const Section = styled.div`
 
 const Home = () => {
   return (
-    <Section className="homePage">
+    <Section id="homePage" className="homePage">
       <Navbar />
     </Section>
   );

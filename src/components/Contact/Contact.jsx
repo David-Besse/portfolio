@@ -6,7 +6,7 @@ const Section = styled.div`
 `;
 
 const Contact = () => {
-  return <Section className="Contact">Contact</Section>;
+  return <Section id="contact" className="contact">Contact</Section>;
 };
 
 export default Contact;

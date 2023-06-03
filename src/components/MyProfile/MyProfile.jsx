@@ -6,7 +6,7 @@ const Section = styled.div`
 `;
 
 const MyProfile = () => {
-  return <Section className="MyProfile">My profile</Section>;
+  return <Section id="myProfile" className="myProfile">My profile</Section>;
 };
 
 export default MyProfile;
