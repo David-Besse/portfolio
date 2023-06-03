@@ -10,7 +10,7 @@ import "./app.scss";
 
 const Section = styled.div`
   height: 100vh;
-  background-color: #3b5998;
+  background-color: #white;
   overflow-y: auto;
   scrollbar-width: none;
 
@@ -21,11 +21,12 @@ const Section = styled.div`
 
 const Container = styled.div`
   height: 100vh;
-  background-color: #3b5998;
+  background-color: #white;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   overflow-y: auto;
   scrollbar-width: none;
+  color: white;
 
   &::-webkit-scrollbar {
     display: none;

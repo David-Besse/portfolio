@@ -1,13 +1,4 @@
 #titleContainer {
-  height: 100vh;
-  background-color: white;
-  overflow-y: auto;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
   .title {
     color: black;
   }
@@ -20,19 +11,6 @@
   .spanUnderTitle {
     font-size: 6vw;
     font-family: 'Baloo Thambi 2', display;
-  }
-}
-
-#mainContainer {
-  height: 100vh;
-  background-color: #3b5998;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  overflow-y: auto;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
   }
 }
 
