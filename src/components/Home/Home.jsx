@@ -1,4 +1,5 @@
 import { Waypoint } from "react-waypoint";
+import { useStore } from "zustand";
 import { useStoreApp } from "../Store/app.store";
 
 import "./home.scss";
@@ -6,13 +7,12 @@ import Logo from "/logo.png";
 import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
 
 const Home = () => {
-  const homeAnimated = useStoreApp((state) => state.homeAnimated);
-  const setHomeAnimated = useStoreApp((state) => state.setHomeAnimated);
-  const setSelectedSection = useStoreApp((state) => state.setSelectedSection);
+  const { homeAnimated, setHomeAnimated, setSelectedSection } =
+    useStore(useStoreApp);
 
   const handleWaypointEnter = () => {
     setHomeAnimated();
-    setSelectedSection('homePage');
+    setSelectedSection("homePage");
   };
 
   const handleWaypointLeave = () => {

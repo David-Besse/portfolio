@@ -1,16 +1,32 @@
 #titleContainer {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   .title {
     color: black;
   }
 
   .letter {
     font-size: 10vw;
-    font-family: 'Righteous', cursive;
+    font-family: "Righteous", cursive;
   }
 
   .spanUnderTitle {
     font-size: 6vw;
-    font-family: 'Baloo Thambi 2', display;
+    font-family: "Baloo Thambi 2", display;
+  }
+}
+
+#mainContainer {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 

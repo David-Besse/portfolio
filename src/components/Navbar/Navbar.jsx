@@ -1,4 +1,5 @@
 import { useStoreApp } from "../Store/app.store";
+import { useStore } from "zustand";
 import {
   BsBook,
   BsEnvelopeAt,
@@ -8,7 +9,7 @@ import {
 } from "react-icons/bs";
 
 const Navbar = () => {
-  const selectedSection = useStoreApp((state)=> state.selectedSection);
+  const { selectedSection } = useStore(useStoreApp);
 
   return (
     <div className="flex justify-center">
@@ -21,7 +22,9 @@ const Navbar = () => {
                 className="cursor-pointer flex flex-col place-items-center"
               >
                 <BsHouse size={32} />
-                {selectedSection === 'homePage' && <span className="text-l font-bold">home</span>}
+                {selectedSection === "homePage" && (
+                  <span className="text-l font-bold">home</span>
+                )}
               </a>
             </li>
             <li className="w-[80px] h-[80px] rounded flex items-center justify-center">
@@ -30,7 +33,9 @@ const Navbar = () => {
                 className="cursor-pointer flex flex-col place-items-center"
               >
                 <BsPerson size={32} />
-                {selectedSection === 'myProfile' && <span className="text-l font-bold">aboutMe</span>}
+                {selectedSection === "myProfile" && (
+                  <span className="text-l font-bold">aboutMe</span>
+                )}
               </a>
             </li>
             <li className="w-[80px] h-[80px] flex items-center justify-center">
@@ -39,7 +44,9 @@ const Navbar = () => {
                 className="cursor-pointer flex flex-col place-items-center"
               >
                 <BsBook size={30} />
-                {selectedSection === 'myWorks' && <span className="text-l font-bold">works</span>}
+                {selectedSection === "myWorks" && (
+                  <span className="text-l font-bold">works</span>
+                )}
               </a>
             </li>
             <li className="w-[80px] h-[80px] flex items-center justify-center">
@@ -48,7 +55,9 @@ const Navbar = () => {
                 className="cursor-pointer flex flex-col place-items-center"
               >
                 <BsCodeSlash size={32} />
-                {selectedSection === 'mySkills' && <span className="text-l font-bold">skills</span>}
+                {selectedSection === "mySkills" && (
+                  <span className="text-l font-bold">skills</span>
+                )}
               </a>
             </li>
             <li className="w-[80px] h-[80px] flex items-center justify-center">
@@ -57,7 +66,9 @@ const Navbar = () => {
                 className="cursor-pointer flex flex-col place-items-center"
               >
                 <BsEnvelopeAt size={32} />
-                {selectedSection === 'contact' && <span className="text-l font-bold">contact</span>}
+                {selectedSection === "contact" && (
+                  <span className="text-l font-bold">contact</span>
+                )}
               </a>
             </li>
           </ul>

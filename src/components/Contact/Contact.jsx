@@ -1,24 +1,19 @@
 import { Waypoint } from "react-waypoint";
+import { useStore } from "zustand";
 import { useStoreApp } from "../Store/app.store";
-import styled from "styled-components";
-
-const Section = styled.div`
-  height: 100vh;
-  scroll-snap-align: center;
-`;
 
 const Contact = () => {
-  const setSelectedSection = useStoreApp((state) => state.setSelectedSection);
+  const { setSelectedSection } = useStore(useStoreApp);
 
   const handleWaypointEnter = () => {
     setSelectedSection("contact");
   };
 
   return (
-    <Section id="contact" className="contact">
+    <div id="contact" className="contact h-screen snap-center">
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
       Contact
-    </Section>
+    </div>
   );
 };
 
