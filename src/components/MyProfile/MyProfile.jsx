@@ -1,3 +1,5 @@
+import { Waypoint } from "react-waypoint";
+import { useStoreApp } from "../Store/app.store";
 import styled from "styled-components";
 
 const Section = styled.div`
@@ -6,7 +8,18 @@ const Section = styled.div`
 `;
 
 const MyProfile = () => {
-  return <Section id="myProfile" className="myProfile">My profile</Section>;
+  const setSelectedSection = useStoreApp((state) => state.setSelectedSection);
+
+  const handleWaypointEnter = () => {
+    setSelectedSection("myProfile");
+  };
+
+  return (
+    <Section id="myProfile" className="myProfile">
+      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
+      My profile
+    </Section>
+  );
 };
 
 export default MyProfile;
