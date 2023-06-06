@@ -20,6 +20,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
     "react-scroll": "^1.8.9",
+    "react-waypoint": "^10.3.0",
     "styled-components": "^5.3.11",
     "three": "^0.153.0"
   },

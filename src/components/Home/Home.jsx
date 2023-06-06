@@ -1,12 +1,25 @@
-import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
+import { useState } from "react";
+import { Waypoint } from "react-waypoint";
 
 import "./home.scss";
 import Logo from "/logo.png";
+import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
 
 const Home = () => {
+  const [animated, setAnimated] = useState(false);
+
+  const handleWaypointEnter = (value) => {
+    setAnimated(value);
+  };
+
   return (
     <div id="homePage" className="homePage h-screen snap-center flex-col">
-      <header className="h-1/6 p-4 w-screen md:w-4/5 md:mx-auto bg-white flex justify-between border-b-2">
+      <Waypoint
+        onEnter={() => handleWaypointEnter(true)}
+        onLeave={() => handleWaypointEnter(false)}
+        bottomOffset="5%"
+      />
+      <header className="h-1/6 p-4 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-2">
         <img src={Logo} alt="logo" className="myLogo rounded-xl w-30 h-30" />
         <ul className="flex items-center justify-center gap-8">
           <li className="myCv w-22 h-16 flex justify-center items-center">
@@ -40,9 +53,15 @@ const Home = () => {
           </li>
         </ul>
       </header>
-      <section className="h-5/6 flex flex-col md:flex-row md:pl-14 xl:pl-24 md:pr-0">
-        <div className="left w-screen md:w-2/5 h-1/3 md:h-full flex flex-col justify-center items-center px-10 md:px-0 gap-4 md:gap-10">
-          <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold">My motto</h2>
+      <section className="h-5/6 flex flex-col md:flex-row md:pl-14 xl:pl-40 md:pr-0">
+        <div
+          className={`home_left w-screen md:w-2/5 h-1/3 md:h-full 2xl:pl-36 flex flex-col pt-8 md:pt-24 lg:pt-20 px-10 md:px-0 gap-4 md:gap-10 ${
+            animated ? "fade-in" : "fade-out"
+          }`}
+        >
+          <h2 className="text-6xl md:text-7xl lg:text-8xl font-extrabold">
+            My motto
+          </h2>
           <q className="text-xl lg:text-2xl italic text-justify">
             For the things we have to learn before we can do them, we learn by
             doing them.
@@ -58,8 +77,16 @@ const Home = () => {
             </a>
           </cite>
         </div>
-        <div className="right w-screen md:w-3/5 md:h-full flex justify-center items-center px-10 md:px-0">
-          <img src="/4880440.jpg" alt="ecran d'ordinateur" className="pcScreen w-full xl:w-5/6" />
+        <div
+          className={`home_right w-screen md:w-3/5 h-2/3 md:h-full pt-8 md:pt-24 ${
+            animated ? "fade-in" : "fade-out"
+          }`}
+        >
+          <img
+            src="/home_right.png"
+            alt="screen animated"
+            className="home_right_img w-4/5 xl:w-3/6 m-auto"
+          />
         </div>
       </section>
     </div>

@@ -25,8 +25,6 @@ const Section = styled.div`
 
 const Container = styled.div`
   height: 100vh;
-  background: white;
-  background-size: cover;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   overflow-y: auto;
