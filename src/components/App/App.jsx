@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Contact from "../Contact/Contact";
-import MyProfile from "../MyProfile/MyProfile";
+import AboutMe from "../AboutMe/AboutMe";
 import MyWorks from "../MyWorks/MyWorks";
 import MySkills from "../MySkills/MySkills";
 import Home from "../Home/Home";
@@ -100,7 +100,7 @@ const App = () => {
       >
         <Navbar />
         <Home />
-        <MyProfile />
+        <AboutMe />
         <MyWorks />
         <MySkills />
         <Contact />

@@ -10,7 +10,7 @@ const Contact = () => {
   };
 
   return (
-    <div id="contact" className="contact h-screen snap-center">
+    <div id="contact" className="contact h-screen snap-center bg-red-200">
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
       Contact
     </div>

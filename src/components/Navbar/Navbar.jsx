@@ -29,11 +29,11 @@ const Navbar = () => {
             </li>
             <li className="w-[80px] h-[80px] rounded flex items-center justify-center">
               <a
-                href="#myProfile"
+                href="#aboutMe"
                 className="cursor-pointer flex flex-col place-items-center"
               >
                 <BsPerson size={32} />
-                {selectedSection === "myProfile" && (
+                {selectedSection === "aboutMe" && (
                   <span className="text-l font-bold">aboutMe</span>
                 )}
               </a>

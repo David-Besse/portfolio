@@ -10,7 +10,7 @@ const MySkills = () => {
   };
 
   return (
-    <div id="mySkills" className="mySkills h-screen snap-center">
+    <div id="mySkills" className="mySkills h-screen snap-center bg-purple-100">
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
       My Skills
     </div>
