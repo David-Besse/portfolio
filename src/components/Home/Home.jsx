@@ -62,12 +62,12 @@ const Home = () => {
       </header>
       <section className="h-5/6 flex flex-col lg:flex-row lg:pl-14 xl:pl-40 md:pr-0">
         <div
-          className={`home_left w-screen lg:w-2/5 h-1/3 lg:h-full 2xl:pl-36 flex flex-col pt-8 lg:pt-20 px-10 lg:px-0 gap-4 lg:gap-12 ${
+          className={`home_left w-screen lg:w-2/5 h-1/3 lg:h-full 2xl:pl-36 flex flex-col pt-4 lg:pt-20 px-10 md:px-16 lg:px-0 gap-4 lg:gap-12 ${
             homeAnimated ? "fade-in" : "fade-out"
           }`}
         >
           <h2 className="text-6xl lg:text-8xl font-extrabold">My motto</h2>
-          <q className="text-xl lg:text-2xl xl:text-4xl italic text-justify">
+          <q className="text-xl lg:text-2xl xl:text-4xl italic text-center">
             For the things we have to learn before we can do them, we learn by
             doing them.
           </q>
