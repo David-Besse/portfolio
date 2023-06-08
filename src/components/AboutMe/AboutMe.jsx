@@ -5,14 +5,14 @@ import styled from "styled-components";
 
 import "./aboutMe.scss";
 
-const words = ["geek", "pragmatic", "team spirit", "adaptive", "curious"];
+const words = ["pragmatic", "curious", "adaptive", "team spirit", "geek"];
 
 const ListItem = styled.li`
   font-size: 3em;
   padding: 0 0 20px 0;
   cursor: pointer;
   color: transparent;
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px black;
   position: relative;
 
   ::after {
@@ -28,7 +28,7 @@ const ListItem = styled.li`
 
   &:hover {
     ::after {
-      animation: moveText 2s linear both;
+      animation: moveText 0.5s linear both;
 
       @keyframes moveText {
         to {
@@ -49,16 +49,13 @@ const AboutMe = () => {
   return (
     <div id="aboutMe" className="aboutMe h-screen snap-center">
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
-      <section className="flex w-screen h-screen p-4 bg-blue-500">
-        <div className="w-full flex flex-col">
-          <h2 className="title_list text-end text-2xl font-bold pb-8">Who i am</h2>
+      <section className="flex w-screen h-screen p-4 bg-white">
+        <div className="flex flex-col">
+          <h2 className="title_list text-2xl font-bold pb-8">Who i am</h2>
           <br />
-          <ul className="word_list text-start">
+          <ul className="word_list">
             {words.map((item) => (
-              <ListItem
-                key={item}
-                text={item}
-              >
+              <ListItem key={item} text={item}>
                 {item}
               </ListItem>
             ))}
