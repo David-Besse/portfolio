@@ -5,18 +5,13 @@
     display: none;
   }
 
-  .title {
-    color: black;
-  }
-
-  .letter {
-    font-size: 10vw;
+  .letterTitle {
     font-family: "Righteous", cursive;
   }
 
-  .spanUnderTitle {
-    font-size: 6vw;
-    font-family: "Baloo Thambi 2", display;
+  .spanUnderTitle, .spanOverTitle {
+    // font-family: "Baloo Thambi 2", display;
+    font-family: 'Architects Daughter', handwriting;
   }
 }
 
@@ -30,10 +25,3 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
-  #titleContainer {
-    .spanUnderTitle {
-      font-size: 4vw;
-    }
-  }
-}

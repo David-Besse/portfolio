@@ -20,7 +20,7 @@ const Home = () => {
   };
 
   return (
-    <div id="homePage" className="homePage h-screen snap-center flex-col">
+    <div id="homePage" className="homePage h-screen snap-center flex-col bg-[#f3f2f9]">
       <Waypoint
         onEnter={() => handleWaypointEnter()}
         onLeave={() => handleWaypointLeave()}

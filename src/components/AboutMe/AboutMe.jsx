@@ -20,7 +20,7 @@ const ListItem = styled.li`
     position: absolute;
     top: 0;
     left: 0;
-    color: slategrey;
+    color: #606887;
     width: 0px;
     overflow: hidden;
     white-space: nowrap;
@@ -49,9 +49,9 @@ const AboutMe = () => {
   return (
     <div id="aboutMe" className="aboutMe h-screen snap-center">
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
-      <section className="flex w-screen h-screen p-4 bg-white">
+      <section className="flex w-screen h-screen p-4 bg-[#f3f2f9]">
         <div className="flex flex-col">
-          <h2 className="title_list text-2xl font-bold pb-8">Who i am</h2>
+          <h2 className="title_list text-2xl font-bold pb-8">.about me</h2>
           <br />
           <ul className="word_list">
             {words.map((item) => (

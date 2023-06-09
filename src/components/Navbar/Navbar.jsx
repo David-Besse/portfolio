@@ -13,9 +13,9 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="w-screen bg-white">
+      <div className="w-screen">
         <nav className="fixed bottom-1 left-2/4 transform -translate-x-2/4 -translate-y-1/6 z-50">
-          <ul className="w-full flex justify-around items-center text-2x1 text-black">
+          <ul className="w-full flex justify-around items-center text-2x1 text-[#606887]">
             <li className="w-[80px] h-[80px] flex items-center justify-center">
               <a
                 href="#homePage"
