@@ -1,12 +1,12 @@
 import { Waypoint } from "react-waypoint";
 import { useStore } from "zustand";
-import { useStoreApp } from "../Store/app.store";
+import useStoreApp from "../Store/app.store";
 
 const MyWorks = () => {
-  const { setSelectedSection } = useStore(useStoreApp);
+  const { setCurrentSection } = useStore(useStoreApp);
 
   const handleWaypointEnter = () => {
-    setSelectedSection("myWorks");
+    setCurrentSection("myWorks");
   };
 
   return (

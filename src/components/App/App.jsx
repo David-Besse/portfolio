@@ -11,7 +11,7 @@ import { gsap } from "gsap";
 
 import "./app.scss";
 import { useStore } from "zustand";
-import { useStoreApp } from "../Store/app.store";
+import useStoreApp from "../Store/app.store";
 
 const splashTitleText = "DAVID BESSE";
 const splashTitleLetters = splashTitleText.split("");
@@ -26,7 +26,7 @@ const App = () => {
   const titleRef = useRef();
   const spanOverRef = useRef();
   const spanUnderRef = useRef();
-  const { setSelectedSection } = useStore(useStoreApp);
+  const { setCurrentSection } = useStore(useStoreApp);
 
   useEffect(() => {
     const title = Array.from(titleRef.current.children);
@@ -70,7 +70,7 @@ const App = () => {
         delay: 5,
         duration: 1,
         onComplete: () => {
-          setSelectedSection("homePage");
+          setCurrentSection("homePage");
           gsap.set("#titleContainer", { display: "none" });
           gsap.set("#mainContainer", { display: "block" });
         },

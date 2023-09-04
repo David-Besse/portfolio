@@ -1,13 +1,13 @@
 import { Waypoint } from "react-waypoint";
 import { useStore } from "zustand";
-import { useStoreApp } from "../Store/app.store";
+import useStoreApp from "../Store/app.store";
 import { useForm } from "react-hook-form";
 
 import './contact.scss';
 import { useEffect } from "react";
 
 const Contact = () => {
-  const { selectedSection, setSelectedSection } = useStore(useStoreApp);
+  const { currentSection, setCurrentSection } = useStore(useStoreApp);
   const {
     register,
     handleSubmit,
@@ -21,15 +21,15 @@ const Contact = () => {
   };
 
   const handleWaypointEnter = () => {
-    setSelectedSection("contact");
+    setCurrentSection("contact");
   };
 
   useEffect(() => {
-    if (selectedSection !== 'contact'){
+    if (currentSection !== 'contact'){
       reset();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedSection]);
+  }, [currentSection]);
 
   return (
     <div

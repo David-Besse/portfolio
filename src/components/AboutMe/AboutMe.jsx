@@ -1,6 +1,6 @@
 import { Waypoint } from "react-waypoint";
 import { useStore } from "zustand";
-import { useStoreApp } from "../Store/app.store";
+import useStoreApp from "../Store/app.store";
 import styled from "styled-components";
 
 import "./aboutMe.scss";
@@ -40,10 +40,10 @@ const ListItem = styled.li`
 `;
 
 const AboutMe = () => {
-  const { setSelectedSection } = useStore(useStoreApp);
+  const { setCurrentSection } = useStore(useStoreApp);
 
   const handleWaypointEnter = () => {
-    setSelectedSection("aboutMe");
+    setCurrentSection("aboutMe");
   };
 
   return (

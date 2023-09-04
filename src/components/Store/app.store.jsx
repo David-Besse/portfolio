@@ -1,16 +1,16 @@
-import { create } from "zustand";
+import { createStore } from "zustand";
 import zukeeper from "zukeeper";
 
-export const useStoreApp = create(
-  zukeeper((set) => ({
-    // initial state
-    selectedSection: "",
-    homeAnimated: false,
+const useStoreApp = createStore(zukeeper((set) => ({
+  // initial state
+  currentSection: "",
+  homeAnimated: false,
 
-    // actions
-    setSelectedSection: (value) => set(() => ({ selectedSection: value })),
-    removeSelectedSection: () => set({ selectedSection: "" }),
-    setHomeAnimated: () =>
-      set((state) => ({ homeAnimated: !state.homeAnimated })),
-  }))
-);
+  // actions
+  setCurrentSection: (value) => set(() => ({ currentSection: value })),
+  removeCurrentSection: () => set({ currentSection: "" }),
+  setHomeAnimated: () =>
+    set((state) => ({ homeAnimated: !state.homeAnimated })),
+})));
+
+export default useStoreApp;

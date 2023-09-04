@@ -1,4 +1,4 @@
-import { useStoreApp } from "../Store/app.store";
+import useStoreApp from "../Store/app.store";
 import { useStore } from "zustand";
 import {
   BsBook,
@@ -9,7 +9,7 @@ import {
 } from "react-icons/bs";
 
 const Navbar = () => {
-  const { selectedSection } = useStore(useStoreApp);
+  const { currentSection } = useStore(useStoreApp);
 
   return (
     <div className="flex justify-center">
@@ -22,7 +22,7 @@ const Navbar = () => {
                 className="cursor-pointer flex flex-col place-items-center"
               >
                 <BsHouse size={32} />
-                {selectedSection === "homePage" && (
+                {currentSection === "homePage" && (
                   <span className="text-l font-bold">home</span>
                 )}
               </a>
@@ -33,7 +33,7 @@ const Navbar = () => {
                 className="cursor-pointer flex flex-col place-items-center"
               >
                 <BsPerson size={32} />
-                {selectedSection === "aboutMe" && (
+                {currentSection === "aboutMe" && (
                   <span className="text-l font-bold">aboutMe</span>
                 )}
               </a>
@@ -44,7 +44,7 @@ const Navbar = () => {
                 className="cursor-pointer flex flex-col place-items-center"
               >
                 <BsBook size={30} />
-                {selectedSection === "myWorks" && (
+                {currentSection === "myWorks" && (
                   <span className="text-l font-bold">works</span>
                 )}
               </a>
@@ -55,7 +55,7 @@ const Navbar = () => {
                 className="cursor-pointer flex flex-col place-items-center"
               >
                 <BsCodeSlash size={32} />
-                {selectedSection === "mySkills" && (
+                {currentSection === "mySkills" && (
                   <span className="text-l font-bold">skills</span>
                 )}
               </a>
@@ -66,7 +66,7 @@ const Navbar = () => {
                 className="cursor-pointer flex flex-col place-items-center"
               >
                 <BsEnvelopeAt size={32} />
-                {selectedSection === "contact" && (
+                {currentSection === "contact" && (
                   <span className="text-l font-bold">contact</span>
                 )}
               </a>
