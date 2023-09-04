@@ -28,7 +28,7 @@ const ListItem = styled.li`
 
   &:hover {
     ::after {
-      animation: moveText 0.5s linear both;
+      animation: moveText 0.4s linear both;
 
       @keyframes moveText {
         to {
@@ -49,18 +49,21 @@ const AboutMe = () => {
   return (
     <div id="aboutMe" className="aboutMe h-screen snap-center">
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
-      <section className="flex w-screen h-screen p-4 bg-[#f3f2f9]">
-        <div className="flex flex-col">
+      <section className="w-screen h-screen p-4 bg-[#f3f2f9]">
           <h2 className="title_list text-2xl font-bold pb-8">.about me</h2>
-          <br />
-          <ul className="word_list">
-            {words.map((item) => (
-              <ListItem key={item} text={item}>
-                {item}
-              </ListItem>
-            ))}
-          </ul>
-        </div>
+          <div className="flex">
+            <br />
+            <ul className="flex flex-col gap-8 word_list">
+              {words.map((item) => (
+                <ListItem key={item} text={item}>
+                  {item}
+                </ListItem>
+              ))}
+            </ul>
+            <div className="floatingBox">
+              <p>Préférent l&apos;action à l&apos;élaboration théorique.</p>
+            </div>
+          </div>
       </section>
     </div>
   );
