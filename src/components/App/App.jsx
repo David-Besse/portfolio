@@ -16,10 +16,10 @@ import useStoreApp from "../Store/app.store";
 const splashTitleText = "DAVID BESSE";
 const splashTitleLetters = splashTitleText.split("");
 
-const spanOverTitleText = "Hey, I am . . .";
+const spanOverTitleText = "Hey, I am";
 const spanOverTitleLetters = spanOverTitleText.split("");
 
-const spanUnderTitleText = ". . . a fullstack web developer.";
+const spanUnderTitleText = "fullstack web developer.";
 const spanUnderTitleLetters = spanUnderTitleText.split("");
 
 const App = () => {
