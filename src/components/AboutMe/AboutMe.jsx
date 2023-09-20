@@ -16,30 +16,17 @@ const ListItem = styled.li`
     position: absolute;
     top: 0;
     left: 0;
-    color: #606887;
+    color: #00a1ec;
     width: 0;
     overflow: hidden;
     white-space: nowrap;
-    transition: width 0.4s ease;
-  }
-
-  span.arrow {
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid #606887;
-    rotate: 90deg;
-    transition: opacity 0.4s ease;
+    transition: width 0.6s ease;
   }
 
   &:hover {
     ::after {
       width: 100%;
-      transition: width 0.8s ease;
-    }
-
-    span.arrow {
-      opacity: 1;
-      transtition: opacity 0.8s ease;
+      transition: width 0.6s ease;
     }
   }
 `;
@@ -62,8 +49,8 @@ const AboutMe = () => {
         <h2 className="title_list h-auto text-2xl font-bold lg:pb-8">
           .about me
         </h2>
-        <div className="flex flex-col h-5/6 lg:flex-row">
-          <ul className="flex flex-col w-full h-1/2 mb-8 mt-8 justify-around lg:w-1/3 lg:h-full lg:justify-around lg:mt-0 lg:mb-0 word_list">
+        <div className="flex flex-col h-5/6 lg:flex-row p-4">
+          <ul className="flex flex-col w-full h-1/2 mb-8 mt-8 justify-around lg:w-1/3 lg:h-full lg:justify-around lg:mt-0 lg:mb-0 xl:w-1/4 word_list">
             {words.map((word) => (
               <ListItem
                 className={`relative flex items-center text-4xl text-transparent lg:text-6xl lg:align-top cursor-pointer ${
@@ -81,13 +68,25 @@ const AboutMe = () => {
                 }}
               >
                 {word}
-                <span className="arrow absolute right-0 opacity-0 content-none border-x-[20px]"></span>
               </ListItem>
             ))}
           </ul>
-          <div className="resumeBox w-full h-1/2 lg:w-2/3 lg:h-full flex ">
+          <div
+            className="resumeBox w-full h-1/2 lg:w-2/3 lg:h-full xl:w-3/4 flex items-center justify-center"
+          >
             {wordHovered !== "" && (
-              <p className="text-2xl">{wordList[wordHovered]}</p>
+              <div className="flex items-center justify-center">
+                <div className="arrow content-none"></div>
+                <p
+                  className={`w-auto h-fit p-4 text-4xl text-center ${
+                    wordHovered !== ""
+                      ? "border rounded-3xl border-solid border-transparent bg-white"
+                      : ""
+                  }`}
+                >
+                  {wordList[wordHovered]}
+                </p>
+              </div>
             )}
           </div>
         </div>
