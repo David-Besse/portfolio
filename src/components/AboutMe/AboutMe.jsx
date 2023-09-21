@@ -1,12 +1,13 @@
 import { Waypoint } from "react-waypoint";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
+import { useState } from "react";
 import styled from "styled-components";
 
 import "./aboutMe.scss";
-import { useState } from "react";
 
 import wordList from "../../datas/wordList";
+import Scene from "./Scene/Scene";
 
 const ListItem = styled.li`
   -webkit-text-stroke: 1px black;
@@ -45,9 +46,9 @@ const AboutMe = () => {
   return (
     <div id="aboutMe" className="aboutMe h-screen snap-center">
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
-      <section className="w-screen h-screen p-4 bg-[#f3f2f9]">
+      <section className="w-screen h-screen p-4 ">
         <h2 className="title_list h-auto text-2xl font-bold lg:pb-8">
-          .about me
+          .aboutMe
         </h2>
         <div className="flex flex-col h-5/6 lg:flex-row p-4">
           <ul className="flex flex-col w-full h-1/2 mb-8 mt-8 justify-around lg:w-1/3 lg:h-full lg:justify-around lg:mt-0 lg:mb-0 xl:w-1/4 word_list">
@@ -71,18 +72,13 @@ const AboutMe = () => {
               </ListItem>
             ))}
           </ul>
-          <div
-            className="resumeBox w-full h-1/2 lg:w-2/3 lg:h-full xl:w-3/4 flex items-center justify-center"
-          >
+          <div className="resumeBox w-full h-1/2 lg:w-2/3 lg:h-full xl:w-3/4 flex items-center justify-center bg-transparent border-8 border-solid">
+            <Scene />
             {wordHovered !== "" && (
               <div className="flex items-center justify-center">
                 <div className="arrow content-none"></div>
                 <p
-                  className={`w-auto h-fit p-4 text-4xl text-center ${
-                    wordHovered !== ""
-                      ? "border rounded-3xl border-solid border-transparent bg-white"
-                      : ""
-                  }`}
+                  className={`w-auto h-fit p-4 text-2xl text-center border rounded-3xl border-solid border-transparent bg-white`}
                 >
                   {wordList[wordHovered]}
                 </p>
@@ -96,3 +92,5 @@ const AboutMe = () => {
 };
 
 export default AboutMe;
+
+//bg-[#f3f2f9]

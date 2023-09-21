@@ -33,41 +33,41 @@ const App = () => {
     const spanOver = Array.from(spanOverRef.current.children);
     const spanUnder = Array.from(spanUnderRef.current.children);
 
-    gsap
-      .timeline({ delay: 0.4 })
-      .fromTo(
-        spanOver,
-        { opacity: 0, x: -100 },
-        { opacity: 1, x: 0, stagger: 0.1, duration: 0.1 }
-      )
-      .to(spanOver, {
-        opacity: 0,
-        delay: 6.3,
-        duration: 1,
-      });
+    // gsap
+    //   .timeline({ delay: 0.4 })
+    //   .fromTo(
+    //     spanOver,
+    //     { opacity: 0, x: -100 },
+    //     { opacity: 1, x: 0, stagger: 0.1, duration: 0.1 }
+    //   )
+    //   .to(spanOver, {
+    //     opacity: 0,
+    //     delay: 6.3,
+    //     duration: 1,
+    //   });
 
     gsap
-      .timeline({ delay: 2 })
-      .fromTo(
-        title,
-        { opacity: 0, x: -100 },
-        {
-          opacity: 1,
-          x: 0,
-          stagger: 0.1,
-          duration: 0.5,
-          margin: "0 2.5vw",
-        }
-      )
-      .to(".letterTitle", {
-        margin: "0 1vw",
-        duration: 0.2,
-      })
+      // .timeline({ delay: 2 })
+      // .fromTo(
+      //   title,
+      //   { opacity: 0, x: -100 },
+      //   {
+      //     opacity: 1,
+      //     x: 0,
+      //     stagger: 0.1,
+      //     duration: 0.5,
+      //     margin: "0 2.5vw",
+      //   }
+      // )
+    //   .to(".letterTitle", {
+    //     margin: "0 1vw",
+    //     duration: 0.2,
+    //   })
       .to(title, {
         scale: 0,
         opacity: 0,
         stagger: 0.1,
-        delay: 5,
+        // delay: 5,
         duration: 1,
         onComplete: () => {
           setCurrentSection("homePage");
@@ -76,18 +76,18 @@ const App = () => {
         },
       });
 
-    gsap
-      .timeline({ delay: 4 })
-      .fromTo(
-        spanUnder,
-        { opacity: 0, x: -100 },
-        { opacity: 1, x: 0, stagger: 0.1, duration: 0.1 }
-      )
-      .to(spanUnder, {
-        opacity: 0,
-        delay: 1.2,
-        duration: 1,
-      });
+    // gsap
+    //   .timeline({ delay: 4 })
+    //   .fromTo(
+    //     spanUnder,
+    //     { opacity: 0, x: -100 },
+    //     { opacity: 1, x: 0, stagger: 0.1, duration: 0.1 }
+    //   )
+    //   .to(spanUnder, {
+    //     opacity: 0,
+    //     delay: 1.2,
+    //     duration: 1,
+    //   });
   }, []);
 
   return (
