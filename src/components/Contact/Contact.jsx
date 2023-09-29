@@ -36,7 +36,7 @@ const Contact = () => {
       id="contact"
       className="contact flex flex-col items-center p-4 h-screen w-screen snap-center bg-[#f3f2f9]"
     >
-      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
+      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="95%" />
       <h2 className="text-2xl self-start font-bold pb-8">.contact</h2>
       <p className="text-center pt-8">
         Get in touch or shoot me an email directly on <a className="text-[#00a1ec]" href = "mailto: dahodprod@gmail.com">dahodprod@gmail.com</a>

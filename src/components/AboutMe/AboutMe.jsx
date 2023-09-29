@@ -45,12 +45,12 @@ const AboutMe = () => {
 
   return (
     <div id="aboutMe" className="aboutMe h-screen snap-center">
-      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
-      <section className="w-screen h-screen p-4 ">
-        <h2 className="title_list h-auto text-2xl font-bold lg:pb-8">
+      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="95%" />
+      <section className="w-screen h-screen p-4 relative">
+        <h2 className="title_list h-[5%] text-2xl font-bold">
           .aboutMe
         </h2>
-        <div className="flex flex-col h-5/6 lg:flex-row p-4">
+        {/* <div className="flex flex-col h-5/6 lg:flex-row p-4">
           <ul className="flex flex-col w-full h-1/2 mb-8 mt-8 justify-around lg:w-1/3 lg:h-full lg:justify-around lg:mt-0 lg:mb-0 xl:w-1/4 word_list">
             {words.map((word) => (
               <ListItem
@@ -71,11 +71,12 @@ const AboutMe = () => {
                 {word}
               </ListItem>
             ))}
-          </ul>
-          <div className="resumeBox w-full h-1/2 lg:w-2/3 lg:h-full xl:w-3/4 flex items-center justify-center bg-transparent border-8 border-solid">
+          </ul> */}
+          {/* <div className="resumeBox w-full h-1/2 lg:w-2/3 lg:h-full xl:w-3/4 flex items-center justify-center"> */}
+            <div className="w-full h-[85%]">
             <Scene />
-            {wordHovered !== "" && (
-              <div className="flex items-center justify-center">
+            {/* {wordHovered !== "" && (
+              <div className="flex justify-center">
                 <div className="arrow content-none"></div>
                 <p
                   className={`w-auto h-fit p-4 text-2xl text-center border rounded-3xl border-solid border-transparent bg-white`}
@@ -83,9 +84,9 @@ const AboutMe = () => {
                   {wordList[wordHovered]}
                 </p>
               </div>
-            )}
+            )} */}
           </div>
-        </div>
+        {/* </div> */}
       </section>
     </div>
   );

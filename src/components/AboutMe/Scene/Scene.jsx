@@ -1,16 +1,17 @@
-import { OrbitControls } from "@react-three/drei";
+/* eslint-disable react/no-unknown-property */
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import Earth from "./Earth";
+import FloatingText from "./FloatingText/FloatingText";
 
 const Scene = () => {
   return (
-    <div>
-      <Canvas>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Earth />
+    <div className="w-full h-full border border-black ">
+      <Canvas camera={{ position: [-4, 0, 20], fov: 30, near: 0.001 }}>
+        <ambientLight intensity={0.5} />
+        <Suspense fallback={null}>
+          <FloatingText />
         </Suspense>
-        <OrbitControls />
+        <axesHelper scale={1} />
       </Canvas>
     </div>
   );

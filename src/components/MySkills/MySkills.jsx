@@ -11,7 +11,7 @@ const MySkills = () => {
 
   return (
     <div id="mySkills" className="mySkills h-screen snap-center bg-[#f3f2f9]">
-      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
+      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="95%" />
       My Skills
     </div>
   );
