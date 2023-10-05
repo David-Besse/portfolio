@@ -1,43 +1,43 @@
 import { Waypoint } from "react-waypoint";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
-import { useState } from "react";
-import styled from "styled-components";
+// import { useState } from "react";
+// import styled from "styled-components";
 
 import "./aboutMe.scss";
 
-import wordList from "../../datas/wordList";
+// import wordList from "../../datas/wordList";
 import Scene from "./Scene/Scene";
 
-const ListItem = styled.li`
-  -webkit-text-stroke: 1px black;
+// const ListItem = styled.li`
+//   -webkit-text-stroke: 1px black;
 
-  ::after {
-    content: "${(props) => props.text}";
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: #00a1ec;
-    width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    transition: width 0.6s ease;
-  }
+//   ::after {
+//     content: "${(props) => props.text}";
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     color: #00a1ec;
+//     width: 0;
+//     overflow: hidden;
+//     white-space: nowrap;
+//     transition: width 0.6s ease;
+//   }
 
-  &:hover {
-    ::after {
-      width: 100%;
-      transition: width 0.6s ease;
-    }
-  }
-`;
+//   &:hover {
+//     ::after {
+//       width: 100%;
+//       transition: width 0.6s ease;
+//     }
+//   }
+// `;
 
 const AboutMe = () => {
   const { setCurrentSection } = useStore(useStoreApp);
-  const [wordHovered, setWordHovered] = useState("");
-  const [hovered, setIsHovered] = useState(false);
+  // const [wordHovered, setWordHovered] = useState("");
+  // const [hovered, setIsHovered] = useState(false);
 
-  const words = Object.keys(wordList);
+  // const words = Object.keys(wordList);
 
   const handleWaypointEnter = () => {
     setCurrentSection("aboutMe");
@@ -46,7 +46,7 @@ const AboutMe = () => {
   return (
     <div id="aboutMe" className="aboutMe h-screen snap-center">
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="95%" />
-      <section className="w-screen h-screen p-4 relative">
+      <section className="w-screen h-screen p-4 relative bg-[#f0f0f0]">
         <h2 className="title_list h-[5%] text-2xl font-bold">
           .aboutMe
         </h2>
@@ -73,7 +73,7 @@ const AboutMe = () => {
             ))}
           </ul> */}
           {/* <div className="resumeBox w-full h-1/2 lg:w-2/3 lg:h-full xl:w-3/4 flex items-center justify-center"> */}
-            <div className="w-full h-[85%]">
+            <div id="aboutMe_scene" className="w-full h-[85%] relative">
             <Scene />
             {/* {wordHovered !== "" && (
               <div className="flex justify-center">
