@@ -1,14 +1,12 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unknown-property */
 import { Canvas } from "@react-three/fiber";
-import { Gltf } from "@react-three/drei";
+import { Gltf, Stars } from "@react-three/drei";
 import { useLocation, useRoute } from "wouter";
 import Portal from "./Portal/Portal";
 import Rig from "./Rig/Rig";
+import AboutMeList from "../../../datas/AboutMeList";
 
 const Scene = () => {
-  // Use the Wouter routing hooks to get route parameters and set location
-  const [, params] = useRoute('/portal/:id');
+  const [, params] = useRoute("/portal/:id");
   const [, setLocation] = useLocation();
 
   return (
@@ -16,7 +14,7 @@ const Scene = () => {
       {/* Navigation link */}
       <a
         className="absolute top-16 left-10 text-s z-10"
-        href=""
+        href="#"
         onClick={(e) => {
           e.preventDefault();
           setLocation("/#aboutMe");
@@ -30,87 +28,29 @@ const Scene = () => {
         eventSource={document.getElementById("aboutMe_scene")}
         eventPrefix="client"
       >
+        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
         {/* Create portals with different properties */}
-        <Portal
-          id="01"
-          name={`Prag\nmatic`}
-          author="Omar Faruq Tawsif"
-          bg="#e4cdac"
-          position={[-2.15, 0, 0.5]}
-          rotation={[0, 0.5, 0]}
-        >
-          {/* Load a 3D model */}
-          <Gltf
-            src="./public/pickles_3d_version_of_hyuna_lees_illustration-transformed.glb"
-            scale={8}
-            position={[0, -0.7, -2]}
-          />
-        </Portal>
-
-        <Portal
-          id="02"
-          name={`Prag\nmatic`}
-          author="Omar Faruq Tawsif"
-          bg="#e4cdac"
-          position={[-1.1, 0, 0.15]}
-          rotation={[0, 0.3, 0]}
-        >
-          {/* Load a 3D model */}
-          <Gltf
-            src="./public/pickles_3d_version_of_hyuna_lees_illustration-transformed.glb"
-            scale={8}
-            position={[0, -0.7, -2]}
-          />
-        </Portal>
-
-        <Portal 
-          id="03" 
-          name="tea" 
-          author="Omar Faruq Tawsif"
-          position={[0, 0, 0]}
-        >
-          {/* Load a 3D model */}
-          <Gltf
-            src="./public/fiesta_tea-transformed.glb"
-            position={[0, -2, -3]}
-          />
-        </Portal>
-
-        <Portal
-          id="04"
-          name="still"
-          author="Omar Faruq Tawsif"
-          bg="#d1d1ca"
-          position={[1.1, 0, 0.15]}
-          rotation={[0, -0.3, 0]}
-        >
-          {/* Load a 3D model */}
-          <Gltf
-            src="./public/still_life_based_on_heathers_artwork-transformed.glb"
-            scale={1.5}
-            position={[0, -0.8, -4]}
-          />
-        </Portal>
-
-        <Portal
-          id="05"
-          name="still"
-          author="Omar Faruq Tawsif"
-          bg="#d1d1ca"
-          position={[2.15, 0, 0.5]}
-          rotation={[0, -0.5, 0]}
-        >
-          {/* Load a 3D model */}
-          <Gltf
-            src="./public/still_life_based_on_heathers_artwork-transformed.glb"
-            scale={1.5}
-            position={[0, -0.8, -4]}
-          />
-        </Portal>
+        {AboutMeList.map((el) => (
+          <Portal
+            id={el.id}
+            name={el.name}
+            author={el.author}
+            bg={el.bg}
+            position={el.position}
+            rotation={el.rotation}
+            key={el.id}
+          >
+            {/* Load a 3D model */}
+            <Gltf
+              src={`./public/` + el.gltf.src}
+              scale={el.gltf.scale}
+              position={el.gltf.position}
+            />
+          </Portal>
+        ))}
 
         {/* Add camera controls */}
         <Rig />
-
       </Canvas>
     </>
   );

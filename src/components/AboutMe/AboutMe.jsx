@@ -6,7 +6,7 @@ import useStoreApp from "../Store/app.store";
 
 import "./aboutMe.scss";
 
-// import wordList from "../../datas/wordList";
+// import WordList from "../../datas/WordList";
 import Scene from "./Scene/Scene";
 
 // const ListItem = styled.li`
@@ -37,7 +37,7 @@ const AboutMe = () => {
   // const [wordHovered, setWordHovered] = useState("");
   // const [hovered, setIsHovered] = useState(false);
 
-  // const words = Object.keys(wordList);
+  // const words = Object.keys(WordList);
 
   const handleWaypointEnter = () => {
     setCurrentSection("aboutMe");
@@ -81,7 +81,7 @@ const AboutMe = () => {
                 <p
                   className={`w-auto h-fit p-4 text-2xl text-center border rounded-3xl border-solid border-transparent bg-white`}
                 >
-                  {wordList[wordHovered]}
+                  {WordList[wordHovered]}
                 </p>
               </div>
             )} */}

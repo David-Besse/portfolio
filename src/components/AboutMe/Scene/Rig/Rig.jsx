@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useRoute } from "wouter";
 
 const Rig = ({
-  position = new THREE.Vector3(0, 0, 3),
+  position = new THREE.Vector3(0, 0, 2.5),
   focus = new THREE.Vector3(0, 0, 0),
 }) => {
   // Retrieve camera controls and scene using useThree
@@ -38,9 +38,9 @@ const Rig = ({
       // Limit the maximum horizontal angle
       maxAzimuthAngle={0.5}
       // Minimum distance the camera can zoom to
-      minDistance={2}
+      minDistance={2.5}
       // Maximum distance the camera can zoom to
-      maxDistance={10}
+      maxDistance={5}
       // Control the smooth transition speed of the camera
       smoothTime={0.5} // Time in seconds to reach the new position
     />
