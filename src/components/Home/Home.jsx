@@ -24,7 +24,7 @@ const Home = () => {
       <Waypoint
         onEnter={() => handleWaypointEnter()}
         onLeave={() => handleWaypointLeave()}
-        bottomOffset="95%"
+        bottomOffset="5%"
       />
       <header className="h-1/6 p-4 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-2">
         <img src={Logo} alt="logo" className="myLogo rounded-xl w-30 h-30" />
