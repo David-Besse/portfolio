@@ -6,14 +6,14 @@ import { useControls } from "leva";
 const Scene = () => {
   const { animation } = useControls({
     animation: {
-      value: "Walking",
-      options: ["Walking","Typing", "Falling", "Standing", "Aucune"],
+      value: "Aucune",
+      options: ["Aucune", "Typing", "Standing", "Walking"],
     },
   });
 
   return (
     <>
-      <PerspectiveCamera makeDefault frames={30} position={[3, 1, 2]} />
+      <PerspectiveCamera makeDefault position={[6, 0, 3]} />
       <Avatar animation={animation} />
     </>
   );

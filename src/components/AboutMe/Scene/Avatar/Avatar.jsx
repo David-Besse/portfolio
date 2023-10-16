@@ -21,20 +21,18 @@ export function Avatar({ animation }, props) {
     cursorFollow: false,
   });
   const group = useRef();
-  const { nodes, materials } = useGLTF("/avatar_w.glb");
+  const { nodes, materials } = useGLTF("/avatar.glb");
 
   const { animations: typingAnimation } = useFBX("animations/Typing.fbx");
   const { animations: standingAnimation } = useFBX("animations/Standing.fbx");
-  const { animations: fallingAnimation } = useFBX("animations/Falling.fbx");
-  const { animations: walkingAnimation } = useFBX("animations/walking.fbx");
+  const { animations: walkingAnimation } = useFBX("animations/Walking.fbx");
 
   typingAnimation[0].name = "Typing";
   standingAnimation[0].name = "Standing";
-  fallingAnimation[0].name = "Falling";
   walkingAnimation[0].name = "Walking";
 
   const { actions } = useAnimations(
-    [typingAnimation[0], standingAnimation[0], fallingAnimation[0], walkingAnimation[0]],
+    [typingAnimation[0], standingAnimation[0], walkingAnimation[0]],
     group
   );
 
@@ -52,11 +50,11 @@ export function Avatar({ animation }, props) {
 
   useEffect(() => {
     if (animation !== "Aucune") {
-      actions[animation].reset().fadeIn(0.5).play();
+      actions[animation].reset().fadeIn(0.8).play();
     }
     return () => {
       if (animation !== "Aucune") {
-        actions[animation].reset().fadeOut(0.5);
+        actions[animation].reset().fadeOut(0.8);
       }
     };
   }, [actions, animation]);
@@ -66,7 +64,7 @@ export function Avatar({ animation }, props) {
       {...props}
       ref={group}
       dispose={null}
-      position={[2, 0, 0]}
+      position={[3.5, -1, 0]}
     >
       <primitive object={nodes.Hips} />
       <skinnedMesh
@@ -134,4 +132,4 @@ Avatar.propTypes = {
   animation: PropTypes.string,
 };
 
-useGLTF.preload("/avatar_w.glb");
+useGLTF.preload("/avatar.glb");
