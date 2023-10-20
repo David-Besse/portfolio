@@ -2,15 +2,25 @@
 import { Waypoint } from "react-waypoint";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import styled from "styled-components";
 
 import "./aboutMe.scss";
 
 import WordList from "../../datas/WordList";
 import { Canvas } from "@react-three/fiber";
-import { Gltf, Sky, PerspectiveCamera, OrbitControls } from "@react-three/drei";
+import {
+  Gltf,
+  Sky,
+  PerspectiveCamera,
+  OrbitControls,
+  Text3D,
+  Html,
+  useProgress,
+} from "@react-three/drei";
 import { Avatar } from "./Scene/Avatar/Avatar";
+
+import wordFont from "../../assets/fonts/Baloo Thambi 2 Medium_Regular.json";
 
 const ListItem = styled.li`
   -webkit-text-stroke: 1px black;
@@ -34,6 +44,11 @@ const ListItem = styled.li`
     }
   }
 `;
+
+const Loader = () => {
+  const { progress } = useProgress();
+  return <Html center>café en cours {Math.round(progress * 100) / 100} % terminée</Html>;
+};
 
 const AboutMe = () => {
   const { setCurrentSection } = useStore(useStoreApp);
@@ -59,32 +74,60 @@ const AboutMe = () => {
         <Canvas shadows>
           <PerspectiveCamera
             makeDefault
-            aspect={4 / 3}
-            position={[4, 0, -2]}
-            rotation={[0, 0, 0]}
+            position={[-3, 0.5, -5]}
+            fov={60}
           />
           <ambientLight intensity={1} />
           <Sky />
-          <Avatar />
-          <Gltf
-            receiveShadow
-            castShadow
-            src="new_room_window_side.glb"
-            scale={0.128}
-            position={[-0.11, -1, 0]}
-            rotation={[0, -Math.PI, 0]}
-          />
+          <Suspense fallback={<Loader />}>
+            <Avatar />
+            <Gltf
+              receiveShadow
+              castShadow
+              src="new_room_window_side.glb"
+              scale={0.128}
+              position={[-0.11, -1, 0]}
+              rotation={[0, -Math.PI, 0]}
+            />
+            {words.map((item, index) => (
+              <Text3D
+                curveSegments={32}
+                bevelEnabled
+                bevelSize={0.04}
+                bevelThickness={0.1}
+                height={0.1}
+                lineHeight={0.5}
+                letterSpacing={0.1}
+                size={0.2}
+                font={wordFont}
+                position={[2.5, 1.2 + index / -3, -1.5]}
+                rotation={[0, -Math.PI / 2, 0]}
+                key={item}
+                onPointerEnter={() => {
+                  setWordHovered(item);
+                  setIsHovered(true);
+                }}
+                onPointerLeave={() => {
+                  setWordHovered("");
+                  setIsHovered(false);
+                }}
+              >
+                {item}
+                <meshNormalMaterial />
+              </Text3D>
+            ))}
+          </Suspense>
           <OrbitControls />
         </Canvas>
       </div>
       <h2 className="absolute top-6 left-6 title_list h-[5%] text-2xl font-bold z-10">
         .aboutMe
       </h2>
-      <div className="absolute top-[10%] left-0 h-[] w-fit md:h-full md:top-0 lg:flex-row p-2 z-10">
-        <ul className="word_list flex flex-col justify-around h-full lg:w-full lg:h-4/5 lg:justify-around lg:mt-0 lg:mb-0">
+      <div className="absolute hidden top-[10%] left-0 h-1/2 md:h-4/5 w-fit lg:flex-row p-2 z-10">
+        <ul className="word_list flex flex-col justify-around h-full">
           {words.map((word) => (
             <ListItem
-              className={`relative flex items-center text-4xl text-transparent lg:text-6xl lg:align-top cursor-pointer ${
+              className={`relative flex items-center text-4xl text-transparent lg:text-5xl lg:align-top cursor-pointer ${
                 hovered ? "opacity-100" : ""
               }`}
               key={word}
