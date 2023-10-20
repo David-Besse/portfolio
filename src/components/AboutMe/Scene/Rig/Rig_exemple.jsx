@@ -6,7 +6,7 @@ import { useEffect } from "react";
 // Import Prop Types
 import PropTypes from "prop-types";
 
-const Rig = ({
+const RigExemple = ({
   position = new THREE.Vector3(0, 0, 2.5),
   focus = new THREE.Vector3(0, 0, 0),
   givePortalId,
@@ -40,10 +40,10 @@ const Rig = ({
   );
 };
 
-Rig.propTypes = {
+RigExemple.propTypes = {
   position: PropTypes.object,
   focus: PropTypes.object,
   givePortalId: PropTypes.string,
 };
 
-export default Rig;
+export default RigExemple;

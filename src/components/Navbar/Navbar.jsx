@@ -15,7 +15,7 @@ const Navbar = () => {
     <div className="flex justify-center">
       <div className="w-screen">
         <nav className="fixed bottom-1 left-2/4 transform -translate-x-2/4 -translate-y-1/6 z-50">
-          <ul className="w-full flex justify-around items-center text-2x1 text-[#606887]">
+          <ul className={`w-full flex justify-around items-center text-2x1 ${currentSection === "aboutMe" ? 'text-[#fff]' : 'text-[#606887]'}`}>
             <li className="w-[80px] h-[80px] flex items-center justify-center">
               <a
                 href="#homePage"
@@ -80,4 +80,5 @@ const Navbar = () => {
 
 export default Navbar;
 
-//  bg-black/20 h-[60px] backdrop-blur-2xl
+// bg-black/20 h-[60px] backdrop-blur-2xl
+// navbar color icon #606887
