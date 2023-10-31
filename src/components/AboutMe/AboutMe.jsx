@@ -1,17 +1,12 @@
 /* eslint-disable react/no-unknown-property */
+import { useState, Suspense } from "react";
 import { Waypoint } from "react-waypoint";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
-import { useState, Suspense } from "react";
 import styled from "styled-components";
-
-import "./aboutMe.scss";
-
-import WordList from "../../datas/WordList";
 import { Canvas } from "@react-three/fiber";
 import {
   Sky,
-  PerspectiveCamera,
   OrbitControls,
   Html,
   useProgress,
@@ -21,9 +16,15 @@ import {
   ContactShadows,
   useCursor,
 } from "@react-three/drei";
+import * as THREE from 'three';
+
 import { Avatar } from "./Scene/Avatar/Avatar";
 
-import wordFont from "../../assets/fonts/Baloo Thambi 2_Regular.json";
+import WordList from "../../datas/WordList";
+
+import "./aboutMe.scss";
+import { HiInformationCircle } from "react-icons/hi";
+import wordFont from "../../assets/fonts/Baloo Thambi 2 SemiBold_Regular.json";
 
 const ListItem = styled.li`
   -webkit-text-stroke: 1px black;
@@ -81,9 +82,9 @@ const AboutMe = () => {
         id="aboutMe_scene"
         className="w-full h-full absolute top-0 left-0 z-5"
       >
-        <Canvas shadows>
-          <OrbitControls enabled={cameraActivated} />
-          <PerspectiveCamera makeDefault position={[-5, -1, -10]} fov={70} />
+        <Canvas
+          camera={{ position: [-15, 10, -15], fov: 70, target: new THREE.Vector3(5, 6, 0) }}
+        >
           <Sky sunPosition={[10, 12, -20]} />
           <Environment preset="sunset" />
           <Suspense fallback={<Loader />}>
@@ -112,46 +113,68 @@ const AboutMe = () => {
                   bevelEnabled
                   bevelSize={0.1}
                   bevelThickness={0.1}
-                  height={0.05}
-                  lineHeight={0.5}
-                  letterSpacing={0.1}
-                  size={1}
+                  height={1}
+                  letterSpacing={0.01}
+                  size={3}
                   font={wordFont}
-                  position={[5, 0 + index + 3, 0]}
-                  rotation={[0, 180, 0]}
+                  position={[10, 1 + index * 4, -2]}
+                  rotation={[0, 180.3, 0]}
                   key={item}
-                  onPointerEnter={() => {
-                    setWordHovered(item);
-                    setIsHovered(true);
-                  }}
-                  onPointerLeave={() => {
-                    setWordHovered("");
-                    setIsHovered(false);
-                  }}
                 >
                   {item}
                   <meshNormalMaterial />
                 </Text3D>
               ))}
               <mesh position-y={-5.001} rotation-x={-Math.PI / 2}>
-                <planeGeometry args={[30, 30]} />
+                <planeGeometry args={[50, 50]} />
                 <meshStandardMaterial transparent opacity={0} />
               </mesh>
             </group>
           </Suspense>
+          <OrbitControls enabled={cameraActivated} />
         </Canvas>
       </div>
-      <h2 className="absolute top-6 left-6 title_list h-[5%] text-2xl font-bold z-10">
+
+      <h2 className="absolute top-2 left-2 title_list h-[5%] text-2xl font-bold z-10">
         .aboutMe
       </h2>
+
       <div
-        className="absolute text-center text-sm text-gray-500 z-10 bottom-24 right-0 left-0 cursor-help hover:text-lg hover:underline hover:decoration-2"
+        className="absolute text-center z-10 top-3.5 right-2"
         onClick={() => setCameraActivated(!cameraActivated)}
       >
-        {cameraActivated
-          ? "Clique ici pour désactiver la caméra (et permettre le défilement de la page)"
-          : "Clique ici pour activer la caméra (le défilement de la page sera temporairement bloqué)"}
+        {cameraActivated ? (
+          <p className="inline-block text-md text-gray-500 cursor-pointer">
+            désactiver la caméra
+          </p>
+        ) : (
+          <p className="inline-block text-md text-gray-500 cursor-pointer">
+            activer la caméra
+          </p>
+        )}
+        <div className="inline-block relative ml-2 group">
+          <HiInformationCircle className="cursor-pointer text-blue-500" />
+          <div>
+            <div className="hidden absolute w-52 right-0 top-4 bg-gray-200 p-2 rounded-lg text-sm shadow-md mt-2 z-20 group-hover:block">
+              Activer la caméra va désactiver le défilement de la page afin de
+              permettre le zoom dans la scène 3D, si vous souhaitez changer de
+              page, veuillez désactiver la caméra ou cliquer sur une autre icône
+              de la barre de navigation (sur ce point, cela conservera la
+              caméra).
+            </div>
+          </div>
+        </div>
       </div>
+
+      <div
+        className="absolute text-center z-10 top-96 right-2"
+        onClick={() => cameraControlsRef.current?.reset(true)}
+      >
+        <p className="inline-block text-md text-gray-500 cursor-pointer">
+          Réinitialiser la caméra
+        </p>
+      </div>
+
       <div className="absolute hidden top-[10%] left-0 h-1/2 md:h-4/5 w-fit lg:flex-row p-2 z-10">
         <ul className="word_list flex flex-col justify-around h-full">
           {words.map((word) => (
