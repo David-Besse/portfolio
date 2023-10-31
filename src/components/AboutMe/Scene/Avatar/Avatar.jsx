@@ -23,9 +23,9 @@ export function Avatar(props) {
       {...props}
       ref={ref}
       dispose={null}
-      position={[0, -1, -0.05]}
+      position={[0, -5, -0.2]}
       rotation={[0, 0, 0]}
-      scale={1}
+      scale={3.9}
     >
       <primitive object={nodes.Hips} />
       <skinnedMesh
@@ -107,4 +107,4 @@ export function Avatar(props) {
   );
 }
 
-useGLTF.preload("/avatar.glb");
+useGLTF.preload("/avatar_typing.glb");

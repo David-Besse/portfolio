@@ -72,7 +72,3 @@ const Earth = () => {
 };
 
 export default Earth;
-
-{
-  /* <ambientLight intensity={1.2} /> */
-}
