@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import { useState, Suspense } from "react";
+import { useState, Suspense, useRef } from "react";
 import { Waypoint } from "react-waypoint";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
@@ -11,12 +11,12 @@ import {
   Html,
   useProgress,
   Gltf,
-  Text3D,
+  Text,
   Environment,
   ContactShadows,
   useCursor,
+  PerspectiveCamera,
 } from "@react-three/drei";
-import * as THREE from 'three';
 
 import { Avatar } from "./Scene/Avatar/Avatar";
 
@@ -24,7 +24,8 @@ import WordList from "../../datas/WordList";
 
 import "./aboutMe.scss";
 import { HiInformationCircle } from "react-icons/hi";
-import wordFont from "../../assets/fonts/Baloo Thambi 2 SemiBold_Regular.json";
+import wordFont from "../../assets/fonts/Righteous-Regular.ttf";
+import { DoubleSide } from "three";
 
 const ListItem = styled.li`
   -webkit-text-stroke: 1px black;
@@ -63,6 +64,7 @@ const AboutMe = () => {
   const [wordHovered, setWordHovered] = useState("");
   const [hovered, setIsHovered] = useState(false);
   const [cameraActivated, setCameraActivated] = useState(false);
+  const camRef = useRef();
 
   useCursor(hovered);
 
@@ -72,20 +74,34 @@ const AboutMe = () => {
     setCurrentSection("aboutMe");
   };
 
+  const resetCameraPosition = () => {
+    camRef.current.position.set(-26, 10, -12);
+    camRef.current.lookAt(8, 5, 0);
+  };
+
   return (
     <section
       id="aboutMe"
       className="aboutMe relative h-screen w-screen snap-center"
     >
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
+
+      <h2 className="absolute top-2 left-2 title_list h-[5%] text-xl font-bold z-10">
+        .aboutMe
+      </h2>
+
       <div
         id="aboutMe_scene"
         className="w-full h-full absolute top-0 left-0 z-5"
       >
-        <Canvas
-          camera={{ position: [-15, 10, -15], fov: 70, target: new THREE.Vector3(5, 6, 0) }}
-        >
-          <Sky sunPosition={[10, 12, -20]} />
+        <Canvas>
+          <PerspectiveCamera
+            ref={camRef}
+            makeDefault
+            position={[-26, 10, -12]}
+            fov={70}
+          />
+          <Sky sunPosition={[50, 3, -12]} />
           <Environment preset="sunset" />
           <Suspense fallback={<Loader />}>
             <group>
@@ -108,22 +124,20 @@ const AboutMe = () => {
                 rotation={[0, Math.PI, 0]}
               />
               {words.map((item, index) => (
-                <Text3D
-                  curveSegments={32}
-                  bevelEnabled
-                  bevelSize={0.1}
-                  bevelThickness={0.1}
-                  height={1}
+                <Text
                   letterSpacing={0.01}
-                  size={3}
+                  fontSize={3}
                   font={wordFont}
-                  position={[10, 1 + index * 4, -2]}
+                  position={[10, 8 + index * 4, -2]}
                   rotation={[0, 180.3, 0]}
                   key={item}
+                  strokeColor={'black'}
+                  strokeOpacity={0.75}
+                  strokeWidth={0.14}
                 >
                   {item}
-                  <meshNormalMaterial />
-                </Text3D>
+                  <meshStandardMaterial transparent opacity={0} side={DoubleSide} />
+                </Text>
               ))}
               <mesh position-y={-5.001} rotation-x={-Math.PI / 2}>
                 <planeGeometry args={[50, 50]} />
@@ -131,17 +145,23 @@ const AboutMe = () => {
               </mesh>
             </group>
           </Suspense>
-          <OrbitControls enabled={cameraActivated} />
+          <OrbitControls
+            enabled
+            camera={camRef.current}
+            enablePan={cameraActivated}
+            enableRotate={cameraActivated}
+            enableZoom={cameraActivated}
+            target={[8, 5, 0]}
+          />
         </Canvas>
       </div>
 
-      <h2 className="absolute top-2 left-2 title_list h-[5%] text-2xl font-bold z-10">
-        .aboutMe
-      </h2>
-
       <div
-        className="absolute text-center z-10 top-3.5 right-2"
-        onClick={() => setCameraActivated(!cameraActivated)}
+        className="absolute text-center z-10 bottom-24 left-0 right-0"
+        onClick={() => {
+          setCameraActivated(!cameraActivated);
+          resetCameraPosition();
+        }}
       >
         {cameraActivated ? (
           <p className="inline-block text-md text-gray-500 cursor-pointer">
@@ -155,7 +175,7 @@ const AboutMe = () => {
         <div className="inline-block relative ml-2 group">
           <HiInformationCircle className="cursor-pointer text-blue-500" />
           <div>
-            <div className="hidden absolute w-52 right-0 top-4 bg-gray-200 p-2 rounded-lg text-sm shadow-md mt-2 z-20 group-hover:block">
+            <div className="hidden absolute w-80 -right-20 bottom-6 bg-gray-200 p-2 rounded-lg text-sm shadow-md mt-2 z-20 group-hover:block">
               Activer la caméra va désactiver le défilement de la page afin de
               permettre le zoom dans la scène 3D, si vous souhaitez changer de
               page, veuillez désactiver la caméra ou cliquer sur une autre icône
@@ -164,15 +184,6 @@ const AboutMe = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div
-        className="absolute text-center z-10 top-96 right-2"
-        onClick={() => cameraControlsRef.current?.reset(true)}
-      >
-        <p className="inline-block text-md text-gray-500 cursor-pointer">
-          Réinitialiser la caméra
-        </p>
       </div>
 
       <div className="absolute hidden top-[10%] left-0 h-1/2 md:h-4/5 w-fit lg:flex-row p-2 z-10">
