@@ -86,7 +86,7 @@ const AboutMe = () => {
     >
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
 
-      <h2 className="absolute top-2 left-2 title_list h-[5%] text-xl font-bold z-10">
+      <h2 className="absolute top-2 left-2 title_list h-[5%] text-2xl font-bold z-10">
         .aboutMe
       </h2>
 
