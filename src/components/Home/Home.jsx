@@ -20,7 +20,10 @@ const Home = () => {
   };
 
   return (
-    <div id="homePage" className="homePage h-screen snap-center flex-col bg-[#f3f2f9]">
+    <div
+      id="homePage"
+      className="homePage h-screen snap-center flex-col bg-[#f3f2f9]"
+    >
       <Waypoint
         onEnter={() => handleWaypointEnter()}
         onLeave={() => handleWaypointLeave()}
@@ -30,12 +33,9 @@ const Home = () => {
         <img src={Logo} alt="logo" className="myLogo rounded-xl w-30 h-30" />
         <ul className="flex items-center justify-center gap-8">
           <li className="myCv w-22 h-16 flex justify-center items-center">
-            <a
-              href="#"
-              className="flex justify-center items-center gap-1 hover:scale-125"
-            >
-              <span className="text-center text-xl font-bold">my CV</span>
-              <BsDownload className="w-[32px] h-[32px]" />
+            <a href="#" className="flex gap-1 hover:scale-125 hover:italic">
+              <span className="text-center text-[24px] font-bold">CV</span>
+              <BsDownload className="w-[32px] h-[32px] " />
             </a>
           </li>
           <li className="socials w-8 h-16 flex justify-center items-center">
