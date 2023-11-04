@@ -14,9 +14,9 @@ const Navbar = () => {
   return (
     <div className="flex justify-center">
       <div className="w-screen">
-        <nav className="fixed bottom-1 left-2/4 transform -translate-x-2/4 -translate-y-1/6 z-50">
-          <ul className={`w-full flex justify-around items-center text-2x1 text-[#606887]`}>
-            <li className="w-[80px] h-[80px] flex items-center justify-center">
+        <nav className="fixed bottom-2 w-full -translate-y-1/6 flex justify-center z-50">
+          <ul className="w-full sm:w-1/3 flex justify-around items-center text-2x1 text-[#606887]">
+            <li className="flex items-center justify-center">
               <a
                 href="#homePage"
                 className="cursor-pointer flex flex-col place-items-center"
@@ -27,10 +27,10 @@ const Navbar = () => {
                 )}
               </a>
             </li>
-            <li className="w-[80px] h-[80px] rounded flex items-center justify-center">
+            <li className="rounded flex items-center justify-center">
               <a
                 href="#aboutMe"
-                className="cursor-pointer flex flex-col place-items-center"
+                className="flex flex-col place-items-center"
               >
                 <BsPerson size={32} />
                 {currentSection === "aboutMe" && (
@@ -38,10 +38,10 @@ const Navbar = () => {
                 )}
               </a>
             </li>
-            <li className="w-[80px] h-[80px] flex items-center justify-center">
+            <li className="flex items-center justify-center">
               <a
                 href="#myWorks"
-                className="cursor-pointer flex flex-col place-items-center"
+                className="flex flex-col place-items-center"
               >
                 <BsBook size={30} />
                 {currentSection === "myWorks" && (
@@ -49,10 +49,10 @@ const Navbar = () => {
                 )}
               </a>
             </li>
-            <li className="w-[80px] h-[80px] flex items-center justify-center">
+            <li className="flex items-center justify-center">
               <a
                 href="#mySkills"
-                className="cursor-pointer flex flex-col place-items-center"
+                className="flex flex-col place-items-center"
               >
                 <BsCodeSlash size={32} />
                 {currentSection === "mySkills" && (
@@ -60,10 +60,10 @@ const Navbar = () => {
                 )}
               </a>
             </li>
-            <li className="w-[80px] h-[80px] flex items-center justify-center">
+            <li className="flex items-center justify-center">
               <a
                 href="#contact"
-                className="cursor-pointer flex flex-col place-items-center"
+                className="flex flex-col place-items-center"
               >
                 <BsEnvelopeAt size={32} />
                 {currentSection === "contact" && (
