@@ -45,7 +45,7 @@ const Navbar = () => {
               >
                 <BsBook size={30} />
                 {currentSection === "myWorks" && (
-                  <span className="text-l font-bold">works</span>
+                  <span className="text-l font-bold">myWorks</span>
                 )}
               </a>
             </li>
@@ -56,7 +56,7 @@ const Navbar = () => {
               >
                 <BsCodeSlash size={32} />
                 {currentSection === "mySkills" && (
-                  <span className="text-l font-bold">skills</span>
+                  <span className="text-l font-bold">mySkills</span>
                 )}
               </a>
             </li>

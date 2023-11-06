@@ -1,10 +1,13 @@
 /* eslint-disable react/no-unknown-property */
+import { Suspense } from "react";
 import { Waypoint } from "react-waypoint";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
 import { Canvas } from "@react-three/fiber";
 import CloudSphere from "./CloudSphere/CloudSphere";
 import RigMySkills from "./RigMySkills/RigMySkills";
+
+import "./mySkills.scss";
 
 const MySkills = () => {
   const { setCurrentSection } = useStore(useStoreApp);
@@ -19,7 +22,7 @@ const MySkills = () => {
       className="mySkills relative h-screen w-screen snap-center"
     >
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
-      <h2 className="absolute top-2 left-2 title_list h-[5%] text-2xl font-bold z-10">
+      <h2 className="absolute top-2 left-2 h-[5%] text-2xl font-bold z-10">
         .mySkills
       </h2>
       <div
@@ -30,7 +33,9 @@ const MySkills = () => {
           <fog attach="fog" args={["#202025", 40, 80]} />
           <color attach={"background"} args={["#f3f2f9"]} />
           <RigMySkills />
-          <CloudSphere count={16} radius={60} />
+          <Suspense>
+            <CloudSphere count={16} radius={60} />
+          </Suspense>
         </Canvas>
       </div>
     </section>

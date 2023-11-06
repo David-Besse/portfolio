@@ -10,6 +10,9 @@ const SkillsWord = ({ word, position }) => {
     letterSpacing: -0.05,
     lineHeight: 1,
     "material-toneMapped": false,
+    strokeColor: "black",
+    strokeOpacity: 0.5,
+    strokeWidth: 0.1,
   };
   const ref = useRef();
 
@@ -21,16 +24,13 @@ const SkillsWord = ({ word, position }) => {
     const distanceToCamera = ref.current.position.distanceTo(camera.position);
 
     // Set the text color based on the distance to the camera
-    ref.current.material.color.set(distanceToCamera < 45 ? "#fa2720" : "white");
+    ref.current.material.color.set(distanceToCamera < 42 ? "#fa2720" : "white");
   });
 
   return (
     <Text
       ref={ref}
       position={position}
-      strokeColor={"black"}
-      strokeOpacity={0.5}
-      strokeWidth={0.1}
       {...fontProps}
     >
       {word}

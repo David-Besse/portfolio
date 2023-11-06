@@ -66,7 +66,7 @@ const Contact = () => {
 
       <Modal />
 
-      <h2 className="absolute top-2 left-2 text-2xl self-start font-bold">
+      <h2 className="absolute top-2 left-2 text-2xl font-bold">
         .contact
       </h2>
 

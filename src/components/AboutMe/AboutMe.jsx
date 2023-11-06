@@ -18,7 +18,7 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei";
 
-import { Avatar } from "./Scene/Avatar/Avatar";
+import Avatar from "./Scene/Avatar/Avatar";
 
 import WordList from "../../datas/WordList";
 
@@ -86,7 +86,7 @@ const AboutMe = () => {
     >
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
 
-      <h2 className="absolute top-2 left-2 title_list h-[5%] text-2xl font-bold z-10">
+      <h2 className="absolute top-2 left-2 h-[5%] text-2xl font-bold z-10">
         .aboutMe
       </h2>
 
@@ -101,7 +101,8 @@ const AboutMe = () => {
             position={[-26, 10, -12]}
             fov={70}
           />
-          <Sky sunPosition={[50, 3, -12]} />
+          <color attach={'background'} args={['#f3f2f9']} />
+          {/* <Sky sunPosition={[50, 3, -12]} /> */}
           <Environment preset="sunset" />
           <Suspense fallback={<Loader />}>
             <group>
@@ -114,7 +115,7 @@ const AboutMe = () => {
                 color="#000000"
                 position={[0, -5.001, 0]}
               />
-              <Avatar />
+              <Avatar scaling={3.9} />
               <Gltf
                 receiveShadow
                 castShadow

@@ -18,7 +18,7 @@ const RigMySkills = () => {
           autoRotate
           autoRotateSpeed={0.7}
           enableZoom={false}
-          target={[0, -4, 0]}
+          target={[0, 0, 0]}
         />
       </>
     );
