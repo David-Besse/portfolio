@@ -7,6 +7,7 @@ import emailjs from "@emailjs/browser";
 
 import "./contact.scss";
 import Modal from "../Modal/Modal";
+import Map from "../Map/Map";
 
 const Contact = () => {
   const {
@@ -69,6 +70,8 @@ const Contact = () => {
       <h2 className="absolute top-2 left-2 text-2xl font-bold">
         .contact
       </h2>
+
+      <Map className="absolute top-0 left-0" />
 
       <div className="absolute w-full top-1/2 sm:left-1/2 transform sm:-translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 sm:gap-16 ps-2 pe-2 sm:p-0">
         <p className="text-center mt-1 mb-1">
