@@ -27,10 +27,10 @@ const Contact = () => {
   const onSubmit = () => {
     const serviceId = "service_it89wkk";
     const templateId = "template_xlt69rd";
-    const apiKey = "T9p81MAbarBsUJjZ3";
+    const rhfId = "T9p81MAbarBsUJjZ3";
 
     emailjs
-      .sendForm(serviceId, templateId, formRef.current, apiKey)
+      .sendForm(serviceId, templateId, formRef.current, rhfId)
       .then(() => {
         setContactModalisOpened(true);
         setContactModalMessage(
