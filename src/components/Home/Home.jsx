@@ -33,7 +33,7 @@ const Home = () => {
         <img src={Logo} alt="logo" className="myLogo rounded-xl w-30 h-30" />
         <ul className="flex items-center justify-center gap-8">
           <li className="myCv w-22 h-16 flex justify-center items-center">
-            <a href="#" className="flex gap-1 hover:scale-125 hover:italic">
+            <a href="#" className="flex gap-1 hover:scale-125 hover:italic" aria-label="download my CV">
               <span className="text-center text-[24px] font-bold">CV</span>
               <BsDownload className="w-[32px] h-[32px] " />
             </a>
@@ -44,6 +44,7 @@ const Home = () => {
               target="_blank"
               rel="noreferrer"
               className="hover:scale-125"
+              aria-label="link to my LinkedIn profile"
             >
               <BsLinkedin className="w-[32px] h-[32px]" />
             </a>
@@ -54,6 +55,7 @@ const Home = () => {
               target="_blank"
               rel="noreferrer"
               className="hover:scale-125"
+              aria-label="link to my Github profile"
             >
               <BsGithub className="w-[32px] h-[32px]" />
             </a>
@@ -77,6 +79,7 @@ const Home = () => {
               href="https://en.wikipedia.org/wiki/Nicomachean_Ethics"
               target="_blank"
               rel="noreferrer"
+              aria-label="Read more about The Nicomachean Ethics"
             >
               The Nicomachean Ethics
             </a>

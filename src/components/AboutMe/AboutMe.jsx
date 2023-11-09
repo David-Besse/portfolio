@@ -132,7 +132,7 @@ const AboutMe = () => {
                   position={[10, 8 + index * 4, -2]}
                   rotation={[0, 180.3, 0]}
                   key={item}
-                  strokeColor={'black'}
+                  strokeColor={'#606887'}
                   strokeOpacity={0.75}
                   strokeWidth={0.14}
                 >

@@ -13,7 +13,6 @@ const MyWorks = () => {
   const { setCurrentSection } = useStore(useStoreApp);
   const [projectSelected, setProjectSelected] = useState("");
   const tvRef = useRef();
-  const ulRef = useRef();
 
   const handleWaypointEnter = () => {
     setCurrentSection("myWorks");

@@ -73,7 +73,7 @@ const Contact = () => {
 
       <Map className="absolute top-0 left-0" />
 
-      <div className="absolute w-full top-1/2 sm:left-1/2 transform sm:-translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 sm:gap-16 ps-2 pe-2 sm:p-0">
+      <div className="absolute w-[90%] self-center top-1/2 transform -translate-y-1/2 flex flex-col gap-4 sm:gap-16 ps-2 pe-2 sm:p-0">
         <p className="text-center mt-1 mb-1">
           Get in touch or shoot me an email directly on{" "}
           <a className="text-[#00a1ec]" href="mailto: dahodprod@gmail.com">
@@ -151,7 +151,7 @@ const Contact = () => {
           />
           <p className="text-red-500">{errors.yourmessage?.message}</p>
           <input
-            className="cursor-pointer w-fit self-end active:bg-[#00a1ec] active:text-white rounded-lg p-1"
+            className="cursor-pointer w-fit self-end active:bg-transparent active:text-[#00a1ec] text-lg rounded-lg p-1"
             type="submit"
           />
         </form>

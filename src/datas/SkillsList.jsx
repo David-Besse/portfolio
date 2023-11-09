@@ -35,6 +35,7 @@ const SkillsList = [
   "Ubuntu",
   "VS Code",
   "Adminer",
+  "Snyk",
 ];
 
 export default SkillsList;
