@@ -7,7 +7,6 @@ import emailjs from "@emailjs/browser";
 
 import "./contact.scss";
 import Modal from "../Modal/Modal";
-import Map from "../Map/Map";
 
 const Contact = () => {
   const {
@@ -71,9 +70,7 @@ const Contact = () => {
         .contact
       </h2>
 
-      <Map className="absolute top-0 left-0" />
-
-      <div className="absolute w-[90%] self-center top-1/2 transform -translate-y-1/2 flex flex-col gap-4 sm:gap-16 ps-2 pe-2 sm:p-0">
+      <div className="absolute w-full self-center top-1/2 transform -translate-y-1/2 flex flex-col gap-4 sm:gap-16 ps-2 pe-2 sm:p-0">
         <p className="text-center mt-1 mb-1">
           Get in touch or shoot me an email directly on{" "}
           <a className="text-[#00a1ec]" href="mailto: dahodprod@gmail.com">
@@ -83,7 +80,7 @@ const Contact = () => {
 
         <form
           ref={formRef}
-          className="w-full sm:w-[400px] text-sm flex flex-col self-center gap-2"
+          className="w-[90%] sm:w-[400px] text-sm flex flex-col self-center gap-2"
           onSubmit={handleSubmit(onSubmit)}
         >
           <input
