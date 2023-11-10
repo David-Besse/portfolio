@@ -7,7 +7,43 @@ import "./myWorks.scss";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 
-const projects = ["Art@home", "portfolio"];
+import WorksList from "../../datas/WorksList";
+
+const ListItem = styled.li`
+  content: "${({ text }) => text}";
+
+  &::before {
+    content: "${({ text }) => text}";
+  }
+
+  span::before {
+    content: "${({ text }) => text}";
+  }
+
+  &::after {
+    content: "${({ text }) => text}";
+  }
+
+  span::after {
+    content: "${({ text }) => text}";
+  }
+
+  &.clicked {
+    &::after {
+      animation: moveText 0.3s linear both;
+    }
+  }
+
+  @keyframes moveText {
+    from {
+      width: 0;
+    }
+
+    to {
+      width: 100%;
+    }
+  }
+`;
 
 const MyWorks = () => {
   const { setCurrentSection } = useStore(useStoreApp);
@@ -18,44 +54,8 @@ const MyWorks = () => {
     setCurrentSection("myWorks");
   };
 
-  const ListItem = styled.li`
-    -webkit-text-stroke: 1px black;
-
-    &::after {
-      content: "${({ text }) => text}";
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: linear-gradient(20deg, pink, #00a1ec);
-      backgroundClip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      width: 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    &.clicked {
-      &::after {
-        animation: moveText 0.3s linear both;
-      }
-    }
-    
-    @keyframes moveText {
-      from {
-        width: 0;
-      }
-    
-      to {
-        width: 100%;
-      }
-    }
-  `;
-
-  const handleProjectInformation = (event) => {
-    const element = event.currentTarget;
-
-    setProjectSelected(element.textContent);
+  const handleProjectInformation = (projectName) => {
+    setProjectSelected(projectName);
 
     gsap.timeline({ delay: 0.2 }).fromTo(
       tvRef.current,
@@ -80,37 +80,42 @@ const MyWorks = () => {
       </h2>
       <div className="h-full w-full sm:flex">
         <ul className="w-full h-1/5 flex justify-start items-start pt-14 pl-2 text-4xl sm:flex-col sm:pb-16 sm:w-1/4 sm:h-full lg:text-5xl xl:text-6xl">
-          {projects.map((item) => (
-            <ListItem
-              className={`relative w-fit h-fit ml-2 mr-2 mb-4 cursor-pointer text-transparent ${projectSelected === item ? 'clicked' : 'normal'}`}
-              key={item}
-              text={item}
-              onClick={(event) => handleProjectInformation(event)}
+          {WorksList.map((item) => (
+            <div
+              key={`div_${item.projectName}`}
+              className="w-[500px] text-center"
             >
-              {item}
-            </ListItem>
+              <ListItem
+                className={`listItem ml-2 mr-2 mb-4 cursor-pointer ${
+                  projectSelected === item.projectName ? "clicked" : "normal"
+                }`}
+                text={item.projectName}
+                onClick={() => handleProjectInformation(item.projectName)}
+              >
+                <span className="spanList">{item.projectName}</span>
+              </ListItem>
+            </div>
           ))}
         </ul>
-        <div
-          className="w-full h-4/5 sm:w-3/4 sm:h-full hidden justify-center sm:pt-14 pb-16 items-start sm:items-center"
-          ref={tvRef}
-        >
-          {projectSelected === projects[0] && (
-            <iframe
-              title="Projet Art@home"
-              src="https://www.webshappers.com"
-              className="w-[90%] h-[95%] sm:h-[80%] border-8 rounded shadow-2xl"
-            />
-          )}
-          {projectSelected === projects[1] && (
-            <div className="flex w-[90%] h-[95%] sm:h-[80%] text-4xl bg-transparent rounded shadow-2xl justify-center items-center">
-              Maintenance
-            </div>
-          )}
-          {projectSelected === "" && (
-            <div className="w-[90%] h-[95%] sm:h-[80%] bg-black rounded shadow-2xl" />
-          )}
-        </div>
+        {projectSelected !== "" && (
+          <div
+            className="w-full h-4/5 sm:w-3/4 sm:h-full hidden justify-center sm:pt-14 pb-16 items-start sm:items-center"
+            ref={tvRef}
+          >
+            {projectSelected === WorksList[0].projectName && (
+              <iframe
+                title="Projet Art@home"
+                src="https://www.webshappers.com"
+                className="w-[90%] h-[95%] sm:h-[80%] border-8 rounded shadow-2xl"
+              />
+            )}
+            {projectSelected === WorksList[1].projectName && (
+              <div className="flex w-[90%] h-[95%] sm:h-[80%] text-4xl bg-transparent rounded shadow-2xl justify-center items-center">
+                Maintenance
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -118,3 +123,16 @@ const MyWorks = () => {
 
 export default MyWorks;
 
+// &:after {
+//   content: "${({ text }) => text}";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   background: linear-gradient(20deg, pink, #00a1ec);
+//   backgroundclip: text;
+//   -webkit-background-clip: text;
+//   color: transparent;
+//   width: 0;
+//   overflow: hidden;
+//   white-space: nowrap;
+// }

@@ -1,4 +1,74 @@
 #myWorks {
   font-family: "Righteous", cursive;
+  background-color: #333;
 }
 
+.listItem {
+  font-size: 6rem;
+  position: relative;
+  color: transparent;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: whitesmoke;
+    transition: all 0.3s;
+    clip-path: inset(0 343px 0 0);
+  }
+
+  span::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: whitesmoke;
+    transition: all 0.3s;
+    clip-path: inset(0 224px 0 141px);
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: whitesmoke;
+    transition: all 0.3s;
+    clip-path: inset(0 112px 0 260px);
+  }
+
+  span::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: whitesmoke;
+    transition: all 0.3s;
+    clip-path: inset(0 0 0 372px);
+  }
+
+  &:hover::before {
+    top: -5px;
+    color: rgba(255, 255, 255, 0.4);
+    clip-path: inset(0 346px 0 0);
+  }
+
+  &:hover span::before {
+    top: 5px;
+    color: white;
+    clip-path: inset(0 226px 0 143px);
+  }
+
+  &:hover::after {
+    top: -5px;
+    color: rgba(255, 255, 255, 0.4);
+    clip-path: inset(0 114px 0 262px);
+  }
+
+  &:hover span::after {
+    top: 5px;
+    color: white;
+    clip-path: inset(0 0 0 374px);
+  }
+}
