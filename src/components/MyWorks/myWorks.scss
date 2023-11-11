@@ -1,74 +1,91 @@
 #myWorks {
   font-family: "Righteous", cursive;
-  background-color: #333;
+  // background-color: #333;
 }
 
-.listItem {
-  font-size: 6rem;
-  position: relative;
-  color: transparent;
+.div_listItem {
+  width: 100%;
 
-  &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    color: whitesmoke;
-    transition: all 0.3s;
-    clip-path: inset(0 343px 0 0);
-  }
+  .listItem {
+    position: relative;
+    color: transparent;
 
-  span::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    color: whitesmoke;
-    transition: all 0.3s;
-    clip-path: inset(0 224px 0 141px);
-  }
+    &::before,
+    span::before,
+    &::after,
+    span::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(20deg, pink, #00a1ec);
+      background-clip: text;
+      -webkit-background-clip: text;
+      transition: all 0.3s;
+    }
 
-  &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    color: whitesmoke;
-    transition: all 0.3s;
-    clip-path: inset(0 112px 0 260px);
-  }
+    &::before {
+      clip-path: inset(0 68% 0 0);
+    }
 
-  span::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    color: whitesmoke;
-    transition: all 0.3s;
-    clip-path: inset(0 0 0 372px);
-  }
+    span::before {
+      clip-path: inset(0 45% 0 28%);
+    }
 
-  &:hover::before {
-    top: -5px;
-    color: rgba(255, 255, 255, 0.4);
-    clip-path: inset(0 346px 0 0);
-  }
+    &::after {
+      clip-path: inset(0 23% 0 52%);
+    }
 
-  &:hover span::before {
-    top: 5px;
-    color: white;
-    clip-path: inset(0 226px 0 143px);
-  }
+    span::after {
+      clip-path: inset(0 0 0 74%);
+    }
 
-  &:hover::after {
-    top: -5px;
-    color: rgba(255, 255, 255, 0.4);
-    clip-path: inset(0 114px 0 262px);
-  }
+    &:hover::before {
+      top: -5px;
+      background: unset;
+      background-clip: unset;
+      -webkit-background-clip: unset;
+      color: transparent;
+      -webkit-text-stroke: 1px black;
+      // color: rgba(255, 255, 255, 0.4);
+      clip-path: inset(0 70% 0 0);
+      transform: scale(1.05);
+    }
 
-  &:hover span::after {
-    top: 5px;
-    color: white;
-    clip-path: inset(0 0 0 374px);
+    &:hover span::before {
+      top: 5px;
+      background: unset;
+      background-clip: unset;
+      -webkit-background-clip: unset;
+      color: transparent;
+      -webkit-text-stroke: 1px black;
+      // color: white;
+      clip-path: inset(0 46% 0 30%);
+      transform: scale(1.05);
+    }
+
+    &:hover::after {
+      top: -5px;
+      background: unset;
+      background-clip: unset;
+      -webkit-background-clip: unset;
+      color: transparent;
+      -webkit-text-stroke: 1px black;
+      // color: rgba(255, 255, 255, 0.4);
+      clip-path: inset(0 24% 0 54%);
+      transform: scale(1.05);
+    }
+
+    &:hover span::after {
+      top: 5px;
+      background: unset;
+      background-clip: unset;
+      -webkit-background-clip: unset;
+      color: transparent;
+      -webkit-text-stroke: 1px black;
+      // color: white;
+      clip-path: inset(0 0 0 76%);
+      transform: scale(1.05);
+    }
   }
 }

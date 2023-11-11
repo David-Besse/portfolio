@@ -22,7 +22,7 @@ const MySkills = () => {
       className="mySkills relative h-screen w-screen snap-center"
     >
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
-      <h2 className="absolute top-2 left-2 h-[5%] text-2xl font-bold z-10">
+      <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl font-bold z-10">
         .mySkills
       </h2>
       <div

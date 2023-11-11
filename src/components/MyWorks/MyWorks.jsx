@@ -10,8 +10,6 @@ import gsap from "gsap";
 import WorksList from "../../datas/WorksList";
 
 const ListItem = styled.li`
-  content: "${({ text }) => text}";
-
   &::before {
     content: "${({ text }) => text}";
   }
@@ -26,22 +24,6 @@ const ListItem = styled.li`
 
   span::after {
     content: "${({ text }) => text}";
-  }
-
-  &.clicked {
-    &::after {
-      animation: moveText 0.3s linear both;
-    }
-  }
-
-  @keyframes moveText {
-    from {
-      width: 0;
-    }
-
-    to {
-      width: 100%;
-    }
   }
 `;
 
@@ -75,20 +57,18 @@ const MyWorks = () => {
       className="myWorks relative h-screen snap-center bg-[#f3f2f9]"
     >
       <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
-      <h2 className="absolute top-2 left-2 h-[5%] text-2xl font-bold">
+      <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl font-bold">
         .myWorks
       </h2>
       <div className="h-full w-full sm:flex">
-        <ul className="w-full h-1/5 flex justify-start items-start pt-14 pl-2 text-4xl sm:flex-col sm:pb-16 sm:w-1/4 sm:h-full lg:text-5xl xl:text-6xl">
+        <ul className="w-full h-[12%] flex justify-center items-end text-4xl pb-1 sm:flex-col sm:pb-16 sm:w-1/4 sm:h-full lg:text-5xl xl:text-6xl">
           {WorksList.map((item) => (
             <div
               key={`div_${item.projectName}`}
-              className="w-[500px] text-center"
+              className="div_listItem flex justify-center"
             >
               <ListItem
-                className={`listItem ml-2 mr-2 mb-4 cursor-pointer ${
-                  projectSelected === item.projectName ? "clicked" : "normal"
-                }`}
+                className="listItem w-fit ml-2 mr-2 sm:mb-4 cursor-pointer"
                 text={item.projectName}
                 onClick={() => handleProjectInformation(item.projectName)}
               >
@@ -99,14 +79,14 @@ const MyWorks = () => {
         </ul>
         {projectSelected !== "" && (
           <div
-            className="w-full h-4/5 sm:w-3/4 sm:h-full hidden justify-center sm:pt-14 pb-16 items-start sm:items-center"
+            className="w-full h-[88%] sm:w-3/4 sm:h-full hidden justify-center sm:pt-14 pb-20 items-start sm:items-center"
             ref={tvRef}
           >
             {projectSelected === WorksList[0].projectName && (
               <iframe
                 title="Projet Art@home"
                 src="https://www.webshappers.com"
-                className="w-[90%] h-[95%] sm:h-[80%] border-8 rounded shadow-2xl"
+                className="w-[90%] h-[100%] sm:h-[80%] border-8 rounded shadow-2xl"
               />
             )}
             {projectSelected === WorksList[1].projectName && (
@@ -136,3 +116,20 @@ export default MyWorks;
 //   overflow: hidden;
 //   white-space: nowrap;
 // }
+// &.clicked {
+//   &::after {
+//     animation: moveText 0.3s linear both;
+//   }
+// }
+
+// @keyframes moveText {
+//   from {
+//     width: 0;
+//   }
+
+//   to {
+//     width: 100%;
+//   }
+// }
+
+// bg-[#f3f2f9]
