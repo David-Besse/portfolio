@@ -15,21 +15,9 @@
     animation: apparition_L 1s ease-out;
   }
 
-  .home_left.fade-out{
-    opacity: 0;
-    transform: translateX(-400px);
-  }
-
   .home_right.fade-in{
     .home_right_img {
       animation: apparition_R 1s ease-out;
-    }
-  }
-
-  .home_right.fade-out{
-    .home_right_img {
-      opacity: 0;
-      transform: translateX(400px);
     }
   }
 }

@@ -17,18 +17,12 @@ const MySkills = () => {
   };
 
   return (
-    <section
-      id="mySkills"
-      className="mySkills relative h-screen w-screen snap-center"
-    >
-      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
+    <section id="mySkills" className="mySkills relative h-screen w-screen ">
+      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="50%" />
       <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl font-bold z-10">
         .mySkills
       </h2>
-      <div
-        id="aboutMe_scene"
-        className="w-full h-full absolute top-0 left-0 z-5"
-      >
+      <div className="w-full h-full absolute top-0 left-0 z-5">
         <Canvas>
           <fog attach="fog" args={["#202025", 40, 80]} />
           <color attach={"background"} args={["#f3f2f9"]} />

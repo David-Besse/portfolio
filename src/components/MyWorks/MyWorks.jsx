@@ -54,9 +54,9 @@ const MyWorks = () => {
   return (
     <div
       id="myWorks"
-      className="myWorks relative h-screen snap-center bg-[#f3f2f9]"
+      className="myWorks relative h-screen  bg-[#f3f2f9]"
     >
-      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
+      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="50%" />
       <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl font-bold">
         .myWorks
       </h2>

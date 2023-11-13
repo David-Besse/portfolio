@@ -23,7 +23,7 @@ const Avatar = ({ scaling }) => {
     <group
       ref={ref}
       dispose={null}
-      position={[0, -5, -0.2]}
+      position={[0.5, -5, -0.2]}
       rotation={[0, 0, 0]}
       scale={scaling}
     >

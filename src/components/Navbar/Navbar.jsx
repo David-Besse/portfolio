@@ -9,7 +9,7 @@ import {
 } from "react-icons/bs";
 
 const Navbar = () => {
-  const { currentSection } = useStore(useStoreApp);
+  const { currentSection, setCurrentSection } = useStore(useStoreApp);
 
   return (
     <div className="flex justify-center">
@@ -19,8 +19,9 @@ const Navbar = () => {
             <li className="flex items-center justify-center">
               <a
                 href="#homePage"
-                className="cursor-pointer flex flex-col place-items-center"
+                className="flex flex-col place-items-center"
                 aria-label="home page"
+                onClick={() => setCurrentSection('homePage')}
               >
                 <BsHouse size={32} />
                 {currentSection === "homePage" && (
@@ -28,11 +29,12 @@ const Navbar = () => {
                 )}
               </a>
             </li>
-            <li className="rounded flex items-center justify-center">
+            <li className="flex items-center justify-center">
               <a
                 href="#aboutMe"
                 className="flex flex-col place-items-center"
                 aria-label="about me page"
+                onClick={() => setCurrentSection('aboutMe')}
               >
                 <BsPerson size={32} />
                 {currentSection === "aboutMe" && (
@@ -45,6 +47,7 @@ const Navbar = () => {
                 href="#myWorks"
                 className="flex flex-col place-items-center"
                 aria-label="my works page"
+                onClick={() => setCurrentSection('myWorks')}
               >
                 <BsBook size={30} />
                 {currentSection === "myWorks" && (
@@ -57,6 +60,7 @@ const Navbar = () => {
                 href="#mySkills"
                 className="flex flex-col place-items-center"
                 aria-label="my skills page"
+                onClick={() => setCurrentSection('mySkills')}
               >
                 <BsCodeSlash size={32} />
                 {currentSection === "mySkills" && (
@@ -69,6 +73,7 @@ const Navbar = () => {
                 href="#contact"
                 className="flex flex-col place-items-center"
                 aria-label="contact me page"
+                onClick={() => setCurrentSection('contact')}
               >
                 <BsEnvelopeAt size={32} />
                 {currentSection === "contact" && (

@@ -1,27 +1,9 @@
 #titleContainer {
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
   .letterTitle {
     font-family: "Righteous", cursive;
   }
 
   .spanUnderTitle, .spanOverTitle {
-    // font-family: "Baloo Thambi 2", display;
     font-family: 'Architects Daughter', handwriting;
   }
 }
-
-#mainContainer {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-

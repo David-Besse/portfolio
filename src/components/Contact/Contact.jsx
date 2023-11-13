@@ -60,9 +60,9 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="contact relative h-screen w-screen flex flex-col  snap-center bg-[#f3f2f9]"
+      className="contact relative h-screen w-screen flex flex-col   bg-[#f3f2f9]"
     >
-      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
+      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="50%" />
 
       <Modal />
 

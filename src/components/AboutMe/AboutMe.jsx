@@ -6,27 +6,22 @@ import useStoreApp from "../Store/app.store";
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
 import {
-  Sky,
   OrbitControls,
-  Html,
-  useProgress,
   Gltf,
-  Text,
   Environment,
   ContactShadows,
   useCursor,
   PerspectiveCamera,
 } from "@react-three/drei";
-
-import Avatar from "./Scene/Avatar/Avatar";
-
-import WordList from "../../datas/WordList";
-
-import "./aboutMe.scss";
+import * as THREE from "three";
 import { HiInformationCircle } from "react-icons/hi";
-import wordFont from "../../assets/fonts/Righteous-Regular.ttf";
-import { DoubleSide } from "three";
+import BackgroundStars from "./Scene/BackgroundStars/BackgroundStars";
+import Avatar from "./Scene/Avatar/Avatar";
+import WordList from "../../datas/WordList";
+import "./aboutMe.scss";
+import Loader from "./Scene/Loader/Loader";
 
+// custom <li> component
 const ListItem = styled.li`
   -webkit-text-stroke: 1px black;
 
@@ -50,15 +45,6 @@ const ListItem = styled.li`
   }
 `;
 
-const Loader = () => {
-  const { progress } = useProgress();
-  return (
-    <Html center>
-      Computer startup... {Math.round(progress * 100) / 100} % finished
-    </Html>
-  );
-};
-
 const AboutMe = () => {
   const { setCurrentSection } = useStore(useStoreApp);
   const [wordHovered, setWordHovered] = useState("");
@@ -66,138 +52,108 @@ const AboutMe = () => {
   const [cameraActivated, setCameraActivated] = useState(false);
   const camRef = useRef();
 
+  // activate hover in 3d scene
   useCursor(hovered);
 
-  const words = Object.keys(WordList);
+  const resetCameraPosition = () => {
+    camRef.current.position.set(20, 2, -20);
+    camRef.current.lookAt(8, 5, 0);
+  };
 
   const handleWaypointEnter = () => {
     setCurrentSection("aboutMe");
   };
 
-  const resetCameraPosition = () => {
-    camRef.current.position.set(-26, 10, -12);
-    camRef.current.lookAt(8, 5, 0);
-  };
-
   return (
     <section
       id="aboutMe"
-      className="aboutMe relative h-screen w-screen snap-center"
+      className="relative flex h-screen w-screen bg-[#f3f2f9]"
     >
-      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="5%" />
+      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="50%" />
 
       <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl font-bold z-10">
         .aboutMe
       </h2>
 
+      {/* decoration */}
       <div
         id="aboutMe_scene"
-        className="w-full h-full absolute top-0 left-0 z-5"
-      >
-        <Canvas>
-          <PerspectiveCamera
-            ref={camRef}
-            makeDefault
-            position={[-26, 10, -12]}
-            fov={70}
-          />
-          <color attach={'background'} args={['#f3f2f9']} />
-          {/* <Sky sunPosition={[50, 3, -12]} /> */}
-          <Environment preset="sunset" />
-          <Suspense fallback={<Loader />}>
-            <group>
-              <ContactShadows
-                opacity={0.8}
-                scale={12}
-                blur={1}
-                far={10}
-                resolution={256}
-                color="#000000"
-                position={[0, -5.001, 0]}
-              />
-              <Avatar scaling={3.9} />
-              <Gltf
-                receiveShadow
-                castShadow
-                src="desktop_chair.glb"
-                scale={0.5}
-                position={[-0.35, -5, 0]}
-                rotation={[0, Math.PI, 0]}
-              />
-              {words.map((item, index) => (
-                <Text
-                  letterSpacing={0.01}
-                  fontSize={3}
-                  font={wordFont}
-                  position={[10, 8 + index * 4, -2]}
-                  rotation={[0, 180.3, 0]}
-                  key={item}
-                  strokeColor={'#606887'}
-                  strokeOpacity={0.75}
-                  strokeWidth={0.14}
-                >
-                  {item}
-                  <meshStandardMaterial transparent opacity={0} side={DoubleSide} />
-                </Text>
-              ))}
-              <mesh position-y={-5.001} rotation-x={-Math.PI / 2}>
-                <planeGeometry args={[50, 50]} />
-                <meshStandardMaterial transparent opacity={0} />
-              </mesh>
-            </group>
-          </Suspense>
-          <OrbitControls
-            enabled
-            camera={camRef.current}
-            enablePan={cameraActivated}
-            enableRotate={cameraActivated}
-            enableZoom={cameraActivated}
-            target={[8, 5, 0]}
-          />
-        </Canvas>
-      </div>
+        className="absolute top-0 left-0 w-full h-full"
+      ></div>
 
-      <div
-        className="absolute text-center z-10 bottom-24 left-0 right-0"
-        onClick={() => {
-          setCameraActivated(!cameraActivated);
-          resetCameraPosition();
-        }}
-      >
-        {cameraActivated ? (
-          <p className="inline-block text-md text-gray-500 cursor-pointer">
-            désactiver la caméra
-          </p>
-        ) : (
-          <p className="inline-block text-md text-gray-500 cursor-pointer">
-            activer la caméra
-          </p>
-        )}
-        <div className="inline-block relative ml-2 group">
-          <HiInformationCircle className="cursor-pointer text-blue-500" />
-          <div>
-            <div className="hidden absolute w-80 -right-20 bottom-6 bg-gray-200 p-2 rounded-lg text-sm shadow-md mt-2 z-20 group-hover:block">
-              Activer la caméra va désactiver le défilement de la page afin de
-              permettre le zoom dans la scène 3D, si vous souhaitez changer de
-              page, veuillez désactiver la caméra ou cliquer sur une autre icône
-              de la barre de navigation (sur ce point, cela conservera la
-              caméra).
-            </div>
-          </div>
+      {/* left side */}
+      <div className="relative w-1/2 h-full">
+        <div className="absolute w-full h-3/5 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+          <Canvas className="rounded-e-full">
+            <PerspectiveCamera
+              ref={camRef}
+              makeDefault
+              position={[20, 2, -20]}
+              fov={70}
+            />
+            <color attach={"background"} args={["#111"]} />
+            <Environment preset="city" />
+            <BackgroundStars
+              radius={200}
+              depth={10}
+              count={2500}
+              factor={7}
+              saturation={0.7}
+              fade={true}
+            />
+            <Suspense fallback={<Loader />}>
+              <group scale={1}>
+                <ContactShadows
+                  opacity={0.8}
+                  scale={30}
+                  blur={1}
+                  far={10}
+                  resolution={256}
+                  color="#000000"
+                  position={[0, -5, 0]}
+                />
+                <Avatar scaling={7.9} />
+                <Gltf
+                  receiveShadow
+                  castShadow
+                  src="desktop_chair.glb"
+                  scale={1}
+                  position={[-0.35, -5, 0]}
+                  rotation={[0, Math.PI, 0]}
+                />
+              </group>
+            </Suspense>
+            <mesh position-y={-5.001} rotation-x={-Math.PI / 2}>
+              <circleGeometry args={[25, 64, 10]} />
+              <meshStandardMaterial color={"white"} side={THREE.DoubleSide} />
+            </mesh>
+            <OrbitControls
+              enabled
+              camera={camRef.current}
+              enablePan={cameraActivated}
+              enableRotate={cameraActivated}
+              enableZoom={cameraActivated}
+              target={[5, 0, 0]}
+            />
+          </Canvas>
         </div>
       </div>
 
-      <div className="absolute hidden top-[10%] left-0 h-1/2 md:h-4/5 w-fit lg:flex-row p-2 z-10">
-        <ul className="word_list flex flex-col justify-around h-full">
-          {words.map((word) => (
+      {/* right side */}
+      <div className="relative w-1/2 h-full p-2 flex flex-col justify-around">
+        <h3 className="text-4xl sm:text-5xl lg:text-[5em] uppercase absolute top-[4%] self-start">
+          what defines me
+        </h3>
+        <ul className="relative flex flex-col items-end">
+          {WordList.map((word) => (
             <ListItem
-              className={`relative flex items-center text-4xl text-transparent lg:text-5xl lg:align-top cursor-pointer ${
+              className={`relative text-3xl sm:text-4xl text-transparent lg:text-[3em] mt-2 lg:mb-4 cursor-pointer ${
                 hovered ? "opacity-100" : ""
               }`}
-              key={word}
-              text={word}
+              key={word.keyword}
+              text={word.keyword}
               onMouseEnter={() => {
-                setWordHovered(word);
+                setWordHovered(word.keyword);
                 setIsHovered(true);
               }}
               onMouseLeave={() => {
@@ -205,19 +161,40 @@ const AboutMe = () => {
                 setIsHovered(false);
               }}
             >
-              {word}
+              {word.keyword}
             </ListItem>
           ))}
         </ul>
+        <div className="quoteBox absolute w-1/2 top-1/2 transform -translate-y-1/2 left-0">
+          {wordHovered !== "" && (
+            <div className="flex justify-center">
+              <p className={"w-auto h-fit p-2 text-4xl text-center text-black"}>
+                {WordList.find((el) => el.keyword === wordHovered).quote}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
-      <div className="resumeBox absolute bottom-[10%] right-0 w-full md:w-1/2 h-fit flex items-center justify-end">
-        {wordHovered !== "" && (
-          <div className="flex justify-center z-10">
-            <p className={"w-auto h-fit p-2 text-2xl text-center text-white"}>
-              {WordList[wordHovered]}
-            </p>
+
+      {/* handle camera for user */}
+      <div
+        className="absolute text-center bottom-28 left-0 right-0"
+        onClick={() => {
+          setCameraActivated(!cameraActivated);
+          resetCameraPosition();
+        }}
+      >
+        <p className="inline-block text-sm lg:text-lg text-white tracking-normal cursor-pointer">
+          {cameraActivated ? " désactiver la caméra" : "activer la caméra"}
+        </p>
+        <div className="inline-block relative ml-2 group">
+          <HiInformationCircle className="cursor-pointer text-white" />
+          <div>
+            <div className="hidden absolute w-80 -right-20 bottom-6 bg-gray-200 p-2 rounded-lg text-sm shadow-md mt-2 z-20 group-hover:block">
+              Le défilement de la page sera temporairement désactivé dans la scène 3D.
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

@@ -57,10 +57,10 @@ const App = () => {
       //     margin: "0 2.5vw",
       //   }
       // )
-    //   .to(".letterTitle", {
-    //     margin: "0 1vw",
-    //     duration: 0.2,
-    //   })
+      // .to(".letterTitle", {
+      //   margin: "0 1vw",
+      //   duration: 0.2,
+      // })
       .to(title, {
         scale: 0,
         opacity: 0,
