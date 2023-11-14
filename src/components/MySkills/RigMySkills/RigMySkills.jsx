@@ -9,7 +9,7 @@ const RigMySkills = () => {
         <PerspectiveCamera
           ref={camRef}
           makeDefault
-          position={[0, 0, 100]}
+          position={[0, 0, 90]}
           fov={90}
           dpr={[1, 2]}
         />

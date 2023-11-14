@@ -1,8 +1,5 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, Suspense, useRef } from "react";
-import { Waypoint } from "react-waypoint";
-import { useStore } from "zustand";
-import useStoreApp from "../Store/app.store";
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
 import {
@@ -15,6 +12,9 @@ import {
 } from "@react-three/drei";
 import * as THREE from "three";
 import { HiInformationCircle } from "react-icons/hi";
+import { BsFillCameraVideoFill } from "react-icons/bs";
+import { BsFillCameraVideoOffFill } from "react-icons/bs";
+import { BiSolidQuoteRight } from "react-icons/bi";
 import BackgroundStars from "./Scene/BackgroundStars/BackgroundStars";
 import Avatar from "./Scene/Avatar/Avatar";
 import WordList from "../../datas/WordList";
@@ -32,21 +32,17 @@ const ListItem = styled.li`
     left: 0;
     color: #00a1ec;
     width: 0;
-    overflow: hidden;
     white-space: nowrap;
     transition: width 0.6s ease;
   }
 
-  &:hover {
-    ::after {
+  &:hover::after {
       width: 100%;
-      transition: width 0.6s ease;
     }
   }
 `;
 
 const AboutMe = () => {
-  const { setCurrentSection } = useStore(useStoreApp);
   const [wordHovered, setWordHovered] = useState("");
   const [hovered, setIsHovered] = useState(false);
   const [cameraActivated, setCameraActivated] = useState(false);
@@ -60,31 +56,29 @@ const AboutMe = () => {
     camRef.current.lookAt(8, 5, 0);
   };
 
-  const handleWaypointEnter = () => {
-    setCurrentSection("aboutMe");
+  // handle camera
+  const handleCam = () => {
+    setCameraActivated(!cameraActivated);
+    resetCameraPosition();
   };
 
   return (
-    <section
+    <div
       id="aboutMe"
-      className="relative flex h-screen w-screen bg-[#f3f2f9]"
+      className="relative flex h-screen w-screen bg-[#f3f2f9] snap-center"
     >
-      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="50%" />
-
       <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl font-bold z-10">
         .aboutMe
       </h2>
-
-      {/* decoration */}
-      <div
-        id="aboutMe_scene"
-        className="absolute top-0 left-0 w-full h-full"
-      ></div>
+      <h3 className="absolute top-0 left-0 h-1/5 w-full text-4xl flex uppercase justify-end items-center pr-2 sm:pr-6 sm:text-5xl lg:text-6xl xl:text-[4.5rem]">
+        what defines me
+      </h3>
 
       {/* left side */}
       <div className="relative w-1/2 h-full">
+        {/* 3d scene */}
         <div className="absolute w-full h-3/5 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-          <Canvas className="rounded-e-full">
+          <Canvas className="rounded-e-full shadow-2xl">
             <PerspectiveCamera
               ref={camRef}
               makeDefault
@@ -123,8 +117,8 @@ const AboutMe = () => {
                 />
               </group>
             </Suspense>
-            <mesh position-y={-5.001} rotation-x={-Math.PI / 2}>
-              <circleGeometry args={[25, 64, 10]} />
+            <mesh position-y={-5.02} rotation-x={-Math.PI / 2}>
+              <circleGeometry args={[25, 64]} />
               <meshStandardMaterial color={"white"} side={THREE.DoubleSide} />
             </mesh>
             <OrbitControls
@@ -136,67 +130,77 @@ const AboutMe = () => {
               target={[5, 0, 0]}
             />
           </Canvas>
-        </div>
-      </div>
-
-      {/* right side */}
-      <div className="relative w-1/2 h-full p-2 flex flex-col justify-around">
-        <h3 className="text-4xl sm:text-5xl lg:text-[5em] uppercase absolute top-[4%] self-start">
-          what defines me
-        </h3>
-        <ul className="relative flex flex-col items-end">
-          {WordList.map((word) => (
-            <ListItem
-              className={`relative text-3xl sm:text-4xl text-transparent lg:text-[3em] mt-2 lg:mb-4 cursor-pointer ${
-                hovered ? "opacity-100" : ""
-              }`}
-              key={word.keyword}
-              text={word.keyword}
-              onMouseEnter={() => {
-                setWordHovered(word.keyword);
-                setIsHovered(true);
-              }}
-              onMouseLeave={() => {
-                setWordHovered("");
-                setIsHovered(false);
-              }}
-            >
-              {word.keyword}
-            </ListItem>
-          ))}
-        </ul>
-        <div className="quoteBox absolute w-1/2 top-1/2 transform -translate-y-1/2 left-0">
-          {wordHovered !== "" && (
-            <div className="flex justify-center">
-              <p className={"w-auto h-fit p-2 text-4xl text-center text-black"}>
-                {WordList.find((el) => el.keyword === wordHovered).quote}
-              </p>
+          {/* handle camera for user */}
+          <div className="absolute flex justify-center items-center left-1/2 transform -translate-x-1/2">
+            <div className="flex justify-center items-center mr-2">
+              {!cameraActivated && (
+                <BsFillCameraVideoFill
+                  className="w-8 h-8 cursor-pointer"
+                  onClick={() => handleCam()}
+                />
+              )}
+              {cameraActivated && (
+                <BsFillCameraVideoOffFill
+                  className="w-8 h-8 cursor-pointer"
+                  onClick={() => handleCam()}
+                />
+              )}
             </div>
-          )}
-        </div>
-      </div>
-
-      {/* handle camera for user */}
-      <div
-        className="absolute text-center bottom-28 left-0 right-0"
-        onClick={() => {
-          setCameraActivated(!cameraActivated);
-          resetCameraPosition();
-        }}
-      >
-        <p className="inline-block text-sm lg:text-lg text-white tracking-normal cursor-pointer">
-          {cameraActivated ? " désactiver la caméra" : "activer la caméra"}
-        </p>
-        <div className="inline-block relative ml-2 group">
-          <HiInformationCircle className="cursor-pointer text-white" />
-          <div>
-            <div className="hidden absolute w-80 -right-20 bottom-6 bg-gray-200 p-2 rounded-lg text-sm shadow-md mt-2 z-20 group-hover:block">
-              Le défilement de la page sera temporairement désactivé dans la scène 3D.
+            <div className="group flex justify-center items-center">
+              <HiInformationCircle className="w-6 h-6 inline-block cursor-help text-[#00a1ec]" />
+              <div>
+                <div className="hidden absolute left-10 bottom-8 bg-gray-200 p-2 rounded-lg text-sm shadow-md mt-2 text-center z-20 group-hover:block">
+                  On / Off
+                  <br />
+                  <br />
+                  Le défilement de la page sera temporairement désactivé dans la
+                  scène 3D.
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+
+      {/* right side */}
+      <div className="relative w-1/2 h-full flex flex-col ps-2 pe-2 justify-around">
+        <div className="pt-6 sm:pr-6 flex flex-col">
+          <ul className="flex flex-col text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-transparent items-end">
+            {WordList.map((word) => (
+              <ListItem
+                className={`relative cursor-pointer pb-4 ${
+                  hovered ? "opacity-100" : ""
+                }`}
+                key={word.keyword}
+                text={word.keyword}
+                onMouseEnter={() => {
+                  setWordHovered(word.keyword);
+                  setIsHovered(true);
+                }}
+                onMouseLeave={() => {
+                  setWordHovered("");
+                  setIsHovered(false);
+                }}
+              >
+                {word.keyword}
+              </ListItem>
+            ))}
+          </ul>
+          <div className="quoteBox flex justify-center items-center">
+            <p
+              className={
+                "relative font-bold p-2 text-xl bg-slate-50 rounded-3xl text-center text-black"
+              }
+            >
+              <BiSolidQuoteRight className="absolute left-0 -top-6 w-6 h-6" />
+              {wordHovered !== "" &&
+                WordList.find((el) => el.keyword === wordHovered).quote}
+              <BiSolidQuoteRight className="absolute right-0 -bottom-6 w-6 h-6" />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -1,4 +1,3 @@
-import { Waypoint } from "react-waypoint";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
 import { useForm } from "react-hook-form";
@@ -10,8 +9,6 @@ import Modal from "../Modal/Modal";
 
 const Contact = () => {
   const {
-    currentSection,
-    setCurrentSection,
     setContactModalisOpened,
     setContactModalMessage,
   } = useStore(useStoreApp);
@@ -47,23 +44,17 @@ const Contact = () => {
       });
   };
 
-  const handleWaypointEnter = () => {
-    setCurrentSection("contact");
-  };
-
-  useEffect(() => {
-    if (currentSection !== "contact") {
-      reset();
-    }
-  }, [currentSection, reset]);
+  // useEffect(() => {
+  //   if (currentSection !== "contact") {
+  //     reset();
+  //   }
+  // }, [currentSection, reset]);
 
   return (
     <div
       id="contact"
-      className="contact relative h-screen w-screen flex flex-col   bg-[#f3f2f9]"
+      className="contact relative h-screen w-screen flex flex-col bg-[#f3f2f9] snap-center"
     >
-      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="50%" />
-
       <Modal />
 
       <h2 className="absolute top-2 left-2 text-xl sm:text-2xl font-bold">

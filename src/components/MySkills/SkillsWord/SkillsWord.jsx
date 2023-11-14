@@ -24,7 +24,7 @@ const SkillsWord = ({ word, position }) => {
     const distanceToCamera = ref.current.position.distanceTo(camera.position);
 
     // Set the text color based on the distance to the camera
-    ref.current.material.color.set(distanceToCamera < 42 ? "#fa2720" : "white");
+    ref.current.material.color.set(distanceToCamera < 42 ? "#00a1ec" : "white");
   });
 
   return (

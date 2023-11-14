@@ -1,5 +1,3 @@
-import useStoreApp from "../Store/app.store";
-import { useStore } from "zustand";
 import {
   BsBook,
   BsEnvelopeAt,
@@ -7,79 +5,100 @@ import {
   BsHouse,
   BsCodeSlash,
 } from "react-icons/bs";
+import { useState } from "react";
 
 const Navbar = () => {
-  const { currentSection, setCurrentSection } = useStore(useStoreApp);
+  const [activeSection, setActiveSection] = useState("");
 
   return (
     <div className="flex justify-center">
       <div className="w-screen">
         <nav className="fixed bottom-2 w-full -translate-y-1/6 flex justify-center z-50">
           <ul className="w-[425px] flex justify-around items-center text-2x1 text-[#606887]">
-            <li className="flex items-center justify-center">
+            <li className="flex flex-col items-center justify-center">
               <a
                 href="#homePage"
-                className="flex flex-col place-items-center"
-                aria-label="home page"
-                onClick={() => setCurrentSection('homePage')}
+                className=""
+                aria-label="go to home page"
+                onClick={() => setActiveSection("homePage")}
               >
                 <BsHouse size={32} />
-                {currentSection === "homePage" && (
-                  <span className="text-lg font-bold">home</span>
-                )}
               </a>
+              <span
+                className={`text-lg font-bold ${
+                  activeSection === "homePage" ? "block" : "hidden"
+                }`}
+              >
+                home
+              </span>
             </li>
-            <li className="flex items-center justify-center">
+            <li className="flex flex-col items-center justify-center">
               <a
                 href="#aboutMe"
-                className="flex flex-col place-items-center"
-                aria-label="about me page"
-                onClick={() => setCurrentSection('aboutMe')}
+                className=""
+                aria-label="go to about me page"
+                onClick={() => setActiveSection("aboutMe")}
               >
                 <BsPerson size={32} />
-                {currentSection === "aboutMe" && (
-                  <span className="text-lg font-bold">aboutMe</span>
-                )}
               </a>
+              <span
+                className={`text-lg font-bold ${
+                  activeSection === "aboutMe" ? "block" : "hidden"
+                }`}
+              >
+                aboutMe
+              </span>
             </li>
-            <li className="flex items-center justify-center">
+            <li className="flex flex-col items-center justify-center">
               <a
                 href="#myWorks"
-                className="flex flex-col place-items-center"
-                aria-label="my works page"
-                onClick={() => setCurrentSection('myWorks')}
+                className=""
+                aria-label="got to my works page"
+                onClick={() => setActiveSection("myWorks")}
               >
-                <BsBook size={30} />
-                {currentSection === "myWorks" && (
-                  <span className="text-lg font-bold">myWorks</span>
-                )}
+                <BsBook size={32} />
               </a>
+              <span
+                className={`text-lg font-bold ${
+                  activeSection === "myWorks" ? "block" : "hidden"
+                }`}
+              >
+                myWorks
+              </span>
             </li>
-            <li className="flex items-center justify-center">
+            <li className="flex flex-col items-center justify-center">
               <a
                 href="#mySkills"
-                className="flex flex-col place-items-center"
-                aria-label="my skills page"
-                onClick={() => setCurrentSection('mySkills')}
+                className=""
+                aria-label="go to my skills page"
+                onClick={() => setActiveSection("mySkills")}
               >
                 <BsCodeSlash size={32} />
-                {currentSection === "mySkills" && (
-                  <span className="text-lg font-bold">mySkills</span>
-                )}
               </a>
+              <span
+                className={`text-lg font-bold ${
+                  activeSection === "mySkills" ? "block" : "hidden"
+                }`}
+              >
+                mySkills
+              </span>
             </li>
-            <li className="flex items-center justify-center">
+            <li className="flex flex-col items-center justify-center">
               <a
                 href="#contact"
-                className="flex flex-col place-items-center"
-                aria-label="contact me page"
-                onClick={() => setCurrentSection('contact')}
+                className=""
+                aria-label="go to contact me page"
+                onClick={() => setActiveSection("contact")}
               >
                 <BsEnvelopeAt size={32} />
-                {currentSection === "contact" && (
-                  <span className="text-lg font-bold">contact</span>
-                )}
               </a>
+              <span
+                className={`text-lg font-bold ${
+                  activeSection === "contact" ? "block" : "hidden"
+                }`}
+              >
+                contact
+              </span>
             </li>
           </ul>
         </nav>
@@ -89,6 +108,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-// bg-black/20 h-[60px] backdrop-blur-2xl
-// navbar color icon #606887

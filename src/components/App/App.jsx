@@ -10,8 +10,6 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 import "./app.scss";
-import { useStore } from "zustand";
-import useStoreApp from "../Store/app.store";
 
 const splashTitleText = "DAVID BESSE";
 const splashTitleLetters = splashTitleText.split("");
@@ -24,7 +22,6 @@ const App = () => {
   const titleRef = useRef();
   const spanOverRef = useRef();
   const spanUnderRef = useRef();
-  const { setCurrentSection } = useStore(useStoreApp);
 
   useEffect(() => {
     const title = Array.from(titleRef.current.children);
@@ -68,7 +65,6 @@ const App = () => {
         // delay: 5,
         duration: 1,
         onComplete: () => {
-          setCurrentSection("homePage");
           gsap.set("#titleContainer", { display: "none" });
           gsap.set("#mainContainer", { display: "block" });
         },
@@ -92,7 +88,7 @@ const App = () => {
     <>
       <div
         id="titleContainer"
-        className="titleContainer h-screen w-screen p-8 bg-white overflow-y-auto flex flex-col justify-center text-[#606887]"
+        className="titleContainer h-screen w-screen p-8 bg-white flex flex-col justify-center text-[#606887]"
       >
         <div
           className="spanOver text-start text-xl md:text-3xl lg:pl-14 xl:pl-28 2xl:pl-56"
@@ -133,8 +129,11 @@ const App = () => {
       </div>
       <div
         id="mainContainer"
-        className="mainContainer h-screen overflow-y-auto text-[#606887] hidden"
+        className="mainContainer relative h-screen text-[#606887] hidden"
       >
+        {/* decoration */}
+        <div id="decorationDiv" className=""></div>
+
         <Navbar />
         <Home />
         <AboutMe />

@@ -1,28 +1,14 @@
-import { Waypoint } from "react-waypoint";
-import { useStore } from "zustand";
-import useStoreApp from "../Store/app.store";
-
 import "./home.scss";
 import Logo from "/logo.png";
 import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
 
 const Home = () => {
-  const { setCurrentSection } = useStore(useStoreApp);
-
-  const handleWaypointEnter = () => {
-    setCurrentSection("homePage");
-  };
-
   return (
     <div
       id="homePage"
-      className="homePage h-screen flex-col bg-[#f3f2f9]"
+      className="homePage h-screen flex-col bg-[#f3f2f9] snap-center"
     >
-      <Waypoint
-        onEnter={() => handleWaypointEnter()}
-        bottomOffset="50%"
-      />
-      <header className="h-1/6 p-4 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-2">
+      <header className="h-1/6 p-2 sm:p-4 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-2">
         <img src={Logo} alt="logo" className="rounded-xl w-32 h-32" />
         <ul className="flex items-center justify-center gap-8">
           <li className="myCv w-22 h-16 flex justify-center items-center">

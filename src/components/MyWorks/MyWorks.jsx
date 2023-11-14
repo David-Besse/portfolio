@@ -1,7 +1,4 @@
 /* eslint-disable react/no-unknown-property */
-import { Waypoint } from "react-waypoint";
-import { useStore } from "zustand";
-import useStoreApp from "../Store/app.store";
 import styled from "styled-components";
 import "./myWorks.scss";
 import { useRef, useState } from "react";
@@ -28,13 +25,8 @@ const ListItem = styled.li`
 `;
 
 const MyWorks = () => {
-  const { setCurrentSection } = useStore(useStoreApp);
   const [projectSelected, setProjectSelected] = useState("");
   const tvRef = useRef();
-
-  const handleWaypointEnter = () => {
-    setCurrentSection("myWorks");
-  };
 
   const handleProjectInformation = (projectName) => {
     setProjectSelected(projectName);
@@ -52,11 +44,7 @@ const MyWorks = () => {
   };
 
   return (
-    <div
-      id="myWorks"
-      className="myWorks relative h-screen  bg-[#f3f2f9]"
-    >
-      <Waypoint onEnter={() => handleWaypointEnter()} bottomOffset="50%" />
+    <div id="myWorks" className="myWorks relative h-screen bg-[#f3f2f9] snap-center">
       <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl font-bold">
         .myWorks
       </h2>
