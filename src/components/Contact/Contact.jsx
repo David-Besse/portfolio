@@ -53,7 +53,7 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="relative h-screen w-screen bg-[#d4cacdff] snap-center flex flex-col"
+      className="relative h-screen w-screen bg-[white] snap-center flex flex-col"
     >
       <Modal />
 
@@ -87,7 +87,7 @@ const Contact = () => {
           <input
             type="text"
             placeholder=" first name"
-            className="rounded-3xl p-1"
+            className="rounded-3xl p-1 border-4"
             {...register("firstname", {
               required: "required field.",
               minLength: {
@@ -104,7 +104,7 @@ const Contact = () => {
           <input
             type="text"
             placeholder=" last name"
-            className="rounded-3xl p-1"
+            className="rounded-3xl p-1 border-4"
             {...register("lastname", {
               required: "required field.",
               minLength: {
@@ -121,7 +121,7 @@ const Contact = () => {
           <input
             type="text"
             placeholder=" email"
-            className="rounded-3xl p-1"
+            className="rounded-3xl p-1 border-4"
             {...register("mail", {
               required: "required field.",
               pattern: {
@@ -134,7 +134,7 @@ const Contact = () => {
           <textarea
             type="text"
             placeholder=" message..."
-            className="h-[250px] rounded-lg p-1"
+            className="h-[250px] rounded-lg p-1 border-4"
             {...register("yourmessage", {
               required: "required field.",
               minLength: {

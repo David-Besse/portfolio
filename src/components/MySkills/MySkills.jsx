@@ -13,7 +13,7 @@ const MySkills = () => {
   return (
     <div
       id="mySkills"
-      className="relative h-screen w-screen bg-[#d4cacdff] snap-center"
+      className="relative h-screen w-screen bg-[white] snap-center"
     >
       <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl">
         .mySkills

@@ -70,7 +70,7 @@ const AboutMe = () => {
   return (
     <div
       id="aboutMe"
-      className="relative flex h-screen w-screen bg-[#d4cacdff] snap-center"
+      className="relative flex h-screen w-screen bg-[white] snap-center"
     >
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 0%, 0% 0%"

@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div
       id="homePage"
-      className="h-screen w-screen flex flex-col bg-[#d4cacdff] snap-center"
+      className="h-screen w-screen flex flex-col bg-[white] snap-center"
     >
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
@@ -23,7 +23,7 @@ const Home = () => {
         height="100%"
       />
       <header className="h-1/6 p-2 sm:p-4 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-2 z-10">
-        <img src={Logo} alt="logo" className="rounded-xl w-32 h-32 z-10" />
+        <img src={Logo} alt="logo" className="rounded-xl w-30 h-30 z-10" />
         <ul className="flex items-center justify-center gap-8 z-10">
           <li className="myCv w-22 h-16 flex justify-center items-center">
             <a
