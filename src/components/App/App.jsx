@@ -25,8 +25,8 @@ const App = () => {
 
   useEffect(() => {
     const title = Array.from(titleRef.current.children);
-    const spanOver = Array.from(spanOverRef.current.children);
-    const spanUnder = Array.from(spanUnderRef.current.children);
+    // const spanOver = Array.from(spanOverRef.current.children);
+    // const spanUnder = Array.from(spanUnderRef.current.children);
 
     // gsap
     //   .timeline({ delay: 0.4 })
@@ -85,7 +85,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <div
         id="titleContainer"
         className="titleContainer h-screen w-screen p-8 bg-white flex flex-col justify-center text-[#606887]"
@@ -127,21 +127,24 @@ const App = () => {
           ))}
         </div>
       </div>
+
       <div
         id="mainContainer"
-        className="mainContainer relative h-screen text-[#606887] hidden"
+        className="mainContainer relative h-screen w-screen text-[#606887] hidden"
       >
-        {/* decoration */}
-        <div id="decorationDiv" className=""></div>
-
         <Navbar />
+
         <Home />
+
         <AboutMe />
+
         <MyWorks />
+
         <MySkills />
+
         <Contact />
       </div>
-    </>
+    </div>
   );
 };
 

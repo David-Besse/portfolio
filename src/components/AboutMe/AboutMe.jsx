@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, Suspense, useRef } from "react";
+
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
 import {
@@ -7,7 +8,6 @@ import {
   Gltf,
   Environment,
   ContactShadows,
-  useCursor,
   PerspectiveCamera,
 } from "@react-three/drei";
 import * as THREE from "three";
@@ -20,43 +20,48 @@ import Avatar from "./Scene/Avatar/Avatar";
 import WordList from "../../datas/WordList";
 import "./aboutMe.scss";
 import Loader from "./Scene/Loader/Loader";
+import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
-// custom <li> component
 const ListItem = styled.li`
-  -webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 1px #606887;
+  color: white;
+  position: relative;
+  cursor: pointer;
 
-  ::after {
+  &::after {
     content: "${(props) => props.text}";
     position: absolute;
+    color: #ad8b75ff;
     top: 0;
     left: 0;
-    color: #00a1ec;
     width: 0;
+    height: 100%;
+    overflow: hidden;
     white-space: nowrap;
-    transition: width 0.6s ease;
   }
 
-  &:hover::after {
-      width: 100%;
+  &:hover {
+    ::after {
+      animation: moveText 0.3s linear both;
+      @keyframes moveText {
+        to {
+          width: 100%;
+        }
+      }
     }
   }
 `;
 
 const AboutMe = () => {
   const [wordHovered, setWordHovered] = useState("");
-  const [hovered, setIsHovered] = useState(false);
   const [cameraActivated, setCameraActivated] = useState(false);
   const camRef = useRef();
-
-  // activate hover in 3d scene
-  useCursor(hovered);
 
   const resetCameraPosition = () => {
     camRef.current.position.set(20, 2, -20);
     camRef.current.lookAt(8, 5, 0);
   };
 
-  // handle camera
   const handleCam = () => {
     setCameraActivated(!cameraActivated);
     resetCameraPosition();
@@ -65,18 +70,28 @@ const AboutMe = () => {
   return (
     <div
       id="aboutMe"
-      className="relative flex h-screen w-screen bg-[#f3f2f9] snap-center"
+      className="relative flex h-screen w-screen bg-[#d4cacdff] snap-center"
     >
-      <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl font-bold z-10">
+      <BackgroundDiv
+        path="0% 0%, 0% 100%, 50% 0%, 0% 0%"
+        color="#cee5e3ff"
+        width="100%"
+        height="100%"
+      />
+      <BackgroundDiv
+        path="50% 0%, 100% 100%, 100% 50%, 75% 0%"
+        color="#ad8b75ff"
+        width="100%"
+        height="100%"
+      />
+      <h2 className="absolute top-0 left-0 pt-2 pl-2 h-[5%] text-xl sm:text-2xl">
         .aboutMe
       </h2>
-      <h3 className="absolute top-0 left-0 h-1/5 w-full text-4xl flex uppercase justify-end items-center pr-2 sm:pr-6 sm:text-5xl lg:text-6xl xl:text-[4.5rem]">
+      <h3 className="absolute top-0 left-0 p-2 h-1/5 w-full text-4xl italic flex flex-col uppercase justify-center items-center sm:items-start sm:justify-center sm:text-5xl lg:text-6xl xl:text-[4.5rem]">
         what defines me
       </h3>
 
-      {/* left side */}
       <div className="relative w-1/2 h-full">
-        {/* 3d scene */}
         <div className="absolute w-full h-3/5 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
           <Canvas className="rounded-e-full shadow-2xl">
             <PerspectiveCamera
@@ -130,7 +145,7 @@ const AboutMe = () => {
               target={[5, 0, 0]}
             />
           </Canvas>
-          {/* handle camera for user */}
+
           <div className="absolute flex justify-center items-center left-1/2 transform -translate-x-1/2">
             <div className="flex justify-center items-center mr-2">
               {!cameraActivated && (
@@ -162,42 +177,35 @@ const AboutMe = () => {
         </div>
       </div>
 
-      {/* right side */}
-      <div className="relative w-1/2 h-full flex flex-col ps-2 pe-2 justify-around">
-        <div className="pt-6 sm:pr-6 flex flex-col">
-          <ul className="flex flex-col text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-transparent items-end">
-            {WordList.map((word) => (
-              <ListItem
-                className={`relative cursor-pointer pb-4 ${
-                  hovered ? "opacity-100" : ""
-                }`}
-                key={word.keyword}
-                text={word.keyword}
-                onMouseEnter={() => {
-                  setWordHovered(word.keyword);
-                  setIsHovered(true);
-                }}
-                onMouseLeave={() => {
-                  setWordHovered("");
-                  setIsHovered(false);
-                }}
-              >
-                {word.keyword}
-              </ListItem>
-            ))}
-          </ul>
-          <div className="quoteBox flex justify-center items-center">
-            <p
-              className={
-                "relative font-bold p-2 text-xl bg-slate-50 rounded-3xl text-center text-black"
-              }
+      <div className="relative w-1/2 h-full flex flex-col ps-2 pe-2">
+        <ul className="h-1/2 lg:h-2/3 pt-32 flex flex-col text-3xl sm:text-4xl lg:text-5xl xl:text-6xl justify-center items-center">
+          {WordList.map((word) => (
+            <ListItem
+              className="pt-1 active:bg-transparent"
+              key={word.keyword}
+              text={word.keyword}
+              onMouseEnter={() => {
+                setWordHovered(word.keyword);
+              }}
+              onMouseLeave={() => {
+                setWordHovered("");
+              }}
             >
-              <BiSolidQuoteRight className="absolute left-0 -top-6 w-6 h-6" />
-              {wordHovered !== "" &&
-                WordList.find((el) => el.keyword === wordHovered).quote}
-              <BiSolidQuoteRight className="absolute right-0 -bottom-6 w-6 h-6" />
-            </p>
-          </div>
+              {word.keyword}
+            </ListItem>
+          ))}
+        </ul>
+        <div className="quoteBox pt-10 pb-16 lg:pr-10 lg:pl-10 h-1/2 lg:h-1/3 flex justify-center items-center">
+          <p
+            className={`relative w-fit pl-6 pr-6 text-xl lg:text-2xl xl:text-3xl text-center italic bg-transparent rounded-3xl text-black font-semibold }`}
+          >
+            <BiSolidQuoteRight className="absolute left-0 -top-6 w-6 h-6 text-[#606887]" />
+            {wordHovered !== "" &&
+              WordList.find((el) => el.keyword === wordHovered).quote}
+            {wordHovered === "" &&
+              "Drag the mouse over a word to reveal a quote"}
+            <BiSolidQuoteRight className="absolute right-0 -bottom-6 w-6 h-6 text-[#606887]" />
+          </p>
         </div>
       </div>
     </div>

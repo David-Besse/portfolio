@@ -1,17 +1,17 @@
+import { useEffect, useRef } from "react";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
+
 import { useForm } from "react-hook-form";
-import { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 import "./contact.scss";
 import Modal from "../Modal/Modal";
+import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
 const Contact = () => {
-  const {
-    setContactModalisOpened,
-    setContactModalMessage,
-  } = useStore(useStoreApp);
+  const { setContactModalisOpened, setContactModalMessage } =
+    useStore(useStoreApp);
   const {
     register,
     handleSubmit,
@@ -53,13 +53,23 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="contact relative h-screen w-screen flex flex-col bg-[#f3f2f9] snap-center"
+      className="relative h-screen w-screen bg-[#d4cacdff] snap-center flex flex-col"
     >
       <Modal />
 
-      <h2 className="absolute top-2 left-2 text-xl sm:text-2xl font-bold">
-        .contact
-      </h2>
+      <h2 className="absolute top-2 left-2 text-xl sm:text-2xl">.contact</h2>
+      <BackgroundDiv
+        path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
+        color="#cee5e3ff"
+        width="100%"
+        height="100%"
+      />
+      <BackgroundDiv
+        path="50% 100%, 75% 100%, 100% 50%, 100% 0%"
+        color="#ad8b75ff"
+        width="100%"
+        height="100%"
+      />
 
       <div className="absolute w-full self-center top-1/2 transform -translate-y-1/2 flex flex-col gap-4 sm:gap-16 ps-2 pe-2 sm:p-0">
         <p className="text-center mt-1 mb-1">

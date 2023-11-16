@@ -1,3 +1,5 @@
+
+import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import "./home.scss";
 import Logo from "/logo.png";
 import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
@@ -6,11 +8,23 @@ const Home = () => {
   return (
     <div
       id="homePage"
-      className="homePage h-screen flex-col bg-[#f3f2f9] snap-center"
+      className="h-screen w-screen flex flex-col bg-[#d4cacdff] snap-center"
     >
-      <header className="h-1/6 p-2 sm:p-4 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-2">
-        <img src={Logo} alt="logo" className="rounded-xl w-32 h-32" />
-        <ul className="flex items-center justify-center gap-8">
+      <BackgroundDiv
+        path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
+        color="#cee5e3ff"
+        width="100%"
+        height="100%"
+      />
+      <BackgroundDiv
+        path="50% 100%, 75% 100%, 100% 50%, 100% 0%"
+        color="#ad8b75ff"
+        width="100%"
+        height="100%"
+      />
+      <header className="h-1/6 p-2 sm:p-4 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-2 z-10">
+        <img src={Logo} alt="logo" className="rounded-xl w-32 h-32 z-10" />
+        <ul className="flex items-center justify-center gap-8 z-10">
           <li className="myCv w-22 h-16 flex justify-center items-center">
             <a
               href="#"
@@ -45,11 +59,8 @@ const Home = () => {
           </li>
         </ul>
       </header>
-      <section className="h-5/6 flex flex-col lg:flex-row lg:pl-14 xl:pl-40 md:pr-0">
-        <div
-          className={`home_left w-screen lg:w-2/5 h-1/3 lg:h-full 2xl:pl-36 flex flex-col pt-4 lg:pt-20 px-10 md:px-16 lg:px-0 gap-4 lg:gap-12 fade-in
-          }`}
-        >
+      <section className="h-5/6 flex flex-col lg:flex-row lg:pl-14 xl:pl-40 md:pr-0 z-10">
+        <div className="home_left w-screen lg:w-2/5 h-1/3 lg:h-full 2xl:pl-36 flex flex-col pt-4 lg:pt-20 px-10 md:px-16 lg:px-0 gap-4 lg:gap-12 fade-in z-10">
           <h2 className="text-6xl lg:text-8xl font-extrabold">My motto</h2>
           <q className="text-xl lg:text-2xl xl:text-4xl italic text-center">
             For the things we have to learn before we can do them, we learn by
@@ -67,10 +78,7 @@ const Home = () => {
             </a>
           </cite>
         </div>
-        <div
-          className={`home_right w-screen lg:w-3/5 h-2/3 lg:h-full pt-8 md:pt-0 lg:pt-20 fade-in
-          }`}
-        >
+        <div className="home_right w-screen lg:w-3/5 h-2/3 lg:h-full pt-8 md:pt-0 lg:pt-20 fade-in z-10">
           <img
             src="/home_right.png"
             alt="screen animated"
