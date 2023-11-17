@@ -4,10 +4,9 @@ import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import CloudSphere from "./CloudSphere/CloudSphere";
 import RigMySkills from "./RigMySkills/RigMySkills";
+import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
 import "./mySkills.scss";
-import { Sky } from "@react-three/drei";
-import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
 const MySkills = () => {
   return (
@@ -30,12 +29,11 @@ const MySkills = () => {
         width="100%"
         height="100%"
       />
-      <div className="h-2/3 w-1/2 absolute top-1/2 transform -translate-y-1/2 right-0">
-        <Canvas className="rounded-s-full shadow-2xl">
+      <div className="h-2/3 w-[75vh] absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+        <Canvas className="rounded-full">
           <fog attach="fog" args={["#202025", 40, 80]} />
-          <color attach={"background"} args={["black"]} />
+          {/* <color attach={'background'} args={["#222"]} /> */}
           <RigMySkills />
-          <Sky />
           <Suspense>
             <CloudSphere count={16} radius={60} />
           </Suspense>

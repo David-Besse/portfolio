@@ -27,10 +27,10 @@ const MyWorks = () => {
         width="100%"
         height="100%"
       />
-      <div className="h-full w-full sm:flex">
-        <ul className=" flex justify-center items-end text-4xl pb-1 sm:flex-col sm:pb-16 sm:w-1/4 sm:h-full lg:text-5xl xl:text-6xl gap-3">
-          {WorksList.map((item) => (
-            <Sheet key={`div_${item.projectName}`} item={item} />
+      <div className="h-full w-full">
+        <ul className="flex justify-center items-center gap-3">
+          {WorksList.map((project) => (
+            <Sheet key={`div_${project.projectName}`} project={project} />
           ))}
         </ul>
       </div>

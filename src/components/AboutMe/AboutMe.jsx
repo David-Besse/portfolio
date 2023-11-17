@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, Suspense, useRef } from "react";
-
-import styled from "styled-components";
+import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import {
   OrbitControls,
@@ -10,20 +9,23 @@ import {
   ContactShadows,
   PerspectiveCamera,
 } from "@react-three/drei";
-import * as THREE from "three";
+import styled from "styled-components";
+
 import { HiInformationCircle } from "react-icons/hi";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { BsFillCameraVideoOffFill } from "react-icons/bs";
 import { BiSolidQuoteRight } from "react-icons/bi";
+
 import BackgroundStars from "./Scene/BackgroundStars/BackgroundStars";
 import Avatar from "./Scene/Avatar/Avatar";
 import WordList from "../../datas/WordList";
-import "./aboutMe.scss";
 import Loader from "./Scene/Loader/Loader";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
+import "./aboutMe.scss";
+
 const ListItem = styled.li`
-  -webkit-text-stroke: 1px #606887;
+  -webkit-text-stroke: 1.7px #606887;
   color: white;
   position: relative;
   cursor: pointer;
@@ -93,7 +95,7 @@ const AboutMe = () => {
 
       <div className="relative w-1/2 h-full">
         <div className="absolute w-full h-3/5 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-          <Canvas className="rounded-e-full shadow-2xl">
+          <Canvas className="rounded-e-full">
             <PerspectiveCamera
               ref={camRef}
               makeDefault
@@ -134,7 +136,7 @@ const AboutMe = () => {
             </Suspense>
             <mesh position-y={-5.02} rotation-x={-Math.PI / 2}>
               <circleGeometry args={[25, 64]} />
-              <meshStandardMaterial color={"white"} side={THREE.DoubleSide} />
+              <meshStandardMaterial color={'white'} side={THREE.DoubleSide} opacity={1} />
             </mesh>
             <OrbitControls
               enabled

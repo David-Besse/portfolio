@@ -7,15 +7,16 @@ import {
   Divider,
   Link,
   Image,
+  useDisclosure,
 } from "@nextui-org/react";
-import gsap from "gsap";
-import { useRef, useState } from "react";
 import styled from "styled-components";
+import Draggable from "react-draggable";
+import ModalPreview from "../ModalPreview/ModalPreview";
 
-import WorksList from "../../../datas/WorksList";
 import "./Sheet.scss";
+import { useRef } from "react";
 
-const ListItem = styled.li`
+const NewPTag = styled.p`
   &::before {
     content: "${({ text }) => text}";
   }
@@ -33,71 +34,105 @@ const ListItem = styled.li`
   }
 `;
 
-const Sheet = ({ item }) => {
-  const [projectSelected, setProjectSelected] = useState("");
-  const tvRef = useRef()
+const Sheet = ({ project }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const sheetRef = useRef(null);
 
-  const handleProjectInformation = (projectName) => {
-    setProjectSelected(projectName);
-
-    gsap.timeline({ delay: 0.2 }).fromTo(
-      tvRef.current,
-      { display: "none", opacity: 0 },
-      {
-        display: "flex",
-        opacity: 1,
-        duration: 0.8,
-        ease: "ease-in-out",
-      }
-    );
+  const handleModalPreview = () => {
+    onOpen();
   };
 
   return (
     <>
-      <Card className="max-w-[400px] text-lg">
-        <CardHeader className="flex gap-3">
-          <Image
-            alt="nextui logo"
-            height={40}
-            radius="sm"
-            src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-            width={40}
-          />
-          <div className="flex flex-col">
-            <div
-              key={`div_${item.projectName}`}
-              className="div_listItem relative flex justify-center text-2xl"
-            >
-              <ListItem
-                className="listItem w-fit ml-2 mr-2 sm:mb-4 cursor-pointer"
-                text={item.projectName}
-                onClick={() => handleProjectInformation(item.projectName)}
-              >
-                <span className="spanList">{item.projectName}</span>
-              </ListItem>
-            </div>
-            <p className="text-small text-default-500"> Click on the name to see project in live preview</p>
-          </div>
-        </CardHeader>
-        <Divider />
-        <CardBody>
-          <p>Make beautiful websites regardless of your design experience.</p>
-        </CardBody>
-        <Divider />
-        <CardFooter>
-          <Link
-            isExternal
-            showAnchorIcon
-            href="https://github.com/nextui-org/nextui"
-          >
-            Visit source code on GitHub.
-          </Link>
-        </CardFooter>
-      </Card>
-      {projectSelected !== "" && (
+      <Draggable nodeRef={sheetRef} bounds="body">
+        <div ref={sheetRef} className="sheet">
+          <Card className="w-[400px] h-[318px]">
+            <CardHeader className="flex flex-col gap-3">
+              {/* <Image
+                alt="nextui logo"
+                height={40}
+                radius="sm"
+                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+                width={40}
+              /> */}
+              <div className="flex flex-col">
+                <div
+                  key={`div_${project.projectName}`}
+                  className="div_listItem relative flex justify-center text-4xl"
+                >
+                  <NewPTag
+                    className="listItem w-fit ml-2 mr-2 sm:mb-4 cursor-pointer"
+                    text={project.projectName}
+                    onClick={() => handleModalPreview()}
+                  >
+                    <span className="spanList">{project.projectName}</span>
+                  </NewPTag>
+                </div>
+                <p className="text-small text-default-500">
+                  {" "}
+                  Click on the name to see project in live preview
+                </p>
+              </div>
+            </CardHeader>
+            <Divider />
+            <CardBody>
+              <ul className="text-base">{project.stack}</ul>
+            </CardBody>
+            <Divider />
+            <CardFooter className="justify-between items-center">
+              <p className="text-sm font-normal italic text-gray-600">
+                Source code on GitHub
+              </p>
+              <p className="">
+                {project.src.front !== "" && (
+                  <Link
+                    isExternal
+                    showAnchorIcon
+                    href={project.src.front}
+                    key={project.src.front}
+                    className=""
+                  >
+                    front
+                  </Link>
+                )}
+                {project.src.back !== "" && (
+                  <Link
+                    isExternal
+                    showAnchorIcon
+                    href={project.src.back}
+                    key={project.src.back}
+                    className="ms-2"
+                  >
+                    back
+                  </Link>
+                )}
+              </p>
+            </CardFooter>
+          </Card>
+        </div>
+      </Draggable>
+      <ModalPreview project={project} isOpen={isOpen} onClose={onClose} />
+    </>
+  );
+};
+
+Sheet.propTypes = {
+  project: PropTypes.shape({
+    projectName: PropTypes.string,
+    src: PropTypes.shape({
+      front: PropTypes.string,
+      back: PropTypes.string,
+    }),
+    stack: PropTypes.arrayOf(PropTypes.string),
+  }),
+};
+
+export default Sheet;
+
+{
+  /* {projectSelected !== "" && (
           <div
             className="w-full h-[88%] sm:w-3/4 sm:h-full hidden justify-center sm:pt-14 pb-20 items-start sm:items-center z-10"
-            ref={tvRef}
           >
             {projectSelected === WorksList[0].projectName && (
               <iframe
@@ -112,15 +147,5 @@ const Sheet = ({ item }) => {
               </div>
             )}
           </div>
-        )}
-    </>
-  );
-};
-
-Sheet.propTypes = {
-  item: PropTypes.shape({
-    projectName: PropTypes.any,
-  }),
-};
-
-export default Sheet;
+        )} */
+}
