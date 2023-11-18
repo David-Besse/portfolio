@@ -10,6 +10,8 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 import "./app.scss";
+import { useStore } from "zustand";
+import useStoreApp from "../Store/app.store";
 
 const splashTitleText = "DAVID BESSE";
 const splashTitleLetters = splashTitleText.split("");
@@ -19,9 +21,45 @@ const spanUnderTitleText = "fullstack web developer.";
 const spanUnderTitleLetters = spanUnderTitleText.split("");
 
 const App = () => {
+  const { setActiveSection } = useStore(useStoreApp);
+
   const titleRef = useRef();
   const spanOverRef = useRef();
   const spanUnderRef = useRef();
+  const mainContainerRef = useRef();
+  const sectionRefs = {
+    home: useRef(),
+    aboutMe: useRef(),
+    myWorks: useRef(),
+    mySkills: useRef(),
+    contact: useRef(),
+  };
+
+  /**
+   * Handles the scroll event and updates the current section based on the visible section.
+   *
+   * @param {none} none - This function does not take any parameters.
+   * @return {none} This function does not return any value.
+   */
+  const handleScroll = () => {
+    Object.values(sectionRefs).forEach((ref) => {
+      if (ref.current) {
+        const { top, bottom } = ref.current.getBoundingClientRect();
+        const isFullyInView = top >= 0 && bottom <= window.innerHeight;
+
+        if (isFullyInView) {
+          const sectionId = ref.current.id;
+          setActiveSection(sectionId);
+        }
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (mainContainerRef.current) {
+      mainContainerRef.current.addEventListener("scroll", handleScroll);
+    }
+  }, [mainContainerRef]);
 
   useEffect(() => {
     const title = Array.from(titleRef.current.children);
@@ -67,6 +105,7 @@ const App = () => {
         onComplete: () => {
           gsap.set("#titleContainer", { display: "none" });
           gsap.set("#mainContainer", { display: "block" });
+          setActiveSection("homePage");
         },
       });
 
@@ -85,11 +124,13 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <>
+      {/* Title Container */}
       <div
         id="titleContainer"
         className="titleContainer h-screen w-screen p-8 bg-white flex flex-col justify-center text-[#606887]"
       >
+        {/* Span Over Title */}
         <div
           className="spanOver text-start text-xl md:text-3xl lg:pl-14 xl:pl-28 2xl:pl-56"
           ref={spanOverRef}
@@ -100,6 +141,7 @@ const App = () => {
             </span>
           ))}
         </div>
+        {/* Main Title */}
         <h1
           className="title w-full flex py-4 lg:py-8 xl:py-16 text-4xl md:text-6xl justify-center"
           ref={titleRef}
@@ -113,6 +155,7 @@ const App = () => {
             </span>
           ))}
         </h1>
+        {/* Span Under Title */}
         <div
           className="spanUnder text-end text-xl md:text-3xl lg:pr-14 xl:pr-28 2xl:pr-56"
           ref={spanUnderRef}
@@ -128,23 +171,61 @@ const App = () => {
         </div>
       </div>
 
+      {/* Main Container */}
       <div
         id="mainContainer"
         className="mainContainer relative h-screen w-screen text-[#606887] hidden"
+        ref={mainContainerRef}
       >
+        {/* Navbar */}
         <Navbar />
 
-        <Home />
+        {/* Home Page Section */}
+        <section
+          id="homePage"
+          className="h-screen w-screen flex flex-col bg-[white] snap-center"
+          ref={sectionRefs.home}
+        >
+          <Home />
+        </section>
 
-        <AboutMe />
+        {/* About Me Section */}
+        <section
+          id="aboutMe"
+          className="relative flex h-screen w-screen bg-[white] snap-center"
+          ref={sectionRefs.aboutMe}
+        >
+          <AboutMe />
+        </section>
 
-        <MyWorks />
+        {/* My Works Section */}
+        <section
+          id="myWorks"
+          className="relative h-screen w-screen bg-[white] snap-center"
+          ref={sectionRefs.myWorks}
+        >
+          <MyWorks />
+        </section>
 
-        <MySkills />
+        {/* My Skills Section */}
+        <section
+          id="mySkills"
+          className="relative h-screen w-screen bg-[white] snap-center"
+          ref={sectionRefs.mySkills}
+        >
+          <MySkills />
+        </section>
 
-        <Contact />
+        {/* Contact Section */}
+        <section
+          id="contact"
+          className="relative h-screen w-screen bg-[white] snap-center flex flex-col"
+          ref={sectionRefs.contact}
+        >
+          <Contact />
+        </section>
       </div>
-    </div>
+    </>
   );
 };
 

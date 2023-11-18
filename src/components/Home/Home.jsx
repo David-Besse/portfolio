@@ -1,15 +1,17 @@
-
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import "./home.scss";
 import Logo from "/logo.png";
 import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
 
+/**
+ * Renders the Home component.
+ *
+ * @return {JSX.Element} The JSX element representing the Home component.
+ */
 const Home = () => {
   return (
-    <div
-      id="homePage"
-      className="h-screen w-screen flex flex-col bg-[white] snap-center"
-    >
+    <>
+    {/* BackgroundDiv component with specific props */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
         color="#cee5e3ff"
@@ -22,9 +24,13 @@ const Home = () => {
         width="100%"
         height="100%"
       />
-      <header className="h-1/6 p-2 sm:p-4 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-2 z-10">
+
+      {/* Header section */}
+      <header className="h-1/6 p-2 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-2 z-10">
+        {/* Logo */}
         <img src={Logo} alt="logo" className="rounded-xl w-30 h-30 z-10" />
-        <ul className="flex items-center justify-center gap-8 z-10">
+        {/* CV + socials networks */}
+        <ul className="pe-4 flex items-center justify-center gap-8 z-10">
           <li className="myCv w-22 h-16 flex justify-center items-center">
             <a
               href="#"
@@ -59,7 +65,10 @@ const Home = () => {
           </li>
         </ul>
       </header>
-      <section className="h-5/6 flex flex-col lg:flex-row lg:pl-14 xl:pl-40 md:pr-0 z-10">
+
+      {/* Main content section */}
+      <div className="h-5/6 flex flex-col lg:flex-row lg:pl-14 xl:pl-40 md:pr-0 z-10">
+        {/* Left side content */}
         <div className="home_left w-screen lg:w-2/5 h-1/3 lg:h-full 2xl:pl-36 flex flex-col pt-4 lg:pt-20 px-10 md:px-16 lg:px-0 gap-4 lg:gap-12 fade-in z-10">
           <h2 className="text-6xl lg:text-8xl font-extrabold">My motto</h2>
           <q className="text-xl lg:text-2xl xl:text-4xl italic text-center">
@@ -78,6 +87,7 @@ const Home = () => {
             </a>
           </cite>
         </div>
+        {/* Right side content */}
         <div className="home_right w-screen lg:w-3/5 h-2/3 lg:h-full pt-8 md:pt-0 lg:pt-20 fade-in z-10">
           <img
             src="/home_right.png"
@@ -85,8 +95,9 @@ const Home = () => {
             className="home_right_img w-4/5 md:w-3/6 lg:w-5/6 xl:w-4/6 2xl:w-3/6 m-auto"
           />
         </div>
-      </section>
-    </div>
+      </div>
+      
+    </>
   );
 };
 

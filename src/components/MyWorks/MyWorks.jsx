@@ -6,15 +6,19 @@ import WorksList from "../../datas/WorksList";
 
 import "./myWorks.scss";
 
+/**
+ * Renders the "MyWorks" component.
+ *
+ * @return {JSX.Element} The rendered component.
+ */
 const MyWorks = () => {
   return (
-    <div
-      id="myWorks"
-      className="relative h-screen w-screen bg-[white] snap-center"
-    >
-      <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl">
+    <>
+      {/* Heading */}
+      <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl z-10">
         .myWorks
       </h2>
+      {/* Background Div */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
         color="#cee5e3ff"
@@ -27,14 +31,16 @@ const MyWorks = () => {
         width="100%"
         height="100%"
       />
+      {/* Works List */}
       <div className="h-full w-full">
         <ul className="flex justify-center items-center gap-3">
+          {/* Map over WorksList and render each project */}
           {WorksList.map((project) => (
             <Sheet key={`div_${project.projectName}`} project={project} />
           ))}
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 

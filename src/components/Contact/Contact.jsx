@@ -10,7 +10,7 @@ import Modal from "../Modal/Modal";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
 const Contact = () => {
-  const { setContactModalisOpened, setContactModalMessage } =
+  const { activeSection, setContactModalisOpened, setContactModalMessage } =
     useStore(useStoreApp);
   const {
     register,
@@ -44,20 +44,19 @@ const Contact = () => {
       });
   };
 
-  // useEffect(() => {
-  //   if (currentSection !== "contact") {
-  //     reset();
-  //   }
-  // }, [currentSection, reset]);
+  useEffect(() => {
+    if (activeSection !== "contact") {
+      reset();
+    }
+  }, [activeSection, reset]);
 
   return (
-    <div
-      id="contact"
-      className="relative h-screen w-screen bg-[white] snap-center flex flex-col"
-    >
+    <>
       <Modal />
 
-      <h2 className="absolute top-2 left-2 text-xl sm:text-2xl">.contact</h2>
+      <h2 className="absolute top-2 left-2 text-xl sm:text-2xl z-10">
+        .contact
+      </h2>
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
         color="#cee5e3ff"
@@ -154,7 +153,7 @@ const Contact = () => {
           />
         </form>
       </div>
-    </div>
+    </>
   );
 };
 
