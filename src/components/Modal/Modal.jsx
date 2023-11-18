@@ -5,39 +5,38 @@ import { useTransition, animated } from "@react-spring/web";
 
 const Modal = () => {
   const {
-    contactModalisOpened,
-    contactModalMessage,
-    setContactModalisOpened,
+    contactModal,
+    setContactModal,
   } = useStore(useStoreApp);
 
   useEffect(() => {
     const rootElement = document.getElementById("root");
-    rootElement.style.pointerEvents = contactModalisOpened ? "none" : "auto";
+    rootElement.style.pointerEvents = contactModal.isOpened ? "none" : "auto";
 
     return () => {
       rootElement.style.pointerEvents = "auto";
     };
-  }, [contactModalisOpened]);
+  }, [contactModal]);
 
-  const transitions = useTransition(contactModalisOpened, {
+  const transitions = useTransition(contactModal.isOpened, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: { duration: 300 },
+    config: { duration: 200 },
   });
 
   const onClose = useCallback(() => {
-    setContactModalisOpened();
-  }, [setContactModalisOpened]);
+    setContactModal();
+  }, [setContactModal]);
 
   return transitions(
     (style, item) =>
       item && (
         <animated.div
           style={style}
-          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center rounded-xl bg-gray-100 p-4 border border-[#9bbbf7] shadow-[-4px_4px_4px_rgba(59,130,246,0.5)] z-50"
+          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center rounded-xl bg-gray-100 p-4 border border-[#9bbbf7] shadow-[-4px_4px_4px_#cadfd3] z-50"
         >
-          <p className="">{contactModalMessage}</p>
+          <p className="">{contactModal.message}</p>
           <span
             className="cursor-pointer text-4xl ms-4 pointer-events-auto"
             onClick={onClose}

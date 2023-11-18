@@ -10,7 +10,7 @@ import Modal from "../Modal/Modal";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
 const Contact = () => {
-  const { activeSection, setContactModalisOpened, setContactModalMessage } =
+  const { activeSection, setContactModal } =
     useStore(useStoreApp);
   const {
     register,
@@ -28,14 +28,12 @@ const Contact = () => {
     emailjs
       .sendForm(serviceId, templateId, formRef.current, rhfId)
       .then(() => {
-        setContactModalisOpened(true);
-        setContactModalMessage(
+        setContactModal(
           "Message sent! Thank you for your interest in me."
         );
       })
       .catch(() => {
-        setContactModalisOpened(true);
-        setContactModalMessage(
+        setContactModal(
           "Your message could not be sent. Please contact me by email."
         );
       })
@@ -59,19 +57,19 @@ const Contact = () => {
       </h2>
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
-        color="#cee5e3ff"
+        color="#cadfd3"
         width="100%"
         height="100%"
       />
       <BackgroundDiv
         path="50% 100%, 75% 100%, 100% 50%, 100% 0%"
-        color="#ad8b75ff"
+        color="#ad8b75ff "
         width="100%"
         height="100%"
       />
 
-      <div className="absolute w-full self-center top-1/2 transform -translate-y-1/2 flex flex-col gap-4 sm:gap-16 ps-2 pe-2 sm:p-0">
-        <p className="text-center mt-1 mb-1">
+      <div className="absolute w-full h-[80%] top-1/2 transform -translate-y-1/2 flex flex-col gap-6 sm:gap-16 ps-2 pe-2 sm:p-0">
+        <p className="text-center my-1 text-xl first-letter:text-4xl px-10 tracking-wide">
           Get in touch or shoot me an email directly on{" "}
           <a className="text-[#00a1ec]" href="mailto: dahodprod@gmail.com">
             dahodprod@gmail.com
@@ -80,13 +78,13 @@ const Contact = () => {
 
         <form
           ref={formRef}
-          className="w-[90%] sm:w-[400px] text-sm flex flex-col self-center gap-2"
+          className="w-[90%] sm:w-[400px] text-sm flex flex-col self-center gap-1"
           onSubmit={handleSubmit(onSubmit)}
         >
           <input
             type="text"
             placeholder=" first name"
-            className="rounded-3xl p-1 border-4"
+            className="rounded-3xl p-1 border-4 tracking-wide"
             {...register("firstname", {
               required: "required field.",
               minLength: {
@@ -103,7 +101,7 @@ const Contact = () => {
           <input
             type="text"
             placeholder=" last name"
-            className="rounded-3xl p-1 border-4"
+            className="rounded-3xl p-1 border-4 tracking-wide"
             {...register("lastname", {
               required: "required field.",
               minLength: {
@@ -120,7 +118,7 @@ const Contact = () => {
           <input
             type="text"
             placeholder=" email"
-            className="rounded-3xl p-1 border-4"
+            className="rounded-3xl p-1 border-4 tracking-wide"
             {...register("mail", {
               required: "required field.",
               pattern: {
@@ -133,7 +131,7 @@ const Contact = () => {
           <textarea
             type="text"
             placeholder=" message..."
-            className="h-[250px] rounded-lg p-1 border-4"
+            className="h-[250px] rounded-lg p-1 border-4 tracking-wide"
             {...register("yourmessage", {
               required: "required field.",
               minLength: {
@@ -148,7 +146,7 @@ const Contact = () => {
           />
           <p className="text-red-500">{errors.yourmessage?.message}</p>
           <input
-            className="cursor-pointer w-fit self-end active:bg-transparent active:text-[#00a1ec] text-lg rounded-lg p-1"
+            className="cursor-pointer w-fit self-end active:bg-transparent active:text-[#00a1ec] text-lg rounded-lg p-1 tracking-wide"
             type="submit"
           />
         </form>

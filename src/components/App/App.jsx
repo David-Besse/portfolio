@@ -174,7 +174,7 @@ const App = () => {
       {/* Main Container */}
       <div
         id="mainContainer"
-        className="mainContainer relative h-screen w-screen text-[#606887] hidden"
+        className="mainContainer relative h-screen w-screen text-[#606887] hidden bg-[white]"
         ref={mainContainerRef}
       >
         {/* Navbar */}
@@ -183,7 +183,7 @@ const App = () => {
         {/* Home Page Section */}
         <section
           id="homePage"
-          className="h-screen w-screen flex flex-col bg-[white] snap-center"
+          className="h-screen w-screen flex flex-col snap-center"
           ref={sectionRefs.home}
         >
           <Home />
@@ -192,7 +192,7 @@ const App = () => {
         {/* About Me Section */}
         <section
           id="aboutMe"
-          className="relative flex h-screen w-screen bg-[white] snap-center"
+          className="relative flex h-screen w-screen snap-center"
           ref={sectionRefs.aboutMe}
         >
           <AboutMe />
@@ -201,7 +201,7 @@ const App = () => {
         {/* My Works Section */}
         <section
           id="myWorks"
-          className="relative h-screen w-screen bg-[white] snap-center"
+          className="relative h-screen w-screen snap-center"
           ref={sectionRefs.myWorks}
         >
           <MyWorks />
@@ -210,7 +210,7 @@ const App = () => {
         {/* My Skills Section */}
         <section
           id="mySkills"
-          className="relative h-screen w-screen bg-[white] snap-center"
+          className="relative h-screen w-screen snap-center"
           ref={sectionRefs.mySkills}
         >
           <MySkills />

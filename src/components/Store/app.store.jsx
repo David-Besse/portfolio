@@ -1,27 +1,20 @@
 import { create } from "zustand";
 
 const useStoreApp = create((set) => ({
-  contactModalisOpened: false,
-  contactModalMessage: "message à lire",
+  // State
+  contactModal: { isOpened: false, message: "" },
   activeSection: "",
 
   /**
-   * Sets the value of contactModalisOpened in the state to the opposite of its current value.
+   * Set the state of the contact modal.
    *
-   * @return {void} No return value
+   * @param {any} value - The value to be assigned to the contact modal state.
+   * @return {void} This function does not return anything.
    */
-  setContactModalisOpened: () =>
+  setContactModal: (value = "") =>
     set((state) => ({
-      contactModalisOpened: !state.contactModalisOpened,
+      contactModal: { isOpened: !state.contactModal.isOpened, message: value },
     })),
-
-  /**
-   * Sets the value of the `contactModalMessage` property in the state.
-   *
-   * @param {any} value - The new value for the `contactModalMessage` property.
-   * @return {void} This function does not return a value.
-   */
-  setContactModalMessage: (value) => set({ contatModalMessage: value }),
 
   /**
    * Sets the active section to the specified value.

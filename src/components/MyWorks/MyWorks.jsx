@@ -21,13 +21,13 @@ const MyWorks = () => {
       {/* Background Div */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
-        color="#cee5e3ff"
+        color="#cadfd3"
         width="100%"
         height="100%"
       />
       <BackgroundDiv
         path="50% 100%, 75% 100%, 100% 50%, 100% 0%"
-        color="#ad8b75ff"
+        color="#ad8b75ff "
         width="100%"
         height="100%"
       />
