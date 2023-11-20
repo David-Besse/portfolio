@@ -1,24 +1,16 @@
 #homePage {
   font-family: "Baloo Thambi 2", display;
 
-  header {
-    li {
-      color: #00a1ec;
-
-      &.myCv {
-        color: grey;
-      }
-    }
+  .logo{
+    font-family: "Architects Daughter", handwriting;
   }
 
   .home_left.fade-in{
-    animation: apparition_L 1s ease-out;
+    animation: apparition_L 2s ease-out;
   }
 
   .home_right.fade-in{
-    .home_right_img {
-      animation: apparition_R 1s ease-out;
-    }
+      animation: apparition_R 2s ease-out;
   }
 }
 
