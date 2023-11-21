@@ -23,14 +23,14 @@ const MySkills = () => {
       {/* Background Div 1 */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 0%, 0% 0%"
-        color="#cadfd3"
+        color="#e15d62"
         width="100%"
         height="100%"
       />
       {/* Background Div 2 */}
       <BackgroundDiv
         path="50% 0%, 100% 100%, 100% 50%, 75% 0%"
-        color="#ad8b75ff "
+        color="#b7e5e6 "
         width="100%"
         height="100%"
       />

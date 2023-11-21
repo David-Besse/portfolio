@@ -6,7 +6,7 @@ const BackgroundDivStyled = styled.div`
   top: 0;
   left: 0;
   z-index: 0;
-  opacity: 0.5;
+  opacity: 0.4;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   clip-path: polygon(${(props) => props.path});

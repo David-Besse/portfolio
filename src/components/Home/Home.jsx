@@ -24,13 +24,13 @@ const Home = () => {
       {/* BackgroundDiv component with specific props */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
-        color="#cadfd3"
+        color="#e15d62"
         width="100%"
         height="100%"
       />
       <BackgroundDiv
         path="50% 100%, 75% 100%, 100% 50%, 100% 0%"
-        color="#ad8b75ff "
+        color="#b7e5e6 "
         width="100%"
         height="100%"
       />
@@ -93,34 +93,39 @@ const Home = () => {
       </header>
 
       {/* Main content section */}
-      <section className="h-[85%] w-full flex flex-col lg:flex-row pb-16 z-10">
+      <main className="relative h-[85%] w-full flex flex-wrap lg:flex-col items-stretch pb-16 pl-4 pr-4 xl:pl-20 xl:pr-20 z-10 ">
         {/* Left side content */}
-        <div className="home_left w-full h-1/3 lg:w-2/6 lg:h-full flex flex-col justify-start text-xl lg:text-2xl xl:text-3xl pt-20 fade-in gap-3 text-end pl-20">
-          <p className="text-6xl font-extrabold">
-            Hello,
-          </p>
-          <p className="">My name is David.</p>
-          <p className="">I am a web developer,</p>
-          <p className=""> and I love to create websites.</p>
-        </div>
-
-        {/* center content */}
-        <div className="home_center w-full h-1/3 lg:w-2/6 lg:h-[80%] flex justify-center items-center self-center">
+        <section className="home_center w-1/2 h-2/3 lg:h-full lg:w-1/3 flex order-1 lg:order-none justify-center items-center z-10">
           <img
             src="/home_right.png"
             alt="my photo"
-            className="h-full opacity-60 transform rotate-12 rounded-se-[150px] rounded-es-[150px]"
+            className="photo h-2/3 sm:h-3/4 lg:h-2/3 -rotate-2 lg:-rotate-2 rounded border-4 shadow-xl rounded-se-[50px] rounded-es-[50px]"
           />
-        </div>
+        </section>
+
+        {/* center content */}
+        <section className="relative w-1/2 h-2/3 lg:w-2/3 lg:h-1/2 flex flex-col order-2 lg:order-none justify-center text-xl lg:text-2xl xl:text-3xl fade-in-L gap-1 lg:gap-3 text-end sm:text-start lg:px-8">
+          {/* Background Bubble */}
+          <div className="bgBuble absolute w-[60%] h-[12%] top-[27%] sm:w-[32%] sm:top-[30%] lg:top-[19%] lg:right-3 lg:h-[25%] xl:w-[25%] 2xl:w-[13%] -right-2 z-0"></div>
+          <p className="text-4xl sm:text-end lg:text-6xl font-extrabold pb-6 z-10">
+            Hello !
+          </p>
+          <p className="sm:text-end">My name is David.</p>
+          <p className="sm:text-end">
+            I am a web developer and I love to create websites.
+          </p>
+        </section>
 
         {/* Right side content */}
-        <div className="home_right w-full h-1/3 lg:w-2/6 lg:h-full flex flex-col justify-end pb-20 gap-8 fade-in text-start pr-20">
-          <h3 className="text-6xl lg:text-6xl font-extrabold ">My motto :</h3>
-          <q className="text-xl lg:text-2xl xl:text-3xl leading-normal">
+        <section className="w-full h-1/3 flex flex-col order-3 justify-start lg:justify-center gap-2 pr-4 pl-4 lg:w-2/3 lg:h-1/2 lg:order-none lg:px-8 sm:gap-4 lg:gap-8 fade-in-R">
+          <h3 className="text-2xl lg:text-4xl font-extrabold text-start sm:text-center italic">
+            My motto is . . .
+          </h3>
+          <q className="leading-normal text-lg lg:text-xl text-justify sm:text-center">
             For the things we have to learn before we can do them, we learn by
             doing them.
           </q>
-          <cite className="text-lg xl:text-xl text-gray-600 text-end">
+          <cite className="text-base text-gray-600 text-end">
             ― Aristotle,{" "}
             <a
               href="https://en.wikipedia.org/wiki/Nicomachean_Ethics"
@@ -132,8 +137,8 @@ const Home = () => {
               The Nicomachean Ethics
             </a>
           </cite>
-        </div>
-      </section>
+        </section>
+      </main>
     </>
   );
 };
