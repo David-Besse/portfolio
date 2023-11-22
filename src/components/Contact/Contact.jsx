@@ -57,14 +57,14 @@ const Contact = () => {
       </h2>
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
-        color="#e15d62"
+        color="#c4ae96"
         width="100%"
         height="100%"
       />
-      {/* green e15d62 */}
+      {/* green c4ae96 */}
       <BackgroundDiv
         path="50% 100%, 75% 100%, 100% 50%, 100% 0%"
-        color="#b7e5e6"
+        color="#89d6e8"
         width="100%"
         height="100%"
       />

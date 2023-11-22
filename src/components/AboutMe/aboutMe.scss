@@ -4,29 +4,144 @@
   .quoteBox {
     font-family: "Annie Use Your Telescope", handwriting;
   }
-  
-  .bgBuble {
-    background: linear-gradient(45deg, #ffe79a 0%, #f6c7b3 100%);
-    animation: morph 6s ease-in-out infinite;
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    transition: all 2s ease-in-out;
+
+  .ball {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    position: relative;
+    background: radial-gradient(
+      circle at bottom,
+      #81e8f6,
+      #76deef 10%,
+      #055194 80%,
+      #062745 100%
+    );
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 1%;
+      left: 5%;
+      width: 90%;
+      height: 90%;
+      border-radius: 100%;
+      background: radial-gradient(
+        circle at top,
+        white,
+        rgba(255, 255, 255, 0) 58%
+      );
+      filter: blur(5px);
+      z-index: 2;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: none;
+      top: 5%;
+      left: 10%;
+      width: 80%;
+      height: 80%;
+      border-radius: 100%;
+      filter: blur(1px);
+      z-index: 2;
+      transform: rotateZ(-30deg);
+    }
+
+    & .shadow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.1) 40%,
+        rgba(0, 0, 0, 0) 50%
+      );
+      transform: rotateX(90deg) translateZ(-160px);
+      z-index: 1;
+    }
+
+    &.plain {
+      background: black;
+    }
+
+    &.plain::before,
+    &.plain::after {
+      display: none;
+    }
+
+    &.bubble {
+      background: radial-gradient(
+        circle at 50% 55%,
+        rgba(240, 245, 255, 0.9),
+        rgba(240, 245, 255, 0.9) 40%,
+        rgba(225, 238, 255, 0.8) 60%,
+        rgba(43, 130, 255, 0.4)
+      );
+      animation: bubble-anim 10s ease-out infinite;
+    }
+
+    &.bubble::before {
+      filter: blur(0);
+      height: 80%;
+      width: 40%;
+      background: radial-gradient(
+        circle at 130% 130%,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0) 46%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0.8) 58%,
+        rgba(255, 255, 255, 0) 60%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
+    }
+
+    &.bubble::after {
+      display: block;
+      background: radial-gradient(
+        circle at 50% 80%,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0) 74%,
+        white 80%,
+        white 84%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
   }
 
+  .stage {
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+  }
 
-  @keyframes morph {
+  @keyframes bubble-anim {
     0% {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      background: linear-gradient(45deg, #ffe79a 0%, #f6c7b3 100%);
+      transform: scale(1);
     }
 
-    50% {
-      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-      background: linear-gradient(45deg, #f6c7b3 0%, #ffe79a 100%);
+    20% {
+      transform: scaleY(0.95) scaleX(1.05);
     }
 
+    48% {
+      transform: scaleY(1.1) scaleX(0.9);
+    }
+
+    68% {
+      transform: scaleY(0.98) scaleX(1.02);
+    }
+
+    80% {
+      transform: scaleY(1.02) scaleX(0.98);
+    }
+
+    97%,
     100% {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      background: linear-gradient(45deg, #ffe79a 0%, #f6c7b3 100%);
+      transform: scale(1);
     }
   }
 }

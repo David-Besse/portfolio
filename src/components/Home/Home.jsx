@@ -24,13 +24,13 @@ const Home = () => {
       {/* BackgroundDiv component with specific props */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
-        color="#e15d62"
+        color="#c4ae96"
         width="100%"
         height="100%"
       />
       <BackgroundDiv
         path="50% 100%, 75% 100%, 100% 50%, 100% 0%"
-        color="#b7e5e6 "
+        color="#89d6e8"
         width="100%"
         height="100%"
       />
@@ -104,12 +104,13 @@ const Home = () => {
         </section>
 
         {/* center content */}
-        <section className="relative w-1/2 h-2/3 lg:w-2/3 lg:h-1/2 flex flex-col order-2 lg:order-none justify-center text-xl lg:text-2xl xl:text-3xl fade-in-L gap-1 lg:gap-3 text-end sm:text-start lg:px-8">
+        <section className="relative w-1/2 h-2/3 lg:w-2/3 lg:h-1/2 flex flex-col order-2 lg:order-none justify-center lg:justify-end text-xl lg:text-2xl xl:text-3xl fade-in-L gap-1 lg:gap-3 text-end sm:text-start lg:px-8">
           {/* Background Bubble */}
-          <div className="bgBuble absolute w-[60%] h-[12%] top-[27%] sm:w-[32%] sm:top-[30%] lg:top-[19%] lg:right-3 lg:h-[25%] xl:w-[25%] 2xl:w-[13%] -right-2 z-0"></div>
-          <p className="text-4xl sm:text-end lg:text-6xl font-extrabold pb-6 z-10">
-            Hello !
-          </p>
+          <div className="bgBuble absolute w-[65%] h-[15%] top-[20%] sm:w-[32%] sm:top-[20%] lg:top-[30%] lg:h-[22%] lg:w-[25%] lg:right-8 xl:w-[25%] 2xl:w-[13%] right-0 z-0 flex justify-center items-center">
+            <p className="text-4xl sm:text-end lg:text-5xl font-extrabold z-10 whitespace-nowrap">
+              Hello !
+            </p>
+          </div>
           <p className="sm:text-end">My name is David.</p>
           <p className="sm:text-end">
             I am a web developer and I love to create websites.

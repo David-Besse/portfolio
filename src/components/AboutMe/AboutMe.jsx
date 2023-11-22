@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import { useState, Suspense, useRef } from "react";
+import { useState, Suspense, useRef, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   OrbitControls,
@@ -32,7 +32,7 @@ const ListItem = styled.li`
   &::after {
     content: "${(props) => props.text}"; // Display the value of the "text" prop
     position: absolute;
-    color: #606887;
+    color: #e79568;
     top: 0;
     left: 0;
     width: 0;
@@ -63,6 +63,24 @@ const AboutMe = () => {
   const [wordHovered, setWordHovered] = useState("");
   const [cameraActivated, setCameraActivated] = useState(false);
   const camRef = useRef();
+  const [camPosition, setCamPosition] = useState(
+    window.innerWidth < 600 ? [30, 4, 10] : [20, 6, -20]
+  );
+
+  useEffect(() => {
+    /**
+     * Handles the resize event.
+     *
+     * @param {number} value - The new value after the resize event.
+     * @return {void} This function does not return anything.
+     */
+    const handleResize = (value) => {
+      const camPosition = value < 600 ? [30, 4, 10] : [20, 6, -20];
+      setCamPosition(camPosition);
+    };
+
+    window.addEventListener("resize", () => handleResize(window.innerWidth));
+  }, [camRef]);
 
   /**
    * Resets the camera position.
@@ -71,7 +89,7 @@ const AboutMe = () => {
    * @return {type} description of return value
    */
   const resetCameraPosition = () => {
-    camRef.current.position.set(20, 2, -20);
+    camRef.current.position.set(20, 6, -20);
     camRef.current.lookAt(8, 5, 0);
   };
 
@@ -90,14 +108,14 @@ const AboutMe = () => {
       {/* BackgroundDiv component */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 0%, 0% 0%"
-        color="#e15d62"
+        color="#c4ae96"
         width="100%"
         height="100%"
       />
       {/* BackgroundDiv component */}
       <BackgroundDiv
         path="50% 0%, 100% 100%, 100% 50%, 75% 0%"
-        color="#b7e5e6 "
+        color="#89d6e8 "
         width="100%"
         height="100%"
       />
@@ -106,14 +124,17 @@ const AboutMe = () => {
         .aboutMe
       </h2>
       {/* Subheader */}
-      <h3 className="absolute top-10 h-fit p-3 flex justify-center items-center text-4xl italic uppercase  left-1/2 transform -translate-x-1/2 whitespace-nowrap sm:text-5xl lg:text-6xl xl:text-[4.5rem] ">
+      <h3 className="absolute top-10 p-3 flex justify-center items-center text-4xl italic uppercase left-1/2 transform -translate-x-1/2 whitespace-nowrap sm:text-5xl lg:text-6xl xl:text-[4.5rem] z-10">
         what defines me
       </h3>
 
       {/* left side */}
-      <div className="relative w-2/3 h-full">
+      <div className="relative w-full sm:w-2/3 h-full">
         {/* Background Bubble */}
-        <div className="bgBuble absolute w-[70%] h-2/5 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 z-0"></div>
+        {/* <div className="ball absolute w-[48%] h-[50%] top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 z-0 shadow-2xl"></div> */}
+        <section className="stage absolute w-[60vh] h-[60%] top-[17%] left-1/2 transform -translate-x-1/2">
+          <figure className="ball bubble shadow-2xl" />
+        </section>
 
         {/* Canvas component */}
         <div className="absolute w-full h-full top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
@@ -122,8 +143,9 @@ const AboutMe = () => {
             <PerspectiveCamera
               ref={camRef}
               makeDefault
-              position={[20, 2, -20]}
+              position={camPosition}
               fov={70}
+              smoothTime={1}
             />
 
             {/* Render a city environment */}
@@ -138,7 +160,7 @@ const AboutMe = () => {
                   scale={30}
                   blur={1}
                   far={10}
-                  resolution={256}
+                  resolution={128}
                   color="#000000"
                   position={[0, -5, 0]}
                 />
@@ -170,7 +192,7 @@ const AboutMe = () => {
           </Canvas>
 
           {/* Camera activation and information group */}
-          <div className="camera_aboutMe absolute top-[20%] left-[5%] flex justify-center items-center">
+          <div className="camera_aboutMe absolute top-[20%] left-[20%] flex justify-center items-center">
             {/* Camera activation */}
             <div className="flex justify-center items-center mr-2">
               {!cameraActivated && (
@@ -191,7 +213,7 @@ const AboutMe = () => {
             {/* Information group */}
             <div className="group flex justify-center items-center">
               {/* Information icon */}
-              <HiInformationCircle className="w-6 h-6 inline-block cursor-help text-[#00a1ec]" />
+              <HiInformationCircle className="w-5 h-5 inline-block cursor-help text-[#00a1ec]" />
               <div>
                 <div className="hidden absolute w-[250px] left-[4.5rem] bottom-0 bg-gray-200 p-2 rounded-lg text-sm shadow-md mt-2 text-center z-20 group-hover:block">
                   {/* Information tooltip */}
@@ -206,12 +228,12 @@ const AboutMe = () => {
       </div>
 
       {/* right side */}
-      <div className="absolute top-0 right-0 w-1/3 h-full pe-2 flex flex-col justify-around">
+      <div className="absolute top-0 right-0 sm:w-1/2 h-full flex flex-col justify-around">
         {/* Word List */}
-        <ul className="h-fit flex flex-col text-2xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-center gap-4 sm:gap-3">
+        <ul className="h-fit pe-2 sm:pe-0 flex flex-col text-3xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-center gap-4 sm:gap-3">
           {WordList.map((word) => (
             <ListItem
-              className="sm:pt-1 active:bg-transparent"
+              className="pt-[2px] pl-[1px] sm:pt-[4px] active:bg-transparent"
               key={word.keyword}
               text={word.keyword}
               onMouseEnter={() => {
