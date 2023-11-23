@@ -1,8 +1,6 @@
-import { useRef } from "react";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import "./home.scss";
 import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
-import gsap from "gsap";
 
 /**
  * Renders the Home component.
@@ -11,13 +9,6 @@ import gsap from "gsap";
  */
 const Home = () => {
   const letters = Array.from("david");
-  const logoRef = useRef();
-
-  gsap.to(logoRef.current, {
-    duration: 0.5,
-    opacity: 1,
-    ease: "power1.inOut",
-  });
 
   return (
     <>
@@ -38,14 +29,14 @@ const Home = () => {
       {/* Header section */}
       <header className="h-[15%] p-2 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-1 z-10">
         {/* Logo */}
-        {/* <img src={Logo} alt="logo" className="rounded-xl w-30 h-30 z-10" /> */}
         <div className="flex flex-col justify-center items-center ps-4">
           <h2
-            ref={logoRef}
             className="font-bold text-3xl sm:text-4xl text-[#00a1ec] flex"
           >
             {letters.map((letter, index) => (
-              <span key={index}>{letter}</span>
+              <span key={index} className="mx-[2px]">
+                {letter}
+              </span>
             ))}
             <span className="text-[#606887]">b.</span>
           </h2>
@@ -71,7 +62,7 @@ const Home = () => {
             <a
               href="https://www.linkedin.com/in/david-besse-666a77236/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="hover:scale-125"
               aria-label="link to my LinkedIn profile"
             >
@@ -82,7 +73,7 @@ const Home = () => {
             <a
               href="https://github.com/David-Besse"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="hover:scale-125"
               aria-label="link to my Github profile"
             >
@@ -131,7 +122,7 @@ const Home = () => {
             <a
               href="https://en.wikipedia.org/wiki/Nicomachean_Ethics"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener nofollow"
               aria-label="Read more about The Nicomachean Ethics"
               className="decoration-1 underline underline-offset-2"
             >

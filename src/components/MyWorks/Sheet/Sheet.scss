@@ -1,82 +1,80 @@
 .div_listItem {
-    width: 100%;
-  
-    .listItem {
-      position: relative;
+  & .listItem {
+    position: relative;
+    color: transparent;
+
+    &::before,
+    span::before,
+    &::after,
+    span::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(20deg, #fff59d, #d85f49 );
+      background-clip: text;
+      -webkit-background-clip: text;
+      transition: all 0.3s;
+    }
+
+    &::before {
+      clip-path: inset(0 68% 0 0);
+    }
+
+    span::before {
+      clip-path: inset(0 45% 0 28%);
+    }
+
+    &::after {
+      clip-path: inset(0 23% 0 52%);
+    }
+
+    span::after {
+      clip-path: inset(0 0 0 74%);
+    }
+
+    &:hover::before {
+      top: -5px;
+      background: unset;
+      background-clip: unset;
+      -webkit-background-clip: unset;
       color: transparent;
-  
-      &::before,
-      span::before,
-      &::after,
-      span::after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(20deg, #a17c72, #003a46);
-        background-clip: text;
-        -webkit-background-clip: text;
-        transition: all 0.3s;
-      }
-  
-      &::before {
-        clip-path: inset(0 68% 0 0);
-      }
-  
-      span::before {
-        clip-path: inset(0 45% 0 28%);
-      }
-  
-      &::after {
-        clip-path: inset(0 23% 0 52%);
-      }
-  
-      span::after {
-        clip-path: inset(0 0 0 74%);
-      }
-  
-      &:hover::before {
-        top: -5px;
-        background: unset;
-        background-clip: unset;
-        -webkit-background-clip: unset;
-        color: transparent;
-        -webkit-text-stroke: 1px black;
-        color: rgba(255, 255, 255, 0.4);
-        clip-path: inset(0 70% 0 0);
-      }
-  
-      &:hover span::before {
-        top: 5px;
-        background: unset;
-        background-clip: unset;
-        -webkit-background-clip: unset;
-        color: transparent;
-        -webkit-text-stroke: 1px black;
-        color: white;
-        clip-path: inset(0 46% 0 30%);
-      }
-  
-      &:hover::after {
-        top: -5px;
-        background: unset;
-        background-clip: unset;
-        -webkit-background-clip: unset;
-        color: transparent;
-        -webkit-text-stroke: 1px black;
-        color: rgba(255, 255, 255, 0.4);
-        clip-path: inset(0 24% 0 54%);
-      }
-  
-      &:hover span::after {
-        top: 5px;
-        background: unset;
-        background-clip: unset;
-        -webkit-background-clip: unset;
-        color: transparent;
-        -webkit-text-stroke: 1px black;
-        color: white;
-        clip-path: inset(0 0 0 76%);
-      }
+      -webkit-text-stroke: 1px black;
+      color: rgba(255, 255, 255, 0.4);
+      clip-path: inset(0 70% 0 0);
+    }
+
+    &:hover span::before {
+      top: 5px;
+      background: unset;
+      background-clip: unset;
+      -webkit-background-clip: unset;
+      color: transparent;
+      -webkit-text-stroke: 1px black;
+      color: white;
+      clip-path: inset(0 46% 0 30%);
+    }
+
+    &:hover::after {
+      top: -5px;
+      background: unset;
+      background-clip: unset;
+      -webkit-background-clip: unset;
+      color: transparent;
+      -webkit-text-stroke: 1px black;
+      color: rgba(255, 255, 255, 0.4);
+      clip-path: inset(0 24% 0 54%);
+    }
+
+    &:hover span::after {
+      top: 5px;
+      background: unset;
+      background-clip: unset;
+      -webkit-background-clip: unset;
+      color: transparent;
+      -webkit-text-stroke: 1px black;
+      color: white;
+      clip-path: inset(0 0 0 76%);
     }
   }
+}

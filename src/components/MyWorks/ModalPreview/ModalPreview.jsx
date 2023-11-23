@@ -3,27 +3,33 @@ import {
   Modal,
   ModalContent,
   ModalBody,
-  ModalFooter,
-  Button,
   ModalHeader,
 } from "@nextui-org/react";
 
+/**
+ * Render a modal component that displays a project preview in live.
+ *
+ * @param {Object} project - The project object.
+ * @param {boolean} isOpen - Indicates whether the modal is open or not.
+ * @param {function} onClose - The function to close the modal.
+ * @return {JSX.Element} The modal preview component.
+ */
 const ModalPreview = ({ project, isOpen, onClose }) => {
   return (
     <Modal
-      className="h-[85%] w-[90%] max-w-none"
+      className="h-[90%] w-[90%] max-w-none"
       isOpen={isOpen}
       onClose={onClose}
       radius="2xl"
       backdrop="blur"
-      placement="top-center"
+      placement="center"
     >
       <ModalContent>
-        {(onClose) => (
+        {() => (
           <>
             <ModalHeader className="p-1 flex justify-center items-center">
               <p className="">
-                {project.projectName} - Live from the website !
+                 Preview in live of &quot;{project.projectName}&quot; project !
               </p>
             </ModalHeader>
             <ModalBody className="p-0">
@@ -40,11 +46,6 @@ const ModalPreview = ({ project, isOpen, onClose }) => {
                 </p>
               )}
             </ModalBody>
-            <ModalFooter className="p-1">
-              <Button color="danger" variant="light" onPress={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
           </>
         )}
       </ModalContent>

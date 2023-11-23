@@ -1,4 +1,7 @@
 /* eslint-disable react/no-unknown-property */
+import { useRef } from "react";
+import { useMediaQuery } from "@uidotdev/usehooks";
+import Draggable from "react-draggable";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import Sheet from "./Sheet/Sheet";
 
@@ -12,6 +15,9 @@ import "./myWorks.scss";
  * @return {JSX.Element} The rendered component.
  */
 const MyWorks = () => {
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 600px)");
+  const sheetRef = useRef(null);
+
   return (
     <>
       {/* Heading */}
@@ -32,13 +38,26 @@ const MyWorks = () => {
         height="100%"
       />
       {/* Works List */}
-      <div className="h-full w-full">
-        <ul className="flex justify-center items-center gap-3">
-          {/* Map over WorksList and render each project */}
-          {WorksList.map((project) => (
-            <Sheet key={`div_${project.projectName}`} project={project} />
-          ))}
-        </ul>
+      <div className="h-fit w-full py-16 px-2 flex gap-3">
+        {WorksList.map((project, index) => (
+          <Draggable
+            nodeRef={sheetRef}
+            bounds="body"
+            disabled={isSmallDevice}
+            handle="strong"
+            defaultPosition={{ x: 0, y: index === 0 ? 0 : index + 100 }}
+            key={`div_${project.projectName}`}
+          >
+            <div ref={sheetRef} className="sheet w-[30vh]">
+              {/* Map over WorksList and render each project */}
+              <Sheet
+                project={project}
+                index={index}
+                isSmallDevice={isSmallDevice}
+              />
+            </div>
+          </Draggable>
+        ))}
       </div>
     </>
   );

@@ -3,11 +3,13 @@ import useStoreApp from "../Store/app.store";
 import { useCallback, useEffect } from "react";
 import { useTransition, animated } from "@react-spring/web";
 
+/**
+ * Renders a modal component that displays a message.
+ *
+ * @return {React.ReactNode} The rendered modal component.
+ */
 const Modal = () => {
-  const {
-    contactModal,
-    setContactModal,
-  } = useStore(useStoreApp);
+  const { contactModal, setContactModal } = useStore(useStoreApp);
 
   useEffect(() => {
     const rootElement = document.getElementById("root");
