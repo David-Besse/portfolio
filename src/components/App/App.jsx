@@ -208,7 +208,7 @@ const App = () => {
         {/* My Works Section */}
         <section
           id="myWorks"
-          className="relative h-screen w-screen snap-center"
+          className="relative h-screen w-screen snap-center pb-16"
           ref={sectionRefs.myWorks}
         >
           <MyWorks />

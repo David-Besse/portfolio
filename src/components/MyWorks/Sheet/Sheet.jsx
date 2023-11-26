@@ -36,7 +36,7 @@ const Sheet = ({ project }) => {
   return (
     <>
       <ModalPreview project={project} isOpen={isOpen} onClose={onClose} />
-      <Card className="h-full w-[90%] sm:w-full lg:h-[90%] rounded-none">
+      <Card className="h-full w-[90%] lg:w-full lg:h-[90%] rounded-none">
         <CardHeader className="flex flex-col">
           <div className="flex flex-col w-full">
             <div

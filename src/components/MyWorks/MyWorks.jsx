@@ -16,7 +16,7 @@ register();
  * @return {JSX.Element} The rendered component.
  */
 const MyWorks = () => {
-  const isSmallDevice = useMediaQuery("only screen and (max-width : 600px)");
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 1023px)");
 
   return (
     <>
@@ -39,7 +39,6 @@ const MyWorks = () => {
       />
       {/* Works List */}
       <swiper-container
-        className="h-full w-full"
         slides-per-view={isSmallDevice ? 1 : 3}
         pagination={{
           clickable: true,
