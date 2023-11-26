@@ -79,7 +79,13 @@ const AboutMe = () => {
       setCamPosition(camPosition);
     };
 
-    window.addEventListener("resize", () => handleResize(window.innerWidth));
+    window.addEventListener("resize", () =>
+      handleResize(window.innerWidth)
+    );
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [camRef]);
 
   /**

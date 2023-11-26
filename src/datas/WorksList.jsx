@@ -7,7 +7,7 @@ const WorksList = [
       front: "https://github.com/David-Besse/art-home-front",
       back: "https://github.com/David-Besse/art-home_back",
     },
-    screenshot:"/all-devices-black.png",
+    screenshot: "/all-devices-black.png",
   },
   {
     projectName: "Portfolio",
@@ -18,7 +18,47 @@ const WorksList = [
     },
     url: "//localhost:5173",
     src: { front: "https://github.com/David-Besse/portfolio", back: "" },
-    screenshot:"",
+    screenshot: "",
+  },
+  {
+    projectName: "Art@home",
+    stack: { front: "React, SemanticUI", back: "PHP, Symfony" },
+    url: "https://www.webshappers.com",
+    src: {
+      front: "https://github.com/David-Besse/art-home-front",
+      back: "https://github.com/David-Besse/art-home_back",
+    },
+    screenshot: "/all-devices-black.png",
+  },
+  {
+    projectName: "Art@home",
+    stack: { front: "React, SemanticUI", back: "PHP, Symfony" },
+    url: "https://www.webshappers.com",
+    src: {
+      front: "https://github.com/David-Besse/art-home-front",
+      back: "https://github.com/David-Besse/art-home_back",
+    },
+    screenshot: "/all-devices-black.png",
+  },
+  {
+    projectName: "Art@home",
+    stack: { front: "React, SemanticUI", back: "PHP, Symfony" },
+    url: "https://www.webshappers.com",
+    src: {
+      front: "https://github.com/David-Besse/art-home-front",
+      back: "https://github.com/David-Besse/art-home_back",
+    },
+    screenshot: "/all-devices-black.png",
+  },
+  {
+    projectName: "Art@home",
+    stack: { front: "React, SemanticUI", back: "PHP, Symfony" },
+    url: "https://www.webshappers.com",
+    src: {
+      front: "https://github.com/David-Besse/art-home-front",
+      back: "https://github.com/David-Besse/art-home_back",
+    },
+    screenshot: "/all-devices-black.png",
   },
 ];
 

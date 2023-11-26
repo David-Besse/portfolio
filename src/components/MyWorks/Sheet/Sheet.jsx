@@ -7,15 +7,12 @@ import {
   Divider,
   Link,
   Image,
-  Accordion,
-  AccordionItem,
   useDisclosure,
 } from "@nextui-org/react";
 import styled from "styled-components";
+
 import ModalPreview from "../ModalPreview/ModalPreview";
 
-import { MdExpandCircleDown } from "react-icons/md";
-import { RiDragDropFill } from "react-icons/ri";
 import { ImNewTab } from "react-icons/im";
 import { MdOutlinePreview } from "react-icons/md";
 
@@ -33,23 +30,18 @@ const NewPTag = styled.p`
   }
 `;
 
-const Sheet = ({ project, isSmallDevice }) => {
+const Sheet = ({ project }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
       <ModalPreview project={project} isOpen={isOpen} onClose={onClose} />
-      <Card className="">
-        {!isSmallDevice && (
-          <strong className="absolute left-2 top-2 z-20 cursor-move">
-            <RiDragDropFill className="text-xl" />
-          </strong>
-        )}
+      <Card className="h-full w-[90%] sm:w-full lg:h-[90%] rounded-none">
         <CardHeader className="flex flex-col">
           <div className="flex flex-col w-full">
             <div
               key={`div_${project.projectName}`}
-              className="div_listItem w-full relative flex justify-center text-4xl"
+              className="div_listItem w-full relative flex justify-center text-2xl"
             >
               <NewPTag className="listItem w-fit" text={project.projectName}>
                 <span className="spanList">{project.projectName}</span>
@@ -84,30 +76,24 @@ const Sheet = ({ project, isSmallDevice }) => {
               <ImNewTab className="text-2xl" /> Website
             </a>
           </div>
-          <Accordion isCompact selectionMode="multiple">
-            {project.stack.front !== "" && (
-              <AccordionItem
-                key="1"
-                aria-label="front technologies used in the project"
-                title="Front stack"
-                indicator={<MdExpandCircleDown />}
-                className="text-sm text-default-500"
-              >
-                {project.stack.front}
-              </AccordionItem>
-            )}
-            {project.stack.back !== "" && (
-              <AccordionItem
-                key="2"
-                aria-label="back technologies used in the project"
-                title="Back stack"
-                indicator={<MdExpandCircleDown />}
-                className="text-sm text-default-500"
-              >
-                {project.stack.back}
-              </AccordionItem>
-            )}
-          </Accordion>
+          {project.stack.front !== "" && (
+            <p
+              aria-label="front technologies used in the project"
+              className="text-sm text-default-500"
+            >
+              <span className="text-base text-black">Front stack :</span>
+              <br /> {project.stack.front}
+            </p>
+          )}
+          {project.stack.back !== "" && (
+            <p
+              aria-label="back technologies used in the project"
+              className="text-sm text-default-500"
+            >
+              <span className="text-base text-black">Back stack :</span>
+              <br /> {project.stack.back}
+            </p>
+          )}
         </CardBody>
         <Divider />
         <CardFooter className="flex-col gap-2">
@@ -147,7 +133,6 @@ const Sheet = ({ project, isSmallDevice }) => {
 };
 
 Sheet.propTypes = {
-  isSmallDevice: PropTypes.bool,
   project: PropTypes.shape({
     projectName: PropTypes.string,
     stack: PropTypes.shape({

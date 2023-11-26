@@ -23,57 +23,64 @@ const spanUnderTitleLetters = spanUnderTitleText.split("");
 const App = () => {
   const { setActiveSection } = useStore(useStoreApp);
 
-  const titleRef = useRef();
-  const spanOverRef = useRef();
-  const spanUnderRef = useRef();
-  const mainContainerRef = useRef();
+  const titleRef = useRef(null);
+  const spanOverRef = useRef(null);
+  const spanUnderRef = useRef(null);
+  const mainContainerRef = useRef(null);
+
   const sectionRefs = {
-    home: useRef(),
-    aboutMe: useRef(),
-    myWorks: useRef(),
-    mySkills: useRef(),
-    contact: useRef(),
-  };
-
-  /**
-   * Handles the scroll event and updates the current section based on the visible section.
-   *
-   * @param {none} none - This function does not take any parameters.
-   * @return {none} This function does not return any value.
-   */
-  const handleScroll = () => {
-    Object.values(sectionRefs).forEach((ref) => {
-      if (ref.current) {
-        const { top, bottom } = ref.current.getBoundingClientRect();
-        const isFullyInView = top >= 0 && bottom <= window.innerHeight;
-
-        if (isFullyInView) {
-          const sectionId = ref.current.id;
-          setActiveSection(sectionId);
-        }
-      }
-    });
+    home: useRef(null),
+    aboutMe: useRef(null),
+    myWorks: useRef(null),
+    mySkills: useRef(null),
+    contact: useRef(null),
   };
 
   useEffect(() => {
+    /**
+     * Handles the scroll event and updates the active section based on the scroll position.
+     *
+     * @param {none} none - This function does not take any parameters.
+     * @return {none} This function does not return anything.
+     */
+    const handleScroll = () => {
+      Object.values(sectionRefs).forEach((ref) => {
+        if (ref.current) {
+          const { top, bottom } = ref.current.getBoundingClientRect();
+          const isFullyInView = top >= 0 && bottom <= window.innerHeight;
+
+          if (isFullyInView) {
+            const sectionId = ref.current.id;
+            setActiveSection(sectionId);
+          }
+        }
+      });
+    };
+
     if (mainContainerRef.current) {
       mainContainerRef.current.addEventListener("scroll", handleScroll);
     }
+
+    return () => {
+      if (mainContainerRef.current) {
+        mainContainerRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
   }, [mainContainerRef]);
 
   useEffect(() => {
-    const title = Array.from(titleRef.current.children);
-    // const spanOver = Array.from(spanOverRef.current.children);
-    // const spanUnder = Array.from(spanUnderRef.current.children);
+    const titleRefElement = Array.from(titleRef.current.children);
+    // const spanOverRefElement = Array.from(spanOverRef.current.children);
+    // const spanUnderRefElement = Array.from(spanUnderRef.current.children);
 
     // gsap
     //   .timeline({ delay: 0.4 })
     //   .fromTo(
-    //     spanOver,
+    //     spanOverRefElement,
     //     { opacity: 0, x: -100 },
     //     { opacity: 1, x: 0, stagger: 0.1, duration: 0.1 }
     //   )
-    //   .to(spanOver, {
+    //   .to(spanOverRefElement, {
     //     opacity: 0,
     //     delay: 6.3,
     //     duration: 1,
@@ -82,7 +89,7 @@ const App = () => {
     gsap
       // .timeline({ delay: 2 })
       // .fromTo(
-      //   title,
+      //   titleRefElement,
       //   { opacity: 0, x: -100 },
       //   {
       //     opacity: 1,
@@ -96,7 +103,7 @@ const App = () => {
       //   margin: "0 1vw",
       //   duration: 0.2,
       // })
-      .to(title, {
+      .to(titleRefElement, {
         scale: 0,
         opacity: 0,
         stagger: 0.1,
@@ -112,11 +119,11 @@ const App = () => {
     // gsap
     //   .timeline({ delay: 4 })
     //   .fromTo(
-    //     spanUnder,
+    //     spanUnderRefElement,
     //     { opacity: 0, x: -100 },
     //     { opacity: 1, x: 0, stagger: 0.1, duration: 0.1 }
     //   )
-    //   .to(spanUnder, {
+    //   .to(spanUnderRefElement, {
     //     opacity: 0,
     //     delay: 1.2,
     //     duration: 1,
@@ -125,14 +132,14 @@ const App = () => {
 
   return (
     <>
-      {/* Title Container */}
+      {/* titleRef Container */}
       <div
         id="titleContainer"
         className="titleContainer h-screen w-screen p-8 bg-[#f2f2f2] flex flex-col justify-center text-[#606887]"
       >
-        {/* Span Over Title */}
+        {/* Span Over titleRef */}
         <div
-          className="spanOver text-start text-xl md:text-3xl lg:pl-14 xl:pl-28 2xl:pl-56"
+          className="spanOverTitle text-start text-xl md:text-3xl lg:pl-14 xl:pl-28 2xl:pl-56"
           ref={spanOverRef}
         >
           {spanOverTitleLetters.map((letter, index) => (
@@ -141,7 +148,7 @@ const App = () => {
             </span>
           ))}
         </div>
-        {/* Main Title */}
+        {/* Main titleRef */}
         <h1
           className="title w-full flex py-4 lg:py-8 xl:py-16 text-4xl md:text-6xl justify-center"
           ref={titleRef}
@@ -155,9 +162,9 @@ const App = () => {
             </span>
           ))}
         </h1>
-        {/* Span Under Title */}
+        {/* Span Under titleRef */}
         <div
-          className="spanUnder text-end text-xl md:text-3xl lg:pr-14 xl:pr-28 2xl:pr-56"
+          className="spanUnderTitle text-end text-xl md:text-3xl lg:pr-14 xl:pr-28 2xl:pr-56"
           ref={spanUnderRef}
         >
           {spanUnderTitleLetters.map((letter, index) => (

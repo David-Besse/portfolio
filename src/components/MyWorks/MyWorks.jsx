@@ -1,13 +1,14 @@
 /* eslint-disable react/no-unknown-property */
-import { useRef } from "react";
 import { useMediaQuery } from "@uidotdev/usehooks";
-import Draggable from "react-draggable";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import Sheet from "./Sheet/Sheet";
+import { register } from "swiper/element/bundle";
 
 import WorksList from "../../datas/WorksList";
 
 import "./myWorks.scss";
+
+register();
 
 /**
  * Renders the "MyWorks" component.
@@ -16,7 +17,6 @@ import "./myWorks.scss";
  */
 const MyWorks = () => {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 600px)");
-  const sheetRef = useRef(null);
 
   return (
     <>
@@ -38,27 +38,23 @@ const MyWorks = () => {
         height="100%"
       />
       {/* Works List */}
-      <div className="h-fit w-full py-16 px-2 flex gap-3">
+      <swiper-container
+        className="h-full w-full"
+        slides-per-view={isSmallDevice ? 1 : 3}
+        pagination={{
+          clickable: true,
+        }}
+        loop={true}
+        centeredSlides={true}
+        effect="coverflow"
+      >
+        {/* Map over WorksList and render each project */}
         {WorksList.map((project, index) => (
-          <Draggable
-            nodeRef={sheetRef}
-            bounds="body"
-            disabled={isSmallDevice}
-            handle="strong"
-            defaultPosition={{ x: 0, y: index === 0 ? 0 : index + 100 }}
-            key={`div_${project.projectName}`}
-          >
-            <div ref={sheetRef} className="sheet w-[30vh]">
-              {/* Map over WorksList and render each project */}
-              <Sheet
-                project={project}
-                index={index}
-                isSmallDevice={isSmallDevice}
-              />
-            </div>
-          </Draggable>
+          <swiper-slide key={index}>
+            <Sheet project={project} index={index} />
+          </swiper-slide>
         ))}
-      </div>
+      </swiper-container>
     </>
   );
 };

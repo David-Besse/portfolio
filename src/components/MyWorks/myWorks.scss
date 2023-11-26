@@ -1,3 +1,20 @@
 #myWorks {
   font-family: "Righteous", cursive;
+
+  swiper-container {
+    display: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 85%;
+  }
+
+  swiper-slide {
+    height: 90%;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
