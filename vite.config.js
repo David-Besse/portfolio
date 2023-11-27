@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "src/datas/WordList": "./datas/WordList",
+      "src/datas/WordData": "./datas/WordData",
       "src/datas/WorksList": "./datas/WorksList",
       "src/datas/SkillsList": "./datas/SkillsList",
     },

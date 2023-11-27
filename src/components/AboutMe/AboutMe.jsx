@@ -11,7 +11,7 @@ import { BiSolidQuoteRight } from "react-icons/bi";
 import { GrPowerReset } from "react-icons/gr";
 
 import Avatar from "./Scene/Avatar/Avatar";
-import WordList from "src/datas/WordList";
+import WordData from "./../../datas/WordData";
 import Loader from "./Scene/Loader/Loader";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
@@ -183,7 +183,7 @@ const AboutMe = () => {
       <div className="absolute top-0 right-0 sm:w-1/2 h-full flex flex-col justify-around">
         {/* Word List */}
         <ul className="h-fit pe-2 sm:pe-0 flex flex-col text-3xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-center gap-4 sm:gap-3">
-          {WordList.map((word) => (
+          {WordData.map((word) => (
             <ListItem
               className="pt-[2px] pl-[1px] sm:pt-[4px] active:bg-transparent"
               key={word.keyword}
@@ -211,7 +211,7 @@ const AboutMe = () => {
 
           {/* Display quote based on hovered word */}
           {wordHovered !== "" &&
-            WordList.find((el) => el.keyword === wordHovered).quote}
+            WordData.find((el) => el.keyword === wordHovered).quote}
 
           {/* Display default text when no word is hovered */}
           {wordHovered === "" && "Drag the mouse over a word to reveal a quote"}

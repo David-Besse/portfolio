@@ -1,4 +1,4 @@
-const WordList = [
+const WordData = [
   {
     keyword: "Pragmatic",
     quote:
@@ -25,4 +25,4 @@ const WordList = [
 ];
 
 
-export default WordList;
+export default WordData;
