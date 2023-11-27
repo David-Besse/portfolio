@@ -4,7 +4,7 @@ import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import Sheet from "./Sheet/Sheet";
 import { register } from "swiper/element/bundle";
 
-import WorksList from "./datas/WorksList";
+import WorksList from "src/datas/WorksList";
 
 import "./myWorks.scss";
 

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useMemo } from "react";
 import SkillsWord from "../SkillsWord/SkillsWord";
 
-import SkillsList from "./datas/SkillsList";
+import SkillsList from "src/datas/SkillsList";
 
 const CloudSphere = ({ count = 4, radius = 20 }) => {
   // Create a count x count random words with spherical distribution

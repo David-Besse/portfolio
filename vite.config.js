@@ -11,7 +11,6 @@ export default defineConfig({
       "src/datas/WordList": "./datas/WordList",
       "src/datas/WorksList": "./datas/WorksList",
       "src/datas/SkillsList": "./datas/SkillsList",
-      "src/datas/AboutMeList": "./datas/AboutMeList",
     },
   },
   optimizeDeps: {
