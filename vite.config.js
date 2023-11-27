@@ -6,13 +6,13 @@ import("regenerator-runtime");
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  rollupOptions: {
-    external: [
-      "src/datas/WordList",
-      "src/datas/WorksList",
-      "src/datas/SkillsList",
-      "src/datas/AboutMeList",
-    ],
+  resolve: {
+    alias: {
+      "src/datas/WordList": "./datas/WordList",
+      "src/datas/WorksList": "./datas/WorksList",
+      "src/datas/SkillsList": "./datas/SkillsList",
+      "src/datas/AboutMeList": "./datas/AboutMeList",
+    },
   },
   optimizeDeps: {
     include: ["src/main.jsx"],

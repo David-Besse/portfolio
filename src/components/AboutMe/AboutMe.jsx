@@ -11,7 +11,7 @@ import { BiSolidQuoteRight } from "react-icons/bi";
 import { GrPowerReset } from "react-icons/gr";
 
 import Avatar from "./Scene/Avatar/Avatar";
-import WordList from "../../datas/WordList";
+import WordList from "./datas/WordList";
 import Loader from "./Scene/Loader/Loader";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
