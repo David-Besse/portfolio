@@ -1,26 +1,22 @@
 /* eslint-disable react/no-unknown-property */
-import { useState, Suspense, useRef, useEffect } from "react";
+import { useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import {
-  OrbitControls,
-  Gltf,
-  Environment,
-  ContactShadows,
-  PerspectiveCamera,
-} from "@react-three/drei";
+import { Gltf, Environment, ContactShadows } from "@react-three/drei";
 import styled from "styled-components";
 
 import { HiInformationCircle } from "react-icons/hi";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { BsFillCameraVideoOffFill } from "react-icons/bs";
 import { BiSolidQuoteRight } from "react-icons/bi";
+import { GrPowerReset } from "react-icons/gr";
 
 import Avatar from "./Scene/Avatar/Avatar";
-import WordList from "src/datas/WordList";
+import WordList from "../../datas/WordList";
 import Loader from "./Scene/Loader/Loader";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
 import "./aboutMe.scss";
+import RigAboutMe from "./Scene/RigAboutMe/RigAboutMe";
 
 // Define a styled list item component
 const ListItem = styled.li`
@@ -62,51 +58,14 @@ const ListItem = styled.li`
 const AboutMe = () => {
   const [wordHovered, setWordHovered] = useState("");
   const [cameraActivated, setCameraActivated] = useState(false);
-  const camRef = useRef();
-  const [camPosition, setCamPosition] = useState(
-    window.innerWidth < 600 ? [30, 4, 10] : [20, 6, -20]
-  );
+  const [cameraReset, setCameraReset] = useState(false);
 
-  useEffect(() => {
-    /**
-     * Handles the resize event.
-     *
-     * @param {number} value - The new value after the resize event.
-     * @return {void} This function does not return anything.
-     */
-    const handleResize = (value) => {
-      const camPosition = value < 600 ? [30, 4, 10] : [20, 6, -20];
-      setCamPosition(camPosition);
-    };
-
-    window.addEventListener("resize", () =>
-      handleResize(window.innerWidth)
-    );
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [camRef]);
-
-  /**
-   * Resets the camera position.
-   *
-   * @param {type} paramName - description of parameter
-   * @return {type} description of return value
-   */
-  const resetCameraPosition = () => {
-    camRef.current.position.set(20, 6, -20);
-    camRef.current.lookAt(8, 5, 0);
-  };
-
-  /**
-   * Toggles the camera activation and resets the camera position.
-   *
-   * @return {void}
-   */
   const handleCam = () => {
     setCameraActivated(!cameraActivated);
-    resetCameraPosition();
+  };
+
+  const resetCamPosition = () => {
+    setCameraReset(true);
   };
 
   return (
@@ -145,14 +104,7 @@ const AboutMe = () => {
         {/* Canvas component */}
         <div className="absolute w-full h-full top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
           <Canvas className="3dscene_aboutMe">
-            {/* Create a perspective camera */}
-            <PerspectiveCamera
-              ref={camRef}
-              makeDefault
-              position={camPosition}
-              fov={70}
-              smoothTime={1}
-            />
+            <RigAboutMe cameraActivated={cameraActivated} cameraReset={cameraReset} setCameraReset={setCameraReset} />
 
             {/* Render a city environment */}
             <Environment preset="city" />
@@ -185,20 +137,14 @@ const AboutMe = () => {
                 />
               </group>
             </Suspense>
-
-            {/* Enable orbit controls */}
-            <OrbitControls
-              enabled
-              camera={camRef.current}
-              enablePan={cameraActivated}
-              enableRotate={cameraActivated}
-              enableZoom={cameraActivated}
-              target={[5, 0, 0]}
-            />
           </Canvas>
 
           {/* Camera activation and information group */}
           <div className="camera_aboutMe absolute top-[20%] left-[20%] flex justify-center items-center">
+            <GrPowerReset
+              className="w-6 h-6 mr-2"
+              onClick={() => resetCamPosition()}
+            />
             {/* Camera activation */}
             <div className="flex justify-center items-center mr-2">
               {!cameraActivated && (

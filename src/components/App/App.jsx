@@ -1,17 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Contact from "../Contact/Contact";
-import AboutMe from "../AboutMe/AboutMe";
-import MyWorks from "../MyWorks/MyWorks";
-import MySkills from "../MySkills/MySkills";
+import { lazy, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { useStore } from "zustand";
+import useStoreApp from "../Store/app.store";
+
+const Contact = lazy(() => import("../Contact/Contact"));
+const AboutMe = lazy(() => import("../AboutMe/AboutMe"));
+const MyWorks = lazy(() => import("../MyWorks/MyWorks"));
+const MySkills = lazy(() => import("../MySkills/MySkills"));
+
 import Home from "../Home/Home";
 import Navbar from "../Navbar/Navbar";
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
 
 import "./app.scss";
-import { useStore } from "zustand";
-import useStoreApp from "../Store/app.store";
 
 const splashTitleText = "DAVID BESSE";
 const splashTitleLetters = splashTitleText.split("");
