@@ -1,24 +1,20 @@
-#homePage {
-  font-family: "Baloo Thambi 2", display;
+.logo {
+  font-family: "Architects Daughter", handwriting;
+}
 
-  .logo {
-    font-family: "Architects Daughter", handwriting;
-  }
+.fade-in-L {
+  animation: apparition_L 2s ease-out;
+}
 
-  .fade-in-L {
-    animation: apparition_L 2s ease-out;
-  }
+.fade-in-R {
+  animation: apparition_R 2s ease-out;
+}
 
-  .fade-in-R {
-    animation: apparition_R 2s ease-out;
-  }
-
-  .bgBuble {
-    background: linear-gradient(45deg, #fdf3d0 0%, #e79568 100%);
-    animation: morph 3s ease-in-out infinite;
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    transition: all 2s ease-in-out;
-  }
+.bgBuble {
+  background: linear-gradient(45deg, #fdf3d0 0%, #e79568 100%);
+  animation: morph 3s ease-in-out infinite;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  transition: all 2s ease-in-out;
 }
 
 @keyframes morph {

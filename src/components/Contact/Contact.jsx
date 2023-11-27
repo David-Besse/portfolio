@@ -5,7 +5,6 @@ import useStoreApp from "../Store/app.store";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 
-import "./contact.scss";
 import Modal from "../Modal/Modal";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 

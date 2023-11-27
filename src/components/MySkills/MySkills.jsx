@@ -6,8 +6,6 @@ import CloudSphere from "./CloudSphere/CloudSphere";
 import RigMySkills from "./RigMySkills/RigMySkills";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
-import "./mySkills.scss";
-
 /**
  * Render the MySkills component.
  *
