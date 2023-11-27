@@ -36,6 +36,8 @@ const SkillsList = [
   "VS Code",
   "Adminer",
   "Snyk",
+  "Vercel",
+  "Swiper",
 ];
 
 export default SkillsList;

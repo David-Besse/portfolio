@@ -16,7 +16,7 @@ import { BsFillCameraVideoOffFill } from "react-icons/bs";
 import { BiSolidQuoteRight } from "react-icons/bi";
 
 import Avatar from "./Scene/Avatar/Avatar";
-import WordList from "../../datas/WordList";
+import WordList from "./../../datas/WordList";
 import Loader from "./Scene/Loader/Loader";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
