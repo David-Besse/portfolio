@@ -1,14 +1,13 @@
 /* eslint-disable react/no-unknown-property */
+import AliceCarousel from "react-alice-carousel";
 import { useMediaQuery } from "@uidotdev/usehooks";
+
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import Sheet from "./Sheet/Sheet";
-import { register } from "swiper/element/bundle";
 
 import WorksList from "./../../datas/WorksList";
 
 import "./myWorks.scss";
-
-register();
 
 /**
  * Renders the "MyWorks" component.
@@ -17,6 +16,33 @@ register();
  */
 const MyWorks = () => {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 1023px)");
+
+  const carouselItems = WorksList.map((project, index) => (
+    <Sheet
+      project={project}
+      index={index}
+      key={`${index}_${project}`}
+    />
+  ));
+
+  const carouselProps = {
+    mouseTracking: true,
+    animationType: "fade",
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 1,
+      },
+      1024: {
+        items: 1,
+      },
+    },
+    items: carouselItems,
+    infinite: true,
+    disableButtonsControls: isSmallDevice,
+  };
 
   return (
     <>
@@ -38,22 +64,7 @@ const MyWorks = () => {
         height="100%"
       />
       {/* Works List */}
-      <swiper-container
-        slides-per-view={isSmallDevice ? 1 : 3}
-        pagination={{
-          clickable: true,
-        }}
-        loop={true}
-        centeredSlides={true}
-        effect="coverflow"
-      >
-        {/* Map over WorksList and render each project */}
-        {WorksList.map((project, index) => (
-          <swiper-slide key={index}>
-            <Sheet project={project} index={index} />
-          </swiper-slide>
-        ))}
-      </swiper-container>
+      <AliceCarousel {...carouselProps} />
     </>
   );
 };

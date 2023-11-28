@@ -1,3 +1,27 @@
+.liItem {
+  -webkit-text-stroke: 1.7px #606887;
+  color: white;
+  position: relative;
+  cursor: default;
+
+  &::after {
+    position: absolute;
+    color: #e79568;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    &::after {
+      animation: moveText 0.3s linear both;
+    }
+  }
+}
+
 .quoteBox {
   font-family: "Annie Use Your Telescope", handwriting;
 }
@@ -139,5 +163,14 @@
   97%,
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes moveText {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }

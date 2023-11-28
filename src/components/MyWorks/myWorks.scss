@@ -1,22 +1,61 @@
-swiper-container {
-  display: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 100%;
-  height: 85%;
-}
+.alice-carousel {
+  height: 100%;
+  margin: 0 !important;
 
-swiper-slide {
-  height: 90%;
-  align-self: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  & > div {
+    height: 90%;
+    padding: 5px;
 
-@media screen and (min-width: 1024px) {
-  swiper-container {
-    height: 85%;
+    .alice-carousel__wrapper {
+      height: 100%;
+
+      .alice-carousel__stage {
+        height: 100%;
+
+        .alice-carousel__stage-item {
+          padding: 0 1% 0 1%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .alice-carousel__dots {
+    height: 5%;
+    margin: 0;
+    padding-top: 10px;
+  }
+
+  .alice-carousel__prev-btn,
+  .alice-carousel__next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: fit-content;
+    height: fit-content;
+    padding: 1em;
+
+    .alice-carousel__prev-btn-item,
+    .alice-carousel__next-btn-item {
+      padding: 0;
+
+      & span {
+        &::after {
+          font-size: 4em;
+          font-weight: normal;
+          font-style: normal;
+          opacity: 1;
+          z-index: 10;
+        }
+      }
+    }
+  }
+
+  .alice-carousel__prev-btn {
+    left: 0;
+  }
+
+  .alice-carousel__next-btn {
+    right: 0;
   }
 }

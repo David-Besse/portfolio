@@ -33,13 +33,10 @@ const MySkills = () => {
         height="100%"
       />
       {/* Main Content */}
-      <div className="h-2/3 w-[75vh] absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+      <div className="h-2/3 w-full sm:w-[75vh] absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
         <Canvas className="rounded-full">
-          {/* Fog */}
           <fog attach="fog" args={["#202025", 40, 80]} />
-          {/* RigMySkills */}
           <RigMySkills />
-          {/* CloudSphere */}
           <Suspense>
             <CloudSphere count={16} radius={60} />
           </Suspense>

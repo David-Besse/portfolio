@@ -4,14 +4,13 @@ import { gsap } from "gsap";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
 
-const Contact = lazy(() => import("../Contact/Contact"));
-const AboutMe = lazy(() => import("../AboutMe/AboutMe"));
-const MyWorks = lazy(() => import("../MyWorks/MyWorks"));
-const MySkills = lazy(() => import("../MySkills/MySkills"));
+const Contact = lazy(() => import("./../Contact/Contact"));
+import AboutMe from "./../AboutMe/AboutMe";
+import MyWorks from "../MyWorks/MyWorks";
+import MySkills from "./../MySkills/MySkills";
 
 import Home from "../Home/Home";
 import Navbar from "../Navbar/Navbar";
-
 
 import "./app.scss";
 
@@ -60,7 +59,7 @@ const App = () => {
     };
 
     if (mainContainerRef.current) {
-      mainContainerRef.current.addEventListener("scroll", handleScroll);
+      mainContainerRef.current.addEventListener("scroll", handleScroll, {passive: true});
     }
 
     return () => {
@@ -210,7 +209,7 @@ const App = () => {
         {/* My Works Section */}
         <section
           id="myWorks"
-          className="relative h-screen w-screen snap-center pb-16"
+          className="relative h-screen w-screen snap-center py-16 flex flex-col"
           ref={sectionRefs.myWorks}
         >
           <MyWorks />

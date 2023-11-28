@@ -2,7 +2,7 @@
 import { useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Gltf, Environment, ContactShadows } from "@react-three/drei";
-import styled from "styled-components";
+import styled  from "styled-components";
 
 import { HiInformationCircle } from "react-icons/hi";
 import { BsFillCameraVideoFill } from "react-icons/bs";
@@ -20,33 +20,8 @@ import RigAboutMe from "./Scene/RigAboutMe/RigAboutMe";
 
 // Define a styled list item component
 const ListItem = styled.li`
-  -webkit-text-stroke: 1.7px #606887;
-  color: white;
-  position: relative;
-  cursor: default;
-
   &::after {
-    content: "${(props) => props.text}"; // Display the value of the "text" prop
-    position: absolute;
-    color: #e79568;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  &:hover {
-    ::after {
-      animation: moveText 0.3s linear both;
-    }
-  }
-
-  @keyframes moveText {
-    to {
-      width: 100%;
-    }
+    content: "${(props) => props.$text}";
   }
 `;
 
@@ -96,15 +71,18 @@ const AboutMe = () => {
       {/* left side */}
       <div className="relative w-full sm:w-2/3 h-full">
         {/* Background Bubble */}
-        {/* <div className="ball absolute w-[48%] h-[50%] top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 z-0 shadow-2xl"></div> */}
-        <section className="stage absolute w-[60vh] h-[60%] top-[17%] left-1/2 transform -translate-x-1/2">
+        <section className="stage absolute w-[90%] sm:w-[60vh] h-[50%] sm:h-[60%] top-[25%] sm:top-[17%] left-1/2 transform -translate-x-1/2">
           <figure className="ball bubble shadow-2xl" />
         </section>
 
         {/* Canvas component */}
         <div className="absolute w-full h-full top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
           <Canvas className="3dscene_aboutMe">
-            <RigAboutMe cameraActivated={cameraActivated} cameraReset={cameraReset} setCameraReset={setCameraReset} />
+            <RigAboutMe
+              cameraActivated={cameraActivated}
+              cameraReset={cameraReset}
+              setCameraReset={setCameraReset}
+            />
 
             {/* Render a city environment */}
             <Environment preset="city" />
@@ -142,7 +120,7 @@ const AboutMe = () => {
           {/* Camera activation and information group */}
           <div className="camera_aboutMe absolute top-[20%] left-[20%] flex justify-center items-center">
             <GrPowerReset
-              className="w-6 h-6 mr-2"
+              className="w-6 h-6 mr-2 cursor-pointer"
               onClick={() => resetCamPosition()}
             />
             {/* Camera activation */}
@@ -185,9 +163,9 @@ const AboutMe = () => {
         <ul className="h-fit pe-2 sm:pe-0 flex flex-col text-3xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-center gap-4 sm:gap-3">
           {WordData.map((word) => (
             <ListItem
-              className="pt-[2px] pl-[1px] sm:pt-[4px] active:bg-transparent"
+              className="liItem pt-[2px] pl-[1px] sm:pt-[4px]"
               key={word.keyword}
-              text={word.keyword}
+              $text={word.keyword}
               onMouseEnter={() => {
                 setWordHovered(word.keyword);
               }}

@@ -2,15 +2,10 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const BackgroundDivStyled = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  opacity: 0.6;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  clip-path: polygon(${(props) => props.path});
-  background-color: ${(props) => props.color};
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+  clip-path: polygon(${(props) => props.$path});
+  background-color: ${(props) => props.$color};
 `;
 
 /**
@@ -30,9 +25,12 @@ const BackgroundDiv = ({
 }) => {
   return (
     <BackgroundDivStyled
-      className="bgDiv"
-      {...{ path, color, width, height }}
-    ></BackgroundDivStyled>
+      className="absolute top-0 left-0 z-0 opacity-60"
+      $path={path}
+      $color={color}
+      $width={width}
+      $height={height}
+    />
   );
 };
 
