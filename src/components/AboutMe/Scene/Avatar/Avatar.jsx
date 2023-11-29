@@ -7,7 +7,13 @@ import PropTypes from "prop-types"
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { useEffect } from "react";
 
-const Avatar = ({ scaling }) => {
+/**
+ * Renders the Avatar component.
+ *
+ * @param {number} scaling - The scaling factor for the avatar.
+ * @return {JSX.Element} The rendered Avatar component.
+ */
+const Avatar = ({ scaling = 7.9 }) => {
   const { nodes, materials, animations } = useGLTF("/avatar_typing.glb");
 
   animations[0].name = "typing";
@@ -108,7 +114,7 @@ const Avatar = ({ scaling }) => {
 };
 
 Avatar.propTypes = {
-  scaling: PropTypes.number.isRequired,
+  scaling: PropTypes.number,
 }
 
 useGLTF.preload("/avatar_typing.glb");

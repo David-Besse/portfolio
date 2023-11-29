@@ -27,7 +27,7 @@ const MyWorks = () => {
 
   const carouselProps = {
     mouseTracking: true,
-    animationType: "fade",
+    animationType: "slide",
     responsive: {
       0: {
         items: 1,
@@ -47,9 +47,9 @@ const MyWorks = () => {
   return (
     <>
       {/* Heading */}
-      <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl z-10">
+      {/* <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl z-10">
         .myWorks
-      </h2>
+      </h2> */}
       {/* Background Div */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"

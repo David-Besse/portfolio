@@ -148,6 +148,7 @@ const Contact = () => {
           <input
             className="cursor-pointer w-fit self-end active:bg-transparent active:text-[#00a1ec] text-lg rounded-lg p-1 tracking-wide"
             type="submit"
+            value="Send message"
           />
         </form>
       </div>

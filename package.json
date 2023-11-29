@@ -13,8 +13,8 @@
     "@emailjs/browser": "^3.10.0",
     "@nextui-org/react": "^2.2.9",
     "@react-spring/web": "^9.7.3",
-    "@react-three/drei": "^9.88.0",
-    "@react-three/fiber": "^8.14.5",
+    "@react-three/drei": "^9.89.0",
+    "@react-three/fiber": "^8.15.11",
     "@types/three": "^0.158.3",
     "@uidotdev/usehooks": "^2.4.1",
     "core-js": "^3.33.3",
@@ -49,6 +49,6 @@
     "postcss": "^8.4.24",
     "sass": "^1.62.1",
     "tailwindcss": "^3.3.2",
-    "vite": "^5.0.2"
+    "vite": "^5.0.4"
   }
 }

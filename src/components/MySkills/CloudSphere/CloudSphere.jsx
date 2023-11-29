@@ -5,6 +5,13 @@ import SkillsWord from "../SkillsWord/SkillsWord";
 
 import SkillsList from "./../../../datas/SkillsList";
 
+/**
+ * Generates a count x count array of random words with spherical distribution.
+ *
+ * @param {number} count - The number of words in each row and column of the array. Default is 4.
+ * @param {number} radius - The radius of the sphere. Default is 20.
+ * @return {JSX.Element} A group of SkillsWord components representing the words in the spherical array.
+ */
 const CloudSphere = ({ count = 4, radius = 20 }) => {
   // Create a count x count random words with spherical distribution
   const words = useMemo(() => {

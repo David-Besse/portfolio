@@ -15,9 +15,9 @@ const MySkills = () => {
   return (
     <>
       {/* Heading */}
-      <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl z-10">
+      {/* <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl z-10">
         .mySkills
-      </h2>
+      </h2> */}
       {/* Background Div 1 */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 0%, 0% 0%"

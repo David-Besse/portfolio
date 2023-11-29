@@ -52,10 +52,10 @@ const Home = () => {
               className="flex gap-1 hover:scale-125 hover:italic"
               aria-label="download my CV"
             >
-              <span className="self-end text-3xl font-bold text-[#808080]">
+              <span className="self-end text-2xl font-bold text-[#808080]">
                 CV
               </span>
-              <BsDownload className="w-[28.23px] h-[36px] " />
+              <BsDownload className="w-[30px] h-[30px] " />
             </a>
           </li>
           <li className="socials w-8 flex justify-center items-center text-[#00a1ec]">

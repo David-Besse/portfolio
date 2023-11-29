@@ -60,9 +60,9 @@ const AboutMe = () => {
         height="100%"
       />
       {/* Header */}
-      <h2 className="absolute top-0 left-0 pt-2 pl-2 h-[5%] text-xl sm:text-2xl z-10">
+      {/* <h2 className="absolute top-0 left-0 pt-2 pl-2 h-[5%] text-xl sm:text-2xl z-10">
         .aboutMe
-      </h2>
+      </h2> */}
       {/* Subheader */}
       <h3 className="absolute top-10 p-3 flex justify-center items-center text-4xl italic uppercase left-1/2 transform -translate-x-1/2 whitespace-nowrap sm:text-5xl lg:text-6xl xl:text-[4.5rem] z-10">
         what defines me
@@ -102,7 +102,7 @@ const AboutMe = () => {
                 />
 
                 {/* Render an avatar */}
-                <Avatar scaling={7.9} />
+                <Avatar />
 
                 {/* Load and render a 3D model */}
                 <Gltf

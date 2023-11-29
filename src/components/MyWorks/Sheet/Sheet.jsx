@@ -36,12 +36,12 @@ const Sheet = ({ project }) => {
   return (
     <>
       <ModalPreview project={project} isOpen={isOpen} onClose={onClose} />
-      <Card className="h-full w-full lg:w-[95%] left-1/2 transform -translate-x-1/2 rounded bg-transparent shadow-none">
+      <Card className="h-fit w-full lg:w-[95%] left-1/2 transform -translate-x-1/2 rounded bg-transparent shadow-none">
         <CardHeader className="flex flex-col h-fit">
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full items-center">
             <div
               key={`div_${project.projectName}`}
-              className="div_listItem w-full relative flex justify-center text-4xl lg:text-6xl"
+              className="div_listItem w-fit relative flex justify-center text-4xl lg:text-6xl border-y-1 border-black"
             >
               <NewPTag className="listItem w-fit" $text={project.projectName}>
                 <span className="spanList">{project.projectName}</span>
@@ -50,87 +50,96 @@ const Sheet = ({ project }) => {
           </div>
         </CardHeader>
         {/* <Divider /> */}
-        <CardBody className="h-fit">
+        <CardBody className="flex flex-col justify-center items-center">
           <Image
             fallbackSrc="/No_image_available.svg"
             alt={`image of the project ${project.projectName}`}
             radius="sm"
-            src={project.screenshot !== "" ? project.screenshot : "/No_image_available.svg"}
-            className={`h-full border-1 border-black`}
+            src={
+              project.screenshot !== ""
+                ? project.screenshot
+                : "/No_image_available.svg"
+            }
+            className={`object-contain w-auto h-[35vh]`}
           />
           {project.url !== "" && (
-            <div className="flex justify-around gap-2 py-2">
+            <div className="flex justify-around gap-4 pb-2 sm:py-4">
               <span
-                className="hidden sm:flex sm:justify-end sm:items-center text-small text-default-500 cursor-pointer"
+                className="hidden sm:flex sm:justify-end sm:items-center text-md text-default-500 cursor-pointer"
                 onClick={() => onOpen()}
               >
-                <MdOutlinePreview className="text-2xl" /> Preview
+                Preview <MdOutlinePreview className="ml-1 text-2xl" />
               </span>
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="open the website in a new tab"
-                className="flex justify-end items-center text-small text-default-500"
+                className="flex justify-end items-center text-md text-default-500"
               >
-                <ImNewTab className="text-2xl" /> Website
+                Website <ImNewTab className="ml-1 text-2xl" />
               </a>
             </div>
           )}
         </CardBody>
-        <Divider />
-        <CardFooter className="flex-col lg:flex-row gap-2 h-fit overflow-y-auto">
-          <div className="w-full h-fit">
+        {/* <Divider /> */}
+        <CardFooter className="flex-col md:flex-row gap-2 md:gap-0 h-fit rounded-t-xl">
+          <div className="w-full h-fit py-2 text-start">
             {project.stack.front !== "" && (
               <p
                 aria-label="front technologies used in the project"
-                className="text-sm text-default-500"
+                className="text-sm lg:text-md text-default-500 pb-2"
               >
-                <span className="text-base text-black">Front stack :</span>
+                <span className="text-base lg:text-lg text-black">
+                  Front stack
+                </span>
                 <br /> {project.stack.front}
               </p>
             )}
             {project.stack.back !== "" && (
               <p
                 aria-label="back technologies used in the project"
-                className="text-sm text-default-500"
+                className="text-sm lg:text-md text-default-500"
               >
-                <span className="text-base text-black">Back stack :</span>
+                <span className="text-base lg:text-lg text-black">
+                  Back stack
+                </span>
                 <br /> {project.stack.back}
               </p>
             )}
           </div>
-          <div className="w-full h-fit flex flex-row justify-between text-end p-1 border-4 rounded-xl bg-slate-100">
-            <p className="text-md h-full whitespace-nowrap">GitHub links :</p>
-            <p className="w-full h-full flex flex-row justify-end">
+
+          <div className="w-fit h-fit flex flex-row md:flex-col justify-between text-end p-2 border-1 rounded-xl bg-gradient-to-b from-amber-100 to-sky-200">
+            <p className="text-md md:text-md whitespace-nowrap pr-4 md:pr-0 md:pb-2 md:text-center">
+              GitHub links :
+            </p>
+            <p className="flex flex-row md:flex-col justify-end md:justify-center md:items-center">
               {project.src.front !== "" && (
                 <Link
                   isExternal
                   showAnchorIcon
                   href={project.src.front}
-                  key={project.src.front}
-                  className="pr-1 text-base hover:scale-105 hover:text-[#e79568]"
+                  key={`${project.projectName}_front_src`}
+                  className="px-2 md:px-0 md:pl-2 md:py-2 text-base md:text-md md:hover:italic md:hover:font-bold md:hover:scale-110"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   front
                 </Link>
               )}
-              {project.src.front === "" && " no source"}/
               {project.src.back !== "" && (
                 <Link
                   isExternal
                   showAnchorIcon
                   href={project.src.back}
-                  key={project.src.back}
-                  className="pl-2 text-base hover:scale-105 hover:text-[#e79568]"
+                  key={`${project.projectName}_back_src`}
+                  className="px-2 md:px-0 md:pl-2 md:py-2 text-base md:text-md md:hover:italic md:hover:font-bold md:hover:scale-110"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   back
                 </Link>
               )}
-              {project.src.back === "" && " no source"}
             </p>
           </div>
         </CardFooter>

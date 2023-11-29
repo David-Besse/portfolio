@@ -2,11 +2,11 @@ const WordData = [
   {
     keyword: "Pragmatic",
     quote:
-      "Je suis quelqu'un de pragmatique. Pour moi, c'est dans l'action que nous apprenons le plus.",
+      "I am a pragmatic person. For me, it is in action that we learn the most.",
   },
   {
     keyword: "Curious",
-    quote: "De nature curieux, j'aime à comprendre le monde qui nous entoure",
+    quote: "I love exploring new technologies in web development, it's a wonderful playground when you have a great appetite for it.",
   },
   {
     keyword: "Geek",

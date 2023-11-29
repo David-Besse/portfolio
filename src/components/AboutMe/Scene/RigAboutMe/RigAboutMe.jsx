@@ -19,7 +19,9 @@ const RigAboutMe = ({ cameraActivated, cameraReset, setCameraReset }) => {
       setCamTarget(newCamTarget);
     };
 
-    window.addEventListener("resize", handleResize(window.innerWidth));
+    window.addEventListener("resize", handleResize(window.innerWidth), {
+      passive: true,
+    });
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -63,6 +65,6 @@ RigAboutMe.propTypes = {
   cameraActivated: PropTypes.bool,
   cameraReset: PropTypes.bool,
   setCameraReset: PropTypes.func,
-}
+};
 
 export default RigAboutMe;

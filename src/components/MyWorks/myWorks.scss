@@ -3,18 +3,18 @@
   margin: 0 !important;
 
   & > div {
-    height: 90%;
-    padding: 5px;
+    height: fit-content;
+    padding-bottom: 2%;
 
     .alice-carousel__wrapper {
-      height: 100%;
+      height: fit-content;
 
       .alice-carousel__stage {
-        height: 100%;
+        height: fit-content;
 
         .alice-carousel__stage-item {
           padding: 0 1% 0 1%;
-          height: 100%;
+          height: fit-content;
         }
       }
     }
@@ -23,7 +23,7 @@
   .alice-carousel__dots {
     height: 5%;
     margin: 0;
-    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .alice-carousel__prev-btn,
@@ -57,5 +57,31 @@
 
   .alice-carousel__next-btn {
     right: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .alice-carousel
+    > div
+    > .alice-carousel__wrapper
+    > .alice-carousel__stage
+    .alice-carousel__stage-item.__active.__target {
+    padding: 0 10% 0 10%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .alice-carousel > div {
+    padding-bottom: 2%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .alice-carousel > .alice-carousel__prev-btn {
+    left: 4%;
+  }
+
+  .alice-carousel > .alice-carousel__next-btn {
+    right: 4%;
   }
 }

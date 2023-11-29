@@ -1,14 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { lazy, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
 
-const Contact = lazy(() => import("./../Contact/Contact"));
+import Contact from "./../Contact/Contact";
 import AboutMe from "./../AboutMe/AboutMe";
 import MyWorks from "../MyWorks/MyWorks";
 import MySkills from "./../MySkills/MySkills";
-
 import Home from "../Home/Home";
 import Navbar from "../Navbar/Navbar";
 
@@ -59,7 +58,9 @@ const App = () => {
     };
 
     if (mainContainerRef.current) {
-      mainContainerRef.current.addEventListener("scroll", handleScroll, {passive: true});
+      mainContainerRef.current.addEventListener("scroll", handleScroll, {
+        passive: true,
+      });
     }
 
     return () => {
