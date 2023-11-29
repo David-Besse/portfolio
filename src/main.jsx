@@ -1,3 +1,6 @@
+import { passiveSupport } from "passive-events-support/src/utils";
+passiveSupport({events:['wheel']});
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { NextUIProvider } from "@nextui-org/react";

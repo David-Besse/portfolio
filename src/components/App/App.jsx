@@ -58,9 +58,7 @@ const App = () => {
     };
 
     if (mainContainerRef.current) {
-      mainContainerRef.current.addEventListener("scroll", handleScroll, {
-        passive: true,
-      });
+      mainContainerRef.current.addEventListener("scroll", handleScroll);
     }
 
     return () => {

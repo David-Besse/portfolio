@@ -2,25 +2,25 @@ const WordData = [
   {
     keyword: "Pragmatic",
     quote:
-      "I am a pragmatic person. For me, it is in action that we learn the most.",
+      "I am a practical person. I strongly believe in learning through action.",
   },
   {
     keyword: "Curious",
-    quote: "I love exploring new technologies in web development, it's a wonderful playground when you have a great appetite for it.",
+    quote: "I'm interested in everything to do with science and advances in technology and computing. I'm also concerned about global warming.",
   },
   {
-    keyword: "Geek",
+    keyword: "Problem solver",
     quote:
-      "Je suis un passionnée des nouveautés technologiques, informatiques ainsi que des jeux vidéos.",
+      "Dealing with problems is a normal part of life, and I don't avoid them. However, I'm still a person with my own talents and flaws.",
   },
   {
     keyword: "Adaptive",
     quote:
-      "J'ai une grande capacité d'adaptation, c'est une force qui m'a permis de gravir les échelons dans mon ancienne profession",
+      "I'm able to adapt to different situations, places and people. It's a strength that enabled me to succeed in my previous profession.",
   },
   {
     keyword: "Team spirit",
-    quote: "Tout seul, on va plus vite, ensemble, on va plus loin.",
+    quote: "I'm a firm believer in the adage that if you go faster alone, you'll go further together. We need others to exist, that's a fact.",
   },
 ];
 

@@ -1,64 +1,83 @@
 const WorksList = [
   {
     projectName: "Art@home",
-    stack: { front: "React, SemanticUI", back: "PHP, Symfony" },
+    stack: {
+      front:
+        "JavaScript, React, Redux, SemanticUI, BootStrap, Bootstrap-Icons, Axios, React-Bootstrap, React-Router-Bootstrap, Jest, JsDom",
+      back: "PHP, Symfony, Nelmio/cors-bundle, Doctrine/annotations, Doctrine/doctrine-migrations-bundle, Fakerphp/faker, lexik/jwt-authentication-bundle, Phpdocumentor/reflection-docblock, Phpstan/phpdoc-parser, Sensio/framework-extra-bundle",
+    },
     url: "https://www.webshappers.com",
     src: {
       front: "https://github.com/David-Besse/art-home-front",
       back: "https://github.com/David-Besse/art-home_back",
     },
-    screenshot: "/all-devices-black.png",
+    screenshot: "/arthome_mockup.png",
   },
   {
     projectName: "Portfolio",
     stack: {
       front:
-        "React, Three, Vite, Tailwind, Zustand, Styled-components, Gsap, React-Hook-Form, NextUI, React-spring, Framer Motion, Leaflet, React-leaflet",
-      back: "React, Three, Vite, Tailwind, Zustand, Styled-components, Gsap, React-Hook-Form, NextUI, React-spring, Framer Motion, Leaflet, React-leaflet",
+        "Vite, React, Three, Tailwind, Zustand, Styled-components, Gsap, React-Hook-Form, React-Alice-Carousel, NextUI, React-spring, Emailjs",
+      back: "",
     },
     url: "//localhost:5173",
-    src: { front: "https://github.com/David-Besse/portfolio", back: "https://github.com/David-Besse/portfolio" },
-    screenshot: "",
+    src: {
+      front: "https://github.com/David-Besse/portfolio",
+      back: "https://github.com/David-Besse/portfolio",
+    },
+    screenshot: "/portfolio_mockup.png",
   },
   {
-    projectName: "nasa",
-    stack: { front: "React, SemanticUI", back: "PHP, Symfony" },
+    projectName: "Project",
+    stack: {
+      front: "en cours...",
+      back: "en cours...",
+    },
     url: "",
     src: {
-      front: "https://github.com/David-Besse/art-home-front",
-      back: "https://github.com/David-Besse/art-home_back",
-    },
-    screenshot: "",
-  },
-  {
-    projectName: "Art@home",
-    stack: { front: "React, SemanticUI", back: "PHP, Symfony" },
-    url: "https://www.webshappers.com",
-    src: {
-      front: "https://github.com/David-Besse/art-home-front",
-      back: "https://github.com/David-Besse/art-home_back",
-    },
-    screenshot: "",
-  },
-  {
-    projectName: "Art@home",
-    stack: { front: "React, SemanticUI", back: "PHP, Symfony" },
-    url: "https://www.webshappers.com",
-    src: {
-      front: "https://github.com/David-Besse/art-home-front",
+      front: "",
       back: "",
     },
     screenshot: "",
   },
   {
-    projectName: "Art@home",
-    stack: { front: "React, SemanticUI", back: "PHP, Symfony" },
-    url: "https://www.webshappers.com",
+    projectName: "Project",
+    stack: {
+      front: "en cours...",
+      back: "en cours...",
+    },
+    url: "",
     src: {
       front: "",
-      back: "https://github.com/David-Besse/art-home_back",
+      back: "",
     },
-    screenshot: "/all-devices-black.png",
+    screenshot: "",
+  },
+  {
+    projectName: "Project",
+    stack: {
+      front: "en cours...",
+      back: "en cours...",
+    },
+    url: "",
+    src: {
+      front: "",
+      back: "",
+    },
+    screenshot: "",
+  },
+  {
+    projectName: "Project",
+    stack: {
+      front: "en cours...",
+      back: "en cours...",
+    },
+    url: "",
+    src: {
+      front: "",
+      back: "",
+    },
+    screenshot: "",
   },
 ];
 

@@ -19,9 +19,7 @@ const RigAboutMe = ({ cameraActivated, cameraReset, setCameraReset }) => {
       setCamTarget(newCamTarget);
     };
 
-    window.addEventListener("resize", handleResize(window.innerWidth), {
-      passive: true,
-    });
+    window.addEventListener("resize", handleResize(window.innerWidth));
 
     return () => {
       window.removeEventListener("resize", handleResize);
