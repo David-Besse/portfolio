@@ -18,7 +18,9 @@ const RigMySkills = () => {
           autoRotate
           autoRotateSpeed={0.7}
           enableZoom={false}
-          target={[0, 0, 0]}
+          enablePan={false}
+          enableDamping={false}
+          enableRotate={true}
         />
       </>
     );

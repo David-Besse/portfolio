@@ -51,9 +51,9 @@ const Contact = () => {
     <>
       <Modal />
 
-      <h2 className="absolute top-2 left-2 text-xl sm:text-2xl z-10">
+      {/* <h2 className="absolute top-2 left-2 text-xl sm:text-2xl z-10">
         .contact
-      </h2>
+      </h2> */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
         color="#c4ae96"
@@ -68,8 +68,8 @@ const Contact = () => {
         height="100%"
       />
 
-      <div className="absolute w-full h-[80%] top-1/2 transform -translate-y-1/2 flex flex-col gap-6 sm:gap-16 ps-2 pe-2 sm:p-0">
-        <p className="text-center my-1 text-xl first-letter:text-4xl px-10 tracking-wide">
+      <div className="absolute w-full h-full top-1/2 transform -translate-y-1/2 flex flex-col gap-6 sm:gap-16">
+        <p className="text-center my-1 text-lg first-letter:text-4xl px-10 tracking-wide">
           Get in touch or shoot me an email directly on{" "}
           <a className="text-[#00a1ec]" href="mailto: dahodprod@gmail.com">
             dahodprod@gmail.com
@@ -146,7 +146,7 @@ const Contact = () => {
           />
           <p className="text-red-500">{errors.yourmessage?.message}</p>
           <input
-            className="cursor-pointer w-fit self-end active:bg-transparent active:text-[#00a1ec] text-lg rounded-lg p-1 tracking-wide"
+            className="cursor-pointer w-fit self-end active:bg-transparent active:text-[#00a1ec] text-base rounded-lg p-1 tracking-wide"
             type="submit"
             value="Send message"
           />

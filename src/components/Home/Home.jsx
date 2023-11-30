@@ -30,9 +30,7 @@ const Home = () => {
       <header className="h-[15%] p-2 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-1 z-10">
         {/* Logo */}
         <div className="flex flex-col justify-center items-center ps-4">
-          <h2
-            className="font-bold text-3xl sm:text-4xl text-[#00a1ec] flex"
-          >
+          <h2 className="font-bold text-3xl sm:text-4xl text-[#00a1ec] flex">
             {letters.map((letter, index) => (
               <span key={index} className="mx-[2px]">
                 {letter}
@@ -86,38 +84,41 @@ const Home = () => {
       {/* Main content section */}
       <main className="relative h-[85%] w-full flex flex-wrap lg:flex-col items-stretch pb-16 pl-4 pr-4 xl:pl-20 xl:pr-20 z-10 ">
         {/* Left side content */}
-        <section className="home_center w-1/2 h-2/3 lg:h-full lg:w-1/3 flex order-1 lg:order-none justify-center items-center z-10">
+        <section className="home_center w-1/2 h-1/2 lg:h-full lg:w-1/3 flex order-1 lg:order-none justify-center items-end lg:items-center z-10">
           <img
             src="/home_right.png"
             alt="my photo"
-            className="photo h-2/3 sm:h-3/4 lg:h-2/3 -rotate-2 lg:-rotate-2 rounded border-4 shadow-xl rounded-se-[50px] rounded-es-[50px]"
+            className="photo h-3/4 sm:h-[85%] lg:h-2/3 -rotate-2 lg:-rotate-2 rounded border-4 shadow-xl rounded-se-[50px] rounded-es-[50px]"
           />
         </section>
 
         {/* center content */}
-        <section className="relative w-1/2 h-2/3 lg:w-2/3 lg:h-1/2 flex flex-col order-2 lg:order-none justify-center lg:justify-end text-xl lg:text-2xl xl:text-3xl fade-in-L gap-1 lg:gap-3 text-end sm:text-start lg:px-8">
+        <section className="relative w-1/2 h-1/2 lg:w-2/3 lg:h-1/2 flex flex-col order-2 lg:order-none justify-end fade-in-L gap-1 lg:gap-3 text-end  sm:text-start lg:text-start sm:pr-4 lg:px-8">
           {/* Background Bubble */}
-          <div className="bgBuble absolute w-[65%] h-[15%] top-[20%] sm:w-[32%] sm:top-[20%] lg:top-[30%] lg:h-[22%] lg:w-[25%] lg:right-8 xl:w-[25%] 2xl:w-[13%] right-0 z-0 flex justify-center items-center">
+          <div className="bgBuble absolute w-[65%] h-[15%] top-[25%] right-0 sm:right-2/3 lg:right-[10%] sm:w-[32%] sm:top-[20%] lg:h-[22%] lg:w-[25%] xl:w-[25%] 2xl:w-[13%] z-0 flex justify-center items-center">
             <p className="text-4xl sm:text-end lg:text-5xl font-extrabold z-10 whitespace-nowrap">
               Hello !
             </p>
+
+            {/* intro */}
           </div>
-          <p className="sm:text-end">My name is David.</p>
-          <p className="sm:text-end">
-            I am a web developer and I love to create websites.
+          <p className="text-xl sm:text-2xl lg:text-3xl pb-4 lg:px-20">My name is David.</p>
+          <p className="text-sm sm:text-xl lg:text-2xl lg:pt-4 lg:px-20">
+            As a web developer, every assignment presents a precious chance to
+            enhance and consistently advance my skills.
           </p>
         </section>
 
         {/* Right side content */}
-        <section className="w-full h-1/3 flex flex-col order-3 justify-start lg:justify-center gap-2 pr-4 pl-4 lg:w-2/3 lg:h-1/2 lg:order-none lg:px-8 sm:gap-4 lg:gap-8 fade-in-R">
+        <section className="w-full h-1/2 flex flex-col order-3 justify-center gap-2 pr-4 pl-4 lg:w-2/3 lg:h-1/2 lg:order-none lg:px-8 sm:gap-4 lg:gap-8 fade-in-R">
           <h3 className="text-2xl lg:text-4xl font-extrabold text-start sm:text-center italic">
             My motto is . . .
           </h3>
-          <q className="leading-normal text-lg lg:text-xl text-justify sm:text-center">
+          <q className="leading-normal text-sm sm:text-xl lg:text-2xl text-justify sm:text-center sm:px-20">
             For the things we have to learn before we can do them, we learn by
             doing them.
           </q>
-          <cite className="text-base text-gray-600 text-end">
+          <cite className="text-sm sm:text-lg lg:text-xl text-gray-600 text-center">
             ― Aristotle,{" "}
             <a
               href="https://en.wikipedia.org/wiki/Nicomachean_Ethics"

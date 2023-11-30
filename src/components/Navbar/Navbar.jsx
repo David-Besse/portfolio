@@ -12,27 +12,27 @@ const links = [
   {
     hrefLabel: "homePage",
     ariaLabel: "go to home page",
-    icon: <BsHouse size={32} />,
+    icon: <BsHouse />,
   },
   {
     hrefLabel: "aboutMe",
     ariaLabel: "go to about me page",
-    icon: <BsPerson size={32} />,
+    icon: <BsPerson />,
   },
   {
     hrefLabel: "myWorks",
     ariaLabel: "got to my works page",
-    icon: <BsBook size={32} />,
+    icon: <BsBook />,
   },
   {
     hrefLabel: "mySkills",
     ariaLabel: "go to my skills page",
-    icon: <BsCodeSlash size={32} />,
+    icon: <BsCodeSlash />,
   },
   {
     hrefLabel: "contact",
     ariaLabel: "go to contact me page",
-    icon: <BsEnvelopeAt size={32} />,
+    icon: <BsEnvelopeAt />,
   },
 ];
 
@@ -68,7 +68,7 @@ const Navbar = () => {
 
   return (
     // Render the navigation bar
-    <nav className="fixed bottom-6 w-full -translate-y-1/6 flex justify-center z-50">
+    <nav className="fixed bottom-5 w-full -translate-y-1/6 flex justify-center z-50">
       <ul className="w-[425px] flex justify-around items-center text-2xl text-[#606887]">
         {/* Render each link in the navigation bar */}
         {links.map((link, index) => (
@@ -82,7 +82,7 @@ const Navbar = () => {
               onClick={handleClick}
               // Add a CSS class if the current section matches the link's href value
               className={`${
-                activeSection === link.hrefLabel ? "scale-150" : ""
+                activeSection === link.hrefLabel ? "scale-[130%] text-[#00a1ec]" : "scale-110"
               }`}
             >
               {/* Render the icon of the link */}

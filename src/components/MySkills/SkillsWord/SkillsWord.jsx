@@ -6,12 +6,12 @@ import { useRef } from "react";
 const SkillsWord = ({ word, position }) => {
   const fontProps = {
     font: "/Righteous-Regular.ttf",
-    fontSize: 3,
-    letterSpacing: -0.05,
+    fontSize: 4,
+    letterSpacing: 0.01,
     lineHeight: 1,
     "material-toneMapped": false,
     strokeColor: "black",
-    strokeOpacity: 0.5,
+    strokeOpacity: 0.4,
     strokeWidth: 0.1,
   };
   const ref = useRef();
@@ -24,7 +24,7 @@ const SkillsWord = ({ word, position }) => {
     const distanceToCamera = ref.current.position.distanceTo(camera.position);
 
     // Set the text color based on the distance to the camera
-    ref.current.material.color.set(distanceToCamera < 42 ? "#d74752" : "white");
+    ref.current.material.color.set(distanceToCamera < 42 ? "#e78136" : "white");
   });
 
   return (

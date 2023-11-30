@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unknown-property */
-import { useState, Suspense } from "react";
+import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Gltf, Environment, ContactShadows } from "@react-three/drei";
-import styled  from "styled-components";
+import styled from "styled-components";
 
 import { HiInformationCircle } from "react-icons/hi";
 import { BsFillCameraVideoFill } from "react-icons/bs";
@@ -12,7 +12,6 @@ import { GrPowerReset } from "react-icons/gr";
 
 import Avatar from "./Scene/Avatar/Avatar";
 import WordData from "./../../datas/WordData";
-import Loader from "./Scene/Loader/Loader";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
 import "./aboutMe.scss";
@@ -64,7 +63,7 @@ const AboutMe = () => {
         .aboutMe
       </h2> */}
       {/* Subheader */}
-      <h3 className="absolute top-10 p-3 flex justify-center items-center text-4xl italic uppercase left-1/2 transform -translate-x-1/2 whitespace-nowrap sm:text-5xl lg:text-6xl xl:text-[4.5rem] z-10">
+      <h3 className="absolute top-5 p-3 flex justify-center items-center text-4xl italic uppercase left-1/2 transform -translate-x-1/2 whitespace-nowrap sm:text-5xl lg:text-6xl xl:text-[4.5rem] z-10">
         what defines me
       </h3>
 
@@ -77,7 +76,7 @@ const AboutMe = () => {
 
         {/* Canvas component */}
         <div className="absolute w-full h-full top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-          <Canvas className="3dscene_aboutMe">
+          <Canvas shadows className="3dscene_aboutMe">
             <RigAboutMe
               cameraActivated={cameraActivated}
               cameraReset={cameraReset}
@@ -87,34 +86,31 @@ const AboutMe = () => {
             {/* Render a city environment */}
             <Environment preset="city" />
 
-            {/* Render the main content */}
-            <Suspense fallback={<Loader />}>
-              <group scale={1}>
-                {/* Render contact shadows */}
-                <ContactShadows
-                  opacity={0.8}
-                  scale={30}
-                  blur={1}
-                  far={10}
-                  resolution={128}
-                  color="#000000"
-                  position={[0, -5, 0]}
-                />
+            <group scale={1}>
+              {/* Render contact shadows */}
+              <ContactShadows
+                opacity={0.8}
+                scale={30}
+                blur={1}
+                far={10}
+                resolution={128}
+                color="#000000"
+                position={[0, -5, 0]}
+              />
 
-                {/* Render an avatar */}
-                <Avatar />
+              {/* Render an avatar */}
+              <Avatar />
 
-                {/* Load and render a 3D model */}
-                <Gltf
-                  receiveShadow
-                  castShadow
-                  src="desktop_chair.glb"
-                  scale={1}
-                  position={[-0.35, -5, 0]}
-                  rotation={[0, Math.PI, 0]}
-                />
-              </group>
-            </Suspense>
+              {/* Load and render a 3D model */}
+              <Gltf
+                receiveShadow
+                castShadow
+                src="/models/desktop_chair.glb"
+                scale={1}
+                position={[-0.35, -5, 0]}
+                rotation={[0, Math.PI, 0]}
+              />
+            </group>
           </Canvas>
 
           {/* Camera activation and information group */}

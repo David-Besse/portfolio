@@ -12,7 +12,7 @@ import SkillsList from "./../../../datas/SkillsList";
  * @param {number} radius - The radius of the sphere. Default is 20.
  * @return {JSX.Element} A group of SkillsWord components representing the words in the spherical array.
  */
-const CloudSphere = ({ count = 4, radius = 20 }) => {
+const CloudSphere = ({ count = 4, radius = 20, scaling = 1 }) => {
   // Create a count x count random words with spherical distribution
   const words = useMemo(() => {
     const temp = [];
@@ -45,7 +45,7 @@ const CloudSphere = ({ count = 4, radius = 20 }) => {
   }, [count, radius]);
 
   return (
-    <group>
+    <group scale={scaling}>
       {words.map((el, index) => (
         <SkillsWord key={index} position={el.position} word={el.word} />
       ))}
@@ -56,6 +56,7 @@ const CloudSphere = ({ count = 4, radius = 20 }) => {
 CloudSphere.propTypes = {
   count: PropTypes.number,
   radius: PropTypes.number,
-};
+  scaling: PropTypes.number,
+}
 
 export default CloudSphere;

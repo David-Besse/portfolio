@@ -208,7 +208,7 @@ const App = () => {
         {/* My Works Section */}
         <section
           id="myWorks"
-          className="relative h-screen w-screen snap-center py-16 flex flex-col"
+          className="relative h-screen w-screen snap-center pb-16 flex flex-col"
           ref={sectionRefs.myWorks}
         >
           <MyWorks />
@@ -217,7 +217,7 @@ const App = () => {
         {/* My Skills Section */}
         <section
           id="mySkills"
-          className="relative h-screen w-screen snap-center"
+          className="relative h-screen w-screen snap-center pb-16 flex justify-center items-center"
           ref={sectionRefs.mySkills}
         >
           <MySkills />
@@ -226,7 +226,7 @@ const App = () => {
         {/* Contact Section */}
         <section
           id="contact"
-          className="relative h-screen w-screen bg-[white] snap-center flex flex-col"
+          className="relative h-screen w-screen snap-center pb-16 flex flex-col"
           ref={sectionRefs.contact}
         >
           <Contact />

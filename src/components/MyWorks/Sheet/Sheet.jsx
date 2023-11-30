@@ -37,8 +37,8 @@ const Sheet = ({ project }) => {
     <>
       <ModalPreview project={project} isOpen={isOpen} onClose={onClose} />
       <Card className="h-fit w-full lg:w-[95%] left-1/2 transform -translate-x-1/2 rounded bg-transparent shadow-none">
-        <CardHeader className="flex flex-col h-fit">
-          <div className="flex flex-col w-full items-center">
+        <CardHeader className="flex flex-col h-fit p-0 pt-3">
+          <div className="flex flex-col w-full justify-center items-center">
             <div
               key={`div_${project.projectName}`}
               className="div_listItem w-fit relative flex justify-center text-4xl lg:text-6xl border-y-1 border-black"
@@ -50,7 +50,7 @@ const Sheet = ({ project }) => {
           </div>
         </CardHeader>
         {/* <Divider /> */}
-        <CardBody className="flex flex-col justify-center items-center">
+        <CardBody className="flex flex-col justify-center items-center p-0">
           <Image
             fallbackSrc="/No_image_available.svg"
             alt={`image of the project ${project.projectName}`}
@@ -83,14 +83,14 @@ const Sheet = ({ project }) => {
           )}
         </CardBody>
         {/* <Divider /> */}
-        <CardFooter className="flex-col md:flex-row gap-2 md:gap-0 h-fit rounded-t-xl">
+        <CardFooter className="flex-col md:flex-row gap-2 md:gap-0 h-fit rounded-t-xl py-0">
           <div className="w-full h-fit py-2 text-start">
             {project.stack.front !== "" && (
               <p
                 aria-label="front technologies used in the project"
-                className="text-sm lg:text-md text-default-500 pb-2"
+                className="text-xs lg:text-md text-default-500 pb-2"
               >
-                <span className="text-base lg:text-lg text-black">
+                <span className="text-sm lg:text-lg text-black">
                   Front stack
                 </span>
                 <br /> {project.stack.front}
@@ -99,9 +99,9 @@ const Sheet = ({ project }) => {
             {project.stack.back !== "" && (
               <p
                 aria-label="back technologies used in the project"
-                className="text-sm lg:text-md text-default-500"
+                className="text-xs lg:text-md text-default-500"
               >
-                <span className="text-base lg:text-lg text-black">
+                <span className="text-sm lg:text-lg text-black">
                   Back stack
                 </span>
                 <br /> {project.stack.back}
@@ -109,37 +109,26 @@ const Sheet = ({ project }) => {
             )}
           </div>
 
-          <div className="w-fit h-fit flex flex-row md:flex-col justify-between text-end p-2 border-1 rounded-xl bg-gradient-to-b from-amber-100 to-sky-200">
-            <p className="text-md md:text-md whitespace-nowrap pr-4 md:pr-0 md:pb-2 md:text-center">
+          <div className="w-fit h-fit flex flex-row md:flex-col text-end p-1 border-1 rounded-xl bg-gradient-to-b from-amber-100 to-sky-200">
+            <p className="text-sm md:text-md whitespace-nowrap pr-4 md:pr-0 md:pb-2 md:text-center">
               GitHub links :
             </p>
             <p className="flex flex-row md:flex-col justify-end md:justify-center md:items-center">
-              {project.src.front !== "" && (
+              {project.src.map(( stackObj  ) => 
+                Object.values(stackObj).map(( value ) => 
+                value !== "" && (
                 <Link
                   isExternal
                   showAnchorIcon
-                  href={project.src.front}
-                  key={`${project.projectName}_front_src`}
-                  className="px-2 md:px-0 md:pl-2 md:py-2 text-base md:text-md md:hover:italic md:hover:font-bold md:hover:scale-110"
+                  href={value}
+                  key={`${Object.keys(stackObj).find((el)=> el)}_src`}
+                  className=" text-sm md:text-md md:hover:italic md:hover:font-bold md:hover:scale-110 px-2 md:px-0 md:pl-2 md:py-2"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  front
+                  {Object.keys(stackObj).find((el)=> el)}
                 </Link>
-              )}
-              {project.src.back !== "" && (
-                <Link
-                  isExternal
-                  showAnchorIcon
-                  href={project.src.back}
-                  key={`${project.projectName}_back_src`}
-                  className="px-2 md:px-0 md:pl-2 md:py-2 text-base md:text-md md:hover:italic md:hover:font-bold md:hover:scale-110"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  back
-                </Link>
-              )}
+              )))}
             </p>
           </div>
         </CardFooter>
@@ -156,10 +145,12 @@ Sheet.propTypes = {
       front: PropTypes.string,
     }),
     url: PropTypes.string,
-    src: PropTypes.shape({
-      back: PropTypes.string,
-      front: PropTypes.string,
-    }),
+    src: PropTypes.arrayOf(
+      PropTypes.shape({
+        back: PropTypes.string,
+        front: PropTypes.string,
+      })
+    ),
     screenshot: PropTypes.string,
   }),
 };

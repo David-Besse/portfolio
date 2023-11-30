@@ -7,10 +7,10 @@ const WorksList = [
       back: "PHP, Symfony, Nelmio/cors-bundle, Doctrine/annotations, Doctrine/doctrine-migrations-bundle, Fakerphp/faker, lexik/jwt-authentication-bundle, Phpdocumentor/reflection-docblock, Phpstan/phpdoc-parser, Sensio/framework-extra-bundle",
     },
     url: "https://www.webshappers.com",
-    src: {
-      front: "https://github.com/David-Besse/art-home-front",
-      back: "https://github.com/David-Besse/art-home_back",
-    },
+    src :[
+      {front: "https://github.com/David-Besse/art-home-front"},
+      {back: "https://github.com/David-Besse/art-home_back"},
+    ],
     screenshot: "/arthome_mockup.png",
   },
   {
@@ -21,10 +21,10 @@ const WorksList = [
       back: "",
     },
     url: "//localhost:5173",
-    src: {
-      front: "https://github.com/David-Besse/portfolio",
-      back: "https://github.com/David-Besse/portfolio",
-    },
+    src :[
+      {front: "https://github.com/David-Besse/portfolio"},
+      {back: "https://github.com/David-Besse/portfolio"},
+    ],
     screenshot: "/portfolio_mockup.png",
   },
   {
@@ -34,10 +34,10 @@ const WorksList = [
       back: "en cours...",
     },
     url: "",
-    src: {
-      front: "",
-      back: "",
-    },
+    src :[
+      {front: ""},
+      {back: ""},
+    ],
     screenshot: "",
   },
   {
@@ -47,10 +47,10 @@ const WorksList = [
       back: "en cours...",
     },
     url: "",
-    src: {
-      front: "",
-      back: "",
-    },
+    src :[
+      {front: ""},
+      {back: ""},
+    ],
     screenshot: "",
   },
   {
@@ -60,10 +60,10 @@ const WorksList = [
       back: "en cours...",
     },
     url: "",
-    src: {
-      front: "",
-      back: "",
-    },
+    src :[
+      {front: ""},
+      {back: ""},
+    ],
     screenshot: "",
   },
   {
@@ -73,10 +73,10 @@ const WorksList = [
       back: "en cours...",
     },
     url: "",
-    src: {
-      front: "",
-      back: "",
-    },
+    src: [
+      {front: ""},
+      {back: ""},
+    ],
     screenshot: "",
   },
 ];
