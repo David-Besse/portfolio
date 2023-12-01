@@ -52,13 +52,13 @@ const Sheet = ({ project }) => {
         {/* <Divider /> */}
         <CardBody className="flex flex-col justify-center items-center p-0">
           <Image
-            fallbackSrc="/No_image_available.svg"
+            fallbackSrc="/images/No_image_available.svg"
             alt={`image of the project ${project.projectName}`}
             radius="sm"
             src={
               project.screenshot !== ""
                 ? project.screenshot
-                : "/No_image_available.svg"
+                : "/images/No_image_available.svg"
             }
             className={`object-contain w-auto h-[35vh]`}
           />

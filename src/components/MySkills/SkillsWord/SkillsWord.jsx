@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 const SkillsWord = ({ word, position }) => {
   const fontProps = {
-    font: "/Righteous-Regular.ttf",
+    font: "/Righteous-Regular.woff",
     fontSize: 4,
     letterSpacing: 0.01,
     lineHeight: 1,

@@ -11,7 +11,7 @@ const WorksList = [
       {front: "https://github.com/David-Besse/art-home-front"},
       {back: "https://github.com/David-Besse/art-home_back"},
     ],
-    screenshot: "/arthome_mockup.png",
+    screenshot: "/images/arthome_mockup.png",
   },
   {
     projectName: "Portfolio",
@@ -25,7 +25,7 @@ const WorksList = [
       {front: "https://github.com/David-Besse/portfolio"},
       {back: "https://github.com/David-Besse/portfolio"},
     ],
-    screenshot: "/portfolio_mockup.png",
+    screenshot: "/images/portfolio_mockup.png",
   },
   {
     projectName: "Project",

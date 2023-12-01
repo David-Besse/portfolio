@@ -86,7 +86,7 @@ const Home = () => {
         {/* Left side content */}
         <section className="home_center w-1/2 h-1/2 lg:h-full lg:w-1/3 flex order-1 lg:order-none justify-center items-end lg:items-center z-10">
           <img
-            src="/home_right.png"
+            src="/images/home_right.png"
             alt="my photo"
             className="photo h-3/4 sm:h-[85%] lg:h-2/3 -rotate-2 lg:-rotate-2 rounded border-4 shadow-xl rounded-se-[50px] rounded-es-[50px]"
           />
