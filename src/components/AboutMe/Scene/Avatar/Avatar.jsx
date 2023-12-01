@@ -120,6 +120,6 @@ Avatar.propTypes = {
   scaling: PropTypes.number,
 };
 
-useGLTF.preload("/avatar_typing.glb");
+useGLTF.preload("/avatar.glb");
 
 export default Avatar;
