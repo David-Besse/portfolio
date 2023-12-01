@@ -39,7 +39,7 @@ const MySkills = () => {
 
       {/* Title */}
       {!isSmallMobile && (
-        <div className="h-full w-full flex justify-center items-center sm:w-[80vh] sm:h-[80%] lg:w-[90vh] lg:h-[90%]">
+        <div className="h-full w-full flex justify-center items-center sm:w-[95vh] sm:h-[95vh] lg:w-[95vh] lg:h-[95%]">
           <svg
             viewBox="0 0 500 500"
             xmlns="http://www.w3.org/2000/svg"
@@ -76,14 +76,14 @@ const MySkills = () => {
       )}
 
       {/* Skills Sphere */}
-      <div className="absolute bottom-[calc(50% - 16px)] left-1/2 w-[60vh] h-[60%] sm:w-[70vh] sm:h-[70%] transform -translate-x-1/2 translate-y-[calc(50% - 16px)] z-20">
+      <div className="absolute bottom-[calc(50% - 16px)] left-1/2 w-full h-[100vw] sm:w-full sm:h-[100vw] lg:w-[100vh] lg:h-full transform -translate-x-1/2 translate-y-[calc(50% - 16px)] z-10">
         <Canvas className="">
           <fog attach="fog" args={["#202025", 40, 80]} />
           <RigMySkills />
           <CloudSphere
             count={16}
             radius={60}
-            scaling={isSmallMobile ? 1 : 0.9}
+            scaling={isSmallMobile ? 1 : 0.7}
           />
         </Canvas>
       </div>

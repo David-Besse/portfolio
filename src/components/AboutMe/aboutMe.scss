@@ -3,6 +3,7 @@
   color: white;
   position: relative;
   cursor: default;
+  white-space: nowrap;
 
   &::after {
     position: absolute;

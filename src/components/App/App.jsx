@@ -70,44 +70,44 @@ const App = () => {
 
   useEffect(() => {
     const titleRefElement = Array.from(titleRef.current.children);
-    // const spanOverRefElement = Array.from(spanOverRef.current.children);
-    // const spanUnderRefElement = Array.from(spanUnderRef.current.children);
-
-    // gsap
-    //   .timeline({ delay: 0.4 })
-    //   .fromTo(
-    //     spanOverRefElement,
-    //     { opacity: 0, x: -100 },
-    //     { opacity: 1, x: 0, stagger: 0.1, duration: 0.1 }
-    //   )
-    //   .to(spanOverRefElement, {
-    //     opacity: 0,
-    //     delay: 6.3,
-    //     duration: 1,
-    //   });
+    const spanOverRefElement = Array.from(spanOverRef.current.children);
+    const spanUnderRefElement = Array.from(spanUnderRef.current.children);
 
     gsap
-      // .timeline({ delay: 2 })
-      // .fromTo(
-      //   titleRefElement,
-      //   { opacity: 0, x: -100 },
-      //   {
-      //     opacity: 1,
-      //     x: 0,
-      //     stagger: 0.1,
-      //     duration: 0.5,
-      //     margin: "0 2.5vw",
-      //   }
-      // )
-      // .to(".letterTitle", {
-      //   margin: "0 1vw",
-      //   duration: 0.2,
-      // })
+      .timeline({ delay: 0.4 })
+      .fromTo(
+        spanOverRefElement,
+        { opacity: 0, x: -100 },
+        { opacity: 1, x: 0, stagger: 0.1, duration: 0.1 }
+      )
+      .to(spanOverRefElement, {
+        opacity: 0,
+        delay: 6.3,
+        duration: 1,
+      });
+
+    gsap
+      .timeline({ delay: 2 })
+      .fromTo(
+        titleRefElement,
+        { opacity: 0, x: -100 },
+        {
+          opacity: 1,
+          x: 0,
+          stagger: 0.1,
+          duration: 0.5,
+          margin: "0 2.5vw",
+        }
+      )
+      .to(".letterTitle", {
+        margin: "0 1vw",
+        duration: 0.2,
+      })
       .to(titleRefElement, {
         scale: 0,
         opacity: 0,
         stagger: 0.1,
-        // delay: 5,
+        delay: 5,
         duration: 1,
         onComplete: () => {
           gsap.set("#titleContainer", { display: "none" });
@@ -116,18 +116,18 @@ const App = () => {
         },
       });
 
-    // gsap
-    //   .timeline({ delay: 4 })
-    //   .fromTo(
-    //     spanUnderRefElement,
-    //     { opacity: 0, x: -100 },
-    //     { opacity: 1, x: 0, stagger: 0.1, duration: 0.1 }
-    //   )
-    //   .to(spanUnderRefElement, {
-    //     opacity: 0,
-    //     delay: 1.2,
-    //     duration: 1,
-    //   });
+    gsap
+      .timeline({ delay: 4 })
+      .fromTo(
+        spanUnderRefElement,
+        { opacity: 0, x: -100 },
+        { opacity: 1, x: 0, stagger: 0.1, duration: 0.1 }
+      )
+      .to(spanUnderRefElement, {
+        opacity: 0,
+        delay: 1.2,
+        duration: 1,
+      });
   }, []);
 
   return (
@@ -199,7 +199,7 @@ const App = () => {
         {/* About Me Section */}
         <section
           id="aboutMe"
-          className="relative flex h-screen w-screen snap-center"
+          className="relative flex h-screen w-screen snap-center overflow-hidden"
           ref={sectionRefs.aboutMe}
         >
           <AboutMe />
@@ -208,7 +208,7 @@ const App = () => {
         {/* My Works Section */}
         <section
           id="myWorks"
-          className="relative h-screen w-screen snap-center pb-16 flex flex-col"
+          className="relative h-screen w-screen snap-center pb-16 flex flex-col overflow-hidden"
           ref={sectionRefs.myWorks}
         >
           <MyWorks />
@@ -217,7 +217,7 @@ const App = () => {
         {/* My Skills Section */}
         <section
           id="mySkills"
-          className="relative h-screen w-screen snap-center pb-16 flex justify-center items-center"
+          className="relative h-screen w-screen snap-center pb-16 flex justify-center items-center overflow-hidden"
           ref={sectionRefs.mySkills}
         >
           <MySkills />

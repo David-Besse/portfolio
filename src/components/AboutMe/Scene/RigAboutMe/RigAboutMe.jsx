@@ -2,20 +2,33 @@ import PropTypes from "prop-types";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 
+/**
+ * Initializes the RigAboutMe component.
+ *
+ * @param {boolean} cameraActivated - Flag indicating if the camera is activated.
+ * @param {function} cameraReset - Callback function to reset the camera.
+ * @param {function} setCameraReset - Callback function to set the camera reset flag.
+ * @return {JSX.Element} The rendered component.
+ */
 const RigAboutMe = ({ cameraActivated, cameraReset, setCameraReset }) => {
   const camRef = useRef();
   const [camPosition, setCamPosition] = useState(() =>
-    window.innerWidth < 600 ? [30, 4, 10] : [20, 6, -20]
+    window.innerWidth < 600 ? [30, 45, -5] : [20, 6, -20]
   );
   const [camTarget, setCamTarget] = useState(() =>
-    window.innerWidth < 600 ? [0, 0, -0.5] : [5, 0, 0]
+    window.innerWidth < 600 ? [5, 0, -6] : [5, 0, 0]
   );
 
   useEffect(() => {
+/**
+ * Handles the resize event and updates the camera position and target based on the value.
+ *
+ * @param {number} value - The value used to determine the new camera position and target.
+ */
     const handleResize = (value) => {
-      const newCamPosition = value < 600 ? [30, 4, 10] : [20, 6, -20];
+      const newCamPosition = value < 600 ? [30, 45, -5] : [20, 6, -20];
       setCamPosition(newCamPosition);
-      const newCamTarget = value < 600 ? [0, 0, -0.5] : [5, 0, 0];
+      const newCamTarget = value < 600 ? [5, 0, -6] : [5, 0, 0];
       setCamTarget(newCamTarget);
     };
 
@@ -28,12 +41,12 @@ const RigAboutMe = ({ cameraActivated, cameraReset, setCameraReset }) => {
 
   useEffect(() => {
     if (cameraReset) {
-      if (window.innerWidth < 600) {
-        camRef.current.position.set(30, 4, 10);
-        camRef.current.lookAt(5, 0, 0);
+      if (window.innerWidth < 600 ) {
+        camRef.current.position.set(30, 45, -5);
+        camRef.current.lookAt(5, 0, -6);
       } else {
         camRef.current.position.set(20, 6, -20);
-        camRef.current.lookAt(8, 5, 0);
+        camRef.current.lookAt(5, 0, 0);
       }
       setCameraReset(false);
     }

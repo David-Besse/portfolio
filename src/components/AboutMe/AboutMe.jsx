@@ -67,10 +67,10 @@ const AboutMe = () => {
         what defines me
       </h3>
 
-      {/* left side */}
-      <div className="relative w-full sm:w-2/3 h-full">
+      {/* 3D Scene */}
+      <div className="relative w-full sm:w-2/3 lg:w-full h-full">
         {/* Background Bubble */}
-        <section className="stage absolute w-[90%] sm:w-[60vh] h-[50%] sm:h-[60%] top-[25%] sm:top-[17%] left-1/2 transform -translate-x-1/2">
+        <section className="stage absolute w-[90%] sm:w-[52vh] h-[50%] sm:h-[52%] top-[22%] sm:top-[20%] left-1/2 transform -translate-x-1/2">
           <figure className="ball bubble shadow-2xl" />
         </section>
 
@@ -114,13 +114,13 @@ const AboutMe = () => {
           </Canvas>
 
           {/* Camera activation and information group */}
-          <div className="camera_aboutMe absolute top-[20%] left-[20%] flex justify-center items-center">
+          <div className="camera_aboutMe absolute top-[15%] lg:top-[unset] lg:bottom-[20%] left-[4%] lg:left-1/2 lg:-translate-x-1/2 transform flex justify-center items-center gap-4">
             <GrPowerReset
-              className="w-6 h-6 mr-2 cursor-pointer"
+              className="w-6 h-6 cursor-pointer"
               onClick={() => resetCamPosition()}
             />
             {/* Camera activation */}
-            <div className="flex justify-center items-center mr-2">
+            <div className="flex justify-center items-center">
               {!cameraActivated && (
                 // Show camera activation icon
                 <BsFillCameraVideoFill
@@ -141,7 +141,7 @@ const AboutMe = () => {
               {/* Information icon */}
               <HiInformationCircle className="w-5 h-5 inline-block cursor-help text-[#00a1ec]" />
               <div>
-                <div className="hidden absolute w-[250px] left-[4.5rem] bottom-0 bg-gray-200 p-2 rounded-lg text-sm shadow-md mt-2 text-center z-20 group-hover:block">
+                <div className="hidden absolute w-[250px] left-[4.5rem] lg:left-[8rem] bottom-0 bg-gray-200 p-2 rounded-lg text-sm shadow-md mt-2 text-center z-20 group-hover:block">
                   {/* Information tooltip */}
                   On / Off
                   <br />
@@ -153,10 +153,10 @@ const AboutMe = () => {
         </div>
       </div>
 
-      {/* right side */}
-      <div className="absolute top-0 right-0 sm:w-1/2 h-full flex flex-col justify-around">
+      {/* Words bloc */}
+      <div className="absolute top-0 right-0 sm:right-4 lg:left-0 sm:w-1/3 h-full flex flex-col justify-around pb-16 lg:px-16">
         {/* Word List */}
-        <ul className="h-fit pe-2 sm:pe-0 flex flex-col text-3xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-center gap-4 sm:gap-3">
+        <ul className="h-fit pe-2 sm:pe-0 flex flex-col text-3xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-center lg:items-start gap-4 lg:gap-12">
           {WordData.map((word) => (
             <ListItem
               className="liItem pt-[2px] pl-[1px] sm:pt-[4px]"
@@ -175,10 +175,10 @@ const AboutMe = () => {
         </ul>
       </div>
 
-      {/* Bottom quote */}
-      <div className="quoteBox absolute w-full sm:w-[60%] h-fit bottom-[15%] left-1/2 transform -translate-x-1/2 flex justify-center items-center px-2">
+      {/* Quote bloc */}
+      <div className="quoteBox absolute w-full lg:w-1/3 h-full lg:h-full bottom-[15%] lg:bottom-1/2 left-1/2 lg:left-[unset] lg:right-0 transform -translate-x-1/2 lg:-translate-x-0 lg:translate-y-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 lg:pb-16">
         <p
-          className={`relative w-fit pl-4 pr-4 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl text-black font-semibold }`}
+          className="relative w-fit h-fit px-4 lg:py-4 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl text-black font-semibold lg:leading-[3rem!important]"
         >
           {/* Left quote icon */}
           <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887]" />

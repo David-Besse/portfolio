@@ -1,10 +1,11 @@
 const WorksList = [
   {
     projectName: "Art@home",
+    description: "The aim of Art@home is to create a platform where contemporary artists (both emerging and established) can exhibit their work, giving the public the chance to discover a wide variety of artistic expression.",
     stack: {
       front:
-        "JavaScript, React, Redux, SemanticUI, BootStrap, Bootstrap-Icons, Axios, React-Bootstrap, React-Router-Bootstrap, Jest, JsDom",
-      back: "PHP, Symfony, Nelmio/cors-bundle, Doctrine/annotations, Doctrine/doctrine-migrations-bundle, Fakerphp/faker, lexik/jwt-authentication-bundle, Phpdocumentor/reflection-docblock, Phpstan/phpdoc-parser, Sensio/framework-extra-bundle",
+        "JavaScript, React, Redux, Axios, Jest, JsDom",
+      back: "PHP, Symfony, Nelmio",
     },
     url: "https://www.webshappers.com",
     src :[
@@ -15,9 +16,10 @@ const WorksList = [
   },
   {
     projectName: "Portfolio",
+    description: "My portfolio version 1",
     stack: {
       front:
-        "Vite, React, Three, Tailwind, Zustand, Styled-components, Gsap, React-Hook-Form, React-Alice-Carousel, NextUI, React-spring, Emailjs",
+        "Vite, React, Three, Tailwind, Zustand, Styled-components, React-Hook-Form, React-Alice-Carousel, Emailjs",
       back: "",
     },
     url: "//localhost:5173",
@@ -28,52 +30,14 @@ const WorksList = [
     screenshot: "/images/portfolio_mockup.png",
   },
   {
-    projectName: "Project",
+    projectName: "coming soon..",
+    description: "coming soon...",
     stack: {
-      front: "en cours...",
-      back: "en cours...",
+      front: "",
+      back: "",
     },
     url: "",
     src :[
-      {front: ""},
-      {back: ""},
-    ],
-    screenshot: "",
-  },
-  {
-    projectName: "Project",
-    stack: {
-      front: "en cours...",
-      back: "en cours...",
-    },
-    url: "",
-    src :[
-      {front: ""},
-      {back: ""},
-    ],
-    screenshot: "",
-  },
-  {
-    projectName: "Project",
-    stack: {
-      front: "en cours...",
-      back: "en cours...",
-    },
-    url: "",
-    src :[
-      {front: ""},
-      {back: ""},
-    ],
-    screenshot: "",
-  },
-  {
-    projectName: "Project",
-    stack: {
-      front: "en cours...",
-      back: "en cours...",
-    },
-    url: "",
-    src: [
       {front: ""},
       {back: ""},
     ],

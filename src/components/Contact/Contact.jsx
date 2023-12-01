@@ -68,7 +68,7 @@ const Contact = () => {
         height="100%"
       />
 
-      <div className="absolute w-full h-full top-1/2 transform -translate-y-1/2 flex flex-col gap-6 sm:gap-16">
+      <div className="w-full h-full flex flex-col justify-center gap-6 sm:gap-8 lg:gap-10 z-10">
         <p className="text-center my-1 text-lg first-letter:text-4xl px-10 tracking-wide">
           Get in touch or shoot me an email directly on{" "}
           <a className="text-[#00a1ec]" href="mailto: dahodprod@gmail.com">
@@ -78,7 +78,7 @@ const Contact = () => {
 
         <form
           ref={formRef}
-          className="w-[90%] sm:w-[400px] text-sm flex flex-col self-center gap-1"
+          className="w-[90%] sm:w-[400px] text-sm flex flex-col self-center gap-1 sm:gap-4"
           onSubmit={handleSubmit(onSubmit)}
         >
           <input
