@@ -5,16 +5,16 @@ import Sheet from "./Sheet/Sheet";
 import WorksList from "./../../datas/WorksList";
 import "./myWorks.scss";
 
-const carouselItems = WorksList.map((project, index) => (
-  <Sheet project={project} index={index} key={`${index}_${project}`} />
-));
-
 /**
  * Renders the "MyWorks" component.
  *
  * @return {JSX.Element} The rendered component.
  */
 const MyWorks = () => {
+  const carouselItems = WorksList.map((project, index) => (
+    <Sheet project={project} index={index} key={`${index}_${project}`} />
+  ));
+
   return (
     <>
       {/* section title */}
@@ -36,7 +36,7 @@ const MyWorks = () => {
       />
       {/* Works List */}
       <AliceCarousel
-        mouseTracking:true
+        mouseTracking={true}
         animationType="slide"
         items={carouselItems}
         infinite={true}
