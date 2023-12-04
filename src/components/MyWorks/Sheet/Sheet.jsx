@@ -83,7 +83,7 @@ const Sheet = ({ project }) => {
           )}
         </CardBody>
 
-        <CardFooter className="flex-col md:flex-row md:items-start rounded-t-xl h-[40%] lg:h-[30%]">
+        <CardFooter className="flex-col md:flex-row md:items-start rounded-t-xl h-[40%] lg:h-[30%] overflow-auto">
           <div className="w-full h-full sm:px-2 lg:px-[4vw] text-center sm:text-start">
             {project.description !== "" && (
               <p className="text-xs sm:text-base text-default-500 pb-2">
