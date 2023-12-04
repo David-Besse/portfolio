@@ -68,7 +68,7 @@ const Navbar = () => {
 
   return (
     // Render the navigation bar
-    <nav className="fixed bottom-2 right-0 lg:right-1/2 lg:transform lg:translate-x-1/2 w-fit -translate-y-1/6 z-50 rounded-ss-2xl rounded-es-2xl lg:rounded-2xl border-1 p-2 lg:p-3 bg-white bg-opacity-60">
+    <nav className="fixed bottom-2 right-0 lg:right-1/2 lg:transform lg:translate-x-1/2 w-fit -translate-y-1/6 z-50 rounded-ss-2xl rounded-es-2xl lg:rounded-2xl border-4 border-opacity-100 p-2 lg:p-3 bg-white bg-opacity-60">
       <ul className="flex justify-end items-center gap-4 sm:gap-6 lg:gap-16 text-2xl xl:text-3xl text-[#606887]">
         {/* Render each link in the navigation bar */}
         {links.map((link, index) => (

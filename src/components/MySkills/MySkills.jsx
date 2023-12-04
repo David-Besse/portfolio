@@ -19,7 +19,7 @@ const MySkills = () => {
   return (
     <>
       {/* section title */}
-      <h2 className="titleMySkills absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:bottom-[3rem] lg:w-full lg:text-center cursor-default select-none">
+      <h2 className="titleMySkills absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[20%] lg:opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:bottom-[3rem] lg:w-full lg:text-center cursor-default select-none">
         .mySkills
       </h2>
       {/* Background Div 1 */}
