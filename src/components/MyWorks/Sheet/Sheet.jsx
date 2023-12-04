@@ -49,9 +49,9 @@ const Sheet = ({ project }) => {
           </div>
         </CardHeader>
 
-        <CardBody className="flex flex-col items-center h-[40%]">
+        <CardBody className="flex flex-col justify-center items-center">
           <Image
-            className="object-contain w-auto h-[30vh]"
+            className="object-contain w-auto h-[25vh]"
             fallbackSrc="/images/No_image_available.svg"
             alt={`image of the project ${project.projectName}`}
             radius="sm"
@@ -62,21 +62,22 @@ const Sheet = ({ project }) => {
             }
           />
           {project.url !== "" && (
-            <div className="flex justify-around gap-4 sm:py-4">
+            <div className="flex justify-around gap-4 sm:py-4 ">
               <span
-                className="hidden sm:flex sm:justify-end sm:items-center text-md text-default-500 cursor-pointer"
+                className="hidden sm:flex sm:justify-end sm:items-center text-md cursor-pointer text-[#137af0] md:hover:italic md:hover:font-bold md:hover:scale-110"
                 onClick={() => onOpen()}
               >
-                Preview <MdOutlinePreview className="ml-1 text-2xl" />
+                Preview{" "}
+                <MdOutlinePreview className="ml-1 text-2xl text-[#137af0]" />
               </span>
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="open the website in a new tab"
-                className="flex justify-end items-center text-md text-default-500"
+                className="flex justify-end items-center text-md text-[#137af0] md:hover:italic md:hover:font-bold md:hover:scale-110"
               >
-                Website <ImNewTab className="ml-1 text-2xl" />
+                Website <ImNewTab className="ml-1 text-2xl text-[#137af0]" />
               </a>
             </div>
           )}

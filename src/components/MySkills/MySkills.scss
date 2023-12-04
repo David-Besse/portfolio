@@ -1,11 +1,12 @@
-.titleMySkills {
-  animation: titleSpin 60s infinite linear;
-  &:hover {
-    animation-play-state: paused;
-  }
+.titleMySkills{
+  -webkit-text-stroke: 10px #606887;
 }
 
-.titleMySkillsFont {
+.strongTextMySkills {
+  animation: titleSpin 60s infinite linear;
+}
+
+.strongTextMySkillsFont {
   font-family: "Architects Daughter", handwriting;
 }
 

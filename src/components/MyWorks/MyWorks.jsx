@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unknown-property */
 import AliceCarousel from "react-alice-carousel";
-import { useMediaQuery } from "@uidotdev/usehooks";
-
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import Sheet from "./Sheet/Sheet";
-
 import WorksList from "./../../datas/WorksList";
-
 import "./myWorks.scss";
+
+const carouselItems = WorksList.map((project, index) => (
+  <Sheet project={project} index={index} key={`${index}_${project}`} />
+));
 
 /**
  * Renders the "MyWorks" component.
@@ -15,41 +15,12 @@ import "./myWorks.scss";
  * @return {JSX.Element} The rendered component.
  */
 const MyWorks = () => {
-  const isSmallDevice = useMediaQuery("only screen and (max-width : 1023px)");
-
-  const carouselItems = WorksList.map((project, index) => (
-    <Sheet
-      project={project}
-      index={index}
-      key={`${index}_${project}`}
-    />
-  ));
-
-  const carouselProps = {
-    mouseTracking: true,
-    animationType: "slide",
-    responsive: {
-      0: {
-        items: 1,
-      },
-      600: {
-        items: 1,
-      },
-      1024: {
-        items: 1,
-      },
-    },
-    items: carouselItems,
-    infinite: true,
-    disableButtonsControls: isSmallDevice,
-  };
-
   return (
     <>
-      {/* Heading */}
-      {/* <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl z-10">
+      {/* section title */}
+      <h2 className="titleMyWorks absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:top-[1rem]  lg:w-full lg:text-center cursor-default select-none">
         .myWorks
-      </h2> */}
+      </h2>
       {/* Background Div */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
@@ -64,7 +35,12 @@ const MyWorks = () => {
         height="100%"
       />
       {/* Works List */}
-      <AliceCarousel {...carouselProps} />
+      <AliceCarousel
+        mouseTracking:true
+        animationType="slide"
+        items={carouselItems}
+        infinite={true}
+      />
     </>
   );
 };

@@ -73,6 +73,7 @@ const App = () => {
     const spanOverRefElement = Array.from(spanOverRef.current.children);
     const spanUnderRefElement = Array.from(spanUnderRef.current.children);
 
+    // animate splash over title elements
     gsap
       .timeline({ delay: 0.4 })
       .fromTo(
@@ -82,12 +83,13 @@ const App = () => {
       )
       .to(spanOverRefElement, {
         opacity: 0,
-        delay: 6.3,
+        delay: 5.3,
         duration: 1,
       });
 
+    // animate title elements
     gsap
-      .timeline({ delay: 2 })
+      .timeline({ delay: 1.5 })
       .fromTo(
         titleRefElement,
         { opacity: 0, x: -100 },
@@ -95,7 +97,7 @@ const App = () => {
           opacity: 1,
           x: 0,
           stagger: 0.1,
-          duration: 0.5,
+          duration: 0.4,
           margin: "0 2.5vw",
         }
       )
@@ -107,7 +109,7 @@ const App = () => {
         scale: 0,
         opacity: 0,
         stagger: 0.1,
-        delay: 5,
+        delay: 4,
         duration: 1,
         onComplete: () => {
           gsap.set("#titleContainer", { display: "none" });
@@ -116,8 +118,9 @@ const App = () => {
         },
       });
 
+    // animate splash under title elements
     gsap
-      .timeline({ delay: 4 })
+      .timeline({ delay: 3 })
       .fromTo(
         spanUnderRefElement,
         { opacity: 0, x: -100 },
@@ -125,7 +128,7 @@ const App = () => {
       )
       .to(spanUnderRefElement, {
         opacity: 0,
-        delay: 1.2,
+        delay: 1,
         duration: 1,
       });
   }, []);

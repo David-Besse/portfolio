@@ -18,10 +18,10 @@ const MySkills = () => {
 
   return (
     <>
-      {/* Heading */}
-      {/* <h2 className="absolute top-2 left-2 h-[5%] text-xl sm:text-2xl z-10">
+      {/* section title */}
+      <h2 className="titleMySkills absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:bottom-[3rem] lg:w-full lg:text-center cursor-default select-none">
         .mySkills
-      </h2> */}
+      </h2>
       {/* Background Div 1 */}
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 0%, 0% 0%"
@@ -43,7 +43,7 @@ const MySkills = () => {
           <svg
             viewBox="0 0 500 500"
             xmlns="http://www.w3.org/2000/svg"
-            className="titleMySkills rounded-full z-[1] cursor-not-allowed"
+            className="strongTextMySkills rounded-full cursor-not-allowed"
           >
             <defs>
               <path
@@ -52,7 +52,10 @@ const MySkills = () => {
                 d="M 50, 250 a 200,200 0 1,1 400,0 a 200,200 0 1,1 -400,0"
               />
             </defs>
-            <text id="text" className="titleMySkillsFont text-base sm:text-2xl font-bold">
+            <text
+              id="text"
+              className="strongTextMySkillsFont text-base sm:text-2xl font-bold select-none"
+            >
               <textPath
                 id="textPath"
                 href="#circlePath"

@@ -102,7 +102,9 @@ const Home = () => {
 
             {/* intro */}
           </div>
-          <p className="text-xl sm:text-2xl lg:text-3xl pb-4 lg:px-20">My name is David.</p>
+          <p className="text-xl sm:text-2xl lg:text-3xl pb-4 lg:px-20">
+            My name is David.
+          </p>
           <p className="text-sm sm:text-xl lg:text-2xl lg:pt-4 lg:px-20">
             As a web developer, every assignment presents a precious chance to
             enhance and consistently advance my skills.

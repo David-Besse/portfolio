@@ -58,17 +58,17 @@ const AboutMe = () => {
         width="100%"
         height="100%"
       />
-      {/* Header */}
-      {/* <h2 className="absolute top-0 left-0 pt-2 pl-2 h-[5%] text-xl sm:text-2xl z-10">
+      {/* section title */}
+      <h2 className="titleAboutMe absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:bottom-[3rem] lg:w-full lg:text-center cursor-default">
         .aboutMe
-      </h2> */}
+      </h2>
       {/* Subheader */}
       <h3 className="absolute top-5 p-3 flex justify-center items-center text-4xl italic uppercase left-1/2 transform -translate-x-1/2 whitespace-nowrap sm:text-5xl lg:text-6xl xl:text-[4.5rem] z-10">
         what defines me
       </h3>
 
       {/* 3D Scene */}
-      <div className="relative w-full sm:w-2/3 lg:w-full h-full">
+      <div className="relative w-full sm:w-2/3 lg:w-full h-full z-[5]">
         {/* Background Bubble */}
         <section className="stage absolute w-[90%] sm:w-[52vh] h-[50%] sm:h-[52%] top-[22%] sm:top-[20%] left-1/2 transform -translate-x-1/2">
           <figure className="ball bubble shadow-2xl" />
@@ -154,7 +154,7 @@ const AboutMe = () => {
       </div>
 
       {/* Words bloc */}
-      <div className="absolute top-0 right-0 sm:right-4 lg:left-0 sm:w-1/3 h-full flex flex-col justify-around pb-16 lg:px-16">
+      <div className="absolute top-0 right-0 sm:right-4 lg:left-0 sm:w-1/3 h-full flex flex-col justify-around pb-16 lg:px-16 z-[5]">
         {/* Word List */}
         <ul className="h-fit pe-2 sm:pe-0 flex flex-col text-3xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-center lg:items-start gap-4 lg:gap-12">
           {WordData.map((word) => (
@@ -176,7 +176,7 @@ const AboutMe = () => {
       </div>
 
       {/* Quote bloc */}
-      <div className="quoteBox absolute w-full lg:w-1/3 h-full lg:h-full bottom-[15%] lg:bottom-1/2 left-1/2 lg:left-[unset] lg:right-0 transform -translate-x-1/2 lg:-translate-x-0 lg:translate-y-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 lg:pb-16">
+      <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[73%] sm:top-[unset] sm:h-full sm:bottom-[15%] lg:bottom-1/2 left-1/2 lg:left-[unset] lg:right-0 transform -translate-x-1/2 lg:-translate-x-0 lg:translate-y-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 lg:pb-16">
         <p
           className="relative w-fit h-fit px-4 lg:py-4 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl text-black font-semibold lg:leading-[3rem!important]"
         >

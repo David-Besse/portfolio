@@ -7,10 +7,10 @@ import emailjs from "@emailjs/browser";
 
 import Modal from "../Modal/Modal";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
+import "./Contact.scss";
 
 const Contact = () => {
-  const { activeSection, setContactModal } =
-    useStore(useStoreApp);
+  const { activeSection, setContactModal } = useStore(useStoreApp);
   const {
     register,
     handleSubmit,
@@ -27,9 +27,7 @@ const Contact = () => {
     emailjs
       .sendForm(serviceId, templateId, formRef.current, rhfId)
       .then(() => {
-        setContactModal(
-          "Message sent! Thank you for your interest in me."
-        );
+        setContactModal("Message sent! Thank you for your interest in me.");
       })
       .catch(() => {
         setContactModal(
@@ -51,9 +49,10 @@ const Contact = () => {
     <>
       <Modal />
 
-      {/* <h2 className="absolute top-2 left-2 text-xl sm:text-2xl z-10">
+      {/* section title */}
+      <h2 className="titleContact absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:top-[1rem] lg:w-full lg:text-center cursor-default">
         .contact
-      </h2> */}
+      </h2>
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
         color="#c4ae96"

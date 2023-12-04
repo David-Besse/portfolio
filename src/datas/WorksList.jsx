@@ -22,10 +22,10 @@ const WorksList = [
         "Vite, React, Three, Tailwind, Zustand, Styled-components, React-Hook-Form, React-Alice-Carousel, Emailjs",
       back: "",
     },
-    url: "//localhost:5173",
+    url: "",
     src :[
       {front: "https://github.com/David-Besse/portfolio"},
-      {back: "https://github.com/David-Besse/portfolio"},
+      {back: ""},
     ],
     screenshot: "/images/portfolio_mockup.png",
   },

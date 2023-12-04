@@ -1,10 +1,13 @@
+.titleMyWorks{
+  -webkit-text-stroke: 10px #606887;
+}
+
 .alice-carousel {
   height: 100%;
   margin: 0 !important;
 
   & > div {
-    height: 95%;
-    padding-bottom: 2%;
+    height: 90%;
 
     .alice-carousel__wrapper {
       height: 100%;
