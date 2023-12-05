@@ -7,6 +7,7 @@ import RigMySkills from "./RigMySkills/RigMySkills";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
 import "./MySkills.scss";
+import { useEffect, useState } from "react";
 
 /**
  * Render the MySkills component.
@@ -15,11 +16,19 @@ import "./MySkills.scss";
  */
 const MySkills = () => {
   const isSmallMobile = useMediaQuery("only screen and (max-width : 767px)");
+  const [titleColor, setTitleColor] = useState("#606887");
+
+  useEffect(() => {
+    const htmlElement = document.querySelector("html");
+    const isDarkTheme = htmlElement.classList.contains("dark");
+    const newTitleColor = isDarkTheme ? "#fefefe" : "#606887";
+    setTitleColor(newTitleColor);
+  }, [titleColor]);
 
   return (
     <>
       {/* section title */}
-      <h2 className="titleMySkills absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[20%] lg:opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:bottom-[3rem] lg:w-full lg:text-center cursor-default select-none">
+      <h2 className="titleMySkills absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[20%] lg:opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:bottom-[3rem] lg:w-full lg:text-center cursor-default select-none dark:text-white">
         .mySkills
       </h2>
       {/* Background Div 1 */}
@@ -60,7 +69,7 @@ const MySkills = () => {
                 id="textPath"
                 href="#circlePath"
                 textLength={Math.floor(Math.PI * 2 * 196)}
-                fill="#606887"
+                fill={titleColor}
               >
                 Here you can consult my current knowledge sphere, which is
                 constantly evolving...

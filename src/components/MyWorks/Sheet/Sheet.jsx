@@ -40,7 +40,7 @@ const Sheet = ({ project }) => {
           <div className="flex flex-col w-full justify-center items-center">
             <div
               key={`div_${project.projectName}`}
-              className="div_listItem w-fit relative flex justify-center text-4xl sm:text-5xl lg:text-6xl border-y-1 border-black"
+              className="div_listItem w-fit relative flex justify-center text-4xl sm:text-5xl lg:text-6xl border-y-1 border-black dark:border-white"
             >
               <NewPTag className="listItem w-fit" $text={project.projectName}>
                 <span className="spanList">{project.projectName}</span>
@@ -64,46 +64,46 @@ const Sheet = ({ project }) => {
           {project.url !== "" && (
             <div className="flex justify-around gap-4 sm:py-4 ">
               <span
-                className="hidden sm:flex sm:justify-end sm:items-center text-md cursor-pointer text-[#137af0] md:hover:italic md:hover:font-bold md:hover:scale-110"
+                className="hidden sm:flex sm:justify-end sm:items-center text-md cursor-pointer text-[#137af0] dark:text-white dark:underline md:hover:italic  md:hover:scale-110"
                 onClick={() => onOpen()}
               >
                 Preview{" "}
-                <MdOutlinePreview className="ml-1 text-2xl text-[#137af0]" />
+                <MdOutlinePreview className="ml-1 text-2xl text-[#137af0] dark:text-white" />
               </span>
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="open the website in a new tab"
-                className="flex justify-end items-center text-md text-[#137af0] md:hover:italic md:hover:font-bold md:hover:scale-110"
+                className="flex justify-end items-center text-md text-[#137af0] dark:text-white dark:underline md:hover:italic  md:hover:scale-110"
               >
-                Website <ImNewTab className="ml-1 text-2xl text-[#137af0]" />
+                Website <ImNewTab className="ml-1 text-2xl text-[#137af0] dark:text-white" />
               </a>
             </div>
           )}
         </CardBody>
 
-        <CardFooter className="flex-col md:flex-row md:items-start rounded-t-xl h-[40%] lg:h-[30%] overflow-auto">
+        <CardFooter className="flex-col md:flex-row md:items-start rounded-t-xl h-[40%] lg:h-[35%] lg:tracking-wider overflow-auto ">
           <div className="w-full h-full sm:px-2 lg:px-[4vw] text-center sm:text-start">
             {project.description !== "" && (
-              <p className="text-xs sm:text-base text-default-500 pb-2">
-                <span className="text-sm sm:text-lg text-black">
+              <p className="text-xs sm:text-sm text-default-500 pb-2 dark:text-white">
+                <span className="text-sm sm:text-lg lg:text-xl text-black dark:text-orange-300">
                   Description:
                 </span>
                 <br /> {project.description}
               </p>
             )}
             {project.stack.front !== "" && (
-              <p className="text-xs sm:text-base text-default-500 pb-2">
-                <span className="text-sm sm:text-lg text-black">
+              <p className="text-xs sm:text-sm text-default-500 pb-2 dark:text-white">
+                <span className="text-sm sm:text-lg text-black dark:text-orange-300">
                   Front stack
                 </span>
                 <br /> {project.stack.front}
               </p>
             )}
             {project.stack.back !== "" && (
-              <p className="text-xs sm:text-base text-default-500 pb-2">
-                <span className="text-sm sm:text-lg text-black">
+              <p className="text-xs sm:text-sm text-default-500 pb-2 dark:text-white">
+                <span className="text-sm sm:text-lg text-black dark:text-orange-300">
                   Back stack
                 </span>
                 <br /> {project.stack.back}
@@ -111,7 +111,7 @@ const Sheet = ({ project }) => {
             )}
           </div>
           <div className="w-fit h-fit flex flex-row md:flex-col text-end p-1 border-2 border-[#eaa470] rounded-xl">
-            <p className="text-sm md:text-base whitespace-nowrap pr-4 md:pr-0 md:pb-2 md:text-center">
+            <p className="text-sm md:text-base whitespace-nowrap pr-4 md:pr-0 md:pb-2 md:text-center dark:text-black">
               GitHub links :
             </p>
             <p className="flex flex-row md:flex-col justify-end md:justify-center md:items-center">
@@ -124,7 +124,7 @@ const Sheet = ({ project }) => {
                         showAnchorIcon
                         href={value}
                         key={`${Object.keys(stackObj).find((el) => el)}_src`}
-                        className=" text-sm md:text-base md:hover:italic md:hover:font-bold md:hover:scale-110 px-2 md:px-0 md:pl-2 md:py-2"
+                        className=" text-sm md:text-base md:hover:italic  md:hover:scale-110 px-2 md:px-0 md:pl-2 md:py-2 dark:text-white dark:underline"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

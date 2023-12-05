@@ -36,9 +36,9 @@ const Home = () => {
                 {letter}
               </span>
             ))}
-            <span className="text-[#606887]">b.</span>
+            <span className="text-[#606887] dark:text-[#f2f2f2]">b.</span>
           </h2>
-          <span className="logo text-base sm:text-lg font-bold text-[#606887]">
+          <span className="logo text-base sm:text-lg font-bold text-[#606887] dark:text-[#f2f2f2]">
             &lsaquo;web developer&rsaquo;
           </span>
         </div>
@@ -50,7 +50,7 @@ const Home = () => {
               className="flex gap-1 hover:scale-125 hover:italic"
               aria-label="download my CV"
             >
-              <span className="self-end text-2xl font-bold text-[#808080]">
+              <span className="self-end text-2xl font-bold text-[#808080] dark:text-[#f2f2f2]">
                 CV
               </span>
               <BsDownload className="w-[30px] h-[30px] " />
@@ -120,7 +120,7 @@ const Home = () => {
             For the things we have to learn before we can do them, we learn by
             doing them.
           </q>
-          <cite className="text-sm sm:text-lg lg:text-xl text-gray-600 text-center">
+          <cite className="text-sm sm:text-lg lg:text-xl text-gray-600 dark:text-gray-400 text-center">
             ― Aristotle,{" "}
             <a
               href="https://en.wikipedia.org/wiki/Nicomachean_Ethics"

@@ -13,6 +13,6 @@ export default {
   theme: {
     extend: {},
   },
-  darkmode: "class",
+  darkMode: "class",
   plugins: [nextui()]
 };

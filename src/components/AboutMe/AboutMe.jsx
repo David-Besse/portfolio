@@ -59,7 +59,7 @@ const AboutMe = () => {
         height="100%"
       />
       {/* section title */}
-      <h2 className="titleAboutMe absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[20%] lg:opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:bottom-[3rem] lg:w-full lg:text-center cursor-default">
+      <h2 className="titleAboutMe absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[20%] lg:opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:bottom-[3rem] lg:w-full lg:text-center cursor-default dark:text-white">
         .aboutMe
       </h2>
       {/* Subheader */}
@@ -141,11 +141,9 @@ const AboutMe = () => {
               {/* Information icon */}
               <HiInformationCircle className="w-5 h-5 inline-block cursor-help text-[#00a1ec]" />
               <div>
-                <div className="hidden absolute w-[250px] left-[4.5rem] lg:left-[8rem] bottom-0 bg-gray-200 p-2 rounded-lg text-sm shadow-md mt-2 text-center z-20 group-hover:block">
+                <div className="hidden absolute w-[250px] left-[4.5rem] lg:left-[8rem] bottom-0 bg-gray-200 dark:bg-gray-800 p-2 rounded-lg text-sm shadow-md mt-2 text-center z-20 group-hover:block">
                   {/* Information tooltip */}
-                  On / Off
-                  <br />
-                  Page scrolling will be temporarily disabled in the 3D scene.
+                  When the camera is activated, page scrolling is temporarily deactivated so that you can zoom in on the character. 
                 </div>
               </div>
             </div>
@@ -178,10 +176,10 @@ const AboutMe = () => {
       {/* Quote bloc */}
       <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[73%] sm:top-[unset] sm:h-full sm:bottom-[15%] lg:bottom-1/2 left-1/2 lg:left-[unset] lg:right-0 transform -translate-x-1/2 lg:-translate-x-0 lg:translate-y-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 lg:pb-16">
         <p
-          className="relative w-fit h-fit px-4 lg:py-4 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl text-black font-semibold lg:leading-[3rem!important]"
+          className="relative w-fit h-fit px-4 lg:py-4 text-lg sm:text-2xl lg:text-3xl text-center italic bg-transparent rounded-3xl text-black dark:text-white font-semibold lg:leading-[3rem!important] lg:tracking-wider"
         >
           {/* Left quote icon */}
-          <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887]" />
+          <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887] dark:text-white" />
 
           {/* Display quote based on hovered word */}
           {wordHovered !== "" &&
@@ -191,7 +189,7 @@ const AboutMe = () => {
           {wordHovered === "" && "Drag the mouse over a word to reveal a quote"}
 
           {/* Right quote icon */}
-          <BiSolidQuoteRight className="absolute right-0 -bottom-4 w-4 h-4 text-[#606887]" />
+          <BiSolidQuoteRight className="absolute right-0 -bottom-4 w-4 h-4 text-[#606887] dark:text-white" />
         </p>
       </div>
     </>
