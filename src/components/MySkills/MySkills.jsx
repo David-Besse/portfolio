@@ -80,15 +80,15 @@ const MySkills = () => {
       )}
       {isSmallMobile && (
         <div className="titleMySkillsFont w-full h-full flex flex-col justify-between text-center text-xl font-bold relative z-10 px-6">
-          <h2 className="pt-[5%]">
+          <h2 className="pt-[10vh]">
             Here you can consult my current knowledge sphere,
           </h2>
-          <h2 className="pb-[5%]">which is constantly evolving...</h2>
+          <h2 className="pb-[10vh]">which is constantly evolving...</h2>
         </div>
       )}
 
       {/* Skills Sphere */}
-      <div className="absolute bottom-[calc(50% - 16px)] left-1/2 w-full h-[100vw] sm:w-full sm:h-[100vw] lg:w-[100vh] lg:h-full transform -translate-x-1/2 translate-y-[calc(50% - 16px)] z-10">
+      <div className="absolute bottom-[calc(50% - 16px)] left-1/2 w-auto h-[50vh] sm:w-full sm:h-[100vw] lg:w-[100vh] lg:h-full transform -translate-x-1/2 translate-y-[calc(50% - 16px)] z-10">
         <Canvas className="">
           <fog attach="fog" args={["#202025", 40, 80]} />
           <RigMySkills />

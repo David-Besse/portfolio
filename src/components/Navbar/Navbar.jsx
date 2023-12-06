@@ -7,6 +7,7 @@ import {
 } from "react-icons/bs";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
+import { useEffect, useState } from "react";
 
 const links = [
   {
@@ -16,17 +17,17 @@ const links = [
   },
   {
     hrefLabel: "aboutMe",
-    ariaLabel: "go to about me page",
+    ariaLabel: "go to aboutme page",
     icon: <BsPerson />,
   },
   {
     hrefLabel: "myWorks",
-    ariaLabel: "got to my works page",
+    ariaLabel: "got to myworks page",
     icon: <BsBook />,
   },
   {
     hrefLabel: "mySkills",
-    ariaLabel: "go to my skills page",
+    ariaLabel: "go to myskills page",
     icon: <BsCodeSlash />,
   },
   {
@@ -43,6 +44,7 @@ const links = [
  */
 const Navbar = () => {
   const { activeSection } = useStore(useStoreApp);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   /**
    * Handles the click event on the navigation links.
@@ -51,24 +53,30 @@ const Navbar = () => {
    * @return {undefined} This function does not return a value.
    */
   const handleClick = (event) => {
-    // Prevent the default behavior of the click event
     event.preventDefault();
 
-    // Get the href attribute value of the clicked element
     const target = event.currentTarget.getAttribute("href");
 
-    // Find the element with the corresponding id
-    const location = document.querySelector(`#${target}`);
-
-    // If the element exists, scroll to it smoothly
-    if (location) {
-      location.scrollIntoView({ behavior: "smooth" });
+    if (target) {
+      const location = document.querySelector(`#${target}`);
+      if (location) {
+        location.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
+  useEffect(() => {
+    if (activeSection) {
+      const location = document.querySelector(`#${activeSection}`);
+      if (location) {
+        location.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [activeSection]);
+
   return (
     // Render the navigation bar
-    <nav className="fixed bottom-2 right-0 lg:right-1/2 lg:transform lg:translate-x-1/2 w-fit -translate-y-1/6 z-50 rounded-ss-2xl rounded-es-2xl lg:rounded-2xl border-2 border-r-0 lg:border-l-0 border-opacity-100 p-2 lg:p-3 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-30">
+    <nav className="fixed bottom-2 right-0 lg:right-1/2 lg:transform lg:translate-x-1/2 w-fit -translate-y-1/6 z-50 rounded-ss-2xl rounded-es-2xl lg:rounded-2xl border-2 border-r-0 lg:border-r-2 border-opacity-100 p-2 lg:p-3 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-30">
       <ul className="flex justify-end items-center gap-4 sm:gap-6 lg:gap-16 text-2xl xl:text-3xl text-[#606887] dark:text-[#fefefe]">
         {/* Render each link in the navigation bar */}
         {links.map((link, index) => (
@@ -82,7 +90,9 @@ const Navbar = () => {
               onClick={handleClick}
               // Add a CSS class if the current section matches the link's href value
               className={`${
-                activeSection === link.hrefLabel ? "scale-[130%] text-[#00a1ec]" : "scale-110"
+                activeSection === link.hrefLabel
+                  ? "scale-[130%] text-[#00a1ec]"
+                  : "scale-110"
               }`}
             >
               {/* Render the icon of the link */}

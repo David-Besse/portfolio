@@ -22,8 +22,11 @@ const Avatar = memo(({ scaling = 7.8 }) => {
   const { actions } = useAnimations([typingAnimation[0]], group);
 
   useEffect(() => {
-    actions["Typing"].reset().fadeIn(0.5).play();
-    return () => actions["Typing"].fadeOut(0.5);
+    const typingAction = actions["Typing"];
+
+    typingAction.reset().fadeIn(0.5).play();
+    
+    return () => typingAction.fadeOut(0.5);
   }, [actions]);
 
   return (
@@ -31,7 +34,7 @@ const Avatar = memo(({ scaling = 7.8 }) => {
       ref={group}
       dispose={null}
       position={[0.4, -5, -0.5]}
-      rotation={[-Math.PI/2, 0, 0]}
+      rotation={[-Math.PI / 2, 0, 0]}
       scale={scaling}
     >
       <primitive object={nodes.Hips} />
