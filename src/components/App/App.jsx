@@ -138,7 +138,7 @@ const App = () => {
       {/* titleRef Container */}
       <div
         id="titleContainer"
-        className="titleContainer h-screen w-screen p-8 bg-[#f2f2f2] dark:bg-[#1e1e1e] flex flex-col justify-center text-[#606887] dark:text-[#f2f2f2]"
+        className="titleContainer h-[100vh] w-[100vw] p-8 bg-[#f2f2f2] dark:bg-[#1e1e1e] flex flex-col justify-center text-[#606887] dark:text-[#f2f2f2]"
       >
         {/* Span Over titleRef */}
         <div
@@ -184,7 +184,7 @@ const App = () => {
       {/* Main Container */}
       <div
         id="mainContainer"
-        className="mainContainer relative h-screen w-screen text-[#606887] dark:text-[#f2f2f2] hidden bg-[#f2f2f2] dark:bg-[#1e1e1e]"
+        className="mainContainer h-[100vh] w-[100vw] relative text-[#606887] dark:text-[#f2f2f2] hidden bg-[#f2f2f2] dark:bg-[#1e1e1e]"
         ref={mainContainerRef}
       >
         {/* Navbar */}
@@ -193,7 +193,7 @@ const App = () => {
         {/* Home Page Section */}
         <section
           id="homePage"
-          className="h-screen w-screen flex flex-col snap-center"
+          className="h-[100vh] w-[100vw] snap-center flex flex-col"
           ref={sectionRefs.home}
         >
           <Home />
@@ -202,7 +202,7 @@ const App = () => {
         {/* About Me Section */}
         <section
           id="aboutMe"
-          className="relative flex h-screen w-screen snap-center overflow-hidden"
+          className="relative h-[100vh] w-[100vw] snap-center flex overflow-hidden"
           ref={sectionRefs.aboutMe}
         >
           <AboutMe />
@@ -211,7 +211,7 @@ const App = () => {
         {/* My Works Section */}
         <section
           id="myWorks"
-          className="relative h-screen w-screen snap-center pb-16 flex flex-col overflow-hidden"
+          className="relative h-[100vh] w-[100vw] snap-center pb-16 flex flex-col overflow-hidden"
           ref={sectionRefs.myWorks}
         >
           <MyWorks />
@@ -220,7 +220,7 @@ const App = () => {
         {/* My Skills Section */}
         <section
           id="mySkills"
-          className="relative h-screen w-screen snap-center pb-16 flex justify-center items-center overflow-hidden"
+          className="relative h-[100vh] w-[100vw] snap-center pb-16 flex justify-center items-center overflow-hidden"
           ref={sectionRefs.mySkills}
         >
           <MySkills />
@@ -229,7 +229,7 @@ const App = () => {
         {/* Contact Section */}
         <section
           id="contact"
-          className="relative h-screen w-screen snap-center pb-16 flex flex-col"
+          className="relative h-[100vh] w-[100vw] snap-center flex flex-col pb-16"
           ref={sectionRefs.contact}
         >
           <Contact />
