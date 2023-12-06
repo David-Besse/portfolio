@@ -1,4 +1,3 @@
-# portfolio
-My portfolio
+# My portfolio
 
-This is my first porfolio project as a developer.
+This is my first porfolio version as a developer. :)
