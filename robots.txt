@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /animations/
+Disallow: /images/
+Disallow: /models/

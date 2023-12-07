@@ -73,8 +73,8 @@ const Home = () => {
         </div>
 
         {/* CV + socials networks */}
-        <ul className="pr-2 flex items-center justify-center gap-2 md:gap-4 z-10">
-          <li className="flex justify-center items-center">
+        <div className="pr-2 flex items-center justify-center gap-2 md:gap-4 z-10">
+          <div className="flex justify-center items-center">
             <a
               href="#"
               className="flex flex-col justify-center items-center hover:scale-125 hover:italic px-1"
@@ -85,32 +85,29 @@ const Home = () => {
                 CV
               </span>
             </a>
-          </li>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <li className=" text-[#00a1ec] hover:scale-125">
-              <a
-                href="https://www.linkedin.com/in/david-besse-666a77236/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className=""
-                aria-label="link to my LinkedIn profile"
-              >
-                <BsLinkedin size={28} />
-              </a>
-            </li>
-            <li className=" text-[#00a1ec] hover:scale-125">
-              <a
-                href="https://github.com/David-Besse"
-                target="_blank"
-                rel="noopener noreferrer"
-                className=""
-                aria-label="link to my Github profile"
-              >
-                <BsGithub size={30} />
-              </a>
-            </li>
           </div>
-        </ul>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href="https://www.linkedin.com/in/david-besse-666a77236/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#00a1ec] hover:scale-125"
+              aria-label="link to my LinkedIn profile"
+            >
+              <BsLinkedin size={28} />
+            </a>
+
+            <a
+              href="https://github.com/David-Besse"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#00a1ec] hover:scale-125"
+              aria-label="link to my Github profile"
+            >
+              <BsGithub size={30} />
+            </a>
+          </div>
+        </div>
       </header>
 
       {/* Main content section */}
