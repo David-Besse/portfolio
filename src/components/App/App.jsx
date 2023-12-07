@@ -137,11 +137,11 @@ const App = () => {
     if (localStorage.getItem("theme") === "dark") {
       localStorage.setItem("theme", "dark");
       setTheme("dark");
-      document.documentElement.classList.add("dark");
+      document.documentElement.classList.toggle("dark");
     } else {
       localStorage.setItem("theme", "light");
       setTheme("light");
-      document.documentElement.classList.add("light");
+      document.documentElement.classList.toggle("light");
     }
   }, []);
 
