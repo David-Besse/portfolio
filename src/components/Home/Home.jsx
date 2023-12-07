@@ -1,6 +1,10 @@
+import { useStore } from "zustand";
+import useStoreApp from "../Store/app.store";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import "./home.scss";
 import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
+import { MdDarkMode } from "react-icons/md";
+import { MdLightMode } from "react-icons/md";
 
 /**
  * Renders the Home component.
@@ -8,7 +12,15 @@ import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
  * @return {JSX.Element} The JSX element representing the Home component.
  */
 const Home = () => {
+  const { theme, setTheme } = useStore(useStoreApp);
   const letters = Array.from("david");
+
+  const toggleDarkMode = () => {
+    document.documentElement.classList.toggle("dark");
+    const newTheme = theme === "light" ? "dark" : "light";
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
+  };
 
   return (
     <>
@@ -42,42 +54,62 @@ const Home = () => {
             &lsaquo;web developer&rsaquo;
           </span>
         </div>
+
+        {/* Dark mode */}
+        <div className="h-fit self-center border-black dark:border-white">
+          {theme === "light" ? (
+            <MdDarkMode
+              size={30}
+              onClick={toggleDarkMode}
+              className="cursor-pointer"
+            />
+          ) : (
+            <MdLightMode
+              size={30}
+              onClick={toggleDarkMode}
+              className="cursor-pointer"
+            />
+          )}
+        </div>
+
         {/* CV + socials networks */}
-        <ul className="pr-2 flex items-center justify-center gap-4 z-10">
-          <li className="w-22 flex justify-center items-center">
+        <ul className="pr-2 flex items-center justify-center gap-2 md:gap-4 z-10">
+          <li className="flex justify-center items-center">
             <a
               href="#"
-              className="flex gap-1 hover:scale-125 hover:italic"
+              className="flex flex-col justify-center items-center hover:scale-125 hover:italic px-1"
               aria-label="download my CV"
             >
+              <BsDownload size={26} />
               <span className="self-end text-2xl font-bold text-[#808080] dark:text-[#f2f2f2]">
                 CV
               </span>
-              <BsDownload className="w-[30px] h-[30px] " />
             </a>
           </li>
-          <li className="socials w-8 flex justify-center items-center text-[#00a1ec]">
-            <a
-              href="https://www.linkedin.com/in/david-besse-666a77236/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-125"
-              aria-label="link to my LinkedIn profile"
-            >
-              <BsLinkedin className="w-[30px] h-[30px]" />
-            </a>
-          </li>
-          <li className="w-8 flex justify-center items-center text-[#00a1ec]">
-            <a
-              href="https://github.com/David-Besse"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-125"
-              aria-label="link to my Github profile"
-            >
-              <BsGithub className="w-[30px] h-[30px]" />
-            </a>
-          </li>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <li className=" text-[#00a1ec] hover:scale-125">
+              <a
+                href="https://www.linkedin.com/in/david-besse-666a77236/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className=""
+                aria-label="link to my LinkedIn profile"
+              >
+                <BsLinkedin size={28} />
+              </a>
+            </li>
+            <li className=" text-[#00a1ec] hover:scale-125">
+              <a
+                href="https://github.com/David-Besse"
+                target="_blank"
+                rel="noopener noreferrer"
+                className=""
+                aria-label="link to my Github profile"
+              >
+                <BsGithub size={30} />
+              </a>
+            </li>
+          </div>
         </ul>
       </header>
 

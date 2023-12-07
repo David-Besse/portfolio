@@ -21,7 +21,7 @@ const spanUnderTitleText = "fullstack web developer.";
 const spanUnderTitleLetters = spanUnderTitleText.split("");
 
 const App = () => {
-  const { setActiveSection } = useStore(useStoreApp);
+  const { setActiveSection, setTheme } = useStore(useStoreApp);
 
   const titleRef = useRef(null);
   const spanOverRef = useRef(null);
@@ -131,6 +131,18 @@ const App = () => {
         delay: 1,
         duration: 1,
       });
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("theme") === "dark") {
+      localStorage.setItem("theme", "dark");
+      setTheme("dark");
+      document.documentElement.classList.add("dark");
+    } else {
+      localStorage.setItem("theme", "light");
+      setTheme("light");
+      document.documentElement.classList.add("light");
+    }
   }, []);
 
   return (

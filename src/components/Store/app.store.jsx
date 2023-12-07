@@ -4,6 +4,7 @@ const useStoreApp = create((set) => ({
   // State
   contactModal: { isOpened: false, message: "" },
   activeSection: "",
+  theme: "light",
 
   /**
    * Set the state of the contact modal.
@@ -23,6 +24,14 @@ const useStoreApp = create((set) => ({
    * @return {type} - The updated value of the active section.
    */
   setActiveSection: (value) => set({ activeSection: value }),
+
+  /**
+   * Sets the theme to the specified value.
+   * 
+   * @param {type} value - The value to set the theme to.
+   * @return {type} - The updated value of the theme.
+   */
+  setTheme: (value) => set({ theme: value }),
 }));
 
 window.store = useStoreApp;

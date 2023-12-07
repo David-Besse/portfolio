@@ -5,9 +5,11 @@ import {
   BsHouse,
   BsCodeSlash,
 } from "react-icons/bs";
+import { RiMenuFoldFill } from "react-icons/ri";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 const links = [
   {
@@ -45,13 +47,8 @@ const links = [
 const Navbar = () => {
   const { activeSection } = useStore(useStoreApp);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isSmallScreen = useMediaQuery("only screen and (max-width : 1023px)");
 
-  /**
-   * Handles the click event on the navigation links.
-   *
-   * @param {Event} event - The click event object.
-   * @return {undefined} This function does not return a value.
-   */
   const handleClick = (event) => {
     event.preventDefault();
 
@@ -75,33 +72,44 @@ const Navbar = () => {
   }, [activeSection]);
 
   return (
-    // Render the navigation bar
-    <nav className="fixed bottom-2 right-0 lg:right-1/2 lg:transform lg:translate-x-1/2 w-fit -translate-y-1/6 z-50 rounded-ss-2xl rounded-es-2xl lg:rounded-2xl border-2 border-r-0 lg:border-r-2 border-opacity-100 p-2 lg:p-3 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-30">
-      <ul className="flex justify-end items-center gap-4 sm:gap-6 lg:gap-16 text-2xl xl:text-3xl text-[#606887] dark:text-[#fefefe]">
-        {/* Render each link in the navigation bar */}
-        {links.map((link, index) => (
-          <li className="flex flex-col items-center justify-center" key={index}>
-            <a
-              // Set the href attribute value of the link
-              href={link.hrefLabel}
-              // Set the aria-label attribute value of the link
-              aria-label={link.ariaLabel}
-              // Attach the click event handler
-              onClick={handleClick}
-              // Add a CSS class if the current section matches the link's href value
-              className={`${
-                activeSection === link.hrefLabel
-                  ? "scale-[130%] text-[#00a1ec]"
-                  : "scale-110"
-              }`}
+    <>
+      {/* Render the hamburger menu */}
+      <div
+        className="fixed bottom-2 right-2 lg:hidden z-50 rounded-se-xl rounded-ee-xl border-l-0 border-2 dark:border-white"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <RiMenuFoldFill size={40} className="scale-80" />
+      </div>
+      {/* Render the navigation bar */}
+      <nav
+        className={`${
+          isSmallScreen && !isMenuOpen ? "hidden" : "block"
+        } fixed bottom-2 right-12 lg:right-1/2 lg:transform lg:translate-x-1/2 w-fit -translate-y-1/6 z-50 rounded-ss-2xl rounded-es-2xl lg:rounded-2xl border-2 border-r-0 lg:border-r-2 border-opacity-100 py-2 px-4 lg:p-3 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-40`}
+      >
+        <ul className="flex justify-end items-center gap-6 lg:gap-14 text-2xl xl:text-3xl text-[#606887] dark:text-[#fefefe]">
+          {/* Render each link in the navigation bar */}
+          {links.map((link, index) => (
+            <li
+              className="flex flex-col items-center justify-center"
+              key={index}
             >
-              {/* Render the icon of the link */}
-              {link.icon}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+              <a
+                href={link.hrefLabel}
+                aria-label={link.ariaLabel}
+                onClick={handleClick}
+                className={`${
+                  activeSection === link.hrefLabel
+                    ? "scale-[130%] text-[#00a1ec]"
+                    : "scale-100"
+                }`}
+              >
+                {link.icon}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 };
 
