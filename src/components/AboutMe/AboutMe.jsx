@@ -195,7 +195,7 @@ const AboutMe = () => {
       </div>
 
       {/* Quote bloc */}
-      <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[73%] sm:top-[unset] sm:bottom-[15%] lg:bottom-[unset] left-1/2 transform -translate-x-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 z-0">
+      <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[75%] sm:top-[unset] sm:bottom-[15%] lg:bottom-[unset] left-1/2 transform -translate-x-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 z-0">
         <p className="relative w-fit h-fit px-4 lg:py-4 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl dark:text-white font-semibold lg:leading-[3rem!important] lg:tracking-wider">
           {/* Left quote icon */}
           <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887] dark:text-white" />
