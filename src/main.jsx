@@ -1,9 +1,3 @@
-import { inject } from '@vercel/analytics';
-inject();
-
-import { injectSpeedInsights } from '@vercel/speed-insights';
-injectSpeedInsights();
-
 import { passiveSupport } from "passive-events-support/src/utils";
 passiveSupport({ events: ["wheel"] });
 
