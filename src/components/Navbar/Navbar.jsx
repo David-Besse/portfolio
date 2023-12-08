@@ -63,6 +63,8 @@ const Navbar = () => {
     event.preventDefault();
 
     const target = event.currentTarget.getAttribute("href");
+    console.log(target);
+    window.stop();
 
     if (target) {
       const location = document.querySelector(`#${target}`);
@@ -93,7 +95,7 @@ const Navbar = () => {
       <div
         ref={menuIconBurgerRef}
         className="menuIconBurger fixed pr-2 bottom-2 right-0 lg:hidden z-50 border-2 border-r-0 bg-white bg-opacity-60 dark:border-white dark:bg-black dark:bg-opacity-40"
-        onClick={() => handleNav()}
+        onClick={handleNav}
       >
         <RiMenuFoldFill size={40} className="scale-80" />
       </div>
@@ -113,7 +115,7 @@ const Navbar = () => {
               <a
                 href={link.hrefLabel}
                 aria-label={link.ariaLabel}
-                onClick={() => handleClick()}
+                onClick={handleClick}
                 className={`${
                   activeSection === link.hrefLabel
                     ? "scale-[130%] text-blue-500"
