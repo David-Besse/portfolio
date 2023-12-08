@@ -113,7 +113,7 @@ const Navbar = () => {
               <a
                 href={link.hrefLabel}
                 aria-label={link.ariaLabel}
-                onClick={handleClick()}
+                onClick={() => handleClick()}
                 className={`${
                   activeSection === link.hrefLabel
                     ? "scale-[130%] text-blue-500"
