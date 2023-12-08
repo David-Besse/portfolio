@@ -17,6 +17,7 @@
     "@react-three/fiber": "^8.15.12",
     "@types/three": "^0.159.0",
     "@uidotdev/usehooks": "^2.4.1",
+    "@vercel/speed-insights": "^1.0.0",
     "core-js": "^3.34.0",
     "framer-motion": "^10.16.9",
     "gsap": "^3.12.3",

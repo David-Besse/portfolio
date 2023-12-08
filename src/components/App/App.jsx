@@ -3,6 +3,9 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
+import { injectSpeedInsights } from '@vercel/speed-insights';
+ 
+injectSpeedInsights();
 
 import Contact from "./../Contact/Contact";
 import AboutMe from "./../AboutMe/AboutMe";
