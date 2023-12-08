@@ -1,7 +1,7 @@
 const WordData = [
   {
     keyword: "Curious",
-    quote: "I'm interested in everything to do with science and advances in technology and computing. I'm also concerned about global warming.",
+    quote: "I'm interested in everything to do with science and advances in technology and computing.",
   },
   {
     keyword: "Adaptive",

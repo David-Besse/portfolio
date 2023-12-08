@@ -25,7 +25,7 @@ const BackgroundDiv = ({
 }) => {
   return (
     <BackgroundDivStyled
-      className="absolute top-0 left-0 z-0 opacity-60"
+      className="absolute top-0 left-0 z-0 opacity-40"
       $path={path}
       $color={color}
       $width={width}

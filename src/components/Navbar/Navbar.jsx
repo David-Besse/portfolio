@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import { useStore } from "zustand";
+import useStoreApp from "../Store/app.store";
+import { useMediaQuery } from "@uidotdev/usehooks";
 import {
   BsBook,
   BsEnvelopeAt,
@@ -6,10 +10,7 @@ import {
   BsCodeSlash,
 } from "react-icons/bs";
 import { RiMenuFoldFill } from "react-icons/ri";
-import { useStore } from "zustand";
-import useStoreApp from "../Store/app.store";
-import { useEffect, useState } from "react";
-import { useMediaQuery } from "@uidotdev/usehooks";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const links = [
   {
@@ -45,9 +46,16 @@ const links = [
  * @return {JSX.Element} The navigation bar component.
  */
 const Navbar = () => {
-  const { activeSection } = useStore(useStoreApp);
+  const { activeSection, theme, setTheme } = useStore(useStoreApp);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isSmallScreen = useMediaQuery("only screen and (max-width : 1023px)");
+
+  const toggleDarkMode = () => {
+    document.documentElement.classList.toggle("dark");
+    const newTheme = theme === "light" ? "dark" : "light";
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
+  };
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -80,6 +88,7 @@ const Navbar = () => {
       >
         <RiMenuFoldFill size={40} className="scale-80" />
       </div>
+
       {/* Render the navigation bar */}
       <nav
         className={`${
@@ -99,7 +108,7 @@ const Navbar = () => {
                 onClick={handleClick}
                 className={`${
                   activeSection === link.hrefLabel
-                    ? "scale-[130%] text-[#00a1ec]"
+                    ? "scale-[130%] text-blue-500"
                     : "scale-100"
                 }`}
               >
@@ -108,6 +117,18 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+        {/* Dark mode */}
+        <button
+          className="h-fit absolute -left-6 -top-6 hover:animate-bounce"
+          onClick={toggleDarkMode}
+          aria-label="toggle dark mode"
+        >
+          {theme === "light" ? (
+            <MdDarkMode size={30} className="cursor-pointer" />
+          ) : (
+            <MdLightMode size={30} className="cursor-pointer" />
+          )}
+        </button>
       </nav>
     </>
   );

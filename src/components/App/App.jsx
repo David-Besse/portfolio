@@ -150,7 +150,7 @@ const App = () => {
       {/* titleRef Container */}
       <div
         id="titleContainer"
-        className="titleContainer h-[100vh] w-[100vw] p-8 bg-[#f2f2f2] dark:bg-[#1e1e1e] flex flex-col justify-center text-[#606887] dark:text-[#f2f2f2]"
+        className="titleContainer h-[100vh] w-[100vw] p-8 bg-[#f2f2f2] dark:bg-[#1e1e1e] flex flex-col justify-center text-[#4D4D4D] dark:text-[#f2f2f2]"
       >
         {/* Span Over titleRef */}
         <div
@@ -196,7 +196,7 @@ const App = () => {
       {/* Main Container */}
       <div
         id="mainContainer"
-        className="mainContainer h-[100vh] w-[100vw] relative text-[#606887] dark:text-[#f2f2f2] hidden bg-[#f2f2f2] dark:bg-[#1e1e1e]"
+        className="mainContainer h-[100vh] w-[100vw] relative text-[#4D4D4D] dark:text-[#f2f2f2] hidden bg-[#f2f2f2] dark:bg-[#1e1e1e]"
         ref={mainContainerRef}
       >
         {/* Navbar */}

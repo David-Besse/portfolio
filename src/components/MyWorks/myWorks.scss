@@ -1,4 +1,4 @@
-.titleMyWorks{
+.titleMyWorks {
   -webkit-text-stroke: 2px #606887;
 
   @media screen and (min-width: 1024px) {
@@ -38,11 +38,16 @@
     transform: translateY(-50%);
     width: fit-content;
     height: fit-content;
-    padding: 1em;
+    padding: 0 5% 0 5%;
 
     .alice-carousel__prev-btn-item,
     .alice-carousel__next-btn-item {
       padding: 0;
+      color: white;
+      height: fit-content;
+      &:hover {
+        color: #fdba74;
+      }
 
       & span {
         &::after {
@@ -89,10 +94,10 @@
   }
 
   .alice-carousel
-  > div
-  > .alice-carousel__wrapper
-  > .alice-carousel__stage
-  .alice-carousel__stage-item.__active.__target {
-  padding: 0 20% 0 20%;
-}
+    > div
+    > .alice-carousel__wrapper
+    > .alice-carousel__stage
+    .alice-carousel__stage-item.__active.__target {
+    padding: 0 20% 0 20%;
+  }
 }

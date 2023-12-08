@@ -9,6 +9,8 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import styled from "styled-components";
+import { useStore } from "zustand";
+import useStoreApp from "../../Store/app.store";
 
 import ModalPreview from "../ModalPreview/ModalPreview";
 
@@ -31,6 +33,7 @@ const NewPTag = styled.p`
 
 const Sheet = ({ project }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { theme } = useStore(useStoreApp);
 
   return (
     <>
@@ -51,7 +54,9 @@ const Sheet = ({ project }) => {
 
         <CardBody className="flex flex-col justify-center items-center">
           <Image
-            className="object-contain w-auto h-[25vh]"
+            className={`object-contain h-[208px] aspect-[401/208] ${
+              theme === "dark" ? "bg-white shadow-[0_0_8px_8px_inset_black]" : ""
+            }`}
             fallbackSrc="/images/No_image_available.svg"
             alt={`image of the project ${project.projectName}`}
             radius="sm"
@@ -64,29 +69,30 @@ const Sheet = ({ project }) => {
           {project.url !== "" && (
             <div className="flex justify-around gap-4 sm:py-4 ">
               <span
-                className="hidden sm:flex sm:justify-end sm:items-center text-md cursor-pointer text-[#137af0] dark:text-white dark:underline md:hover:italic  md:hover:scale-110"
+                className="hidden sm:flex sm:justify-end sm:items-center text-md cursor-pointer text-[#0F4FA4] dark:text-blue-500 underline md:hover:italic  md:hover:scale-110"
                 onClick={() => onOpen()}
               >
                 Preview{" "}
-                <MdOutlinePreview className="ml-1 text-2xl text-[#137af0] dark:text-white" />
+                <MdOutlinePreview className="ml-1 text-2xl text-[#0F4FA4] dark:text-blue-500" />
               </span>
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="open the website in a new tab"
-                className="flex justify-end items-center text-md text-[#137af0] dark:text-white dark:underline md:hover:italic  md:hover:scale-110"
+                className="flex justify-end items-center text-md text-[#0F4FA4] dark:text-blue-500 underline md:hover:italic md:hover:scale-110"
               >
-                Website <ImNewTab className="ml-1 text-2xl text-[#137af0] dark:text-white" />
+                Website{" "}
+                <ImNewTab className="ml-1 text-2xl text-[#0F4FA4] dark:text-blue-500" />
               </a>
             </div>
           )}
         </CardBody>
 
         <CardFooter className="flex-col md:flex-row md:items-start rounded-t-xl h-[40%] lg:h-[35%] lg:tracking-wider overflow-auto ">
-          <div className="w-full h-full sm:px-2 lg:px-[4vw] text-center sm:text-start">
+          <div className="w-full h-full sm:px-2 lg:px-[4vw] text-center text-[#4D4D4D] dark:text-white sm:text-start">
             {project.description !== "" && (
-              <p className="text-xs sm:text-sm text-default-500 pb-2 dark:text-white">
+              <p className="text-xs sm:text-sm pb-2">
                 <span className="text-sm sm:text-lg lg:text-xl text-black dark:text-orange-300">
                   Description:
                 </span>
@@ -94,7 +100,7 @@ const Sheet = ({ project }) => {
               </p>
             )}
             {project.stack.front !== "" && (
-              <p className="text-xs sm:text-sm text-default-500 pb-2 dark:text-white">
+              <p className="text-xs sm:text-sm pb-2">
                 <span className="text-sm sm:text-lg text-black dark:text-orange-300">
                   Front stack
                 </span>
@@ -102,7 +108,7 @@ const Sheet = ({ project }) => {
               </p>
             )}
             {project.stack.back !== "" && (
-              <p className="text-xs sm:text-sm text-default-500 pb-2 dark:text-white">
+              <p className="text-xs sm:text-sm pb-2">
                 <span className="text-sm sm:text-lg text-black dark:text-orange-300">
                   Back stack
                 </span>
@@ -110,8 +116,8 @@ const Sheet = ({ project }) => {
               </p>
             )}
           </div>
-          <div className="w-fit h-fit flex flex-row md:flex-col text-end p-1 border-2 border-[#eaa470] rounded-xl">
-            <p className="text-sm md:text-base whitespace-nowrap pr-4 md:pr-0 md:pb-2 md:text-center dark:text-black">
+          <div className="w-fit h-fit flex flex-row md:flex-col text-end p-1 border-2 border-orange-300 rounded-xl">
+            <p className="text-sm md:text-base whitespace-nowrap pr-4 md:pr-0 md:pb-2 md:text-center dark:text-orange-300">
               GitHub links :
             </p>
             <p className="flex flex-row md:flex-col justify-end md:justify-center md:items-center">
@@ -124,7 +130,7 @@ const Sheet = ({ project }) => {
                         showAnchorIcon
                         href={value}
                         key={`${Object.keys(stackObj).find((el) => el)}_src`}
-                        className=" text-sm md:text-base md:hover:italic  md:hover:scale-110 px-2 md:px-0 md:pl-2 md:py-2 dark:text-white dark:underline"
+                        className=" text-sm text-[#0F4FA4] md:text-base md:hover:italic md:hover:scale-110 px-2 md:px-0 md:pl-2 md:py-2 dark:text-white underline"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

@@ -68,9 +68,9 @@ const Contact = () => {
       />
 
       <div className="w-full h-full flex flex-col justify-center gap-6 sm:gap-8 lg:gap-10 z-10">
-        <p className="text-center my-1 text-lg first-letter:text-4xl px-10 tracking-wide">
+        <p className="text-center my-1 text-lg first-letter:text-4xl px-10 tracking-wide m-[0px!important]">
           Get in touch or shoot me an email directly on{" "}
-          <a className="text-[#00a1ec]" href="mailto: dahodprod@gmail.com">
+          <a className="text-[#0F4FA4] dark:text-blue-500 underline" href="mailto: dahodprod@gmail.com">
             dahodprod@gmail.com
           </a>
         </p>

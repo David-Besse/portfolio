@@ -68,7 +68,7 @@ const AboutMe = () => {
       </h3>
 
       {/* 3D Scene */}
-      <div className="relative w-full sm:w-2/3 lg:w-full h-full z-[5]">
+      <div className="absolute left-0 lg:right-0 lg:left-[unset] w-full sm:w-2/3 lg:w-1/3 h-full z-[1]">
         {/* Background Bubble */}
         <section className="stage absolute w-[90%] sm:w-[52vh] h-[50%] sm:h-[52%] top-[22%] sm:top-[20%] left-1/2 transform -translate-x-1/2">
           <figure className="ball bubble shadow-2xl" />
@@ -114,7 +114,7 @@ const AboutMe = () => {
           </Canvas>
 
           {/* Camera activation and information group */}
-          <div className="camera_aboutMe absolute top-[15%] lg:top-[unset] lg:bottom-[20%] left-[4%] lg:left-1/2 lg:-translate-x-1/2 transform flex justify-center items-center gap-4">
+          <div className="camera_aboutMe absolute top-[14%] lg:top-[unset] lg:bottom-[30%] left-[4%] lg:left-1/2 lg:-translate-x-1/2 transform flex justify-center items-center gap-4">
             <GrPowerReset
               className="w-6 h-6 cursor-pointer"
               onClick={() => resetCamPosition()}
@@ -152,9 +152,9 @@ const AboutMe = () => {
       </div>
 
       {/* Words bloc */}
-      <div className="absolute top-0 right-0 sm:right-4 lg:left-0 sm:w-1/3 h-full flex flex-col justify-around pb-16 lg:px-16 z-[5]">
+      <div className="absolute top-0 right-0 lg:left-0 sm:w-1/3 h-full flex flex-col justify-around pb-16 sm:pr-4 lg:px-16 z-[5]">
         {/* Word List */}
-        <ul className="h-fit pe-2 sm:pe-0 flex flex-col text-3xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-center lg:items-start gap-4 lg:gap-12">
+        <ul className="h-fit pe-2 sm:pe-0 flex flex-col text-3xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-end lg:items-start gap-4 sm:gap-8 lg:gap-10">
           {WordData.map((word) => (
             <ListItem
               className="liItem pt-[2px] pl-[1px] sm:pt-[4px]"
@@ -174,9 +174,9 @@ const AboutMe = () => {
       </div>
 
       {/* Quote bloc */}
-      <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[73%] sm:top-[unset] sm:h-full sm:bottom-[15%] lg:bottom-1/2 left-1/2 lg:left-[unset] lg:right-0 transform -translate-x-1/2 lg:-translate-x-0 lg:translate-y-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 lg:pb-16">
+      <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[73%] sm:top-[unset] sm:bottom-[15%] lg:bottom-[unset] left-1/2 transform -translate-x-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 z-0">
         <p
-          className="relative w-fit h-fit px-4 lg:py-4 text-lg sm:text-2xl lg:text-3xl text-center italic bg-transparent rounded-3xl text-black dark:text-white font-semibold lg:leading-[3rem!important] lg:tracking-wider"
+          className="relative w-fit h-fit px-4 lg:py-4 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl dark:text-white font-semibold lg:leading-[3rem!important] lg:tracking-wider"
         >
           {/* Left quote icon */}
           <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887] dark:text-white" />

@@ -33,47 +33,42 @@
       clip-path: inset(0 0 0 74%);
     }
 
-    &:hover::before {
-      top: -5px;
+    &:hover::before,
+    &:hover span::before,
+    &:hover::after,
+    &:hover span::after {
       background: unset;
       background-clip: unset;
       -webkit-background-clip: unset;
       color: transparent;
       -webkit-text-stroke: 1px black;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      top: -5px;     
       color: rgba(255, 255, 255, 0.4);
+    }
+
+    &:hover span::before,
+    &:hover span::after {
+      top: 5px;     
+      color: white;
+    }
+
+    &:hover::before {
       clip-path: inset(0 70% 0 0);
     }
 
     &:hover span::before {
-      top: 5px;
-      background: unset;
-      background-clip: unset;
-      -webkit-background-clip: unset;
-      color: transparent;
-      -webkit-text-stroke: 1px black;
-      color: white;
       clip-path: inset(0 46% 0 30%);
     }
 
     &:hover::after {
-      top: -5px;
-      background: unset;
-      background-clip: unset;
-      -webkit-background-clip: unset;
-      color: transparent;
-      -webkit-text-stroke: 1px black;
-      color: rgba(255, 255, 255, 0.4);
       clip-path: inset(0 24% 0 54%);
     }
 
     &:hover span::after {
-      top: 5px;
-      background: unset;
-      background-clip: unset;
-      -webkit-background-clip: unset;
-      color: transparent;
-      -webkit-text-stroke: 1px black;
-      color: white;
       clip-path: inset(0 0 0 76%);
     }
   }

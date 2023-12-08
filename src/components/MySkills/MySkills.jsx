@@ -7,7 +7,8 @@ import RigMySkills from "./RigMySkills/RigMySkills";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
 import "./MySkills.scss";
-import { useEffect, useState } from "react";
+import { useStore } from "zustand";
+import useStoreApp from "../Store/app.store";
 
 /**
  * Render the MySkills component.
@@ -16,14 +17,7 @@ import { useEffect, useState } from "react";
  */
 const MySkills = () => {
   const isSmallMobile = useMediaQuery("only screen and (max-width : 767px)");
-  const [titleColor, setTitleColor] = useState("#606887");
-
-  useEffect(() => {
-    const htmlElement = document.querySelector("html");
-    const isDarkTheme = htmlElement.classList.contains("dark");
-    const newTitleColor = isDarkTheme ? "#fefefe" : "#606887";
-    setTitleColor(newTitleColor);
-  }, [titleColor]);
+  const { theme } = useStore(useStoreApp);
 
   return (
     <>
@@ -69,7 +63,7 @@ const MySkills = () => {
                 id="textPath"
                 href="#circlePath"
                 textLength={Math.floor(Math.PI * 2 * 196)}
-                fill={titleColor}
+                fill={theme === "dark" ? "#fefefe" : "#4B5068"}
               >
                 Here you can consult my current knowledge sphere, which is
                 constantly evolving...
@@ -90,11 +84,11 @@ const MySkills = () => {
       {/* Skills Sphere */}
       <div className="absolute bottom-[calc(50% - 16px)] left-1/2 w-auto h-[50vh] sm:w-full sm:h-[100vw] lg:w-[100vh] lg:h-full transform -translate-x-1/2 translate-y-[calc(50% - 16px)] z-10">
         <Canvas className="">
-          <fog attach="fog" args={["#202025", 40, 80]} />
+          <fog attach="fog" args={["#202025", 40, 150]} />
           <RigMySkills />
           <CloudSphere
-            count={16}
-            radius={60}
+            count={isSmallMobile ? 14 : 12}
+            radius={isSmallMobile ? 60 : 65}
             scaling={isSmallMobile ? 1 : 0.7}
           />
         </Canvas>
