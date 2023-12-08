@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Gltf, Environment, ContactShadows } from "@react-three/drei";
+import { Gltf, Environment, ContactShadows, Text } from "@react-three/drei";
 import styled from "styled-components";
 
 import { HiInformationCircle } from "react-icons/hi";
@@ -16,6 +16,7 @@ import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
 import "./aboutMe.scss";
 import RigAboutMe from "./Scene/RigAboutMe/RigAboutMe";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 // Define a styled list item component
 const ListItem = styled.li`
@@ -33,6 +34,7 @@ const AboutMe = () => {
   const [wordHovered, setWordHovered] = useState("");
   const [cameraActivated, setCameraActivated] = useState(false);
   const [cameraReset, setCameraReset] = useState(false);
+  const isSmallMobile = useMediaQuery("only screen and (max-width : 767px)");
 
   const handleCam = () => {
     setCameraActivated(!cameraActivated);
@@ -98,18 +100,36 @@ const AboutMe = () => {
                 position={[0, -5, 0]}
               />
 
-              {/* Render an avatar */}
-              <Avatar />
+              <Suspense
+                fallback={
+                  <Text
+                    color="black"
+                    anchorX={isSmallMobile ? "center" : "right"}
+                    anchorY="top-baseline"
+                    rotation={[
+                      isSmallMobile ? 45 : 0,
+                      Math.PI,
+                      isSmallMobile ? -45 : 0,
+                    ]}
+                    fontSize={isSmallMobile ? 2.5 : 1.5}
+                  >
+                    Jedi incoming . . .
+                  </Text>
+                }
+              >
+                {/* Render an avatar */}
+                <Avatar />
 
-              {/* Load and render a 3D model */}
-              <Gltf
-                receiveShadow
-                castShadow
-                src="/models/desktop_chair.glb"
-                scale={1}
-                position={[-0.35, -5, 0]}
-                rotation={[0, Math.PI, 0]}
-              />
+                {/* Load and render a 3D model */}
+                <Gltf
+                  receiveShadow
+                  castShadow
+                  src="/models/desktop_chair.glb"
+                  scale={1}
+                  position={[-0.35, -5, 0]}
+                  rotation={[0, Math.PI, 0]}
+                />
+              </Suspense>
             </group>
           </Canvas>
 
@@ -143,7 +163,8 @@ const AboutMe = () => {
               <div>
                 <div className="hidden absolute w-[250px] left-[4.5rem] lg:left-[8rem] bottom-0 bg-gray-200 dark:bg-gray-800 p-2 rounded-lg text-sm shadow-md mt-2 text-center z-20 group-hover:block">
                   {/* Information tooltip */}
-                  When the camera is activated, page scrolling is temporarily deactivated so that you can zoom in on the character. 
+                  When the camera is activated, page scrolling is temporarily
+                  deactivated so that you can zoom in on the character.
                 </div>
               </div>
             </div>
@@ -175,9 +196,7 @@ const AboutMe = () => {
 
       {/* Quote bloc */}
       <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[73%] sm:top-[unset] sm:bottom-[15%] lg:bottom-[unset] left-1/2 transform -translate-x-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 z-0">
-        <p
-          className="relative w-fit h-fit px-4 lg:py-4 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl dark:text-white font-semibold lg:leading-[3rem!important] lg:tracking-wider"
-        >
+        <p className="relative w-fit h-fit px-4 lg:py-4 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl dark:text-white font-semibold lg:leading-[3rem!important] lg:tracking-wider">
           {/* Left quote icon */}
           <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887] dark:text-white" />
 

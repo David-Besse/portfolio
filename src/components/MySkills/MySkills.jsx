@@ -82,7 +82,7 @@ const MySkills = () => {
       )}
 
       {/* Skills Sphere */}
-      <div className="absolute bottom-[calc(50% - 16px)] left-1/2 w-auto h-[50vh] sm:w-full sm:h-[100vw] lg:w-[100vh] lg:h-full transform -translate-x-1/2 translate-y-[calc(50% - 16px)] z-10">
+      <div className="absolute bottom-[calc(50% - 16px)] left-1/2 w-full h-[50vh] sm:w-full sm:h-[100vw] lg:w-[100vh] lg:h-full transform -translate-x-1/2 translate-y-[calc(50% - 16px)] z-10">
         <Canvas className="">
           <fog attach="fog" args={["#202025", 40, 150]} />
           <RigMySkills />

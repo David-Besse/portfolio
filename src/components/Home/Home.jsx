@@ -1,8 +1,6 @@
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import "./home.scss";
 import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
-import { MdDarkMode } from "react-icons/md";
-import { MdLightMode } from "react-icons/md";
 
 /**
  * Renders the Home component.
@@ -125,14 +123,14 @@ const Home = () => {
             For the things we have to learn before we can do them, we learn by
             doing them.
           </q>
-          <cite className="text-sm sm:text-sm xl:text-base text-gray-600 dark:text-[#f5d088] text-center">
+          <cite className="text-sm sm:text-sm xl:text-base text-gray-600 dark:text-white text-center">
             ― Aristotle,{" "}
             <a
               href="https://en.wikipedia.org/wiki/Nicomachean_Ethics"
               target="_blank"
               rel="noreferrer noopener nofollow"
               aria-label="Read more about The Nicomachean Ethics"
-              className="decoration-1 underline underline-offset-2 text-[#0F4FA4]"
+              className="decoration-1 underline underline-offset-2 text-[#0F4FA4] dark:text-[#f5d088]"
             >
               The Nicomachean Ethics
             </a>
