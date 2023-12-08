@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
-import { useMediaQuery } from "@uidotdev/usehooks";
 import {
   BsBook,
   BsEnvelopeAt,
@@ -11,6 +10,8 @@ import {
 } from "react-icons/bs";
 import { RiMenuFoldFill } from "react-icons/ri";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
+
+import "./Navbar.scss";
 
 const links = [
   {
@@ -47,8 +48,8 @@ const links = [
  */
 const Navbar = () => {
   const { activeSection, theme, setTheme } = useStore(useStoreApp);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isSmallScreen = useMediaQuery("only screen and (max-width : 1023px)");
+  const navRef = useRef();
+  const menuIconBurgerRef = useRef();
 
   const toggleDarkMode = () => {
     document.documentElement.classList.toggle("dark");
@@ -70,6 +71,11 @@ const Navbar = () => {
     }
   };
 
+  const handleNav = () => {
+    navRef.current.classList.toggle("nav_is_open");
+    menuIconBurgerRef.current.classList.toggle("nav_is_open");
+  };
+
   useEffect(() => {
     if (activeSection) {
       const location = document.querySelector(`#${activeSection}`);
@@ -83,17 +89,17 @@ const Navbar = () => {
     <>
       {/* Render the hamburger menu */}
       <div
-        className="fixed bottom-2 right-2 lg:hidden z-50 rounded-se-xl rounded-ee-xl border-l-0 border-2 dark:border-white"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        ref={menuIconBurgerRef}
+        className="menuIconBurger fixed pr-2 bottom-2 right-0 lg:hidden z-50 border-2 border-r-0 bg-white bg-opacity-60 dark:border-white dark:bg-black dark:bg-opacity-40"
+        onClick={() => handleNav()}
       >
         <RiMenuFoldFill size={40} className="scale-80" />
       </div>
 
       {/* Render the navigation bar */}
       <nav
-        className={`${
-          isSmallScreen && !isMenuOpen ? "hidden" : "block"
-        } fixed bottom-2 right-12 lg:right-1/2 lg:transform lg:translate-x-1/2 w-fit -translate-y-1/6 z-50 rounded-ss-2xl rounded-es-2xl lg:rounded-2xl border-2 border-r-0 lg:border-r-2 border-opacity-100 py-2 px-4 lg:p-3 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-40`}
+        ref={navRef}
+        className={`fixed bottom-2 right-[50px] lg:right-1/2 lg:transform lg:translate-x-1/2 w-fit -translate-y-1/6 z-50 rounded-ss-2xl rounded-es-2xl lg:rounded-2xl border-2 border-r-0 lg:border-r-2 border-opacity-100 py-2 px-4 lg:p-3 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-40`}
       >
         <ul className="flex justify-end items-center gap-6 lg:gap-14 text-2xl xl:text-3xl text-[#606887] dark:text-[#fefefe]">
           {/* Render each link in the navigation bar */}
@@ -119,7 +125,7 @@ const Navbar = () => {
         </ul>
         {/* Dark mode */}
         <button
-          className="h-fit absolute -left-6 -top-6 hover:animate-bounce"
+          className="h-fit absolute -top-6 -left-6 hover:scale-125"
           onClick={toggleDarkMode}
           aria-label="toggle dark mode"
         >

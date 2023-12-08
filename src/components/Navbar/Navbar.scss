@@ -1,0 +1,21 @@
+nav {
+  opacity: 0;
+  margin-right: -300px;
+  transition: margin-right 0.5s ease-in-out 0.3s, opacity 0.7s ease-in-out;
+
+  &.nav_is_open {
+    opacity: 1;
+    margin-right: 0;
+  }
+}
+
+.menuIconBurger {
+  border-start-start-radius: 1rem;
+  border-end-start-radius: 1rem;
+  transition: border-radius 0.5s ease-in-out 0.3s;
+
+  &.nav_is_open {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+}
