@@ -47,7 +47,8 @@ const links = [
  * @return {JSX.Element} The navigation bar component.
  */
 const Navbar = () => {
-  const { activeSection, theme, setTheme } = useStore(useStoreApp);
+  const { activeSection, setActiveSection, theme, setTheme } =
+    useStore(useStoreApp);
   const navRef = useRef();
   const menuIconBurgerRef = useRef();
 
@@ -67,6 +68,7 @@ const Navbar = () => {
       const location = document.querySelector(`#${target}`);
       if (location) {
         location.scrollIntoView({ behavior: "smooth" });
+        setActiveSection(target);
       }
     }
   };
@@ -111,7 +113,7 @@ const Navbar = () => {
               <a
                 href={link.hrefLabel}
                 aria-label={link.ariaLabel}
-                onClick={handleClick}
+                onClick={handleClick()}
                 className={`${
                   activeSection === link.hrefLabel
                     ? "scale-[130%] text-blue-500"
