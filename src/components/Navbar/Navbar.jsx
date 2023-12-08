@@ -94,7 +94,7 @@ const Navbar = () => {
       {/* Render the hamburger menu */}
       <div
         ref={menuIconBurgerRef}
-        className="menuIconBurger fixed pr-2 bottom-2 right-0 lg:hidden z-50 border-2 border-r-0 bg-white bg-opacity-60 dark:border-white dark:bg-black dark:bg-opacity-40"
+        className="menuIconBurger fixed pr-2 bottom-2 right-0 lg:hidden z-50 border-2 border-r-0 bg-white bg-opacity-60 rounded-ss-2xl rounded-es-2xl dark:border-white dark:bg-black dark:bg-opacity-40"
         onClick={handleNav}
       >
         <RiMenuFoldFill size={40} className="scale-80" />
@@ -103,7 +103,7 @@ const Navbar = () => {
       {/* Render the navigation bar */}
       <nav
         ref={navRef}
-        className={`fixed bottom-2 right-[50px] lg:right-1/2 lg:transform lg:translate-x-1/2 w-fit -translate-y-1/6 z-50 rounded-ss-2xl rounded-es-2xl lg:rounded-2xl border-2 border-r-0 lg:border-r-2 border-opacity-100 py-2 px-4 lg:p-3 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-40`}
+        className={`opacity-0 -mr-[300px] lg:opacity-100 lg:mr-0 fixed w-fit bottom-2 right-[50px] lg:right-1/2 lg:transform lg:translate-x-1/2 -translate-y-1/6 z-50 rounded-ss-2xl rounded-es-2xl lg:rounded-2xl border-2 border-r-0 lg:border-r-2 border-opacity-100 py-2 px-4 lg:p-3 bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-40`}
       >
         <ul className="flex justify-end items-center gap-6 lg:gap-14 text-2xl xl:text-3xl text-[#606887] dark:text-[#fefefe]">
           {/* Render each link in the navigation bar */}
@@ -129,7 +129,7 @@ const Navbar = () => {
         </ul>
         {/* Dark mode */}
         <button
-          className="h-fit absolute -top-6 -left-6 hover:scale-125"
+          className="h-fit absolute -top-6 -left-8 hover:scale-125"
           onClick={toggleDarkMode}
           aria-label="toggle dark mode"
         >
