@@ -36,7 +36,7 @@ const Modal = () => {
       item && (
         <animated.div
           style={style}
-          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center rounded-xl bg-gray-100 p-4 border border-[#9bbbf7] shadow-[-4px_4px_4px_#c4ae96] z-50"
+          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center rounded-xl bg-gray-100 dark:bg-[#606887] p-4 border border-[#9bbbf7] dark:border-[#f2f2f2] shadow-[0px_0px_2px_2px_#c4ae96] dark:shadow-[0px_0px_2px_2px_#606887] z-50"
         >
           <p className="">{contactModal.message}</p>
           <span

@@ -61,10 +61,7 @@ const Navbar = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
-
     const target = event.currentTarget.getAttribute("href");
-    console.log(target);
-    window.stop();
 
     if (target) {
       const location = document.querySelector(`#${target}`);

@@ -136,11 +136,11 @@ const AboutMe = () => {
           {/* Camera activation and information group */}
           <div className="camera_aboutMe absolute top-[14%] lg:top-[unset] lg:bottom-[30%] left-[4%] lg:left-1/2 lg:-translate-x-1/2 transform flex justify-center items-center gap-4">
             <GrPowerReset
-              className="w-6 h-6 cursor-pointer"
+              className="w-6 h-6 cursor-pointer dark:text-[#4d4d4d]"
               onClick={() => resetCamPosition()}
             />
             {/* Camera activation */}
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center dark:text-[#4d4d4d]">
               {!cameraActivated && (
                 // Show camera activation icon
                 <BsFillCameraVideoFill

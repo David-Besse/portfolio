@@ -20,9 +20,9 @@ const Contact = () => {
   const formRef = useRef();
 
   const onSubmit = () => {
-    const serviceId = "service_it89wkk";
-    const templateId = "template_xlt69rd";
-    const rhfId = "T9p81MAbarBsUJjZ3";
+    const serviceId = "service_bslom7o";
+    const templateId = "template_tump6xe";
+    const rhfId = "ljQt6AWbTKbd2enC-";
 
     emailjs
       .sendForm(serviceId, templateId, formRef.current, rhfId)
@@ -71,7 +71,7 @@ const Contact = () => {
         <p className="text-center my-1 text-lg first-letter:text-4xl px-10 tracking-wide m-[0px!important]">
           Get in touch or shoot me an email directly on{" "}
           <a className="text-[#0F4FA4] dark:text-blue-500 underline" href="mailto: dahodprod@gmail.com">
-            dahodprod@gmail.com
+            davidb.webdev@gmail.com
           </a>
         </p>
 
