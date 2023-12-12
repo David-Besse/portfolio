@@ -3,3 +3,4 @@ Allow: /
 Disallow: /animations/
 Disallow: /images/
 Disallow: /models/
+Disallow: /docs/

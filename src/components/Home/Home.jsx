@@ -1,6 +1,8 @@
+import filePdf from "../../../public/docs/CVBD.pdf";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
-import "./home.scss";
 import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
+import "./home.scss";
+import { Tooltip } from "@nextui-org/react";
 
 /**
  * Renders the Home component.
@@ -46,40 +48,56 @@ const Home = () => {
         {/* CV + socials networks */}
         <ul className="pr-2 flex items-center justify-center gap-2 md:gap-4 z-10">
           <li className="flex justify-center items-center">
-            <a
-              href="#"
-              className="flex flex-col justify-center items-center hover:scale-125 hover:italic px-1"
-              aria-label="download my CV"
+            <Tooltip
+              content="download my CV"
+              className="dark:bg-white dark:text-gray-800"
             >
-              <BsDownload size={26} />
-              <span
-                role="text"
-                className="self-end text-2xl font-bold dark:text-[#f2f2f2]"
+              <a
+                href={filePdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col justify-center items-center hover:scale-125 hover:italic px-1"
+                aria-label="download my CV"
               >
-                CV
-              </span>
-            </a>
+                <BsDownload size={26} />
+                <span
+                  role="text"
+                  className="self-end text-2xl font-bold dark:text-[#f2f2f2]"
+                >
+                  CV
+                </span>
+              </a>
+            </Tooltip>
           </li>
           <li className="flex flex-col sm:flex-row gap-3">
-            <a
-              href="https://www.linkedin.com/in/david-besse-666a77236/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#00a1ec] hover:scale-125"
-              aria-label="link to my LinkedIn profile"
+            <Tooltip
+              content="link to my LinkedIn profile"
+              className="dark:bg-white dark:text-gray-800"
             >
-              <BsLinkedin size={28} />
-            </a>
-
-            <a
-              href="https://github.com/David-Besse"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#00a1ec] hover:scale-125"
-              aria-label="link to my Github profile"
+              <a
+                href="https://www.linkedin.com/in/david-besse-666a77236/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#00a1ec] hover:scale-125"
+                aria-label="link to my LinkedIn profile"
+              >
+                <BsLinkedin size={28} />
+              </a>
+            </Tooltip>
+            <Tooltip
+              content="link to my Github profile"
+              className="dark:bg-white dark:text-gray-800"
             >
-              <BsGithub size={30} />
-            </a>
+              <a
+                href="https://github.com/David-Besse"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#00a1ec] hover:scale-125"
+                aria-label="link to my Github profile"
+              >
+                <BsGithub size={30} />
+              </a>
+            </Tooltip>
           </li>
         </ul>
       </header>
