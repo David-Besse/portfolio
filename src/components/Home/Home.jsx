@@ -1,7 +1,7 @@
 import filePdf from "../../../public/docs/CVBD.pdf";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 import "./home.scss";
 import { Tooltip } from "@nextui-org/react";
 
@@ -46,33 +46,34 @@ const Home = () => {
           </span>
         </div>
 
-        <div className="flex justify-center items-center">
-          <Tooltip
-            content="Show or download my curriculum vitae"
-            className="dark:bg-white dark:text-gray-800"
-          >
-            <a
-              href={filePdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex justify-center items-center hover:italic hover:scale-110"
-              aria-label="show or download my curriculum vitae"
-            >
-              <IoIosArrowForward size={24} className="animate-arrow_bounce_R" />
-              <span
-                role="text"
-                className="self-end text-2xl lg:text-3xl font-bold dark:text-[#f2f2f2]"
-              >
-                CV
-              </span>
-              <IoIosArrowBack size={24} className="animate-arrow_bounce_L" />
-            </a>
-          </Tooltip>
-        </div>
-
         {/* CV + socials networks */}
-        <ul className="pr-2 flex items-center justify-center gap-2 md:gap-4 lg:gap-6 z-10">
-          <li className="flex flex-col sm:flex-row gap-3 lg:gap-6">
+        <ul className="pr-2 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-4 lg:gap-6 z-10">
+          <li className="flex justify-center items-center">
+            <Tooltip
+              content="Show or download my curriculum vitae"
+              className="dark:bg-white dark:text-gray-800"
+            >
+              <a
+                href={filePdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex justify-center items-center hover:italic hover:scale-110"
+                aria-label="show or download my curriculum vitae"
+              >
+                <IoIosArrowForward
+                  size={24}
+                  className="animate-arrow_bounce_R"
+                />
+                <span
+                  role="text"
+                  className="self-end text-2xl lg:text-3xl font-bold dark:text-[#f2f2f2]"
+                >
+                  CV
+                </span>
+              </a>
+            </Tooltip>
+          </li>
+          <li className="flex flex-row gap-4 lg:gap-6">
             <Tooltip
               content="link to my LinkedIn profile"
               className="dark:bg-white dark:text-gray-800"
@@ -119,9 +120,9 @@ const Home = () => {
         {/* center content */}
         <section className="relative w-1/2 h-1/2 lg:h-1/2 flex flex-col order-2 lg:order-none justify-end fade-in-L gap-[2vh] lg:gap-3 text-start pl-2 sm:pl-0 lg:pr-20 xl:pr-[10%]">
           {/* Background Bubble */}
-          <div className="bgBuble absolute w-[75%] h-[20%] top-[4%] right-0 sm:right-[15%] lg:right-[15%] sm:w-[40%] sm:top-[20%] lg:h-[22%] xl:w-[30%] 2xl:w-[20%] z-0 flex justify-center items-center">
-            <h1 className="text-4xl sm:text-end lg:text-5xl font-extrabold z-10 whitespace-nowrap">
-              Hello !
+          <div className="bgBuble absolute w-fit h-[20%] top-[4%] right-0 sm:right-[15%] lg:right-[15%] sm:top-[20%] lg:h-[22%] z-0 flex justify-center items-center px-4">
+            <h1 className="openToWork text-xl sm:text-end sm:text-2xl lg:text-3xl z-10 whitespace-nowrap">
+              OPEN TO WORK
             </h1>
 
             {/* intro */}
