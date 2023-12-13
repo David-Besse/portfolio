@@ -1,14 +1,15 @@
 /* eslint-disable react/no-unknown-property */
+import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { useStore } from "zustand";
+import useStoreApp from "../Store/app.store";
 
 import CloudSphere from "./CloudSphere/CloudSphere";
 import RigMySkills from "./RigMySkills/RigMySkills";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 
 import "./MySkills.scss";
-import { useStore } from "zustand";
-import useStoreApp from "../Store/app.store";
 
 /**
  * Render the MySkills component.
@@ -86,11 +87,13 @@ const MySkills = () => {
         <Canvas className="">
           <fog attach="fog" args={["#202025", 40, 150]} />
           <RigMySkills />
-          <CloudSphere
-            count={isSmallMobile ? 14 : 12}
-            radius={isSmallMobile ? 60 : 65}
-            scaling={isSmallMobile ? 1 : 0.7}
-          />
+          <Suspense fallback={null}>
+            <CloudSphere
+              count={isSmallMobile ? 14 : 12}
+              radius={isSmallMobile ? 60 : 65}
+              scaling={isSmallMobile ? 1 : 0.7}
+            />
+          </Suspense>
         </Canvas>
       </div>
     </>

@@ -1,6 +1,7 @@
 import filePdf from "../../../public/docs/CVBD.pdf";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
-import { BsDownload, BsLinkedin, BsGithub } from "react-icons/bs";
+import { BsLinkedin, BsGithub } from "react-icons/bs";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import "./home.scss";
 import { Tooltip } from "@nextui-org/react";
 
@@ -45,31 +46,33 @@ const Home = () => {
           </span>
         </div>
 
-        {/* CV + socials networks */}
-        <ul className="pr-2 flex items-center justify-center gap-2 md:gap-4 z-10">
-          <li className="flex justify-center items-center">
-            <Tooltip
-              content="download my CV"
-              className="dark:bg-white dark:text-gray-800"
+        <div className="flex justify-center items-center">
+          <Tooltip
+            content="Show or download my curriculum vitae"
+            className="dark:bg-white dark:text-gray-800"
+          >
+            <a
+              href={filePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex justify-center items-center hover:italic hover:scale-110"
+              aria-label="show or download my curriculum vitae"
             >
-              <a
-                href={filePdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col justify-center items-center hover:scale-125 hover:italic px-1"
-                aria-label="download my CV"
+              <IoIosArrowForward size={24} className="animate-arrow_bounce_R" />
+              <span
+                role="text"
+                className="self-end text-2xl lg:text-3xl font-bold dark:text-[#f2f2f2]"
               >
-                <BsDownload size={26} />
-                <span
-                  role="text"
-                  className="self-end text-2xl font-bold dark:text-[#f2f2f2]"
-                >
-                  CV
-                </span>
-              </a>
-            </Tooltip>
-          </li>
-          <li className="flex flex-col sm:flex-row gap-3">
+                CV
+              </span>
+              <IoIosArrowBack size={24} className="animate-arrow_bounce_L" />
+            </a>
+          </Tooltip>
+        </div>
+
+        {/* CV + socials networks */}
+        <ul className="pr-2 flex items-center justify-center gap-2 md:gap-4 lg:gap-6 z-10">
+          <li className="flex flex-col sm:flex-row gap-3 lg:gap-6">
             <Tooltip
               content="link to my LinkedIn profile"
               className="dark:bg-white dark:text-gray-800"
@@ -143,15 +146,17 @@ const Home = () => {
           </q>
           <cite className="text-sm sm:text-sm xl:text-base text-gray-600 dark:text-white text-center">
             ― Aristotle,{" "}
-            <a
-              href="https://en.wikipedia.org/wiki/Nicomachean_Ethics"
-              target="_blank"
-              rel="noreferrer noopener nofollow"
-              aria-label="Read more about The Nicomachean Ethics"
-              className="decoration-1 underline underline-offset-2 text-[#0F4FA4] dark:text-[#f5d088]"
-            >
-              The Nicomachean Ethics
-            </a>
+            <Tooltip content="Wikipedia: The Nicomachean Ethics">
+              <a
+                href="https://en.wikipedia.org/wiki/Nicomachean_Ethics"
+                target="_blank"
+                rel="noreferrer noopener nofollow"
+                aria-label="Read more about The Nicomachean Ethics"
+                className="decoration-1 underline underline-offset-2 text-[#0F4FA4] dark:text-[#f5d088]"
+              >
+                The Nicomachean Ethics
+              </a>
+            </Tooltip>
           </cite>
         </section>
       </main>

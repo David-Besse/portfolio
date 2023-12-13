@@ -116,7 +116,7 @@ const Sheet = ({ project }) => {
               </p>
             )}
           </div>
-          <div className="w-fit h-fit flex flex-row md:flex-col text-end p-1 border-2 border-orange-300 rounded-xl">
+          <div className="w-fit h-fit flex flex-row md:flex-col text-end p-1 rounded-xl">
             <p className="text-sm md:text-base whitespace-nowrap pr-4 md:pr-0 md:pb-2 md:text-center dark:text-orange-300">
               GitHub links :
             </p>

@@ -1,4 +1,4 @@
-.titleHero{
+.titleHero {
   font-family: "Righteous", cursive;
   -webkit-text-stroke: 1px #606887;
 }
@@ -20,6 +20,14 @@
   animation: morph 3s ease-in-out infinite;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   transition: all 2s ease-in-out;
+}
+
+.animate-arrow_bounce_R {
+  animation: arrow_bounce_R 1s infinite;
+}
+
+.animate-arrow_bounce_L {
+  animation: arrow_bounce_L 1s infinite;
 }
 
 @keyframes morph {
@@ -58,5 +66,29 @@
   to {
     opacity: 1;
     transform: translateX(0px);
+  }
+}
+
+@keyframes arrow_bounce_R {
+  0%,
+  100% {
+    transform: translateX(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes arrow_bounce_L {
+  0%,
+  100% {
+    transform: translateX(25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
