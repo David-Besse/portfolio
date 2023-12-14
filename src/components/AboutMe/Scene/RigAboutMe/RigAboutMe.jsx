@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 /**
  * Initializes the RigAboutMe component.
@@ -12,6 +13,7 @@ import { useEffect, useRef, useState } from "react";
  */
 const RigAboutMe = ({ cameraActivated, cameraReset, setCameraReset }) => {
   const camRef = useRef();
+  const isNotMobile = useMediaQuery("only screen and (min-width : 1024px)");
   const [camPosition, setCamPosition] = useState(() =>
     window.innerWidth < 600 ? [30, 45, -5] : [20, 6, -20]
   );
@@ -20,16 +22,23 @@ const RigAboutMe = ({ cameraActivated, cameraReset, setCameraReset }) => {
   );
 
   useEffect(() => {
-/**
- * Handles the resize event and updates the camera position and target based on the value.
- *
- * @param {number} value - The value used to determine the new camera position and target.
- */
+    /**
+     * Handles the resize event.
+     *
+     * @param {number} value - The value representing the width of the window.
+     */
     const handleResize = (value) => {
-      const newCamPosition = value < 600 ? [30, 45, -5] : [20, 6, -20];
-      setCamPosition(newCamPosition);
-      const newCamTarget = value < 600 ? [5, 0, -6] : [5, 0, 0];
+      if (value < 600) {
+        setCamTarget([5, 0, -6]);
+        setCamPosition([30, 45, -5]);
+        return;
+      }
+
+      const newCamTarget = isNotMobile ? [15, 0, 0] : [5, 0, 0];
+      const newCamPosition = isNotMobile ? [-20, 6, -20] : [20, 6, -20];
+
       setCamTarget(newCamTarget);
+      setCamPosition(newCamPosition);
     };
 
     window.addEventListener("resize", handleResize(window.innerWidth));
@@ -40,17 +49,26 @@ const RigAboutMe = ({ cameraActivated, cameraReset, setCameraReset }) => {
   });
 
   useEffect(() => {
-    if (cameraReset) {
-      if (window.innerWidth < 600 ) {
+    /**
+     * Resets the camera position based on the window width and device type.
+     *
+     * @return {void}
+     */
+    const resetCamera = () => {
+      if (window.innerWidth < 600) {
         camRef.current.position.set(30, 45, -5);
-        camRef.current.lookAt(5, 0, -6);
+      } else if (isNotMobile) {
+        camRef.current.position.set(-20, 6, -20);
       } else {
         camRef.current.position.set(20, 6, -20);
-        camRef.current.lookAt(5, 0, 0);
       }
+    };
+
+    if (cameraReset) {
+      resetCamera();
       setCameraReset(false);
     }
-  }, [cameraReset, setCameraReset]);
+  }, [cameraReset, isNotMobile, setCameraReset]);
 
   return (
     <>

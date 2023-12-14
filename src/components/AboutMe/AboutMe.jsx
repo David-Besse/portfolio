@@ -21,7 +21,6 @@ import { BiSolidQuoteRight } from "react-icons/bi";
 import { Md3DRotation } from "react-icons/md";
 import { RxReset } from "react-icons/rx";
 import "./aboutMe.scss";
-import ArrowQuote from "../../../public/images/arrow.svg";
 
 // Define a styled list item component
 const ListItem = styled.li`
@@ -79,13 +78,13 @@ const AboutMe = () => {
         what defines me
       </h3>
 
-      {/* 3D Scene */}
-      <div className="absolute left-0 lg:right-0 lg:left-[unset] w-full sm:w-2/3 lg:w-1/3 h-full z-[1]">
-        {/* Background Bubble */}
-        <section className="stage absolute w-[90%] h-[50%] sm:w-[52vh] sm:h-[52%] top-[22%] sm:top-[20%] lg:w-[95%] left-1/2 transform -translate-x-1/2">
-          <figure className="ball bubble shadow-2xl" />
-        </section>
+      {/* Background Bubble */}
+      <section className="stage relative w-[90%] h-[50%] sm:w-[52vh] sm:h-[52%] lg:w-[50vh] lg:h-[50%] xl:w-[60vh] xl:h-[60%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <figure className="ball bubble shadow-2xl" />
+      </section>
 
+      {/* 3D Scene */}
+      <div className="absolute left-0 lg:right-0 lg:left-[unset] w-full sm:w-2/3 lg:w-2/3 h-full z-10">
         {/* Canvas component */}
         <div className="absolute w-full h-full top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
           <Canvas
@@ -154,8 +153,7 @@ const AboutMe = () => {
           </Canvas>
 
           {/* Camera activation */}
-          <div className="camera_aboutMe absolute top-[20%] lg:top-[unset] lg:bottom-[30%] left-[4%] lg:left-1/2 lg:-translate-x-1/2 transform flex justify-center items-center gap-4">
-            {/* Camera activation */}
+          <div className="camera_aboutMe absolute top-[20%] lg:top-[20%] left-[4%] lg:left-[unset] lg:right-[25%] flex justify-center items-center gap-4 border-2 border-white px-4 py-2 rounded-full">
             <Tooltip
               content={
                 <div className="px-1 py-2">
@@ -174,39 +172,37 @@ const AboutMe = () => {
               <div className="flex justify-center items-center dark:text-[#4d4d4d]">
                 <Md3DRotation
                   className={`w-8 h-8 cursor-pointer ${
-                    cameraActivated ? "text-green-500" : ""
+                    cameraActivated ? "text-green-500 scale-110" : "dark:text-white"
                   }`}
                   onClick={() => handleCam()}
                 />
               </div>
             </Tooltip>
-            {cameraActivated && (
-              <Tooltip
-                content={
-                  <div className="px-1 py-2">
-                    <div className="text-small font-bold">
-                      Reset camera position
-                    </div>
+            <Tooltip
+              content={
+                <div className="px-1 py-2">
+                  <div className="text-small font-bold">
+                    Reset camera position
                   </div>
-                }
-                showArrow={true}
-              >
-                <span>
-                  <RxReset
-                    className="w-6 h-6 cursor-pointer dark:text-[#4d4d4d]"
-                    onClick={() => resetCamPosition()}
-                  />
-                </span>
-              </Tooltip>
-            )}
+                </div>
+              }
+              showArrow={true}
+            >
+              <span>
+                <RxReset
+                  className="w-6 h-6 cursor-pointer dark:text-white active:text-green-500 active:scale-110"
+                  onClick={() => resetCamPosition()}
+                />
+              </span>
+            </Tooltip>
           </div>
         </div>
       </div>
 
       {/* Words bloc */}
-      <div className="absolute top-0 right-0 lg:left-0 sm:w-1/3 h-full flex flex-col justify-around pb-16 sm:pr-4 lg:px-16 z-[5]">
+      <div className="absolute top-0 right-0 lg:left-0 sm:w-1/3 h-full flex flex-col justify-around pb-16 sm:pr-4 lg:px-16 z-20">
         {/* Word List */}
-        <ul className="h-fit pe-2 sm:pe-0 flex flex-col text-3xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-end lg:items-start gap-4 sm:gap-8 lg:gap-10">
+        <ul className="h-fit pe-2 sm:pe-0 flex flex-col text-3xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-end lg:items-start gap-4 sm:gap-8 lg:gap-10 ">
           {WordData.map((word) => (
             <ListItem
               className="liItem pt-[2px] pl-[1px] sm:pt-[4px]"
@@ -227,30 +223,21 @@ const AboutMe = () => {
 
       {/* Quote bloc */}
       {wordHovered !== "" && (
-        <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[75%] sm:top-[unset] sm:bottom-[15%] lg:bottom-[unset] left-1/2 transform -translate-x-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 lg:px-4 z-10">
-          <p className="relative w-fit h-fit px-4 lg:py-1 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl dark:text-white font-semibold lg:leading-[2rem!important] lg:tracking-wider">
+        <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[75%] sm:top-[unset] sm:bottom-[15%] lg:bottom-[unset] left-1/2 transform -translate-x-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 lg:px-4 xl:px-10 2xl:px-20 z-10">
+          <p className="relative w-fit h-fit px-4 lg:py-1 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl font-semibold lg:leading-[2rem!important] lg:tracking-wider dark:text-[#606887]">
             {/* Left quote icon */}
-            <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887] dark:text-white" />
+            <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887]" />
             {/* Display quote based on hovered word */}
             {WordData.find((el) => el.keyword === wordHovered).quote}
             {/* Right quote icon */}
-            <BiSolidQuoteRight className="absolute right-0 -bottom-4 w-4 h-4 text-[#606887] dark:text-white" />
+            <BiSolidQuoteRight className="absolute right-0 -bottom-4 w-4 h-4 text-[#606887]" />
           </p>
         </div>
       )}
+      {/* Display default text when no word is hovered */}
       {wordHovered === "" && (
-        <div className="absolute top-[68%] sm:top-[70%] lg:top-[40%] lg:w-[25%] left-1/2 transform -translate-x-1/2 z-10 flex flex-col">
-          {/* Display default text when no word is hovered */}
-          <img
-            src={ArrowQuote}
-            alt="ArrowQuote"
-            aria-label="arrow to indicate where to touch or move the mouse over a word"
-            className="w-[10vh] h-[10vh] rotate-[230deg] sm:rotate-[160deg] sm:scale-x-[-1] lg:rotate-[70deg] self-center sm:self-end lg:self-start"
-          />
-          <span className="text-sm sm:text-base lg:text-lg p-2 text-center h-fit">
-            {isTablet ? "Touch a word" : "Drag the mouse over a word"} to reveal
-            a quote
-          </span>
+        <div className="absolute top-[75%] w-full lg:w-[20vw] lg:left-1/2 lg:-translate-x-1/2 lg:transform text-center lg:top-[42%] 2xl:top-[45%] text-sm sm:text-base lg:text-lg p-2 h-fit z-10 dark:text-[#606887]">
+          {isTablet ? "Touch a word" : "Drag the mouse over a word"} to reveal a quote
         </div>
       )}
     </>

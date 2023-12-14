@@ -38,7 +38,7 @@ const Sheet = ({ project }) => {
   return (
     <>
       <ModalPreview project={project} isOpen={isOpen} onClose={onClose} />
-      <Card className="h-full w-full left-1/2 transform -translate-x-1/2 rounded-2xl bg-opacity-70 shadow-[0_0_2px_2px_inset_#606887]">
+      <Card className="h-full w-full left-1/2 transform -translate-x-1/2 rounded-2xl bg-opacity-70 shadow-[0_0_2px_2px_inset_#606887] dark:shadow-[0_0_2px_2px_inset_white]">
         <CardHeader className="flex flex-col p-0 pt-[4vh]">
           <div className="flex flex-col w-full justify-center items-center">
             <div
@@ -93,7 +93,7 @@ const Sheet = ({ project }) => {
           <div className="w-full h-full sm:px-2 lg:px-4 text-center text-[#4D4D4D] dark:text-white sm:text-start">
             {project.description !== "" && (
               <p className="text-xs sm:text-sm pb-2">
-                <span className="text-sm sm:text-base text-black dark:text-orange-300">
+                <span className="text-sm sm:text-base text-black dark:text-orange-400">
                   Description :
                 </span>
                 <br /> {project.description}
@@ -101,7 +101,7 @@ const Sheet = ({ project }) => {
             )}
             {project.stack.front !== "" && (
               <p className="text-xs sm:text-sm pb-2">
-                <span className="text-sm sm:text-base text-black dark:text-orange-300">
+                <span className="text-sm sm:text-base text-black dark:text-orange-400">
                   Front stack :
                 </span>
                 <br /> {project.stack.front}
@@ -109,7 +109,7 @@ const Sheet = ({ project }) => {
             )}
             {project.stack.back !== "" && (
               <p className="text-xs sm:text-sm pb-2">
-                <span className="text-sm sm:text-base text-black dark:text-orange-300">
+                <span className="text-sm sm:text-base text-black dark:text-orange-400">
                   Back stack :
                 </span>
                 <br /> {project.stack.back}
@@ -117,7 +117,7 @@ const Sheet = ({ project }) => {
             )}
           </div>
           <div className="w-fit h-fit flex flex-row md:flex-col text-end p-1 lg:px-4 lg:p-0">
-            <p className="text-sm sm:text-base whitespace-nowrap pr-4 md:pr-0 md:pb-2 md:text-center dark:text-orange-300">
+            <p className="text-sm sm:text-base whitespace-nowrap pr-4 md:pr-0 md:pb-2 md:text-center dark:text-orange-400">
               GitHub links
             </p>
             <p className="flex flex-row md:flex-col justify-end md:justify-center md:items-center">
@@ -152,18 +152,16 @@ Sheet.propTypes = {
     description: PropTypes.string,
     projectName: PropTypes.string,
     screenshot: PropTypes.string,
-    src: PropTypes.arrayOf(
-      PropTypes.shape({
-        back: PropTypes.string,
-        front: PropTypes.string,
-      })
-    ),
+    src: PropTypes.arrayOf(PropTypes.shape({
+      back: PropTypes.string,
+      front: PropTypes.string
+    })),
     stack: PropTypes.shape({
       back: PropTypes.string,
-      front: PropTypes.string,
+      front: PropTypes.string
     }),
-    url: PropTypes.string,
-  }),
-};
+    url: PropTypes.string
+  })
+}
 
 export default Sheet;

@@ -214,7 +214,7 @@ const App = () => {
         {/* About Me Section */}
         <section
           id="aboutMe"
-          className="relative h-[100vh] w-[100vw] snap-center flex overflow-hidden"
+          className="relative h-[100vh] w-[100vw] snap-center pb-16 flex overflow-hidden"
           ref={sectionRefs.aboutMe}
         >
           <AboutMe />

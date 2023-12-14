@@ -15,7 +15,7 @@
 
   &::after {
     position: absolute;
-    color: #e79568;
+    color: #f7c130;
     top: 0;
     left: 0;
     width: 0%;
@@ -24,10 +24,9 @@
     white-space: nowrap;
   }
 
-  &:hover {
-    &::after {
-      animation: moveText 0.25s linear both;
-    }
+  &:hover::after {
+    width: 100%;
+    animation: moveText 0.4s linear both;
   }
 }
 

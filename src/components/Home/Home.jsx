@@ -4,7 +4,8 @@ import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";
 
 import "./home.scss";
-import ArrowQuote from "../../../public/images/arrow.svg";
+import ArrowQuote from "../../assets/images/arrow.svg";
+import ProfileImg from '../../assets/images/profile.png';
 import filePdf from "../../assets/docs/CVBD.pdf";
 
 /**
@@ -113,7 +114,7 @@ const Home = () => {
         {/* Left side content */}
         <section className="home_center w-1/2 h-1/2 lg:h-full lg:w-1/2 flex order-1 lg:order-none justify-center items-end lg:items-center z-10">
           <img
-            src="/images/home_right.png"
+            src={ProfileImg}
             alt="my photo"
             className="photo aspect-[125/201] h-[90%] sm:h-[85%] lg:h-[60%] -rotate-2 lg:-rotate-2 rounded border-4 shadow-xl rounded-se-[50px] rounded-es-[50px]"
           />
@@ -124,7 +125,7 @@ const Home = () => {
           {/* Background Bubble */}
           <div className="bgBuble absolute w-fit h-[20%] top-[4%] right-0 sm:right-[15%] lg:right-[unset] lg:left-[45%] sm:top-[20%] lg:h-[22%] z-0 flex justify-center items-center px-4">
             <img
-              className="absolute hidden sm:block h-28 -top-16 -left-24 rotate-[-20deg]"
+              className="absolute hidden sm:block h-28 -top-16 -left-24 rotate-[-20deg] dark:invert"
               src={ArrowQuote}
               alt="arrow to a text sayng open to work"
             />
@@ -138,8 +139,9 @@ const Home = () => {
             My name is David.
           </p>
           <p className="text-sm sm:text-base xl:text-lg lg:pt-4 tracking-wide">
-            As a web developer, every assignment presents a precious chance to
-            enhance and consistently advance my skills.
+            I&apos;m <strong>french</strong> and a web developer. <br />
+            Each assignment is a valuable opportunity for me to improve and
+            develop my skills.
           </p>
         </section>
 
@@ -160,7 +162,7 @@ const Home = () => {
                 target="_blank"
                 rel="noreferrer noopener nofollow"
                 aria-label="Read more about The Nicomachean Ethics"
-                className="decoration-1 underline underline-offset-2 text-[#0F4FA4] dark:text-[#f5d088]"
+                className="decoration-1 underline underline-offset-2 text-[#0F4FA4] dark:text-orange-400"
               >
                 The Nicomachean Ethics
               </a>
