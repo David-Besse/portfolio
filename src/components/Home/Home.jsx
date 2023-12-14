@@ -1,4 +1,4 @@
-import filePdf from "../../../public/docs/CVBD.pdf";
+import filePdf from "../../assets/docs/CVBD.pdf";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";

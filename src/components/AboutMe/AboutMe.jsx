@@ -1,22 +1,27 @@
 /* eslint-disable react/no-unknown-property */
-import { useState, Suspense } from "react";
+import { useState, Suspense, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Gltf, Environment, ContactShadows, Text } from "@react-three/drei";
+import {
+  Gltf,
+  Environment,
+  ContactShadows,
+  Text,
+  useCursor,
+} from "@react-three/drei";
 import styled from "styled-components";
-
-import { HiInformationCircle } from "react-icons/hi";
-import { BsFillCameraVideoFill } from "react-icons/bs";
-import { BsFillCameraVideoOffFill } from "react-icons/bs";
-import { BiSolidQuoteRight } from "react-icons/bi";
-import { GrPowerReset } from "react-icons/gr";
+import { useMediaQuery } from "@uidotdev/usehooks";
+import { Tooltip } from "@nextui-org/react";
 
 import Avatar from "./Scene/Avatar/Avatar";
 import WordData from "./../../datas/WordData";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
-
-import "./aboutMe.scss";
 import RigAboutMe from "./Scene/RigAboutMe/RigAboutMe";
-import { useMediaQuery } from "@uidotdev/usehooks";
+
+import { BiSolidQuoteRight } from "react-icons/bi";
+import { Md3DRotation } from "react-icons/md";
+import { RxReset } from "react-icons/rx";
+import "./aboutMe.scss";
+import ArrowQuote from "../../../public/images/arrow.svg";
 
 // Define a styled list item component
 const ListItem = styled.li`
@@ -32,9 +37,17 @@ const ListItem = styled.li`
  */
 const AboutMe = () => {
   const [wordHovered, setWordHovered] = useState("");
+  const [sceneHovered, setSceneHovered] = useState(false);
   const [cameraActivated, setCameraActivated] = useState(false);
   const [cameraReset, setCameraReset] = useState(false);
   const isSmallMobile = useMediaQuery("only screen and (max-width : 767px)");
+  const isTablet = useMediaQuery("only screen and (max-width : 1023px)");
+  const isLargeScreen = useMediaQuery(
+    "only screen and (min-width : 1024px) and (max-width : 1439px)"
+  );
+  const aboutMeSceneRef = useRef(null);
+
+  useCursor(sceneHovered, "grab", "auto", aboutMeSceneRef.current);
 
   const handleCam = () => {
     setCameraActivated(!cameraActivated);
@@ -72,13 +85,23 @@ const AboutMe = () => {
       {/* 3D Scene */}
       <div className="absolute left-0 lg:right-0 lg:left-[unset] w-full sm:w-2/3 lg:w-1/3 h-full z-[1]">
         {/* Background Bubble */}
-        <section className="stage absolute w-[90%] sm:w-[52vh] h-[50%] sm:h-[52%] top-[22%] sm:top-[20%] left-1/2 transform -translate-x-1/2">
+        <section className="stage absolute w-[90%] h-[50%] sm:w-[52vh] sm:h-[52%] top-[22%] sm:top-[20%] lg:w-[95%] left-1/2 transform -translate-x-1/2">
           <figure className="ball bubble shadow-2xl" />
         </section>
 
         {/* Canvas component */}
         <div className="absolute w-full h-full top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-          <Canvas shadows className="3dscene_aboutMe">
+          <Canvas
+            shadows
+            className="3dscene_aboutMe"
+            ref={aboutMeSceneRef}
+            onPointerEnter={
+              cameraActivated ? () => setSceneHovered(true) : null
+            }
+            onPointerLeave={
+              cameraActivated ? () => setSceneHovered(false) : null
+            }
+          >
             <RigAboutMe
               cameraActivated={cameraActivated}
               cameraReset={cameraReset}
@@ -133,41 +156,52 @@ const AboutMe = () => {
             </group>
           </Canvas>
 
-          {/* Camera activation and information group */}
-          <div className="camera_aboutMe absolute top-[14%] lg:top-[unset] lg:bottom-[30%] left-[4%] lg:left-1/2 lg:-translate-x-1/2 transform flex justify-center items-center gap-4">
-            <GrPowerReset
-              className="w-6 h-6 cursor-pointer dark:text-[#4d4d4d]"
-              onClick={() => resetCamPosition()}
-            />
+          {/* Camera activation */}
+          <div className="camera_aboutMe absolute top-[20%] lg:top-[unset] lg:bottom-[30%] left-[4%] lg:left-1/2 lg:-translate-x-1/2 transform flex justify-center items-center gap-4">
             {/* Camera activation */}
-            <div className="flex justify-center items-center dark:text-[#4d4d4d]">
-              {!cameraActivated && (
-                // Show camera activation icon
-                <BsFillCameraVideoFill
-                  className="w-8 h-8 cursor-pointer"
-                  onClick={() => handleCam()}
-                />
-              )}
-              {cameraActivated && (
-                // Show camera deactivation icon
-                <BsFillCameraVideoOffFill
-                  className="w-8 h-8 cursor-pointer"
-                  onClick={() => handleCam()}
-                />
-              )}
-            </div>
-            {/* Information group */}
-            <div className="group flex justify-center items-center">
-              {/* Information icon */}
-              <HiInformationCircle className="w-5 h-5 inline-block cursor-help text-[#00a1ec]" />
-              <div>
-                <div className="hidden absolute w-[250px] left-[4.5rem] lg:left-[8rem] bottom-0 bg-gray-200 dark:bg-gray-800 p-2 rounded-lg text-sm shadow-md mt-2 text-center z-20 group-hover:block">
-                  {/* Information tooltip */}
-                  When the camera is activated, page scrolling is temporarily
-                  deactivated so that you can zoom in on the character.
+            <Tooltip
+              content={
+                <div className="px-1 py-2">
+                  <div className="text-small font-bold">
+                    Activate/Deactivate the camera
+                  </div>
+                  <div className="text-tiny text-center">
+                    scrolling will be disabled in 3D scene
+                  </div>
                 </div>
+              }
+              showArrow={true}
+              placement="bottom"
+              className="z-50"
+            >
+              <div className="flex justify-center items-center dark:text-[#4d4d4d]">
+                <Md3DRotation
+                  className={`w-8 h-8 cursor-pointer ${
+                    cameraActivated ? "text-green-500" : ""
+                  }`}
+                  onClick={() => handleCam()}
+                />
               </div>
-            </div>
+            </Tooltip>
+            {cameraActivated && (
+              <Tooltip
+                content={
+                  <div className="px-1 py-2">
+                    <div className="text-small font-bold">
+                      Reset camera position
+                    </div>
+                  </div>
+                }
+                showArrow={true}
+              >
+                <span>
+                  <RxReset
+                    className="w-6 h-6 cursor-pointer dark:text-[#4d4d4d]"
+                    onClick={() => resetCamPosition()}
+                  />
+                </span>
+              </Tooltip>
+            )}
           </div>
         </div>
       </div>
@@ -195,22 +229,33 @@ const AboutMe = () => {
       </div>
 
       {/* Quote bloc */}
-      <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[75%] sm:top-[unset] sm:bottom-[15%] lg:bottom-[unset] left-1/2 transform -translate-x-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 z-0">
-        <p className="relative w-fit h-fit px-4 lg:py-4 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl dark:text-white font-semibold lg:leading-[3rem!important] lg:tracking-wider">
-          {/* Left quote icon */}
-          <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887] dark:text-white" />
-
-          {/* Display quote based on hovered word */}
-          {wordHovered !== "" &&
-            WordData.find((el) => el.keyword === wordHovered).quote}
-
+      {wordHovered !== "" && (
+        <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[75%] sm:top-[unset] sm:bottom-[15%] lg:bottom-[unset] left-1/2 transform -translate-x-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 lg:px-4 z-10">
+          <p className="relative w-fit h-fit px-4 lg:py-1 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl dark:text-white font-semibold lg:leading-[2rem!important] lg:tracking-wider">
+            {/* Left quote icon */}
+            <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887] dark:text-white" />
+            {/* Display quote based on hovered word */}
+            {WordData.find((el) => el.keyword === wordHovered).quote}
+            {/* Right quote icon */}
+            <BiSolidQuoteRight className="absolute right-0 -bottom-4 w-4 h-4 text-[#606887] dark:text-white" />
+          </p>
+        </div>
+      )}
+      {wordHovered === "" && (
+        <div className="absolute top-[68%] sm:top-[70%] lg:top-[40%] lg:w-[25%] left-1/2 transform -translate-x-1/2 z-10 flex flex-col">
           {/* Display default text when no word is hovered */}
-          {wordHovered === "" && "Drag the mouse over a word to reveal a quote"}
-
-          {/* Right quote icon */}
-          <BiSolidQuoteRight className="absolute right-0 -bottom-4 w-4 h-4 text-[#606887] dark:text-white" />
-        </p>
-      </div>
+          <img
+            src={ArrowQuote}
+            alt="ArrowQuote"
+            aria-label="arrow to indicate where to touch or move the mouse over a word"
+            className="w-[10vh] h-[10vh] rotate-[230deg] sm:rotate-[160deg] sm:scale-x-[-1] lg:rotate-[70deg] self-center sm:self-end lg:self-start"
+          />
+          <span className="text-sm sm:text-base lg:text-lg p-2 text-center h-fit">
+            {isTablet ? "Touch a word" : "Drag the mouse over a word"} to reveal
+            a quote
+          </span>
+        </div>
+      )}
     </>
   );
 };
