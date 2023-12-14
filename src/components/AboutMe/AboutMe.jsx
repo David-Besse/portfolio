@@ -42,9 +42,6 @@ const AboutMe = () => {
   const [cameraReset, setCameraReset] = useState(false);
   const isSmallMobile = useMediaQuery("only screen and (max-width : 767px)");
   const isTablet = useMediaQuery("only screen and (max-width : 1023px)");
-  const isLargeScreen = useMediaQuery(
-    "only screen and (min-width : 1024px) and (max-width : 1439px)"
-  );
   const aboutMeSceneRef = useRef(null);
 
   useCursor(sceneHovered, "grab", "auto", aboutMeSceneRef.current);

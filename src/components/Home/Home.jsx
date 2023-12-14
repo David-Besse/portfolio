@@ -1,9 +1,11 @@
-import filePdf from "../../assets/docs/CVBD.pdf";
+import { Tooltip } from "@nextui-org/react";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";
+
 import "./home.scss";
-import { Tooltip } from "@nextui-org/react";
+import ArrowQuote from "../../../public/images/arrow.svg";
+import filePdf from "../../assets/docs/CVBD.pdf";
 
 /**
  * Renders the Home component.
@@ -32,7 +34,7 @@ const Home = () => {
       {/* Header section */}
       <header className="h-[15%] p-2 w-screen md:w-4/5 md:mx-auto bg-transparent flex justify-between border-b-1 z-10">
         {/* Logo */}
-        <div className="flex flex-col justify-center items-center pl-2">
+        <div className="flex flex-col justify-center items-center pl-2 cursor-default">
           <p className="font-bold text-3xl sm:text-4xl text-[#00a1ec] flex">
             {letters.map((letter, index) => (
               <span key={index} className="mx-[2px]">
@@ -107,7 +109,7 @@ const Home = () => {
       </header>
 
       {/* Main content section */}
-      <main className="relative h-[85%] w-full flex flex-wrap lg:flex-col items-stretch pb-16 px-4 sm:px-20 xl:px-20 z-10 ">
+      <main className="relative h-[85%] w-full flex flex-wrap lg:flex-col items-stretch pb-16 px-4 sm:px-20 xl:px-20 z-10 cursor-default">
         {/* Left side content */}
         <section className="home_center w-1/2 h-1/2 lg:h-full lg:w-1/2 flex order-1 lg:order-none justify-center items-end lg:items-center z-10">
           <img
@@ -120,7 +122,12 @@ const Home = () => {
         {/* center content */}
         <section className="relative w-1/2 h-1/2 lg:h-1/2 flex flex-col order-2 lg:order-none justify-end fade-in-L gap-[2vh] lg:gap-3 text-start pl-2 sm:pl-0 lg:pr-20 xl:pr-[10%]">
           {/* Background Bubble */}
-          <div className="bgBuble absolute w-fit h-[20%] top-[4%] right-0 sm:right-[15%] lg:right-[15%] sm:top-[20%] lg:h-[22%] z-0 flex justify-center items-center px-4">
+          <div className="bgBuble absolute w-fit h-[20%] top-[4%] right-0 sm:right-[15%] lg:right-[unset] lg:left-[45%] sm:top-[20%] lg:h-[22%] z-0 flex justify-center items-center px-4">
+            <img
+              className="absolute hidden sm:block h-28 -top-16 -left-24 rotate-[-20deg]"
+              src={ArrowQuote}
+              alt="arrow to a text sayng open to work"
+            />
             <h1 className="openToWork text-xl sm:text-end sm:text-2xl lg:text-3xl z-10 whitespace-nowrap">
               OPEN TO WORK
             </h1>
