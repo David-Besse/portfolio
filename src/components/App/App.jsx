@@ -223,7 +223,7 @@ const App = () => {
         {/* My Works Section */}
         <section
           id="myWorks"
-          className="relative h-[100vh] w-[100vw] snap-center pb-16 flex flex-col overflow-hidden"
+          className="relative h-[100vh] w-[100vw] snap-center pb-16 pt-2 flex flex-col overflow-hidden"
           ref={sectionRefs.myWorks}
         >
           <MyWorks />
