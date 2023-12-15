@@ -1,6 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 @import url("https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Architects+Daughter&family=Baloo+Thambi+2&family=Righteous&display=swap");
 @import "react-alice-carousel/lib/scss/alice-carousel.scss";
 
@@ -8,4 +8,11 @@ html,
 body {
   margin: 0;
   padding: 0;
+
+  button:focus,
+  svg:focus,
+  li:focus,
+  a:focus {
+    outline: none;
+  }
 }
