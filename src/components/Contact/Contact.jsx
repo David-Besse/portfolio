@@ -7,7 +7,6 @@ import emailjs from "@emailjs/browser";
 
 import Modal from "../Modal/Modal";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
-import "./Contact.scss";
 
 const Contact = () => {
   const { activeSection, setContactModal } = useStore(useStoreApp);
@@ -50,16 +49,16 @@ const Contact = () => {
       <Modal />
 
       {/* section title */}
-      <h2 className="titleContact absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[20%] lg:opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:top-0 lg:w-full lg:text-center cursor-default dark:text-white">
+      <h2 className="titleSection absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[20%] lg:opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:top-0 lg:w-full lg:text-center cursor-default dark:text-white">
         .contact
       </h2>
+
       <BackgroundDiv
         path="0% 0%, 0% 100%, 50% 100%, 0% 0%"
         color="#c4ae96"
         width="100%"
         height="100%"
       />
-      {/* green c4ae96 */}
       <BackgroundDiv
         path="50% 100%, 75% 100%, 100% 50%, 100% 0%"
         color="#89d6e8"
@@ -68,12 +67,12 @@ const Contact = () => {
       />
 
       <div className="w-full h-full flex flex-col justify-center gap-6 sm:gap-8 lg:gap-10 z-10">
-        <p className="text-center my-1 text-lg first-letter:text-4xl px-10 tracking-wide m-[0px!important]">
+        <h2 className="text-center my-1 text-lg first-letter:text-4xl px-10 tracking-wide m-[0px!important]">
           Get in touch or shoot me an email directly on{" "}
           <a className="text-[#0F4FA4] dark:text-blue-500 underline" href="mailto: dahodprod@gmail.com">
             davidb.webdev@gmail.com
           </a>
-        </p>
+        </h2>
 
         <form
           ref={formRef}

@@ -13,18 +13,15 @@ import Navbar from "../Navbar/Navbar";
 
 import "./app.scss";
 
-const splashTitleText = "DAVID BESSE";
-const splashTitleLetters = splashTitleText.split("");
-const spanOverTitleText = "Hey, I am";
-const spanOverTitleLetters = spanOverTitleText.split("");
-const spanUnderTitleText = "fullstack web developer.";
-const spanUnderTitleLetters = spanUnderTitleText.split("");
+const spanOverTitleLetters = Array.from("Hey, I am");
+const splashTitleLetters = Array.from("DAVID BESSE");
+const spanUnderTitleLetters = Array.from("fullstack web developer.");
 
 const App = () => {
   const { setActiveSection, setTheme } = useStore(useStoreApp);
 
-  const titleRef = useRef(null);
   const spanOverRef = useRef(null);
+  const titleRef = useRef(null);
   const spanUnderRef = useRef(null);
   const mainContainerRef = useRef(null);
 
@@ -45,35 +42,32 @@ const App = () => {
      */
     const handleScroll = () => {
       Object.values(sectionRefs).forEach((ref) => {
-        if (ref.current) {
-          const { top, bottom } = ref.current.getBoundingClientRect();
-          const isFullyInView = top >= 0 && bottom <= window.innerHeight;
+        const { top, bottom } = ref.current.getBoundingClientRect();
 
-          if (isFullyInView) {
-            const sectionId = ref.current.id;
-            setActiveSection(sectionId);
-          }
+        if (top >= 0 && bottom <= window.innerHeight) {
+          setActiveSection(ref.current.id);
         }
       });
     };
 
-    if (mainContainerRef.current) {
-      mainContainerRef.current.addEventListener("scroll", handleScroll);
+    const mainContainer = mainContainerRef.current;
+    if (mainContainer) {
+      mainContainer.addEventListener("scroll", handleScroll);
     }
 
     return () => {
-      if (mainContainerRef.current) {
-        mainContainerRef.current.removeEventListener("scroll", handleScroll);
+      if (mainContainer) {
+        mainContainer.removeEventListener("scroll", handleScroll);
       }
     };
   }, [mainContainerRef]);
 
   useEffect(() => {
-    const titleRefElement = Array.from(titleRef.current.children);
     const spanOverRefElement = Array.from(spanOverRef.current.children);
+    const titleRefElement = Array.from(titleRef.current.children);
     const spanUnderRefElement = Array.from(spanUnderRef.current.children);
 
-    // animate splash over title elements
+    // animate splash elements over title elements
     gsap
       .timeline({ delay: 0.4 })
       .fromTo(
@@ -89,7 +83,7 @@ const App = () => {
 
     // animate title elements
     gsap
-      .timeline({ delay: 1.5 })
+      .timeline({ delay: 1.4 })
       .fromTo(
         titleRefElement,
         { opacity: 0, x: -100 },
@@ -109,16 +103,16 @@ const App = () => {
         scale: 0,
         opacity: 0,
         stagger: 0.1,
-        delay: 4,
-        duration: 1,
-        onComplete: () => {
-          gsap.set("#titleContainer", { display: "none" });
-          gsap.set("#mainContainer", { display: "block" });
-          setActiveSection("homePage");
-        },
+        delay: 3.5,
+        duration: 0.5,
+      })
+      .to("#titleContainer", { opacity: 0, duration: 0.1, display: "none" })
+      .to("#mainContainer", { opacity: 1, duration: 0.1, display: "block" })
+      .call(() => {
+        setActiveSection("homePage");
       });
 
-    // animate splash under title elements
+    // animate splash elements under title elements
     gsap
       .timeline({ delay: 3 })
       .fromTo(
@@ -133,13 +127,14 @@ const App = () => {
       });
   }, []);
 
+  // set theme
   useEffect(() => {
-    if (localStorage.getItem("theme") === "dark") {
-      localStorage.setItem("theme", "dark");
+    if (localStorage.getItem("theme_portfolio") === "dark") {
+      localStorage.setItem("theme_portfolio", "dark");
       setTheme("dark");
       document.documentElement.classList.toggle("dark");
     } else {
-      localStorage.setItem("theme", "light");
+      localStorage.setItem("theme_portfolio", "light");
       setTheme("light");
       document.documentElement.classList.toggle("light");
     }
@@ -147,13 +142,13 @@ const App = () => {
 
   return (
     <>
-      {/* titleRef Container */}
+      {/* Title Container */}
       <div
         id="titleContainer"
-        className="titleContainer h-[100vh] w-[100vw] p-8 bg-[#f2f2f2] dark:bg-[#1e1e1e] flex flex-col justify-center text-[#4D4D4D] dark:text-[#f2f2f2]"
+        className="titleContainer h-[100vh] w-[100vw] p-8 bg-[#f2f2f2] dark:bg-[#1e1e1e] flex flex-col justify-center text-[#4D4D4D] dark:text-[#f2f2f2] overflow-hidden"
       >
-        {/* Span Over titleRef */}
-        <div
+        {/* Span over title */}
+        <h2
           className="spanOverTitle text-start text-xl md:text-3xl lg:pl-14 xl:pl-28 2xl:pl-56"
           ref={spanOverRef}
         >
@@ -162,23 +157,25 @@ const App = () => {
               {letter}
             </span>
           ))}
-        </div>
-        {/* Main titleRef */}
+        </h2>
+
+        {/* Title */}
         <h1
-          className="title w-full flex py-4 lg:py-8 xl:py-16 text-4xl md:text-6xl justify-center"
+          className="title w-full flex py-16 xl:py-32 text-4xl md:text-6xl justify-center"
           ref={titleRef}
         >
           {splashTitleLetters.map((letter, index) => (
             <span
               key={`splashTitle_${index}_${letter}`}
-              className="letterTitle  inline-block"
+              className="letterTitle inline-block"
             >
               {letter}
             </span>
           ))}
         </h1>
-        {/* Span Under titleRef */}
-        <div
+
+        {/* Span under title */}
+        <h2
           className="spanUnderTitle text-end text-xl md:text-3xl lg:pr-14 xl:pr-28 2xl:pr-56"
           ref={spanUnderRef}
         >
@@ -190,13 +187,13 @@ const App = () => {
               {letter}
             </span>
           ))}
-        </div>
+        </h2>
       </div>
 
       {/* Main Container */}
       <div
         id="mainContainer"
-        className="mainContainer h-[100vh] w-[100vw] relative text-[#4D4D4D] dark:text-[#f2f2f2] hidden bg-[#f2f2f2] dark:bg-[#1e1e1e]"
+        className="mainContainer opacity-0 h-[100vh] w-[100vw] relative text-[#4D4D4D] dark:text-[#f2f2f2] hidden bg-[#f2f2f2] dark:bg-[#1e1e1e]"
         ref={mainContainerRef}
       >
         {/* Navbar */}

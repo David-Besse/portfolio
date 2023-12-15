@@ -1,17 +1,42 @@
-import { useRouteError } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Button } from "@nextui-org/react";
+import errorBgImg from "../../assets/images/error.png";
+import { RiArrowGoBackFill } from "react-icons/ri";
 
 const ErrorPage = () => {
-  const error = useRouteError();
-  console.error(error);
+  // const error = useRouteError(); /* debugging */
 
   return (
-    <div id="error-page" className="flex flex-col justify-center items-center w-screen h-screen gap-4 bg-[#f2f2f2]">
-      <h1 className="text-8xl font-extrabold">Oops!</h1>
-      <p className="text-2xl font-semibold">Sorry, an unexpected error has occurred.</p>
-      <p className="text-2xl pt-6">
-        <i>{error.statusText || error.message}</i>
-      </p>
-    </div>
+    <>
+      <div
+        id="error-page"
+        className="relative flex flex-col justify-center items-center w-screen h-screen gap-4 bg-[#f2f2f2]"
+      >
+        <img
+          src={errorBgImg}
+          alt="error"
+          className="absolute top-0 left-0 w-screen h-screen object-cover z-0"
+        />
+        <h1 className="text-6xl xl:text-8xl font-extrabold z-10">Oops!</h1>
+        <p className="text-2xl font-semibold z-10 text-center">
+          What did you expect ?
+        </p>
+        <Button
+          size="lg"
+          color="default"
+          className="z-10 font-semibold flex justify-center items-center bg-opacity-20"
+          variant="light"
+        >
+          <RiArrowGoBackFill className="" size={20} />
+          <Link to="/" className="text-xl">
+            Go back
+          </Link>
+        </Button>
+        {/* <p className="text-2xl pt-6 z-10 text-center">
+      <i>{error.statusText || error.message}</i>
+    </p> */}
+      </div>
+    </>
   );
 };
 

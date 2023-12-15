@@ -43,9 +43,9 @@ const Sheet = ({ project }) => {
           <div className="flex flex-col w-full justify-center items-center">
             <div
               key={`div_${project.projectName}`}
-              className="div_listItem w-fit relative flex justify-center text-4xl sm:text-5xl lg:text-6xl border-y-1 border-black dark:border-white"
+              className="projectListItemContainer w-fit relative flex justify-center text-4xl sm:text-5xl lg:text-6xl border-y-1 border-black dark:border-white"
             >
-              <NewPTag className="listItem w-fit" $text={project.projectName}>
+              <NewPTag className="projectListItem w-fit" $text={project.projectName}>
                 <span className="spanList">{project.projectName}</span>
               </NewPTag>
             </div>

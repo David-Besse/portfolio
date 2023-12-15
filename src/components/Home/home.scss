@@ -26,7 +26,7 @@
 }
 
 .animate-arrow_bounce_R {
-  animation: arrow_bounce_R 1s infinite;
+  animation: arrow_bounce_R 2.5s infinite;
 }
 
 @keyframes morph {
@@ -71,11 +71,13 @@
 @keyframes arrow_bounce_R {
   0%,
   100% {
-    transform: translateX(-25%);
+    transform: translateY(-20%);
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    rotate: -35deg;
   }
   50% {
     transform: none;
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    rotate: -20deg;
   }
 }

@@ -56,7 +56,7 @@ const Navbar = () => {
   const toggleDarkMode = () => {
     document.documentElement.classList.toggle("dark");
     const newTheme = theme === "light" ? "dark" : "light";
-    localStorage.setItem("theme", newTheme);
+    localStorage.setItem("theme_portfolio", newTheme);
     setTheme(newTheme);
   };
 

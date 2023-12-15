@@ -4,9 +4,9 @@ import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";
 
 import "./home.scss";
-import ArrowQuote from "../../assets/images/arrow.svg";
-import ProfileImg from '../../assets/images/profile.png';
+import ProfileImg from "../../assets/images/profile.png";
 import filePdf from "../../assets/docs/CVBD.pdf";
+import SignPannel from "./SignPannel/SignPannel";
 
 /**
  * Renders the Home component.
@@ -63,10 +63,7 @@ const Home = () => {
                 className="flex justify-center items-center hover:italic hover:scale-110"
                 aria-label="show or download my curriculum vitae"
               >
-                <IoIosArrowForward
-                  size={24}
-                  className="animate-arrow_bounce_R"
-                />
+                <IoIosArrowForward size={24} className="" />
                 <span
                   role="text"
                   className="self-end text-2xl lg:text-3xl font-bold dark:text-[#f2f2f2]"
@@ -123,13 +120,9 @@ const Home = () => {
         {/* center content */}
         <section className="relative w-1/2 h-1/2 lg:h-1/2 flex flex-col order-2 lg:order-none justify-end fade-in-L gap-[2vh] lg:gap-3 text-start pl-2 sm:pl-0 lg:pr-20 xl:pr-[10%]">
           {/* Background Bubble */}
-          <div className="bgBuble absolute w-fit h-[20%] top-[4%] right-0 sm:right-[15%] lg:right-[unset] lg:left-[45%] sm:top-[20%] lg:h-[22%] z-0 flex justify-center items-center px-4">
-            <img
-              className="absolute hidden sm:block h-28 -top-16 -left-24 rotate-[-20deg] dark:invert"
-              src={ArrowQuote}
-              alt="arrow to a text sayng open to work"
-            />
-            <h1 className="openToWork text-xl sm:text-end sm:text-2xl lg:text-3xl z-10 whitespace-nowrap">
+          <div className="bgBuble absolute w-fit h-[20%] top-[4%] right-0 sm:right-[15%] lg:right-[unset] lg:left-[15%] sm:top-[20%] lg:h-[22%] z-0 flex justify-center items-center px-4">
+            <SignPannel />
+            <h1 className="openToWork text-xl sm:text-end sm:text-2xl lg:text-3xl z-10 whitespace-nowrap text-white dark:text-[#4d4d4d]">
               OPEN TO WORK
             </h1>
 

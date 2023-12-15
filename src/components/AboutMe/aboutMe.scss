@@ -1,32 +1,32 @@
-.titleAboutMe {
-  -webkit-text-stroke: 2px #606887;
-
-  @media screen and (min-width: 1024px) {
-    -webkit-text-stroke: 10px #606887;
-  }
-}
-
-.liItem {
+.listItem {
   -webkit-text-stroke: 1.7px #606887;
-  color: white;
+  color: whitesmoke;
   position: relative;
-  cursor: default;
+  cursor: pointer;
   white-space: nowrap;
 
   &::after {
     position: absolute;
-    color: #f7c130;
+    color: #fb923c;
     top: 0;
     left: 0;
-    width: 0%;
+    width: 0px;
     height: 100%;
     overflow: hidden;
     white-space: nowrap;
+    transition: width 0.4s ease-in-out;
   }
 
-  &:hover::after {
-    width: 100%;
-    animation: moveText 0.4s linear both;
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &:not(:hover) {
+    &::after {
+      width: 0%;
+    }
   }
 }
 
@@ -171,14 +171,5 @@
   97%,
   100% {
     transform: scale(1);
-  }
-}
-
-@keyframes moveText {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
   }
 }

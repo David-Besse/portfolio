@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import { useState, Suspense, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
@@ -30,25 +29,39 @@ const ListItem = styled.li`
 `;
 
 /**
- * Renders the About Me component.
+ * Renders the AboutMe component.
  *
- * @return {JSX.Element} The rendered About Me component.
+ * @return {JSX.Element} The rendered AboutMe component.
  */
 const AboutMe = () => {
+  /* state only used in this component */
   const [wordHovered, setWordHovered] = useState("");
   const [sceneHovered, setSceneHovered] = useState(false);
   const [cameraActivated, setCameraActivated] = useState(false);
   const [cameraReset, setCameraReset] = useState(false);
+  /* ................................. */
+
   const isSmallMobile = useMediaQuery("only screen and (max-width : 767px)");
   const isTablet = useMediaQuery("only screen and (max-width : 1023px)");
   const aboutMeSceneRef = useRef(null);
 
   useCursor(sceneHovered, "grab", "auto", aboutMeSceneRef.current);
 
+  /**
+   * Toggles the camera activation state.
+   *
+   * @return {undefined} No return value.
+   */
   const handleCam = () => {
     setCameraActivated(!cameraActivated);
   };
 
+  /**
+   * Resets the camera position.
+   *
+   * @param {none} - This function does not accept any parameters.
+   * @return {none} - This function does not return any value.
+   */
   const resetCamPosition = () => {
     setCameraReset(true);
   };
@@ -70,7 +83,7 @@ const AboutMe = () => {
         height="100%"
       />
       {/* section title */}
-      <h2 className="titleAboutMe absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[20%] lg:opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:bottom-[3rem] lg:w-full lg:text-center cursor-default dark:text-white">
+      <h2 className="titleSection absolute h-fit w-fit left-[1vh] bottom-[1vh] text-3xl sm:text-5xl z-[0] text-transparent opacity-[20%] lg:opacity-[10%] lg:text-[15vw] lg:left-0 lg:right-0 lg:bottom-[3rem] lg:w-full lg:text-center cursor-default dark:text-white">
         .aboutMe
       </h2>
       {/* Subheader */}
@@ -103,10 +116,7 @@ const AboutMe = () => {
               cameraReset={cameraReset}
               setCameraReset={setCameraReset}
             />
-
-            {/* Render a city environment */}
             <Environment preset="city" />
-
             <group scale={1}>
               {/* Render contact shadows */}
               <ContactShadows
@@ -118,7 +128,6 @@ const AboutMe = () => {
                 color="#000000"
                 position={[0, -5, 0]}
               />
-
               <Suspense
                 fallback={
                   <Text
@@ -136,10 +145,7 @@ const AboutMe = () => {
                   </Text>
                 }
               >
-                {/* Render an avatar */}
                 <Avatar />
-
-                {/* Load and render a 3D model */}
                 <Gltf
                   receiveShadow
                   castShadow
@@ -153,37 +159,37 @@ const AboutMe = () => {
           </Canvas>
 
           {/* Camera activation */}
-          <div className="camera_aboutMe absolute top-[20%] lg:top-[20%] left-[4%] lg:left-[unset] lg:right-[25%] flex justify-center items-center gap-4 border-2 border-white px-4 py-2 rounded-full">
+          <div className="absolute top-[20%] lg:top-[20%] left-[4%] lg:left-[unset] lg:right-[25%] flex justify-center items-center gap-4 border-2 border-white px-4 py-2 rounded-full">
             <Tooltip
               content={
                 <div className="px-1 py-2">
-                  <div className="text-small font-bold">
+                  <p className="text-small font-bold">
                     Activate/Deactivate the camera
-                  </div>
-                  <div className="text-tiny text-center">
+                  </p>
+                  <p className="text-tiny text-center">
                     scrolling will be disabled in 3D scene
-                  </div>
+                  </p>
                 </div>
               }
               showArrow={true}
               placement="bottom"
               className="z-50"
             >
-              <div className="flex justify-center items-center dark:text-[#4d4d4d]">
+              <span className="flex justify-center items-center dark:text-[#4d4d4d]">
                 <Md3DRotation
                   className={`w-8 h-8 cursor-pointer ${
-                    cameraActivated ? "text-green-500 scale-110" : "dark:text-white"
+                    cameraActivated
+                      ? "text-green-500 scale-110"
+                      : "dark:text-white"
                   }`}
                   onClick={() => handleCam()}
                 />
-              </div>
+              </span>
             </Tooltip>
             <Tooltip
               content={
                 <div className="px-1 py-2">
-                  <div className="text-small font-bold">
-                    Reset camera position
-                  </div>
+                  <p className="text-small font-bold">Reset camera position</p>
                 </div>
               }
               showArrow={true}
@@ -200,12 +206,12 @@ const AboutMe = () => {
       </div>
 
       {/* Words bloc */}
-      <div className="absolute top-0 right-0 lg:left-0 sm:w-1/3 h-full flex flex-col justify-around pb-16 sm:pr-4 lg:px-16 z-20">
+      <aside className="absolute top-0 right-0 lg:left-0 sm:w-1/3 h-full flex flex-col justify-around pb-16 sm:pr-4 lg:px-16 z-20">
         {/* Word List */}
         <ul className="h-fit pe-2 sm:pe-0 flex flex-col text-3xl sm:text-4xl xl:text-5xl 2xl:text-[3.5rem] justify-center items-end lg:items-start gap-4 sm:gap-8 lg:gap-10 ">
           {WordData.map((word) => (
             <ListItem
-              className="liItem pt-[2px] pl-[1px] sm:pt-[4px]"
+              className="listItem pt-[2px] pl-[1px] sm:pt-[4px]"
               key={word.keyword}
               $text={word.keyword}
               onMouseEnter={() => {
@@ -219,26 +225,24 @@ const AboutMe = () => {
             </ListItem>
           ))}
         </ul>
-      </div>
+      </aside>
 
       {/* Quote bloc */}
       {wordHovered !== "" && (
-        <div className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[75%] sm:top-[unset] sm:bottom-[15%] lg:bottom-[unset] left-1/2 transform -translate-x-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 lg:px-4 xl:px-10 2xl:px-20 z-10">
+        <blockquote className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[75%] sm:top-[unset] sm:bottom-[15%] lg:bottom-[4vh] left-1/2 transform -translate-x-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 lg:px-4 xl:px-10 2xl:px-20 z-10">
           <p className="relative w-fit h-fit px-4 lg:py-1 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl font-semibold lg:leading-[2rem!important] lg:tracking-wider dark:text-[#606887]">
-            {/* Left quote icon */}
             <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887]" />
-            {/* Display quote based on hovered word */}
             {WordData.find((el) => el.keyword === wordHovered).quote}
-            {/* Right quote icon */}
             <BiSolidQuoteRight className="absolute right-0 -bottom-4 w-4 h-4 text-[#606887]" />
           </p>
-        </div>
+        </blockquote>
       )}
       {/* Display default text when no word is hovered */}
       {wordHovered === "" && (
-        <div className="absolute top-[75%] w-full lg:w-[20vw] lg:left-1/2 lg:-translate-x-1/2 lg:transform text-center lg:top-[42%] 2xl:top-[45%] text-sm sm:text-base lg:text-lg p-2 h-fit z-10 dark:text-[#606887]">
-          {isTablet ? "Touch a word" : "Drag the mouse over a word"} to reveal a quote
-        </div>
+        <blockquote className="absolute top-[75%] w-full lg:w-[20vw] lg:left-1/2 lg:-translate-x-1/2 lg:transform text-center lg:top-[42%] 2xl:top-[45%] text-sm sm:text-base lg:text-lg p-2 h-fit z-10 dark:text-[#606887]">
+          {isTablet ? "Touch a word" : "Drag the mouse over a word"} to reveal a
+          quote
+        </blockquote>
       )}
     </>
   );
