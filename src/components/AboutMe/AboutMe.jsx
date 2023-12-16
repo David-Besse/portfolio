@@ -1,11 +1,12 @@
 import { useState, Suspense, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
+  Html,
   Gltf,
   Environment,
   ContactShadows,
-  Text,
   useCursor,
+  useProgress,
 } from "@react-three/drei";
 import styled from "styled-components";
 import { useMediaQuery } from "@uidotdev/usehooks";
@@ -41,7 +42,6 @@ const AboutMe = () => {
   const [cameraReset, setCameraReset] = useState(false);
   /* ................................. */
 
-  const isSmallMobile = useMediaQuery("only screen and (max-width : 767px)");
   const isTablet = useMediaQuery("only screen and (max-width : 1023px)");
   const aboutMeSceneRef = useRef(null);
 
@@ -64,6 +64,16 @@ const AboutMe = () => {
    */
   const resetCamPosition = () => {
     setCameraReset(true);
+  };
+
+  const Loader = () => {
+    const { progress } = useProgress();
+
+    return (
+      <Html center className="text-base text-black dark:lg:text-white">
+        Jedi teleportation in progress : {progress} %.
+      </Html>
+    );
   };
 
   return (
@@ -118,7 +128,6 @@ const AboutMe = () => {
             />
             <Environment preset="city" />
             <group scale={1}>
-              {/* Render contact shadows */}
               <ContactShadows
                 opacity={0.8}
                 scale={30}
@@ -128,23 +137,7 @@ const AboutMe = () => {
                 color="#000000"
                 position={[0, -5, 0]}
               />
-              <Suspense
-                fallback={
-                  <Text
-                    color="black"
-                    anchorX={isSmallMobile ? "center" : "right"}
-                    anchorY="top-baseline"
-                    rotation={[
-                      isSmallMobile ? 45 : 0,
-                      Math.PI,
-                      isSmallMobile ? -45 : 0,
-                    ]}
-                    fontSize={isSmallMobile ? 2.5 : 1.5}
-                  >
-                    Jedi incoming . . .
-                  </Text>
-                }
-              >
+              <Suspense fallback={<Loader />}>
                 <Avatar />
                 <Gltf
                   receiveShadow
@@ -230,16 +223,16 @@ const AboutMe = () => {
       {/* Quote bloc */}
       {wordHovered !== "" && (
         <blockquote className="quoteBox absolute w-full lg:w-1/3 h-fit lg:h-full top-[75%] sm:top-[unset] sm:bottom-[15%] lg:bottom-[4vh] left-1/2 transform -translate-x-1/2 flex justify-center items-end lg:items-center px-4 sm:px-16 lg:px-4 xl:px-10 2xl:px-20 z-10">
-          <p className="relative w-fit h-fit px-4 lg:py-1 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl font-semibold lg:leading-[2rem!important] lg:tracking-wider dark:text-[#606887]">
-            <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887]" />
+          <p className="relative w-fit h-fit px-4 lg:py-1 text-lg sm:text-2xl text-center italic bg-transparent rounded-3xl font-semibold lg:leading-[2rem!important] lg:tracking-wider dark:text-white dark:lg:text-[#4d4d4d]">
+            <BiSolidQuoteRight className="absolute left-0 -top-4 w-4 h-4 text-[#606887] dark:text-white dark:lg:text-[#4d4d4d]" />
             {WordData.find((el) => el.keyword === wordHovered).quote}
-            <BiSolidQuoteRight className="absolute right-0 -bottom-4 w-4 h-4 text-[#606887]" />
+            <BiSolidQuoteRight className="absolute right-0 -bottom-4 w-4 h-4 text-[#606887] dark:text-white dark:lg:text-[#4d4d4d]" />
           </p>
         </blockquote>
       )}
       {/* Display default text when no word is hovered */}
       {wordHovered === "" && (
-        <blockquote className="absolute top-[75%] w-full lg:w-[20vw] lg:left-1/2 lg:-translate-x-1/2 lg:transform text-center lg:top-[42%] 2xl:top-[45%] text-sm sm:text-base lg:text-lg p-2 h-fit z-10 dark:text-[#606887]">
+        <blockquote className="absolute top-[75%] w-full lg:w-[20vw] lg:left-1/2 lg:-translate-x-1/2 lg:transform text-center lg:top-[42%] 2xl:top-[45%] text-sm sm:text-base lg:text-lg p-2 h-fit z-10 dark:text-white dark:lg:text-[#4d4d4d]">
           {isTablet ? "Touch a word" : "Drag the mouse over a word"} to reveal a
           quote
         </blockquote>
