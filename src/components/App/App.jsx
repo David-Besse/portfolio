@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
@@ -17,8 +17,25 @@ const spanOverTitleLetters = Array.from("Hey, I am");
 const splashTitleLetters = Array.from("DAVID BESSE");
 const spanUnderTitleLetters = Array.from("fullstack web developer.");
 
+const isFirefox = navigator.userAgent.includes("Firefox");
+console.log("checking navigator:", navigator.userAgent);
+
+const WarningMessage = () => (
+  <div className="w-screen h-screen flex justify-center items-center text-4xl bg-[#f2f2f2]">
+    <p className="text-center w-4/5">
+      Sorry<span className="text-4xl">&#128517;</span>, Firefox is not
+      supported.
+      <br />
+      You could experience some issues and break the world.
+      <br />
+      Please use Chrome.
+    </p>
+  </div>
+);
+
 const App = () => {
   const { setActiveSection, setTheme } = useStore(useStoreApp);
+  const [showWarning, setShowWarning] = useState(isFirefox);
 
   const spanOverRef = useRef(null);
   const titleRef = useRef(null);
@@ -34,12 +51,19 @@ const App = () => {
   };
 
   useEffect(() => {
-    /**
-     * Handles the scroll event and updates the active section based on the scroll position.
-     *
-     * @param {none} none - This function does not take any parameters.
-     * @return {none} This function does not return anything.
-     */
+    if (showWarning) {
+      setTimeout(() => {
+        setShowWarning(false);
+      }, 10000);
+    }
+
+    return () => {
+      setShowWarning(false);
+    };
+  }, [showWarning]);
+
+  useEffect(() => {
+    // Handles the scroll event and updates the active section based on the scroll position.
     const handleScroll = () => {
       Object.values(sectionRefs).forEach((ref) => {
         const { top, bottom } = ref.current.getBoundingClientRect();
@@ -62,6 +86,7 @@ const App = () => {
     };
   }, [mainContainerRef]);
 
+  // introduction animation
   useEffect(() => {
     const spanOverRefElement = Array.from(spanOverRef.current.children);
     const titleRefElement = Array.from(titleRef.current.children);
@@ -142,10 +167,14 @@ const App = () => {
 
   return (
     <>
+      {showWarning && <WarningMessage />}
+
       {/* Title Container */}
       <div
         id="titleContainer"
-        className="titleContainer h-[100vh] w-[100vw] p-8 bg-[#f2f2f2] dark:bg-[#1e1e1e] flex flex-col justify-center text-[#4D4D4D] dark:text-[#f2f2f2] overflow-hidden"
+        className={`titleContainer ${
+          showWarning ? "hidden" : ""
+        } h-[100vh] w-[100vw] p-8 bg-[#f2f2f2] dark:bg-[#1e1e1e] flex flex-col justify-center text-[#4D4D4D] dark:text-[#f2f2f2] overflow-hidden`}
       >
         {/* Span over title */}
         <h2
@@ -193,7 +222,9 @@ const App = () => {
       {/* Main Container */}
       <div
         id="mainContainer"
-        className="mainContainer opacity-0 h-[100vh] w-[100vw] relative text-[#4D4D4D] dark:text-[#f2f2f2] hidden bg-[#f2f2f2] dark:bg-[#1e1e1e]"
+        className={`mainContainer ${
+          showWarning ? "hidden" : ""
+        } opacity-0 h-[100vh] w-[100vw] relative text-[#4D4D4D] dark:text-[#f2f2f2] hidden bg-[#f2f2f2] dark:bg-[#1e1e1e]`}
         ref={mainContainerRef}
       >
         {/* Navbar */}
