@@ -1,3 +1,5 @@
 {
-    "error_page": "/404"
+    "rewrites": [{ 
+      "source": "/(.*)",
+      "destination": "/" }]
 }
