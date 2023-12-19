@@ -10,7 +10,7 @@ const ErrorPage = () => {
     <>
       <div
         id="error-page"
-        className="relative flex flex-col justify-center items-center w-screen h-screen gap-4 bg-[#f2f2f2]"
+        className="relative flex flex-col justify-center items-center w-screen h-screen gap-4 text-white"
       >
         <img
           src={errorBgImg}
@@ -27,8 +27,8 @@ const ErrorPage = () => {
           className="z-10 font-semibold flex justify-center items-center bg-opacity-20"
           variant="light"
         >
-          <RiArrowGoBackFill className="" size={20} />
-          <Link to="/" className="text-xl">
+          <RiArrowGoBackFill className="text-white" size={20} />
+          <Link to="/" className="text-xl text-white">
             Go back
           </Link>
         </Button>
