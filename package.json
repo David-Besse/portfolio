@@ -18,7 +18,7 @@
     "@types/three": "^0.159.0",
     "@uidotdev/usehooks": "^2.4.1",
     "core-js": "^3.34.0",
-    "framer-motion": "^10.16.9",
+    "framer-motion": "^10.16.15",
     "gsap": "^3.12.3",
     "passive-events-support": "^1.1.0",
     "prop-types": "^15.8.1",
