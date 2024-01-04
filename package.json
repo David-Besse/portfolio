@@ -27,7 +27,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.44.3",
     "react-icons": "^4.9.0",
-    "react-router": "^6.20.1",
+    "react-router": "^6.21.0",
     "react-router-dom": "^6.20.1",
     "regenerator-runtime": "^0.14.0",
     "styled-components": "^6.1.1",
