@@ -1,16 +1,16 @@
 const WorksList = [
   {
     projectName: "Art@home",
-    description: "The aim of Art@home is to create a platform where contemporary artists (both emerging and established) can exhibit their work, giving the public the chance to discover a wide variety of artistic expression.",
+    description:
+      "The aim of Art@home is to create a platform where contemporary artists (both emerging and established) can exhibit their work, giving the public the chance to discover a wide variety of artistic expression.",
     stack: {
-      front:
-        "JavaScript, React, Redux, Axios, Jest, JsDom",
+      front: "JavaScript, React, Redux, Axios, Jest, JsDom",
       back: "PHP, Symfony, Nelmio",
     },
-    url: "https://www.webshappers.com",
-    src :[
-      {front: "https://github.com/David-Besse/art-home-front"},
-      {back: "https://github.com/David-Besse/art-home_back"},
+    url: "",
+    src: [
+      { front: "https://github.com/David-Besse/art-home-front" },
+      { back: "https://github.com/David-Besse/art-home_back" },
     ],
     screenshot: "/images/arthome_mockup.png",
   },
@@ -23,25 +23,23 @@ const WorksList = [
       back: "",
     },
     url: "",
-    src :[
-      {front: "https://github.com/David-Besse/portfolio"},
-      {back: ""},
-    ],
+    src: [{ front: "https://github.com/David-Besse/portfolio" }, { back: "" }],
     screenshot: "/images/portfolio_mockup.png",
   },
   {
-    projectName: "coming soon..",
-    description: "coming soon...",
+    projectName: "Pokedex app",
+    description:
+      "This is a tiny project using Angular (version 17) and an Express API. I wanted to create an app that shows pokemons data and allows adding them while learning a new framework.",
     stack: {
-      front: "",
-      back: "",
+      front: "Angular v17, TypeScript",
+      back: "Express, Node.js, Swagger, PostgreSQL",
     },
     url: "",
-    src :[
-      {front: ""},
-      {back: ""},
+    src: [
+      { front: "https://github.com/David-Besse/angular-pokedex" },
+      { back: "https://github.com/David-Besse/express-pokedex-api" },
     ],
-    screenshot: "",
+    screenshot: "/images/pokedex_mockup.png",
   },
 ];
 

@@ -19,6 +19,8 @@ import RigAboutMe from "./Scene/RigAboutMe/RigAboutMe";
 
 import { BiSolidQuoteRight } from "react-icons/bi";
 import { Md3DRotation } from "react-icons/md";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+
 import { RxReset } from "react-icons/rx";
 import "./aboutMe.scss";
 
@@ -232,9 +234,10 @@ const AboutMe = () => {
       )}
       {/* Display default text when no word is hovered */}
       {wordHovered === "" && (
-        <blockquote className="absolute top-[75%] w-full lg:w-[20vw] lg:left-1/2 lg:-translate-x-1/2 lg:transform text-center lg:top-[42%] 2xl:top-[45%] text-sm sm:text-base lg:text-lg p-2 h-fit z-10 dark:text-white dark:lg:text-[#4d4d4d]">
+        <blockquote className="absolute flex flex-col gap-8 justify-center items-center top-[75%] w-full lg:w-[20vw] lg:left-1/2 lg:-translate-x-1/2 lg:transform text-center lg:top-[42%] 2xl:top-[45%] text-sm sm:text-base lg:text-lg p-2 h-fit z-10 dark:text-white dark:lg:text-[#4d4d4d]">
           {isTablet ? "Touch a word" : "Drag the mouse over a word"} to reveal a
-          quote
+          quote <br />
+          <FaRegArrowAltCircleLeft className="w-12 h-12" />
         </blockquote>
       )}
     </>

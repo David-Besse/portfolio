@@ -38,6 +38,12 @@ const SkillsList = [
   "Snyk",
   "Vercel",
   "Swiper",
+  "Next.js",
+  "Express",
+  "Typescript",
+  "PostgresQl",
+  "Snyk",
+  "Angular",
 ];
 
 export default SkillsList;
