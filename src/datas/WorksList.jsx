@@ -34,7 +34,7 @@ const WorksList = [
       front: "Angular v17, TypeScript",
       back: "Express, Node.js, Swagger, PostgreSQL",
     },
-    url: "",
+    url: "https://dbwd-pokedex.vercel.app",
     src: [
       { front: "https://github.com/David-Besse/angular-pokedex" },
       { back: "https://github.com/David-Besse/express-pokedex-api" },
