@@ -14,7 +14,7 @@
     "@nextui-org/react": "^2.4.0",
     "@react-spring/web": "^9.7.3",
     "@react-three/drei": "^9.105.6",
-    "@react-three/fiber": "^8.16.6",
+    "@react-three/fiber": "^8.16.7",
     "@types/three": "^0.164.1",
     "@uidotdev/usehooks": "^2.4.1",
     "core-js": "^3.37.1",
