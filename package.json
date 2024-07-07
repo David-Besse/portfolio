@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
-    "@nextui-org/react": "^2.4.1",
+    "@nextui-org/react": "^2.4.2",
     "@react-spring/web": "^9.7.3",
     "@react-three/drei": "^9.106.0",
     "@react-three/fiber": "^8.16.7",
