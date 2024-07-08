@@ -15,7 +15,7 @@
     "@react-spring/web": "^9.7.3",
     "@react-three/drei": "^9.106.0",
     "@react-three/fiber": "^8.16.7",
-    "@types/three": "^0.164.1",
+    "@types/three": "^0.165.0",
     "@uidotdev/usehooks": "^2.4.1",
     "core-js": "^3.37.1",
     "framer-motion": "^10.16.16",
@@ -32,7 +32,7 @@
     "regenerator-runtime": "^0.14.0",
     "styled-components": "^6.1.11",
     "three": "^0.165.0",
-    "three-stdlib": "^2.30.2",
+    "three-stdlib": "^2.30.3",
     "zustand": "^4.3.8"
   },
   "devDependencies": {
