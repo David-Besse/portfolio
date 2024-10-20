@@ -15,7 +15,7 @@
     "@react-spring/web": "^9.7.4",
     "@react-three/drei": "^9.112.1",
     "@react-three/fiber": "^8.17.7",
-    "@types/three": "^0.168.0",
+    "@types/three": "^0.169.0",
     "@uidotdev/usehooks": "^2.4.1",
     "core-js": "^3.38.1",
     "framer-motion": "^10.18.0",
