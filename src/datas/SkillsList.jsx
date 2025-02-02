@@ -32,6 +32,7 @@ const SkillsList = [
   "React Router",
   "MariaDB",
   "MySql",
+  "PostgresQl",
   "Ubuntu",
   "VS Code",
   "Adminer",
@@ -41,9 +42,19 @@ const SkillsList = [
   "Next.js",
   "Express",
   "Typescript",
-  "PostgresQl",
   "Snyk",
   "Angular",
+  "Docker",
+  "Vuejs",
+  "Nuxtjs",
+  "Nginx",
+  "Git",
+  "Github",
+  "Npm",
+  "Yarn",
+  "Webpack",
+  "Babel",
+  "Swagger",
 ];
 
 export default SkillsList;

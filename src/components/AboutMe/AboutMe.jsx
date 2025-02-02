@@ -10,7 +10,7 @@ import {
 } from "@react-three/drei";
 import styled from "styled-components";
 import { useMediaQuery } from "@uidotdev/usehooks";
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@heroui/react";
 
 import Avatar from "./Scene/Avatar/Avatar";
 import WordData from "./../../datas/WordData";

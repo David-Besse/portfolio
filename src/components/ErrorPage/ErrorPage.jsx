@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import errorBgImg from "../../assets/images/error.png";
 import { RiArrowGoBackFill } from "react-icons/ri";
 

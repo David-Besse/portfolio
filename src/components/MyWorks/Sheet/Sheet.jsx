@@ -7,7 +7,7 @@ import {
   Link,
   Image,
   useDisclosure,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import styled from "styled-components";
 import { useStore } from "zustand";
 import useStoreApp from "../../Store/app.store";

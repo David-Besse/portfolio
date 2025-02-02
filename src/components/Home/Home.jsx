@@ -1,4 +1,4 @@
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@heroui/react";
 import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";

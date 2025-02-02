@@ -3,7 +3,7 @@ passiveSupport({ events: ["wheel"] });
 
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import App from "./components/App/App";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import "./styles.scss";
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <NextUIProvider>
+  <HeroUIProvider>
     <RouterProvider router={router} />
-  </NextUIProvider>
+  </HeroUIProvider>
 );

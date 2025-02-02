@@ -4,7 +4,7 @@ import {
   ModalContent,
   ModalBody,
   ModalHeader,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 /**
  * Render a modal component that displays a project preview in live.

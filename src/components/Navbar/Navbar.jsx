@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useStore } from "zustand";
 import useStoreApp from "../Store/app.store";
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@heroui/react";
 import {
   BsBook,
   BsEnvelopeAt,
