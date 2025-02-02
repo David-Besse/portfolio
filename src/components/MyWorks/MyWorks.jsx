@@ -4,6 +4,7 @@ import BackgroundDiv from "../BackgroundDiv/BackgroundDiv";
 import Sheet from "./Sheet/Sheet";
 import WorksList from "./../../datas/WorksList";
 import "./myWorks.scss";
+import "react-alice-carousel/lib/alice-carousel.css";
 
 /**
  * Renders the "MyWorks" component.
