@@ -54,7 +54,8 @@ const Navbar = () => {
   const menuIconBurgerRef = useRef();
 
   const toggleDarkMode = () => {
-    document.documentElement.classList.toggle("dark");
+    const isDark = document.documentElement.classList.toggle("dark");
+    document.documentElement.classList.toggle("light", !isDark);
     const newTheme = theme === "light" ? "dark" : "light";
     localStorage.setItem("theme_portfolio", newTheme);
     setTheme(newTheme);
