@@ -33,7 +33,7 @@
     "react-router-dom": "^6.29.0",
     "regenerator-runtime": "^0.14.1",
     "styled-components": "^6.1.14",
-    "three": "^0.170.0",
+    "three": "^0.173.0",
     "three-stdlib": "^2.35.13",
     "zustand": "^4.5.6"
   },
