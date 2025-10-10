@@ -20,7 +20,7 @@
     "@types/three": "^0.174.0",
     "@uidotdev/usehooks": "^2.4.1",
     "core-js": "^3.41.0",
-    "framer-motion": "^12.5.0",
+    "framer-motion": "^12.23.15",
     "gsap": "^3.12.7",
     "passive-events-support": "^1.1.0",
     "prop-types": "^15.8.1",
